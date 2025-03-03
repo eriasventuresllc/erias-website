@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle"
 export function MainNavigation() {
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
-    { name: 'About', url: '/about', icon: User },
+    { name: 'Expertise', url: '/about', icon: User },
     { name: 'Projects', url: '/projects', icon: Briefcase },
     { name: 'Resume', url: '/resume', icon: FileText }
   ]
