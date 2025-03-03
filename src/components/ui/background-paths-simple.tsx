@@ -4,15 +4,16 @@
 import { motion } from "framer-motion";
 
 function FloatingPaths({ position }: { position: number }) {
+    // Adjusted path generation to make waves higher
     const paths = Array.from({ length: 36 }, (_, i) => ({
         id: i,
-        d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
+        d: `M-${380 - i * 5 * position} -${220 + i * 8}C-${
             380 - i * 5 * position
-        } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
+        } -${220 + i * 8} -${312 - i * 5 * position} ${250 - i * 8} ${
             152 - i * 5 * position
-        } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
+        } ${380 - i * 8}C${616 - i * 5 * position} ${520 - i * 8} ${
             684 - i * 5 * position
-        } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+        } ${900 - i * 8} ${684 - i * 5 * position} ${900 - i * 8}`,
         color: `rgba(15,23,42,${0.1 + i * 0.03})`,
         width: 0.5 + i * 0.03,
     }));
@@ -53,7 +54,9 @@ function FloatingPaths({ position }: { position: number }) {
 export function BackgroundPathsSimple() {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute inset-0">
+            {/* Added mask-image for fade-out effect */}
+            <div className="absolute inset-0 mask-image: linear-gradient(to bottom, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 90%);" 
+                 style={{ maskImage: 'linear-gradient(to bottom, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 90%)' }}>
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
             </div>

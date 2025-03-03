@@ -7,8 +7,10 @@ import { BackgroundPathsSimple } from '@/components/ui/background-paths-simple';
 
 const Index = () => {
   return <Layout>
-      {/* Background Animation */}
-      <BackgroundPathsSimple />
+      {/* Background Animation - positioned absolute so it doesn't affect layout */}
+      <div className="relative z-0">
+        <BackgroundPathsSimple />
+      </div>
       
       {/* Hero Section */}
       <section className="py-16 md:py-24 relative z-10">
