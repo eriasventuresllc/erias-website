@@ -1,13 +1,16 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { Award, MessageSquare, Rocket, Lightbulb, PenTool } from 'lucide-react';
-import { BackgroundPathsHero } from '@/components/ui/background-paths-hero';
+import { BackgroundPathsSimple } from '@/components/ui/background-paths-simple';
 
 const Index = () => {
   return <Layout>
-      {/* Background Animation */}
-      <BackgroundPathsHero />
+      {/* Background Animation - positioned absolute so it doesn't affect layout */}
+      <div className="relative z-0">
+        <BackgroundPathsSimple />
+      </div>
       
       {/* Hero Section */}
       <section className="py-16 md:py-24 relative z-10">
@@ -95,7 +98,7 @@ const Index = () => {
       </section>
 
       {/* Approach Section */}
-      <section className="py-16">
+      <section className="py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -198,7 +201,7 @@ const Index = () => {
       </section>
 
       {/* Awards Section */}
-      <section className="py-16 bg-secondary/50 rounded-3xl">
+      <section className="py-16 bg-secondary/50 rounded-3xl relative z-10">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -284,5 +287,4 @@ const AwardCard = ({
       <h3 className="text-base font-medium text-center">{title}</h3>
     </motion.div>;
 };
-
 export default Index;
