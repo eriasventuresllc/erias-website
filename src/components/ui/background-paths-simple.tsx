@@ -55,7 +55,7 @@ export function BackgroundPathsSimple() {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Added mask-image for fade-out effect */}
-            <div className="absolute inset-0 mask-image: linear-gradient(to bottom, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 90%);" 
+            <div className="absolute inset-0" 
                  style={{ maskImage: 'linear-gradient(to bottom, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 90%)' }}>
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
