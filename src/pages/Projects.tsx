@@ -2,35 +2,59 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
+import { Wallet, HeartPulse, Smile } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 
-const projectsData = [
-  {
-    id: 1,
-    title: 'Minimalist Dashboard',
-    description: 'A clean, elegant dashboard design focused on data visualization with minimal distractions.',
-    category: 'UI/UX Design',
-  },
-  {
-    id: 2,
-    title: 'Product Website',
-    description: 'Sleek product landing page with smooth animations and intuitive navigation.',
-    category: 'Web Design',
-  },
-  {
-    id: 3,
-    title: 'Mobile App Interface',
-    description: 'Simple yet powerful mobile application interface with a focus on usability.',
-    category: 'Mobile Design',
-  },
-  {
-    id: 4,
-    title: 'Brand Identity System',
-    description: 'Comprehensive brand system with clear guidelines and versatile applications.',
-    category: 'Branding',
-  },
-];
+const Careers = () => {
+  const benefitCategories = [
+    {
+      id: 1,
+      title: "Wealth Benefits",
+      description: "We provide an industry-leading compensation package so that team members can invest in their future.",
+      icon: <Wallet className="h-8 w-8 text-primary" />,
+      benefits: [
+        "Above Market Pay",
+        "Annual Profit Sharing Bonuses",
+        "11% Roth or Traditional 401k with Immediate Vesting and Contributions",
+        "Spot Bonuses for Awesome Customer Support, Business Development, and Operational Support",
+        "Quarterly Bonuses for Employee Referrals",
+        "Professional Development Bonuses for Certificates and Degrees"
+      ]
+    },
+    {
+      id: 2,
+      title: "Health Benefits",
+      description: "We provide a complete set of insurance benefits to keep our team healthy and protected.",
+      icon: <HeartPulse className="h-8 w-8 text-primary" />,
+      benefits: [
+        "Company Subsidized Medical Coverage",
+        "100% Company Paid Vision Coverage",
+        "100% Company Paid Dental Coverage",
+        "100% Company Paid Long Term Disability",
+        "100% Company Paid Short Term Disability Insurance",
+        "100% Company Paid Life Insurance",
+        "100% Company Paid AD&D Insurance",
+        "Monthly Wellness Reimbursement"
+      ]
+    },
+    {
+      id: 3,
+      title: "Happiness Benefits",
+      description: "We provide a collection of benefits for personal growth and happiness.",
+      icon: <Smile className="h-8 w-8 text-primary" />,
+      benefits: [
+        "Paid Time Off with Flexible Work Schedules",
+        "Birthday Off to Celebrate",
+        "Monthly Internet Reimbursement",
+        "Company Paid Professional Development and Training",
+        "Technology and Productivity Reimbursements for Equipment and Supplies",
+        "Amazon Prime Membership",
+        "Swag and Gifts",
+        "Morale Building and Company Events to Celebrate our Successes and Build our Community"
+      ]
+    }
+  ];
 
-const Projects = () => {
   return (
     <Layout>
       <motion.section 
@@ -51,79 +75,80 @@ const Projects = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="inline-block px-3 py-1 text-xs font-medium bg-primary/5 text-primary rounded-full mb-4"
           >
-            Portfolio
+            Join Our Team
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
           >
-            Selected Projects
+            Careers
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="max-w-2xl mx-auto text-lg text-gray-500"
+            className="max-w-3xl mx-auto text-lg text-muted-foreground"
           >
-            A showcase of our work that demonstrates our approach to design and problem-solving.
+            We are looking for engineers seeking to grow their careers and that want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Team members are provided a complete package of wealth, health, and happiness benefits. Take the next step and view our current openings.
           </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mt-8"
+          >
+            <a href="#" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors">
+              View Current Openings
+            </a>
+          </motion.div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
-          {projectsData.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {benefitCategories.map((category, index) => (
             <motion.div
-              key={project.id}
+              key={category.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
             >
-              <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-800/0 to-gray-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                <div className="w-full h-full bg-gray-200 group-hover:scale-105 transition-transform duration-500"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 p-6 z-20">
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1, duration: 0.3 }}
-                  className="inline-block px-2 py-1 text-xs font-medium bg-primary/10 text-white backdrop-blur-sm rounded-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  {project.category}
-                </motion.span>
-                <motion.h3 
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, duration: 0.3 }}
-                  className="text-xl font-bold text-gray-100 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.3 }}
-                  className="text-sm text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  {project.description}
-                </motion.p>
-              </div>
+              <Card className="h-full overflow-hidden border-border hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center gap-4 mb-2">
+                    <div className="p-2 rounded-full bg-primary/10">
+                      {category.icon}
+                    </div>
+                    <CardTitle className="text-xl">{category.title}</CardTitle>
+                  </div>
+                  <CardDescription className="text-muted-foreground text-sm">
+                    {category.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {category.benefits.map((benefit, i) => (
+                      <motion.li 
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.8 + (i * 0.05), duration: 0.3 }}
+                        className="flex items-start gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                        <span className="text-sm">{benefit}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </motion.section>
     </Layout>
   );
 };
 
-export default Projects;
+export default Careers;
