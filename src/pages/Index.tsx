@@ -19,7 +19,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block px-3 py-1 text-xs font-medium bg-primary/5 text-primary rounded-full mb-4"
+            className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4"
           >
             Welcome to Erias Ventures
           </motion.span>
@@ -27,7 +27,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6"
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
           >
             Entrepreneurial Solutions
           </motion.h1>
@@ -35,7 +35,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="max-w-3xl mx-auto text-xl text-gray-500 mb-10"
+            className="max-w-3xl mx-auto text-xl text-muted-foreground mb-10"
           >
             Erias Ventures was founded to serve its customers with an entrepreneurial mindset. 
             We value open communication, taking action, being committed, persevering through challenges 
@@ -50,14 +50,14 @@ const Index = () => {
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition duration-200"
             >
               Our Services
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 border border-border text-base font-medium rounded-md bg-secondary hover:bg-secondary/80 transition duration-200"
             >
               Contact Us
             </motion.button>
@@ -66,7 +66,7 @@ const Index = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-gray-50 rounded-3xl">
+      <section className="py-16 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -76,7 +76,7 @@ const Index = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-gray-500 max-w-3xl mx-auto">
+            <p className="text-muted-foreground max-w-3xl mx-auto">
               These principles guide everything we do at Erias Ventures.
             </p>
           </motion.div>
@@ -137,7 +137,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-gray-500 mb-6"
+                className="text-muted-foreground mb-6"
               >
                 Taking action requires commitment and perseverance. Here at Erias Ventures, we believe that with proper planning and deliberate focus even the hardest problems can be dismantled into manageable pieces that can be committed to and worked.
               </motion.p>
@@ -146,7 +146,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-gray-500"
+                className="text-muted-foreground"
               >
                 Innovation is needed to satisfy the unique problems that our customers face as they work to secure the nation. That is why we are committed to providing innovative, scalable, and adaptive solutions as we develop and build complex systems and products.
               </motion.p>
@@ -156,7 +156,7 @@ const Index = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="bg-primary/5 rounded-3xl p-10 border border-primary/10 relative"
+              className="bg-card rounded-3xl p-10 border border-border relative"
             >
               <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                 <PenTool className="w-6 h-6 text-primary" />
@@ -167,25 +167,25 @@ const Index = () => {
                   <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>
-                  <span className="text-gray-600">Identify core challenges</span>
+                  <span className="text-card-foreground">Identify core challenges</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>
-                  <span className="text-gray-600">Create actionable plans</span>
+                  <span className="text-card-foreground">Create actionable plans</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>
-                  <span className="text-gray-600">Execute with precision</span>
+                  <span className="text-card-foreground">Execute with precision</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>
-                  <span className="text-gray-600">Continuously innovate</span>
+                  <span className="text-card-foreground">Continuously innovate</span>
                 </li>
               </ul>
             </motion.div>
@@ -194,7 +194,7 @@ const Index = () => {
       </section>
 
       {/* Awards Section */}
-      <section className="py-16 bg-gray-50 rounded-3xl">
+      <section className="py-16 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -204,7 +204,7 @@ const Index = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold mb-4">Awards & Recognition</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Our commitment to excellence has been recognized through these prestigious awards.
             </p>
           </motion.div>
@@ -247,13 +247,13 @@ const ValueCard = ({ icon, title, description, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.6 }}
-      className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+      className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-md transition-shadow"
     >
       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-gray-500">
+      <p className="text-muted-foreground">
         {description}
       </p>
     </motion.div>
@@ -268,7 +268,7 @@ const AwardCard = ({ title, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.6 }}
-      className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col items-center"
+      className="bg-card rounded-2xl p-6 shadow-sm border border-border flex flex-col items-center"
     >
       <Award className="w-10 h-10 text-primary mb-4" />
       <h3 className="text-base font-medium text-center">{title}</h3>
