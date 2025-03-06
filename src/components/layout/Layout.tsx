@@ -1,16 +1,40 @@
 
 import React from 'react';
-import { MainNavigation } from '@/components/navigation';
+import { AnimeNavBar } from '@/components/ui/anime-navbar';
+import { Home, FileText, Award, Info } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
+const navItems = [
+  {
+    name: "Home",
+    url: "/",
+    icon: Home,
+  },
+  {
+    name: "About",
+    url: "/about",
+    icon: Info,
+  },
+  {
+    name: "Careers",
+    url: "/careers",
+    icon: Award,
+  },
+  {
+    name: "Projects",
+    url: "/projects",
+    icon: FileText,
+  },
+];
+
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground dark">
       <div className="h-2 bg-primary w-full"></div>
-      <MainNavigation />
+      <AnimeNavBar items={navItems} defaultActive="Careers" />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
         {children}
       </main>
