@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { AnimeNavBar } from '@/components/ui/anime-navbar';
-import { Home, FileText, Award, Info } from 'lucide-react';
+import { Home, FileText, Info } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,11 +19,6 @@ const navItems = [
     icon: Info,
   },
   {
-    name: "Careers",
-    url: "/careers",
-    icon: Award,
-  },
-  {
     name: "Projects",
     url: "/projects",
     icon: FileText,
@@ -34,7 +29,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground dark">
       <div className="h-2 bg-primary w-full"></div>
-      <AnimeNavBar items={navItems} defaultActive="Careers" />
+      <AnimeNavBar items={navItems} defaultActive="About" />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
         {children}
       </main>
