@@ -1,15 +1,27 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { MessageSquare, Rocket, Lightbulb } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
+import DetailsSection from '@/components/sections/DetailsSection';
 
 const Index = () => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({
+      opacity: 1,
+      scale: 1,
+      y: 0
+    });
+  }, [controls]);
+
   return <Layout>
       {/* Hero Banner */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
+        animate={controls}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full mb-6 mt-6 flex justify-center"
       >
@@ -189,6 +201,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Details Section - NEW */}
+      <DetailsSection />
+
       {/* Awards Section */}
       <section className="py-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
@@ -216,12 +231,6 @@ const Index = () => {
         }} transition={{
           duration: 0.6
         }} className="flex flex-wrap justify-center items-center gap-8">
-            <AwardImage 
-              imgSrc="/lovable-uploads/794b2648-33e1-44ee-a9a0-56c567a9f757.png" 
-              alt="Data Works MD DAX Conf"
-              delay={0.1}
-              width="150px" 
-            />
             <AwardImage 
               imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
               alt="BBJ Best Places to Work 2024"
