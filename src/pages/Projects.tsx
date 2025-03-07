@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -91,7 +92,7 @@ const Careers = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="mt-8"
           >
-            <a href="#" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors">
+            <a href="https://careers.eriasventures.com/" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors">
               View Current Openings
             </a>
           </motion.div>
