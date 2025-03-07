@@ -1,8 +1,9 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { Shield, Code, Database, Users, Search, Settings, Brain, GraduationCap } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Shield, Code, Database, Users, Brain, GraduationCap } from 'lucide-react';
+import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 
 const About = () => {
   const expertiseAreas = [
@@ -16,7 +17,8 @@ const About = () => {
         "Knowledge Management and Information Sharing Experts",
         "Software and System Testing",
         "Extensive Intelligence Community Experience"
-      ]
+      ],
+      patternColors: "from-blue-500/90 via-blue-500/40 to-blue-500/10"
     },
     {
       title: "Software Engineering",
@@ -29,7 +31,8 @@ const About = () => {
         "Scrum, Kanban, Lean Development Methodologies",
         "System Administration and DevOps",
         "Automated Dissemination and Reporting"
-      ]
+      ],
+      patternColors: "from-purple-500/90 via-purple-500/40 to-purple-500/10"
     },
     {
       title: "Automated Intelligence",
@@ -39,7 +42,8 @@ const About = () => {
         "Legal, Policy, Oversight, and Compliance Knowledge",
         "Automating Analyst Workflows",
         "Subject Matter Experts on Policy and Technical Capabilities"
-      ]
+      ],
+      patternColors: "from-green-500/90 via-green-500/40 to-green-500/10"
     },
     {
       title: "Cyber Engineering",
@@ -49,7 +53,8 @@ const About = () => {
         "Collection, Operations, Analysis, and Reporting Expertise",
         "Information Systems Security",
         "Vulnerability Discovery and Prevention"
-      ]
+      ],
+      patternColors: "from-red-500/90 via-red-500/40 to-red-500/10" 
     },
     {
       title: "Data Science and Analytics",
@@ -60,7 +65,8 @@ const About = () => {
         "Machine Learning, Deep Learning, Artificial Intelligence",
         "Data Mining and Visualization",
         "Apache NiFi and Dataflow Management"
-      ]
+      ],
+      patternColors: "from-amber-500/90 via-amber-500/40 to-amber-500/10"
     }
   ];
 
@@ -104,19 +110,22 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
             >
-              <Card className="h-full overflow-hidden border-border hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-4 mb-2">
+              <PatternCard 
+                className="h-full hover:shadow-lg transition-shadow duration-300"
+                gradientClassName={area.patternColors}
+              >
+                <PatternCardBody>
+                  <div className="flex items-center gap-4 mb-4">
                     <div className="p-2 rounded-full bg-primary/10">
                       {area.icon}
                     </div>
-                    <CardTitle className="text-xl">{area.title}</CardTitle>
+                    <h3 className="text-xl font-semibold">{area.title}</h3>
                   </div>
-                  <CardDescription className="text-muted-foreground text-sm">
+                  
+                  <p className="text-muted-foreground text-sm mb-4">
                     {area.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
+                  </p>
+                  
                   <ul className="space-y-2">
                     {area.features.map((feature, i) => (
                       <motion.li 
@@ -131,8 +140,8 @@ const About = () => {
                       </motion.li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
+                </PatternCardBody>
+              </PatternCard>
             </motion.div>
           ))}
         </div>
