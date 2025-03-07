@@ -1,7 +1,9 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { MessageSquare, Rocket, Lightbulb, PenTool, Award } from 'lucide-react';
+import { MessageSquare, Rocket, Lightbulb, PenTool } from 'lucide-react';
+
 const Index = () => {
   return <Layout>
       {/* Hero Section */}
@@ -198,11 +200,60 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <AwardCard title="Data Works MD DAX Conf" delay={0.1} />
-            <AwardCard title="BBJ Best Places to Work 2024" delay={0.2} />
-            <AwardCard title="BBJ Best Places to Work 2023" delay={0.3} />
-            <AwardCard title="Baltimore Top Workplaces 2023/24" delay={0.4} />
+        }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <AwardImage 
+              imgSrc="/lovable-uploads/794b2648-33e1-44ee-a9a0-56c567a9f757.png" 
+              alt="Data Works MD DAX Conf"
+              delay={0.1} 
+            />
+            <AwardImage 
+              imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
+              alt="BBJ Best Places to Work 2024"
+              delay={0.2} 
+            />
+            <AwardImage 
+              imgSrc="/lovable-uploads/40bcd744-9f84-4c8e-8f7a-c4eb3a591da9.png" 
+              alt="BBJ Best Places to Work 2023"
+              delay={0.3} 
+            />
+          </motion.div>
+          
+          <motion.div initial={{
+          opacity: 0
+        }} whileInView={{
+          opacity: 1
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }} className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 justify-items-center">
+            <AwardImage 
+              imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
+              alt="Baltimore Sun Top Workplaces 2023"
+              delay={0.4} 
+            />
+            <AwardImage 
+              imgSrc="/lovable-uploads/f55036d1-cf5b-4211-833e-d50faae26140.png" 
+              alt="Baltimore Sun Top Workplaces 2024"
+              delay={0.5} 
+            />
+          </motion.div>
+          
+          <motion.div initial={{
+          opacity: 0
+        }} whileInView={{
+          opacity: 1
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }} className="flex justify-center mt-8">
+            <AwardImage 
+              imgSrc="/lovable-uploads/347aade5-ec3f-4fbc-a274-798cd73d8f6b.png" 
+              alt="Data Works MD DAX Logo"
+              delay={0.6}
+              width="280px" 
+            />
           </motion.div>
         </div>
       </section>
@@ -238,25 +289,31 @@ const ValueCard = ({
     </motion.div>;
 };
 
-// Award Card Component
-const AwardCard = ({
-  title,
-  delay
-}) => {
-  return <motion.div initial={{
-    opacity: 0,
-    y: 20
-  }} whileInView={{
-    opacity: 1,
-    y: 0
-  }} viewport={{
-    once: true
-  }} transition={{
-    delay,
-    duration: 0.6
-  }} className="bg-card rounded-2xl p-6 shadow-sm border border-border flex flex-col items-center">
-      <Award className="w-10 h-10 text-primary mb-4" />
-      <h3 className="text-base font-medium text-center">{title}</h3>
-    </motion.div>;
+// Award Image Component
+const AwardImage = ({ imgSrc, alt, delay, width }) => {
+  return (
+    <motion.div 
+      initial={{
+        opacity: 0,
+        y: 20
+      }} 
+      whileInView={{
+        opacity: 1,
+        y: 0
+      }} 
+      viewport={{
+        once: true
+      }} 
+      transition={{
+        delay,
+        duration: 0.6
+      }}
+      className="bg-white rounded-2xl p-6 shadow-sm border border-border flex items-center justify-center overflow-hidden"
+      style={{ maxWidth: width || '250px', height: 'auto' }}
+    >
+      <img src={imgSrc} alt={alt} className="max-w-full h-auto object-contain" />
+    </motion.div>
+  );
 };
+
 export default Index;

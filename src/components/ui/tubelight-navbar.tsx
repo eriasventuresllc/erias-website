@@ -22,6 +22,8 @@ export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(items.find(item => item.url === location.pathname)?.name || items[0].name);
   const [isMobile, setIsMobile] = useState(false)
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -41,12 +43,41 @@ export function NavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (window.scrollY > 100) {
+        if (window.scrollY > lastScrollY) {
+          // Scrolling down
+          setIsVisible(false);
+        } else {
+          // Scrolling up
+          setIsVisible(true);
+        }
+      } else {
+        // At the top of the page
+        setIsVisible(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
-    <div
+    <motion.div
       className={cn(
         "fixed top-0 left-1/2 -translate-x-1/2 z-50 pt-6",
         className,
       )}
+      initial={{ y: 0, opacity: 1 }}
+      animate={{ 
+        y: isVisible ? 0 : -100,
+        opacity: isVisible ? 1 : 0
+      }}
+      transition={{ duration: 0.3 }}
     >
       <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
         {items.map((item) => {
@@ -90,6 +121,6 @@ export function NavBar({ items, className }: NavBarProps) {
           )
         })}
       </div>
-    </div>
+    </motion.div>
   )
 }
