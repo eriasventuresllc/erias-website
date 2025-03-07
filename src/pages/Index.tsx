@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { MessageSquare, Rocket, Lightbulb, PenTool } from 'lucide-react';
+import { MessageSquare, Rocket, Lightbulb } from 'lucide-react';
 
 const Index = () => {
   return <Layout>
@@ -139,8 +139,12 @@ const Index = () => {
             delay: 0.4,
             duration: 0.6
           }} className="bg-card rounded-3xl p-10 border border-border relative">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                <PenTool className="w-6 h-6 text-primary" />
+              <div className="absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/dd8121c2-ad77-43d0-928f-9f2cec51eaab.png" 
+                  alt="Strategic Development Logo" 
+                  className="w-12 h-12 object-contain"
+                />
               </div>
               <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
               <ul className="space-y-3">
