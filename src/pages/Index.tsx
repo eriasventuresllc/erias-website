@@ -1,10 +1,8 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
 import { MessageSquare, Rocket, Lightbulb } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
-import DetailsSection from '@/components/sections/DetailsSection';
 
 const Index = () => {
   const controls = useAnimation();
@@ -200,9 +198,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Details Section - NEW */}
-      <DetailsSection />
 
       {/* Awards Section */}
       <section className="py-12 bg-secondary/50 rounded-3xl">
