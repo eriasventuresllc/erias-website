@@ -1,8 +1,10 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { Shield, Code, Database, Users, Search, Settings, Brain, GraduationCap } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { PixelCanvas } from "@/components/ui/pixel-canvas";
 
 const About = () => {
   const expertiseAreas = [
@@ -16,7 +18,8 @@ const About = () => {
         "Knowledge Management and Information Sharing Experts",
         "Software and System Testing",
         "Extensive Intelligence Community Experience"
-      ]
+      ],
+      colors: ["#f0f9ff", "#bae6fd", "#0ea5e9"] // Blue theme
     },
     {
       title: "Software Engineering",
@@ -29,7 +32,8 @@ const About = () => {
         "Scrum, Kanban, Lean Development Methodologies",
         "System Administration and DevOps",
         "Automated Dissemination and Reporting"
-      ]
+      ],
+      colors: ["#ecfdf5", "#a7f3d0", "#10b981"] // Green theme
     },
     {
       title: "Automated Intelligence",
@@ -39,7 +43,8 @@ const About = () => {
         "Legal, Policy, Oversight, and Compliance Knowledge",
         "Automating Analyst Workflows",
         "Subject Matter Experts on Policy and Technical Capabilities"
-      ]
+      ],
+      colors: ["#fdf4ff", "#e9d5ff", "#a855f7"] // Purple theme
     },
     {
       title: "Cyber Engineering",
@@ -49,7 +54,8 @@ const About = () => {
         "Collection, Operations, Analysis, and Reporting Expertise",
         "Information Systems Security",
         "Vulnerability Discovery and Prevention"
-      ]
+      ],
+      colors: ["#fff1f2", "#fda4af", "#f43f5e"] // Red theme
     },
     {
       title: "Data Science and Analytics",
@@ -60,7 +66,8 @@ const About = () => {
         "Machine Learning, Deep Learning, Artificial Intelligence",
         "Data Mining and Visualization",
         "Apache NiFi and Dataflow Management"
-      ]
+      ],
+      colors: ["#fffbeb", "#fde68a", "#f59e0b"] // Yellow/Gold theme
     }
   ];
 
@@ -103,9 +110,16 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
+              className="relative"
             >
-              <Card className="h-full overflow-hidden border-border hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
-                <CardHeader className="pb-2">
+              <Card className="h-full overflow-hidden border-border hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm relative">
+                <PixelCanvas
+                  gap={10}
+                  speed={25}
+                  colors={area.colors}
+                  variant="icon"
+                />
+                <CardHeader className="pb-2 relative z-10">
                   <div className="flex items-center gap-4 mb-2">
                     <div className="p-2 rounded-full bg-primary/10">
                       {area.icon}
@@ -116,7 +130,7 @@ const About = () => {
                     {area.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <ul className="space-y-2">
                     {area.features.map((feature, i) => (
                       <motion.li 
