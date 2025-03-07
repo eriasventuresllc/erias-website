@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -156,13 +155,6 @@ const Index = () => {
           }}>
               <PatternCard className="rounded-3xl border border-border">
                 <PatternCardBody className="p-10 relative">
-                  <div className="absolute -top-4 -left-4 w-14 h-14 rounded-xl flex items-center justify-center">
-                    <img 
-                      src="/lovable-uploads/dd8121c2-ad77-43d0-928f-9f2cec51eaab.png" 
-                      alt="Strategic Development Logo" 
-                      className="w-14 h-14 object-contain"
-                    />
-                  </div>
                   <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
