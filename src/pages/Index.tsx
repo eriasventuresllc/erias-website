@@ -1,28 +1,19 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { Award, MessageSquare, Rocket, Lightbulb, PenTool } from 'lucide-react';
+import { MessageSquare, Rocket, Lightbulb, PenTool, Award } from 'lucide-react';
 
 const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4"
-          >
-            Welcome to Erias Ventures
-          </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,27 +32,6 @@ const Index = () => {
             We value open communication, taking action, being committed, persevering through challenges 
             and failures, and sharing innovative ideas.
           </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition duration-200"
-            >
-              Our Services
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center px-6 py-3 border border-border text-base font-medium rounded-md bg-secondary hover:bg-secondary/80 transition duration-200"
-            >
-              Contact Us
-            </motion.button>
-          </motion.div>
         </motion.div>
       </section>
 

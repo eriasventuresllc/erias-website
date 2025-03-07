@@ -9,17 +9,17 @@ interface LayoutProps {
 
 const navItems = [
   {
-    name: "Home",
+    name: "Company",
     url: "/",
     icon: Home,
   },
   {
-    name: "About",
+    name: "Expertise",
     url: "/about",
     icon: Info,
   },
   {
-    name: "Projects",
+    name: "Careers",
     url: "/projects",
     icon: FileText,
   },
@@ -28,9 +28,8 @@ const navItems = [
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground dark">
-      <div className="h-2 bg-primary w-full"></div>
       <NavBar items={navItems} />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-32">
         {children}
       </main>
       <footer className="bg-secondary py-8 border-t border-border">
