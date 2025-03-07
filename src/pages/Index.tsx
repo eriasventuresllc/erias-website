@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -175,7 +174,7 @@ const Index = () => {
       </section>
 
       {/* Awards Section */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -294,4 +293,3 @@ const AwardImage = ({ imgSrc, alt, delay, width }) => {
 };
 
 export default Index;
-
