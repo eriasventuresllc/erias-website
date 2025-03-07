@@ -1,15 +1,17 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { MessageSquare, Rocket, Lightbulb } from 'lucide-react';
+import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 
 const Index = () => {
   return <Layout>
       {/* Hero Banner */}
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full mb-6 mt-6 flex justify-center"
       >
         <img 
@@ -75,11 +77,11 @@ const Index = () => {
         }} transition={{
           duration: 0.6
         }} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ValueCard icon={<MessageSquare size={24} />} title="Open Communication" description="We ensure our employees, partners, and customers are kept informed of decisions and actions. By sharing intentions, we prevent mishaps during mission execution." delay={0.1} />
+            <ValueCardWithPattern icon={<MessageSquare size={24} />} title="Open Communication" description="We ensure our employees, partners, and customers are kept informed of decisions and actions. By sharing intentions, we prevent mishaps during mission execution." delay={0.1} />
             
-            <ValueCard icon={<Rocket size={24} />} title="Taking Action" description="We believe that with proper planning and deliberate focus, even the hardest problems can be dismantled into manageable pieces that can be committed to and worked." delay={0.2} />
+            <ValueCardWithPattern icon={<Rocket size={24} />} title="Taking Action" description="We believe that with proper planning and deliberate focus, even the hardest problems can be dismantled into manageable pieces that can be committed to and worked." delay={0.2} />
             
-            <ValueCard icon={<Lightbulb size={24} />} title="Innovation" description="We are committed to providing innovative, scalable, and adaptive solutions as we develop and build complex systems and products to satisfy our customers' unique challenges." delay={0.3} />
+            <ValueCardWithPattern icon={<Lightbulb size={24} />} title="Innovation" description="We are committed to providing innovative, scalable, and adaptive solutions as we develop and build complex systems and products to satisfy our customers' unique challenges." delay={0.3} />
           </motion.div>
         </div>
       </section>
@@ -151,41 +153,45 @@ const Index = () => {
           }} transition={{
             delay: 0.4,
             duration: 0.6
-          }} className="bg-card rounded-3xl p-10 border border-border relative">
-              <div className="absolute -top-4 -left-4 w-14 h-14 rounded-xl flex items-center justify-center">
-                <img 
-                  src="/lovable-uploads/dd8121c2-ad77-43d0-928f-9f2cec51eaab.png" 
-                  alt="Strategic Development Logo" 
-                  className="w-14 h-14 object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+          }}>
+              <PatternCard className="rounded-3xl border border-border">
+                <PatternCardBody className="p-10 relative">
+                  <div className="absolute -top-4 -left-4 w-14 h-14 rounded-xl flex items-center justify-center">
+                    <img 
+                      src="/lovable-uploads/dd8121c2-ad77-43d0-928f-9f2cec51eaab.png" 
+                      alt="Strategic Development Logo" 
+                      className="w-14 h-14 object-contain"
+                    />
                   </div>
-                  <span className="text-card-foreground">Identify core challenges</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  </div>
-                  <span className="text-card-foreground">Create actionable plans</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  </div>
-                  <span className="text-card-foreground">Execute with precision</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  </div>
-                  <span className="text-card-foreground">Continuously innovate</span>
-                </li>
-              </ul>
+                  <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      </div>
+                      <span className="text-card-foreground">Identify core challenges</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      </div>
+                      <span className="text-card-foreground">Create actionable plans</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      </div>
+                      <span className="text-card-foreground">Execute with precision</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      </div>
+                      <span className="text-card-foreground">Continuously innovate</span>
+                    </li>
+                  </ul>
+                </PatternCardBody>
+              </PatternCard>
             </motion.div>
           </motion.div>
         </div>
@@ -242,7 +248,7 @@ const Index = () => {
     </Layout>;
 };
 
-const ValueCard = ({
+const ValueCardWithPattern = ({
   icon,
   title,
   description,
@@ -259,14 +265,18 @@ const ValueCard = ({
   }} transition={{
     delay,
     duration: 0.6
-  }} className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-md transition-shadow">
-      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
-        {icon}
-      </div>
-      <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-muted-foreground">
-        {description}
-      </p>
+  }}>
+      <PatternCard className="h-full hover:shadow-md transition-shadow">
+        <PatternCardBody>
+          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
+            {icon}
+          </div>
+          <h3 className="text-xl font-semibold mb-3">{title}</h3>
+          <p className="text-muted-foreground">
+            {description}
+          </p>
+        </PatternCardBody>
+      </PatternCard>
     </motion.div>;
 };
 

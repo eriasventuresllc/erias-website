@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { Wallet, HeartPulse, Smile } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 
 const Careers = () => {
   const benefitCategories = [
@@ -106,19 +106,17 @@ const Careers = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
             >
-              <Card className="h-full overflow-hidden border-border hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
-                <CardHeader className="pb-2">
+              <PatternCard className="h-full hover:shadow-lg transition-shadow duration-300">
+                <PatternCardBody>
                   <div className="flex items-center gap-4 mb-2">
                     <div className="p-2 rounded-full bg-primary/10">
                       {category.icon}
                     </div>
-                    <CardTitle className="text-xl">{category.title}</CardTitle>
+                    <h3 className="text-xl font-semibold">{category.title}</h3>
                   </div>
-                  <CardDescription className="text-muted-foreground text-sm">
+                  <p className="text-muted-foreground text-sm mb-4">
                     {category.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
+                  </p>
                   <ul className="space-y-3">
                     {category.benefits.map((benefit, i) => (
                       <motion.li 
@@ -133,8 +131,8 @@ const Careers = () => {
                       </motion.li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
+                </PatternCardBody>
+              </PatternCard>
             </motion.div>
           ))}
         </div>
