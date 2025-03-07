@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -11,17 +10,17 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="w-full mb-8 mt-6 flex justify-center" // Added flex and justify-center
+        className="w-full mb-6 mt-6 flex justify-center"
       >
         <img 
           src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
           alt="Erias Ventures Banner" 
-          className="w-1/2 h-auto object-cover rounded-xl" // Changed from w-full to w-1/2
+          className="w-[45%] h-auto object-cover rounded-xl"
         />
       </motion.div>
 
       {/* Hero Section */}
-      <section className="py-14 md:py-[65px]">
+      <section className="py-10 md:py-[50px]">
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -153,11 +152,11 @@ const Index = () => {
             delay: 0.4,
             duration: 0.6
           }} className="bg-card rounded-3xl p-10 border border-border relative">
-              <div className="absolute -top-4 -left-4 w-16 h-16 rounded-xl flex items-center justify-center"> {/* Changed from w-12 h-12 to w-16 h-16 */}
+              <div className="absolute -top-4 -left-4 w-14 h-14 rounded-xl flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/dd8121c2-ad77-43d0-928f-9f2cec51eaab.png" 
                   alt="Strategic Development Logo" 
-                  className="w-16 h-16 object-contain" /* Changed from w-12 h-12 to w-16 h-16 */
+                  className="w-14 h-14 object-contain"
                 />
               </div>
               <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
@@ -232,21 +231,9 @@ const Index = () => {
               width="150px" 
             />
             <AwardImage 
-              imgSrc="/lovable-uploads/40bcd744-9f84-4c8e-8f7a-c4eb3a591da9.png" 
-              alt="BBJ Best Places to Work 2023"
-              delay={0.3}
-              width="150px" 
-            />
-            <AwardImage 
               imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
               alt="Baltimore Sun Top Workplaces 2023"
               delay={0.4}
-              width="150px" 
-            />
-            <AwardImage 
-              imgSrc="/lovable-uploads/347aade5-ec3f-4fbc-a274-798cd73d8f6b.png" 
-              alt="Data Works MD DAX Logo"
-              delay={0.5}
               width="150px" 
             />
           </motion.div>
@@ -255,7 +242,6 @@ const Index = () => {
     </Layout>;
 };
 
-// Value Card Component
 const ValueCard = ({
   icon,
   title,
@@ -284,7 +270,6 @@ const ValueCard = ({
     </motion.div>;
 };
 
-// Award Image Component
 const AwardImage = ({ imgSrc, alt, delay, width }) => {
   return (
     <motion.div 

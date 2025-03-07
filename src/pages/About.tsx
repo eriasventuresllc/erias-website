@@ -17,8 +17,7 @@ const About = () => {
         "Knowledge Management and Information Sharing Experts",
         "Software and System Testing",
         "Extensive Intelligence Community Experience"
-      ],
-      patternColors: "from-blue-500/90 via-blue-500/40 to-blue-500/10"
+      ]
     },
     {
       title: "Software Engineering",
@@ -31,8 +30,7 @@ const About = () => {
         "Scrum, Kanban, Lean Development Methodologies",
         "System Administration and DevOps",
         "Automated Dissemination and Reporting"
-      ],
-      patternColors: "from-purple-500/90 via-purple-500/40 to-purple-500/10"
+      ]
     },
     {
       title: "Automated Intelligence",
@@ -42,8 +40,7 @@ const About = () => {
         "Legal, Policy, Oversight, and Compliance Knowledge",
         "Automating Analyst Workflows",
         "Subject Matter Experts on Policy and Technical Capabilities"
-      ],
-      patternColors: "from-green-500/90 via-green-500/40 to-green-500/10"
+      ]
     },
     {
       title: "Cyber Engineering",
@@ -53,8 +50,7 @@ const About = () => {
         "Collection, Operations, Analysis, and Reporting Expertise",
         "Information Systems Security",
         "Vulnerability Discovery and Prevention"
-      ],
-      patternColors: "from-red-500/90 via-red-500/40 to-red-500/10" 
+      ]
     },
     {
       title: "Data Science and Analytics",
@@ -65,8 +61,7 @@ const About = () => {
         "Machine Learning, Deep Learning, Artificial Intelligence",
         "Data Mining and Visualization",
         "Apache NiFi and Dataflow Management"
-      ],
-      patternColors: "from-amber-500/90 via-amber-500/40 to-amber-500/10"
+      ]
     }
   ];
 
@@ -112,7 +107,6 @@ const About = () => {
             >
               <PatternCard 
                 className="h-full hover:shadow-lg transition-shadow duration-300"
-                gradientClassName={area.patternColors}
               >
                 <PatternCardBody>
                   <div className="flex items-center gap-4 mb-4">
