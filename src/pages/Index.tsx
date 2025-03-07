@@ -6,6 +6,20 @@ import { MessageSquare, Rocket, Lightbulb } from 'lucide-react';
 
 const Index = () => {
   return <Layout>
+      {/* Hero Banner */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="w-full mb-8 mt-6"
+      >
+        <img 
+          src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
+          alt="Erias Ventures Banner" 
+          className="w-full h-auto object-cover rounded-xl"
+        />
+      </motion.div>
+
       {/* Hero Section */}
       <section className="py-14 md:py-[65px]">
         <motion.div initial={{
