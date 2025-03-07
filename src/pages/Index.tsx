@@ -175,7 +175,7 @@ const Index = () => {
       </section>
 
       {/* Awards Section */}
-      <section className="py-16 bg-secondary/50 rounded-3xl">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -200,59 +200,36 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        }} className="flex flex-wrap justify-center items-center gap-8">
             <AwardImage 
               imgSrc="/lovable-uploads/794b2648-33e1-44ee-a9a0-56c567a9f757.png" 
               alt="Data Works MD DAX Conf"
-              delay={0.1} 
+              delay={0.1}
+              width="150px" 
             />
             <AwardImage 
               imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
               alt="BBJ Best Places to Work 2024"
-              delay={0.2} 
+              delay={0.2}
+              width="150px" 
             />
             <AwardImage 
               imgSrc="/lovable-uploads/40bcd744-9f84-4c8e-8f7a-c4eb3a591da9.png" 
               alt="BBJ Best Places to Work 2023"
-              delay={0.3} 
+              delay={0.3}
+              width="150px" 
             />
-          </motion.div>
-          
-          <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 justify-items-center">
             <AwardImage 
               imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
               alt="Baltimore Sun Top Workplaces 2023"
-              delay={0.4} 
+              delay={0.4}
+              width="150px" 
             />
-            <AwardImage 
-              imgSrc="/lovable-uploads/f55036d1-cf5b-4211-833e-d50faae26140.png" 
-              alt="Baltimore Sun Top Workplaces 2024"
-              delay={0.5} 
-            />
-          </motion.div>
-          
-          <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="flex justify-center mt-8">
             <AwardImage 
               imgSrc="/lovable-uploads/347aade5-ec3f-4fbc-a274-798cd73d8f6b.png" 
               alt="Data Works MD DAX Logo"
-              delay={0.6}
-              width="280px" 
+              delay={0.5}
+              width="150px" 
             />
           </motion.div>
         </div>
@@ -308,8 +285,8 @@ const AwardImage = ({ imgSrc, alt, delay, width }) => {
         delay,
         duration: 0.6
       }}
-      className="bg-white rounded-2xl p-6 shadow-sm border border-border flex items-center justify-center overflow-hidden"
-      style={{ maxWidth: width || '250px', height: 'auto' }}
+      className="bg-transparent flex items-center justify-center"
+      style={{ maxWidth: width || '150px', height: 'auto' }}
     >
       <img src={imgSrc} alt={alt} className="max-w-full h-auto object-contain" />
     </motion.div>
@@ -317,3 +294,4 @@ const AwardImage = ({ imgSrc, alt, delay, width }) => {
 };
 
 export default Index;
+
