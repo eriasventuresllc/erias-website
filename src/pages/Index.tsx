@@ -11,12 +11,12 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="w-full mb-8 mt-6"
+        className="w-full mb-8 mt-6 flex justify-center" // Added flex and justify-center
       >
         <img 
           src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
           alt="Erias Ventures Banner" 
-          className="w-full h-auto object-cover rounded-xl"
+          className="w-1/2 h-auto object-cover rounded-xl" // Changed from w-full to w-1/2
         />
       </motion.div>
 
@@ -153,11 +153,11 @@ const Index = () => {
             delay: 0.4,
             duration: 0.6
           }} className="bg-card rounded-3xl p-10 border border-border relative">
-              <div className="absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center">
+              <div className="absolute -top-4 -left-4 w-16 h-16 rounded-xl flex items-center justify-center"> {/* Changed from w-12 h-12 to w-16 h-16 */}
                 <img 
                   src="/lovable-uploads/dd8121c2-ad77-43d0-928f-9f2cec51eaab.png" 
                   alt="Strategic Development Logo" 
-                  className="w-12 h-12 object-contain"
+                  className="w-16 h-16 object-contain" /* Changed from w-12 h-12 to w-16 h-16 */
                 />
               </div>
               <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
