@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -35,7 +36,7 @@ const Index = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-secondary/50 rounded-3xl">
+      <section className="py-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -45,7 +46,7 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="text-center mb-16">
+        }} className="text-center mb-14">
             <h2 className="text-3xl font-bold mb-4">Our Core Values</h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
               These principles guide everything we do at Erias Ventures.
@@ -174,7 +175,7 @@ const Index = () => {
       </section>
 
       {/* Awards Section */}
-      <section className="py-16 bg-secondary/50 rounded-3xl">
+      <section className="py-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -184,7 +185,7 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="text-center mb-12">
+        }} className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-4">Awards & Recognition</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our commitment to excellence has been recognized through these prestigious awards.
