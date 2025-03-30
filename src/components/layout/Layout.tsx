@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import { Home, Info, FileText, BarChart } from 'lucide-react';
+import { Home, Info, FileText } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,11 +17,6 @@ const navItems = [
     name: "Expertise",
     url: "/about",
     icon: Info,
-  },
-  {
-    name: "Details",
-    url: "/details",
-    icon: BarChart,
   },
   {
     name: "Careers",
