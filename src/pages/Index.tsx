@@ -1,11 +1,14 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
-import { MessageSquare, Rocket, Lightbulb } from 'lucide-react';
+import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const controls = useAnimation();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     controls.start({
@@ -26,7 +29,7 @@ const Index = () => {
         <img 
           src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
           alt="Erias Ventures Banner" 
-          className="w-[45%] h-auto object-cover rounded-xl"
+          className={`${isMobile ? 'w-[75%]' : 'w-[45%]'} h-auto object-cover rounded-xl`}
         />
       </motion.div>
 
@@ -134,7 +137,7 @@ const Index = () => {
               delay: 0.2,
               duration: 0.6
             }} className="text-muted-foreground mb-6">
-                Taking action requires commitment and perseverance. Here at Erias Ventures, we believe that with proper planning and deliberate focus even the hardest problems can be dismantled into manageable pieces that can be committed to and worked.
+                We are a mission-focused company with an emphasis on software and system engineering, data science, network, target and signals analysis, and cyber operations. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
               </motion.p>
               <motion.p initial={{
               opacity: 0,
@@ -148,7 +151,7 @@ const Index = () => {
               delay: 0.3,
               duration: 0.6
             }} className="text-muted-foreground">
-                Innovation is needed to satisfy the unique problems that our customers face as they work to secure the nation. That is why we are committed to providing innovative, scalable, and adaptive solutions as we develop and build complex systems and products.
+                With proven technical, task, and product leadership, our approach has led to constant growth. We believe that innovation is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing innovative, scalable, and adaptive solutions.
               </motion.p>
             </div>
             <motion.div initial={{
@@ -171,25 +174,37 @@ const Index = () => {
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                         <div className="w-2 h-2 bg-primary rounded-full"></div>
                       </div>
-                      <span className="text-card-foreground">Identify core challenges</span>
+                      <span className="text-card-foreground">Analyze complex mission requirements</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                         <div className="w-2 h-2 bg-primary rounded-full"></div>
                       </div>
-                      <span className="text-card-foreground">Create actionable plans</span>
+                      <span className="text-card-foreground">Deploy specialized engineering teams</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                         <div className="w-2 h-2 bg-primary rounded-full"></div>
                       </div>
-                      <span className="text-card-foreground">Execute with precision</span>
+                      <span className="text-card-foreground">Develop tailored technical solutions</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
                         <div className="w-2 h-2 bg-primary rounded-full"></div>
                       </div>
-                      <span className="text-card-foreground">Continuously innovate</span>
+                      <span className="text-card-foreground">Enable critical national security missions</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      </div>
+                      <span className="text-card-foreground">Continuously assess and evolve capabilities</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      </div>
+                      <span className="text-card-foreground">Maintain lean, efficient operational model</span>
                     </li>
                   </ul>
                 </PatternCardBody>
@@ -236,6 +251,18 @@ const Index = () => {
               imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
               alt="Baltimore Sun Top Workplaces 2023"
               delay={0.4}
+              width="150px" 
+            />
+            <AwardImage 
+              imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
+              alt="Baltimore Sun Top Workplaces 2024"
+              delay={0.3}
+              width="150px" 
+            />
+            <AwardImage 
+              imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
+              alt="BBJ Best Places to Work 2023"
+              delay={0.5}
               width="150px" 
             />
           </motion.div>
