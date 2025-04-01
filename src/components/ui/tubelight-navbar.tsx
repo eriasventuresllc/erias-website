@@ -24,6 +24,7 @@ export function NavBar({ items, className }: NavBarProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -45,6 +46,8 @@ export function NavBar({ items, className }: NavBarProps) {
 
   useEffect(() => {
     const controlNavbar = () => {
+      setScrollY(window.scrollY);
+      
       if (window.scrollY > 100) {
         if (window.scrollY > lastScrollY) {
           // Scrolling down
@@ -66,6 +69,9 @@ export function NavBar({ items, className }: NavBarProps) {
     };
   }, [lastScrollY]);
 
+  // Add extra padding when scrolled to accommodate the logo
+  const navbarPadding = scrollY > 150 ? "pl-20" : "";
+
   return (
     <motion.div
       className={cn(
@@ -79,7 +85,10 @@ export function NavBar({ items, className }: NavBarProps) {
       }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className={cn(
+        "flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg",
+        navbarPadding
+      )}>
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name

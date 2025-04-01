@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
 import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
@@ -9,6 +9,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const Index = () => {
   const controls = useAnimation();
   const isMobile = useIsMobile();
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     controls.start({
@@ -17,6 +18,17 @@ const Index = () => {
       y: 0
     });
   }, [controls]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return <Layout>
       {/* Hero Banner */}
@@ -30,6 +42,23 @@ const Index = () => {
           src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
           alt="Erias Ventures Banner" 
           className={`${isMobile ? 'w-[75%]' : 'w-[45%]'} h-auto object-cover rounded-xl`}
+        />
+      </motion.div>
+
+      {/* Fixed Logo that appears when scrolling */}
+      <motion.div
+        className="fixed top-5 left-5 z-50"
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ 
+          opacity: scrollY > 150 ? 1 : 0,
+          scale: scrollY > 150 ? 1 : 0.6,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <img 
+          src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
+          alt="Erias Ventures" 
+          className="w-16 h-auto object-contain"
         />
       </motion.div>
 
