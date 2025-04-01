@@ -16,10 +16,10 @@ export function PatternCard({
 }: PatternCardProps) {
   return (
     <div className={cn(
-      "border w-full rounded-md overflow-hidden",
+      "border w-full rounded-xl overflow-hidden",
       "bg-background",
       "border-border",
-      "p-3",
+      "p-2",
       className
     )}>
       <div className={cn(
@@ -43,5 +43,5 @@ export function PatternCardBody({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("text-left p-4 md:p-6", className)} {...props} />;
+  return <div className={cn("text-left p-3 md:p-4", className)} {...props} />;
 }
