@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
-import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield, Leaf } from 'lucide-react';
+import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -124,7 +124,11 @@ const Index = () => {
               duration: 0.6
             }} className="text-3xl font-bold mb-6 flex items-center">
                 Our Approach
-                <Leaf className="ml-2 text-primary" size={24} />
+                <img 
+                  src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
+                  alt="Leaf icon" 
+                  className="ml-2 h-8 w-auto" 
+                />
               </motion.h2>
               <motion.p initial={{
               opacity: 0,
