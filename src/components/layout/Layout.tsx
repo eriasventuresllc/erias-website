@@ -4,6 +4,12 @@ import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
 import { Home, Info, FileText } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { 
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -71,6 +77,15 @@ const Layout = ({ children }: LayoutProps) => {
       <VerticalNavBar items={navItems} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
+        {/* Erias Ventures Logo at the top of every page */}
+        <div className="w-full flex justify-center mb-10 mt-6">
+          <img 
+            src="/lovable-uploads/erias-name-dark.svg" 
+            alt="Erias Ventures Logo" 
+            className="h-16 md:h-20 object-contain"
+          />
+        </div>
+        
         <div className="tracking-wide leading-relaxed text-content">
           {children}
         </div>
