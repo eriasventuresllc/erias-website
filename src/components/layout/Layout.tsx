@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
+import { VerticalNavBar } from '@/components/ui/vertical-navbar';
 import { Home, Info, FileText } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -28,6 +30,7 @@ const navItems = [
 const Layout = ({ children }: LayoutProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,15 +54,22 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background text-foreground dark">
-      <header 
-        className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-16">
-          <NavBar items={navItems} />
-        </div>
-      </header>
+      {/* Only show the top navbar on mobile */}
+      {isMobile && (
+        <header 
+          className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
+            isVisible ? 'translate-y-0' : '-translate-y-full'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-16">
+            <NavBar items={navItems} />
+          </div>
+        </header>
+      )}
+      
+      {/* Vertical navbar - only shown on desktop */}
+      <VerticalNavBar items={navItems} />
+      
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
         <div className="tracking-wide leading-relaxed text-content">
           {children}
