@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -87,6 +88,10 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    font-size: 17px; /* Slightly increase the base font size from default 16px */
   }
 
   body {

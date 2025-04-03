@@ -32,8 +32,11 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
-              <Leaf className="h-10 w-10 text-primary" />
-              <span className="font-bold text-xl">Erias Ventures</span>
+              <img 
+                src="/lovable-uploads/11aab3d5-84b3-4b4f-9a00-48fffd0def4c.png" 
+                alt="Erias Ventures Logo" 
+                className="h-8" 
+              />
             </div>
           </div>
           <NavBar items={navItems} className="absolute left-1/2 transform -translate-x-1/2" />
