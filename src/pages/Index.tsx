@@ -1,10 +1,10 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
 import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Hero } from '@/components/ui/animated-hero';
 
 const Index = () => {
   const controls = useAnimation();
@@ -19,48 +19,8 @@ const Index = () => {
   }, [controls]);
 
   return <Layout>
-      {/* Hero Banner */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={controls}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full mb-6 mt-6 flex justify-center"
-      >
-        <img 
-          src="/lovable-uploads/fb5e1708-fcb6-4f00-bf24-4b624a4ffcd5.png" 
-          alt="Erias Ventures Banner" 
-          className={`${isMobile ? 'w-[75%]' : 'w-[45%]'} h-auto object-cover rounded-xl`}
-        />
-      </motion.div>
-
       {/* Hero Section */}
-      <section className="py-10 md:py-[50px]">
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.6
-      }} className="text-center">
-          
-          <motion.p initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.4,
-          duration: 0.6
-        }} className="max-w-3xl mx-auto text-xl text-muted-foreground mb-10">
-            Erias Ventures was founded to serve its customers with an entrepreneurial mindset. 
-            We value open communication, taking action, being committed, persevering through challenges 
-            and failures, and sharing innovative ideas.
-          </motion.p>
-        </motion.div>
-      </section>
+      <Hero />
 
       {/* Values Section */}
       <section className="py-12 bg-secondary/50 rounded-3xl">
