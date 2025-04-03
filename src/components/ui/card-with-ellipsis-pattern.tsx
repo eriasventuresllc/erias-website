@@ -1,4 +1,3 @@
-
 import { cn } from '@/lib/utils'
 
 interface PatternCardProps {
@@ -23,13 +22,11 @@ export function PatternCard({
       className
     )}>
       <div className={cn(
-        "size-full bg-repeat bg-[length:30px_30px]",
-        "bg-dot-pattern-light dark:bg-dot-pattern",
+        "size-full",
         patternClassName
       )}>
         <div className={cn(
-          "size-full bg-gradient-to-tr",
-          "from-background/90 via-background/40 to-background/10",
+          "size-full",
           gradientClassName
         )}>
           {children}

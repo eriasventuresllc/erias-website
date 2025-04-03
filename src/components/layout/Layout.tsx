@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { Home, Info, FileText } from 'lucide-react';
@@ -69,8 +68,10 @@ const Layout = ({ children }: LayoutProps) => {
           <NavBar items={navItems} className="absolute left-1/2 transform -translate-x-1/2" />
         </div>
       </header>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-32">
-        {children}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
+        <div className="tracking-wide leading-relaxed text-content">
+          {children}
+        </div>
       </main>
       <footer className="bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
