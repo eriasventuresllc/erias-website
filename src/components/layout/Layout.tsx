@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { Home, Info, FileText } from 'lucide-react';
@@ -49,9 +50,9 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="flex justify-center items-center">
             <div className="flex items-center">
               <img 
-                src="/lovable-uploads/8d1fd338-a1d3-4b1e-8f07-8b1cb72ea744.png" 
+                src="/lovable-uploads/ace573a3-b047-4906-b283-30d3e76f574f.png" 
                 alt="Erias Ventures Icon" 
-                className="h-4 w-4 mr-2" 
+                className="h-6 w-6 mr-2" 
               />
               <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
             </div>
