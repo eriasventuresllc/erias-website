@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import { Home, Info, FileText, Leaf } from 'lucide-react';
+import { Home, Info, FileText } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -47,15 +46,14 @@ const Layout = ({ children }: LayoutProps) => {
       </main>
       <footer className="bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0 flex items-center">
-              <Leaf className="h-5 w-5 text-primary mr-2" />
+          <div className="flex justify-center items-center">
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/8d1fd338-a1d3-4b1e-8f07-8b1cb72ea744.png" 
+                alt="Erias Ventures Icon" 
+                className="h-4 w-4 mr-2" 
+              />
               <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
-            </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
             </div>
           </div>
         </div>
