@@ -31,8 +31,10 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="w-full bg-secondary/50 backdrop-blur-md border-b border-border fixed top-0 left-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Leaf className="h-8 w-8 text-primary mr-2" />
-            <span className="font-bold text-lg">Erias Ventures</span>
+            <div className="flex items-center space-x-2">
+              <Leaf className="h-10 w-10 text-primary" />
+              <span className="font-bold text-xl">Erias Ventures</span>
+            </div>
           </div>
           <NavBar items={navItems} className="absolute left-1/2 transform -translate-x-1/2" />
         </div>
