@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import { Home, Info, FileText } from 'lucide-react';
+import { Home, Info, FileText, Leaf } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -28,8 +28,16 @@ const navItems = [
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground dark">
-      <NavBar items={navItems} />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-32">
+      <header className="w-full bg-secondary/50 backdrop-blur-md border-b border-border fixed top-0 left-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Leaf className="h-8 w-8 text-primary mr-2" />
+            <span className="font-bold text-lg">Erias Ventures</span>
+          </div>
+          <NavBar items={navItems} className="absolute left-1/2 transform -translate-x-1/2" />
+        </div>
+      </header>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
         {children}
       </main>
       <footer className="bg-secondary py-8 border-t border-border">

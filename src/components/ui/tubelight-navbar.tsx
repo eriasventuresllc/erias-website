@@ -22,8 +22,6 @@ export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(items.find(item => item.url === location.pathname)?.name || items[0].name);
   const [isMobile, setIsMobile] = useState(false)
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -43,43 +41,17 @@ export function NavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  useEffect(() => {
-    const controlNavbar = () => {
-      if (window.scrollY > 100) {
-        if (window.scrollY > lastScrollY) {
-          // Scrolling down
-          setIsVisible(false);
-        } else {
-          // Scrolling up
-          setIsVisible(true);
-        }
-      } else {
-        // At the top of the page
-        setIsVisible(true);
-      }
-      setLastScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', controlNavbar);
-    return () => {
-      window.removeEventListener('scroll', controlNavbar);
-    };
-  }, [lastScrollY]);
-
   return (
     <motion.div
       className={cn(
-        "fixed top-0 w-full left-0 flex justify-center z-50 pt-6",
+        "flex justify-center z-50",
         className,
       )}
-      initial={{ y: 0, opacity: 1 }}
-      animate={{ 
-        y: isVisible ? 0 : -100,
-        opacity: isVisible ? 1 : 0
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-3 py-1 px-1 rounded-full">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -90,14 +62,14 @@ export function NavBar({ items, className }: NavBarProps) {
               to={item.url}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors",
                 "text-foreground/80 hover:text-primary",
-                isActive && "bg-muted text-primary",
+                isActive && "text-primary",
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
               <span className="md:hidden">
-                <Icon size={24} strokeWidth={2.5} />
+                <Icon size={20} strokeWidth={2.5} />
               </span>
               {isActive && (
                 <motion.div
