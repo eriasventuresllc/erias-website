@@ -48,8 +48,9 @@ const Layout = ({ children }: LayoutProps) => {
       <footer className="bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-muted-foreground text-sm">© 2024 Erias Ventures. All rights reserved.</p>
+            <div className="mb-4 md:mb-0 flex items-center">
+              <Leaf className="h-5 w-5 text-primary mr-2" />
+              <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
             </div>
             <div className="flex space-x-6">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
