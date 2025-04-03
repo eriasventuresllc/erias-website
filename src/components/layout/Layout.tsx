@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { Home, Info, FileText } from 'lucide-react';
@@ -55,17 +56,8 @@ const Layout = ({ children }: LayoutProps) => {
           isVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/11aab3d5-84b3-4b4f-9a00-48fffd0def4c.png" 
-                alt="Erias Ventures Logo" 
-                className="h-10" 
-              />
-            </div>
-          </div>
-          <NavBar items={navItems} className="absolute left-1/2 transform -translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-16">
+          <NavBar items={navItems} />
         </div>
       </header>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
