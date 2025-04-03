@@ -109,112 +109,68 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <motion.h2 initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.1,
-              duration: 0.6
-            }} className="text-3xl font-bold mb-6 flex items-center">
-                Our Approach
-                <img 
-                  src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
-                  alt="Leaf icon" 
-                  className="ml-2 h-8 w-auto" 
-                />
-              </motion.h2>
-              <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.2,
-              duration: 0.6
-            }} className="text-muted-foreground mb-6">
-                We are a mission-focused company with an emphasis on software and system engineering, data science, network, target and signals analysis, and cyber operations. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
-              </motion.p>
-              <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.3,
-              duration: 0.6
-            }} className="text-muted-foreground">
-                With proven technical, task, and product leadership, our approach has led to constant growth. We believe that innovation is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing innovative, scalable, and adaptive solutions.
-              </motion.p>
-            </div>
-            <motion.div initial={{
+        }} className="mb-12">
+            <motion.h2 initial={{
             opacity: 0,
-            scale: 0.9
+            y: 20
           }} whileInView={{
             opacity: 1,
-            scale: 1
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.1,
+            duration: 0.6
+          }} className="text-3xl font-bold mb-6 flex items-center">
+              Our Approach
+              <img 
+                src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
+                alt="Leaf icon" 
+                className="ml-2 h-8 w-auto" 
+              />
+            </motion.h2>
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.2,
+            duration: 0.6
+          }} className="text-muted-foreground mb-6">
+              We are a mission-focused company with an emphasis on software and system engineering, data science, network, target and signals analysis, and cyber operations. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
+            </motion.p>
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.3,
+            duration: 0.6
+          }} className="text-muted-foreground mb-6">
+              With proven technical, task, and product leadership, our approach has led to constant growth. We believe that innovation is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing innovative, scalable, and adaptive solutions.
+            </motion.p>
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
           }} viewport={{
             once: true
           }} transition={{
             delay: 0.4,
             duration: 0.6
-          }}>
-              <PatternCard className="rounded-3xl border border-border">
-                <PatternCardBody className="p-10 relative">
-                  <h3 className="text-xl font-semibold mb-4">Strategic Development</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      </div>
-                      <span className="text-card-foreground">Analyze complex mission requirements</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      </div>
-                      <span className="text-card-foreground">Deploy specialized engineering teams</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      </div>
-                      <span className="text-card-foreground">Develop tailored technical solutions</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      </div>
-                      <span className="text-card-foreground">Enable critical national security missions</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      </div>
-                      <span className="text-card-foreground">Continuously assess and evolve capabilities</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      </div>
-                      <span className="text-card-foreground">Maintain lean, efficient operational model</span>
-                    </li>
-                  </ul>
-                </PatternCardBody>
-              </PatternCard>
-            </motion.div>
+          }} className="text-muted-foreground">
+              We analyze complex mission requirements and deploy specialized engineering teams to develop tailored technical solutions that enable critical national security missions. Our teams continuously assess and evolve capabilities while maintaining a lean, efficient operational model.
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -245,31 +201,42 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="flex flex-wrap justify-center items-center gap-8">
-            <AwardImage 
-              imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
-              alt="BBJ Best Places to Work 2024"
-              delay={0.2}
-              width="150px" 
-            />
-            <AwardImage 
-              imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
-              alt="Baltimore Sun Top Workplaces 2023"
-              delay={0.4}
-              width="150px" 
-            />
-            <AwardImage 
-              imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
-              alt="Baltimore Sun Top Workplaces 2024"
-              delay={0.3}
-              width="150px" 
-            />
-            <AwardImage 
-              imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
-              alt="BBJ Best Places to Work 2023"
-              delay={0.5}
-              width="150px" 
-            />
+        }} className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
+            {/* First row: Circle awards side by side */}
+            <div className="col-span-1">
+              <AwardImage 
+                imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
+                alt="BBJ Best Places to Work 2024"
+                delay={0.2}
+                width="150px" 
+              />
+            </div>
+            <div className="col-span-1">
+              <AwardImage 
+                imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
+                alt="BBJ Best Places to Work 2023"
+                delay={0.3}
+                width="150px" 
+              />
+            </div>
+            
+            {/* Second row: Vertical awards side by side */}
+            <div className="col-span-1">
+              <AwardImage 
+                imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
+                alt="Baltimore Sun Top Workplaces 2023"
+                delay={0.4}
+                width="150px" 
+              />
+            </div>
+            <div className="col-span-1">
+              <AwardImage 
+                imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
+                alt="Baltimore Sun Top Workplaces 2024"
+                delay={0.5}
+                width="150px" 
+              />
+            </div>
           </motion.div>
         </div>
       </section>
