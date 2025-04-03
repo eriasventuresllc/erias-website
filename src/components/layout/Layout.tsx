@@ -52,7 +52,7 @@ const Layout = ({ children }: LayoutProps) => {
               <img 
                 src="/lovable-uploads/ace573a3-b047-4906-b283-30d3e76f574f.png" 
                 alt="Erias Ventures Icon" 
-                className="h-6 w-6 mr-2" 
+                className="h-5 w-5 mr-2 object-contain" 
               />
               <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
             </div>
