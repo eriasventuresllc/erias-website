@@ -65,6 +65,10 @@ const About = () => {
     }
   ];
 
+  // Group the cards into top row (first 3) and bottom row (last 2)
+  const topRowCards = expertiseAreas.slice(0, 3);
+  const bottomRowCards = expertiseAreas.slice(3);
+
   return (
     <Layout>
       <motion.section 
@@ -97,13 +101,58 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {expertiseAreas.map((area, index) => (
+        {/* Top row - 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          {topRowCards.map((area, index) => (
             <motion.div
               key={area.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
+            >
+              <PatternCard 
+                className="h-full hover:shadow-lg transition-shadow duration-300"
+              >
+                <PatternCardBody>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-2 rounded-full bg-primary/10">
+                      {area.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold">{area.title}</h3>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {area.description}
+                  </p>
+                  
+                  <ul className="space-y-2">
+                    {area.features.map((feature, i) => (
+                      <motion.li 
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + (i * 0.05), duration: 0.3 }}
+                        className="flex items-start gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                        <span className="text-sm">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </PatternCardBody>
+              </PatternCard>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom row - 2 cards with offset */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-16 lg:px-24">
+          {bottomRowCards.map((area, index) => (
+            <motion.div
+              key={area.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 + (index * 0.1), duration: 0.5 }}
             >
               <PatternCard 
                 className="h-full hover:shadow-lg transition-shadow duration-300"
