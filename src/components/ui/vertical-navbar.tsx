@@ -50,7 +50,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                 <TooltipTrigger asChild>
                   <NavLink
                     to={item.url}
-                    className={({ isActive }) => cn(
+                    className={cn(
                       "relative cursor-pointer p-2 rounded-full transition-colors",
                       "text-white/70 hover:text-white",
                       isActive && "text-white",
@@ -59,26 +59,24 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     onMouseEnter={() => setHoveredItem(item.name)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
-                    {({ isActive }) => (
-                      <>
-                        <Icon size={20} strokeWidth={2.5} />
-                        
-                        {/* Active highlight */}
-                        {isActive && (
-                          <motion.div
-                            layoutId="vertical-highlight"
-                            className="absolute inset-0 w-full h-full bg-primary/20 rounded-full -z-10"
-                            transition={{
-                              type: "spring",
-                              stiffness: 500,
-                              damping: 30,
-                            }}
-                          >
-                            <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-full" />
-                          </motion.div>
-                        )}
-                      </>
-                    )}
+                    <>
+                      <Icon size={20} strokeWidth={2.5} />
+                      
+                      {/* Active highlight */}
+                      {isActive && (
+                        <motion.div
+                          layoutId="vertical-highlight"
+                          className="absolute inset-0 w-full h-full bg-primary/20 rounded-full -z-10"
+                          transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 30,
+                          }}
+                        >
+                          <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-full" />
+                        </motion.div>
+                      )}
+                    </>
                   </NavLink>
                 </TooltipTrigger>
                 <TooltipContent side="left" className="bg-black/80 text-white border-white/10">
