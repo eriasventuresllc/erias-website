@@ -10,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { motion } from 'framer-motion';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -73,18 +74,26 @@ const Layout = ({ children }: LayoutProps) => {
         </header>
       )}
       
-      {/* Vertical navbar - only shown on desktop */}
+      {/* Vertical navbar - only shown on desktop, now positioned at top right */}
       <VerticalNavBar items={navItems} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
-        {/* Erias Ventures Logo at the top of every page */}
-        <div className="w-full flex justify-center mb-10 mt-6">
+        {/* Erias Ventures Logo at the top of every page with animation */}
+        <motion.div 
+          className="w-full flex justify-center mb-10 mt-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.5,
+            ease: "easeOut"
+          }}
+        >
           <img 
             src="/lovable-uploads/erias-name-dark.svg" 
             alt="Erias Ventures Logo" 
             className="h-16 md:h-20 object-contain"
           />
-        </div>
+        </motion.div>
         
         <div className="tracking-wide leading-relaxed text-content">
           {children}

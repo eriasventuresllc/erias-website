@@ -3,7 +3,7 @@
 
 import React, { useState } from "react"
 import { motion } from "framer-motion"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -21,11 +21,12 @@ interface VerticalNavBarProps {
 
 export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const location = useLocation();
 
   return (
     <div
       className={cn(
-        "fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col",
+        "fixed right-4 top-4 z-50 hidden md:flex flex-col",
         className,
       )}
     >
@@ -42,6 +43,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
         <TooltipProvider delayDuration={0}>
           {items.map((item) => {
             const Icon = item.icon
+            const isActive = location.pathname === item.url;
 
             return (
               <Tooltip key={item.name}>
