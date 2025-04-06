@@ -118,7 +118,7 @@ const Layout = ({ children }: LayoutProps) => {
               <a href="mailto:info@eriasventures.com" className="text-primary hover:text-primary/80 transition-colors">info@eriasventures.com</a>
               <span className="hidden md:inline">|</span>
               <a 
-                href="https://www.linkedin.com/company/erias-ventures/" 
+                href="https://www.linkedin.com/company/eriasventures/posts/?feedView=all" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center text-primary hover:text-primary/80 transition-colors"
