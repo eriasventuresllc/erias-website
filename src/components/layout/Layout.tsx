@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
-import { Home, Info, FileText } from 'lucide-react';
+import { Home, Info, FileText, Linkedin } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Tooltip,
@@ -90,7 +91,7 @@ const Layout = ({ children }: LayoutProps) => {
           <img 
             src="/lovable-uploads/erias-name-dark.svg" 
             alt="Erias Ventures Logo" 
-            className="h-20 md:h-24 object-contain"
+            className="h-24 md:h-32 object-contain" // Increased size from h-20/h-24 to h-24/h-32
           />
         </motion.div>
         
@@ -100,7 +101,7 @@ const Layout = ({ children }: LayoutProps) => {
       </main>
       <footer className="bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/ace573a3-b047-4906-b283-30d3e76f574f.png" 
@@ -109,8 +110,22 @@ const Layout = ({ children }: LayoutProps) => {
               />
               <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
             </div>
-            <div className="hidden md:flex">
-              <a href="mailto:info@eriasventures.com" className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Contact Us</a>
+            
+            {/* Contact information */}
+            <div className="flex items-center flex-wrap justify-center gap-2 text-sm font-medium text-muted-foreground">
+              <span>443-300-8638</span>
+              <span className="hidden md:inline">|</span>
+              <a href="mailto:info@eriasventures.com" className="text-primary hover:text-primary/80 transition-colors">info@eriasventures.com</a>
+              <span className="hidden md:inline">|</span>
+              <a 
+                href="https://www.linkedin.com/company/erias-ventures/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center text-primary hover:text-primary/80 transition-colors"
+              >
+                <Linkedin size={18} className="mr-1" />
+                <span className="hidden md:inline">LinkedIn</span>
+              </a>
             </div>
           </div>
         </div>
