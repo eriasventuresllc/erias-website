@@ -82,12 +82,12 @@ const Index = () => {
             delay: 0.1,
             duration: 0.6
           }} className="text-3xl font-bold mb-6 flex items-center">
-              Our Approach
               <img 
                 src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
                 alt="Leaf icon" 
-                className="ml-2 h-8 w-auto" 
+                className="mr-2 h-10 w-auto" 
               />
+              Our Approach
             </motion.h2>
             <motion.p initial={{
             opacity: 0,
@@ -101,7 +101,7 @@ const Index = () => {
             delay: 0.2,
             duration: 0.6
           }} className="text-muted-foreground mb-6">
-              We are a mission-focused company with an emphasis on software and system engineering, data science, network, target and signals analysis, and cyber operations. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
+              We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">data science</span>, network, target and signals analysis, and <span className="text-lg font-bold text-primary">cyber operations</span>. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
             </motion.p>
             <motion.p initial={{
             opacity: 0,
@@ -115,7 +115,7 @@ const Index = () => {
             delay: 0.3,
             duration: 0.6
           }} className="text-muted-foreground mb-6">
-              With proven technical, task, and product leadership, our approach has led to constant growth. We believe that innovation is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing innovative, scalable, and adaptive solutions.
+              With proven technical, task, and product leadership, our approach has led to constant growth. We believe that <span className="text-lg font-bold text-primary">innovation</span> is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing <span className="text-lg font-bold text-primary">innovative, scalable, and adaptive solutions</span>.
             </motion.p>
             <motion.p initial={{
             opacity: 0,
@@ -129,7 +129,7 @@ const Index = () => {
             delay: 0.4,
             duration: 0.6
           }} className="text-muted-foreground">
-              We analyze complex mission requirements and deploy specialized engineering teams to develop tailored technical solutions that enable critical national security missions. Our teams continuously assess and evolve capabilities while maintaining a lean, efficient operational model.
+              We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while maintaining a lean, efficient operational model.
             </motion.p>
           </motion.div>
         </div>
@@ -163,7 +163,7 @@ const Index = () => {
           duration: 0.6
         }} className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
             {/* First row: Circle awards side by side */}
-            <div className="col-span-1">
+            <div className="col-span-1 flex items-center h-full">
               <AwardImage 
                 imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
                 alt="BBJ Best Places to Work 2024"
@@ -171,7 +171,7 @@ const Index = () => {
                 width="150px" 
               />
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 flex items-center h-full">
               <AwardImage 
                 imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
                 alt="BBJ Best Places to Work 2023"

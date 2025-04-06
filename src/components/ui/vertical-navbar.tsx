@@ -1,9 +1,8 @@
-
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { NavLink, useLocation } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -22,6 +21,23 @@ interface VerticalNavBarProps {
 export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const [activeUrl, setActiveUrl] = useState("/");
+
+  // Set initial active URL and update when location changes
+  useEffect(() => {
+    setActiveUrl(location.pathname);
+  }, [location.pathname]);
+
+  // Custom navigation handler without any browser navigation
+  const handleNavigation = (url: string) => {
+    if (url === location.pathname) {
+      return; // Already on this page
+    }
+    
+    setActiveUrl(url);
+    navigate(url, { replace: true });
+  };
 
   return (
     <div
@@ -43,13 +59,20 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
         <TooltipProvider delayDuration={0}>
           {items.map((item) => {
             const Icon = item.icon
-            const isActive = location.pathname === item.url;
+            const isActive = activeUrl === item.url;
 
             return (
               <Tooltip key={item.name}>
                 <TooltipTrigger asChild>
-                  <NavLink
-                    to={item.url}
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => handleNavigation(item.url)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        handleNavigation(item.url);
+                      }
+                    }}
                     className={cn(
                       "relative cursor-pointer p-2 rounded-full transition-colors",
                       "text-white/70 hover:text-white",
@@ -67,17 +90,19 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                         <motion.div
                           layoutId="vertical-highlight"
                           className="absolute inset-0 w-full h-full bg-primary/20 rounded-full -z-10"
+                          initial={false}
                           transition={{
                             type: "spring",
-                            stiffness: 500,
-                            damping: 30,
+                            stiffness: 650,
+                            damping: 35,
+                            mass: 0.5
                           }}
                         >
                           <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-full" />
                         </motion.div>
                       )}
                     </>
-                  </NavLink>
+                  </div>
                 </TooltipTrigger>
                 <TooltipContent side="left" className="bg-black/80 text-white border-white/10">
                   {item.name}
