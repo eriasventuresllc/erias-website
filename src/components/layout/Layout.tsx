@@ -124,7 +124,6 @@ const Layout = ({ children }: LayoutProps) => {
                 className="flex items-center text-primary hover:text-primary/80 transition-colors"
               >
                 <Linkedin size={18} className="mr-1" />
-                <span className="hidden md:inline">LinkedIn</span>
               </a>
             </div>
           </div>

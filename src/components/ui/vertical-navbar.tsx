@@ -89,7 +89,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                       {isActive && (
                         <motion.div
                           layoutId="vertical-highlight"
-                          className="absolute inset-0 w-full h-full bg-primary/20 rounded-full -z-10"
+                          className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
                           initial={false}
                           transition={{
                             type: "spring",
@@ -98,7 +98,11 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                             mass: 0.5
                           }}
                         >
-                          <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-full" />
+                          <img 
+                            src="/lovable-uploads/ace573a3-b047-4906-b283-30d3e76f574f.png"
+                            alt="Active indicator" 
+                            className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 object-contain"
+                          />
                         </motion.div>
                       )}
                     </>

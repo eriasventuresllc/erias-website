@@ -1,11 +1,10 @@
-
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
-    () => ["Software", "System", "Mission", "Cyber", "Growth"],
+    () => ["Mission", "Growth"],
     []
   );
 
@@ -16,18 +15,29 @@ function Hero() {
       } else {
         setTitleNumber(titleNumber + 1);
       }
-    }, 2000);
+    }, 4000);
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles]);
 
   return (
     <div className="w-full">
       <div className="container mx-auto">
-        <div className="flex gap-4 py-8 lg:py-16 items-center justify-center flex-col">
+        <div className="flex gap-4 py-2 lg:py-10 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-3xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
-              <span className="text-primary">Engineering </span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-2 md:pt-1">
+            <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
+              <motion.span 
+                className="text-primary text-5xl md:text-6xl font-bold"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: 0.1,
+                  ease: "easeOut"
+                }}
+              >
+                Engineering
+              </motion.span>
+              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-2 md:pt-4">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span

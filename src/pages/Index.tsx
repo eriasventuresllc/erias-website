@@ -161,7 +161,7 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
+        }} className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8 justify-items-center">
             {/* First row: Circle awards side by side */}
             <div className="col-span-1 flex items-center h-full">
               <AwardImage 
@@ -198,8 +198,8 @@ const Index = () => {
               />
             </div>
             
-            {/* Glassdoor Rating - centered below the other awards */}
-            <div className="col-span-2 md:col-span-4 flex justify-center mt-6">
+            {/* Glassdoor Rating */}
+            <div className="col-span-2 md:col-span-1 flex items-center justify-center">
               <motion.a 
                 href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                 target="_blank"
@@ -214,7 +214,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
                   alt="Glassdoor 5.0 Rating" 
-                  width={180} 
+                  width={150} 
                   height="auto"
                   className="rounded-sm shadow-sm"
                 />
