@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { motion } from 'framer-motion';
+import { CpuBackground } from '@/components/ui/cpu-background';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -60,7 +61,7 @@ const Layout = ({ children }: LayoutProps) => {
   }, [lastScrollY]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground dark">
+    <CpuBackground className="min-h-screen bg-background text-foreground dark">
       {/* Only show the top navbar on mobile */}
       {isMobile && (
         <header 
@@ -77,7 +78,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Vertical navbar - only shown on desktop, now positioned at top right */}
       <VerticalNavBar items={navItems} />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
         {/* Erias Ventures Logo at the top of every page with animation */}
         <motion.div 
           className="w-full flex justify-center mb-10 mt-6"
@@ -91,15 +92,15 @@ const Layout = ({ children }: LayoutProps) => {
           <img 
             src="/lovable-uploads/erias-name-dark.svg" 
             alt="Erias Ventures Logo" 
-            className="h-24 md:h-32 object-contain" // Increased size from h-20/h-24 to h-24/h-32
+            className="h-24 md:h-32 object-contain" 
           />
         </motion.div>
         
-        <div className="tracking-wide leading-relaxed text-content">
+        <div className="relative z-10 tracking-wide leading-relaxed text-content">
           {children}
         </div>
       </main>
-      <footer className="bg-secondary py-8 border-t border-border">
+      <footer className="relative z-10 bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center">
@@ -130,7 +131,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </footer>
-    </div>
+    </CpuBackground>
   );
 };
 
