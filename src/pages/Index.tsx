@@ -197,6 +197,29 @@ const Index = () => {
                 width="150px" 
               />
             </div>
+            
+            {/* Glassdoor Rating - centered below the other awards */}
+            <div className="col-span-2 md:col-span-4 flex justify-center mt-6">
+              <motion.a 
+                href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+              >
+                <img 
+                  src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
+                  alt="Glassdoor 5.0 Rating" 
+                  width={180} 
+                  height="auto"
+                  className="rounded-sm shadow-sm"
+                />
+              </motion.a>
+            </div>
           </motion.div>
         </div>
       </section>

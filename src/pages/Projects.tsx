@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -101,59 +100,38 @@ const Careers = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-6 flex flex-col justify-center items-center gap-4"
+            className="mt-6 flex justify-center items-center gap-6"
           >
-            <div className="flex justify-center items-center gap-6">
-              <motion.a 
-                href="https://www.linkedin.com/company/eriasventures/posts/?feedView=all"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block"
-              >
-                <img 
-                  src="/lovable-uploads/59c1bf89-46c1-4b9b-ba1b-90885be54540.png" 
-                  alt="LinkedIn" 
-                  width={48} 
-                  height={48} 
-                  className="rounded-md shadow-sm"
-                />
-              </motion.a>
-              <motion.a 
-                href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block"
-              >
-                <img 
-                  src="/lovable-uploads/8d1fd338-a1d3-4b1e-8f07-8b1cb72ea744.png" 
-                  alt="Glassdoor" 
-                  width={48} 
-                  height={48} 
-                  className="rounded-md shadow-sm"
-                />
-              </motion.a>
-            </div>
-            <motion.a
-              href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
+            <motion.a 
+              href="https://www.linkedin.com/company/eriasventures/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.4 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               className="inline-block"
             >
               <img 
-                src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
-                alt="Glassdoor 5.0 Rating" 
-                width={120} 
-                height="auto"
-                className="rounded-sm shadow-sm"
+                src="/lovable-uploads/59c1bf89-46c1-4b9b-ba1b-90885be54540.png" 
+                alt="LinkedIn" 
+                width={48} 
+                height={48} 
+                className="rounded-md shadow-sm"
+              />
+            </motion.a>
+            <motion.a 
+              href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block"
+            >
+              <img 
+                src="/lovable-uploads/8d1fd338-a1d3-4b1e-8f07-8b1cb72ea744.png" 
+                alt="Glassdoor" 
+                width={48} 
+                height={48} 
+                className="rounded-md shadow-sm"
               />
             </motion.a>
           </motion.div>
