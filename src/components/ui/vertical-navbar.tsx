@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -47,7 +48,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
       )}
     >
       <motion.div 
-        className="flex flex-col items-center gap-6 py-4 px-3 rounded-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-lg"
+        className="flex flex-col items-center gap-6 py-5 px-4 rounded-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{
@@ -74,7 +75,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                       }
                     }}
                     className={cn(
-                      "relative cursor-pointer p-2 rounded-full transition-colors",
+                      "relative cursor-pointer p-3 rounded-full transition-colors",
                       "text-white/70 hover:text-white",
                       isActive && "text-white",
                     )}
@@ -83,7 +84,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     onMouseLeave={() => setHoveredItem(null)}
                   >
                     <>
-                      <Icon size={20} strokeWidth={2.5} />
+                      <Icon size={24} strokeWidth={2.5} />
                       
                       {/* Active highlight */}
                       {isActive && (
