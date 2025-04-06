@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -101,7 +100,7 @@ const Careers = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-6 flex flex-col justify-center items-center gap-6"
+            className="mt-6 flex flex-col justify-center items-center gap-4"
           >
             <div className="flex justify-center items-center gap-6">
               <motion.a 
@@ -147,12 +146,12 @@ const Careers = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="inline-block max-w-xs"
+              className="inline-block"
             >
               <img 
                 src="/lovable-uploads/332b00aa-e29f-4ef5-b64d-b2e03c65a943.png" 
                 alt="Glassdoor 5.0 Rating" 
-                className="w-full h-auto"
+                className="w-32 h-auto"
               />
             </motion.a>
           </motion.div>
