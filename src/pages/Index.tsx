@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -70,7 +69,7 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="mb-12 text-center">
+        }} className="mb-12">
             <motion.h2 initial={{
             opacity: 0,
             y: 20
