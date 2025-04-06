@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
-    () => ["Software", "System", "Data", "Cyber", "Target"],
+    () => ["Software", "System", "Mission", "Cyber", "Growth"],
     []
   );
 
@@ -51,7 +51,6 @@ function Hero() {
                   </motion.span>
                 ))}
               </span>
-              <span className="text-primary"> Mission/Growth</span>
             </h1>
 
             <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
