@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -69,7 +70,7 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="mb-12">
+        }} className="mb-12 text-center">
             <motion.h2 initial={{
             opacity: 0,
             y: 20
@@ -81,7 +82,7 @@ const Index = () => {
           }} transition={{
             delay: 0.1,
             duration: 0.6
-          }} className="text-3xl font-bold mb-6 flex items-center">
+          }} className="text-3xl font-bold mb-6 flex items-center justify-center">
               <img 
                 src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
                 alt="Leaf icon" 
