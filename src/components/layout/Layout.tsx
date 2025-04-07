@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
-import { Home, Info, FileText, Linkedin } from 'lucide-react';
+import { Home, Info, FileText } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Tooltip,
@@ -123,7 +123,11 @@ const Layout = ({ children }: LayoutProps) => {
                 rel="noopener noreferrer"
                 className="flex items-center text-primary hover:text-primary/80 transition-colors"
               >
-                <Linkedin size={18} className="mr-1" />
+                <img 
+                  src="/lovable-uploads/9688ac47-3186-432a-bc18-8964834c849f.png" 
+                  alt="LinkedIn" 
+                  className="w-5 h-5" 
+                />
               </a>
             </div>
           </div>
