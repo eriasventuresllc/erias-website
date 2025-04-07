@@ -95,46 +95,6 @@ const Careers = () => {
               View Current Openings
             </a>
           </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-6 flex justify-center items-center gap-6"
-          >
-            <motion.a 
-              href="https://www.linkedin.com/company/eriasventures/posts/?feedView=all"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <img 
-                src="/lovable-uploads/59c1bf89-46c1-4b9b-ba1b-90885be54540.png" 
-                alt="LinkedIn" 
-                width={48} 
-                height={48} 
-                className="rounded-md shadow-sm"
-              />
-            </motion.a>
-            <motion.a 
-              href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <img 
-                src="/lovable-uploads/8d1fd338-a1d3-4b1e-8f07-8b1cb72ea744.png" 
-                alt="Glassdoor" 
-                width={48} 
-                height={48} 
-                className="rounded-md shadow-sm"
-              />
-            </motion.a>
-          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

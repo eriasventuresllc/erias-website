@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -99,10 +98,8 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                             mass: 0.5
                           }}
                         >
-                          <img 
-                            src="/lovable-uploads/ace573a3-b047-4906-b283-30d3e76f574f.png"
-                            alt="Active indicator" 
-                            className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 object-contain"
+                          <div 
+                            className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-[#B45364] rounded-full"
                           />
                         </motion.div>
                       )}
