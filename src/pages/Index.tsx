@@ -135,6 +135,118 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Our Customers Section */}
+      <section className="py-2 mb-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div initial={{
+          opacity: 0
+        }} whileInView={{
+          opacity: 1
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }} className="text-center mb-12">
+            <motion.h2 initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.1,
+            duration: 0.6
+          }} className="text-3xl font-bold mb-6 flex items-center justify-center">
+              Our Customers
+            </motion.h2>
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.2,
+            duration: 0.6
+          }} className="text-muted-foreground mb-10 max-w-3xl mx-auto">
+              We're proud to partner with leading organizations across government, intelligence, and defense sectors to deliver mission-critical solutions.
+            </motion.p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 justify-items-center items-center">
+              {/* Customer logos - government seals */}
+              <motion.div 
+                className="grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg h-32 w-full flex items-center justify-center">
+                  <img
+                    src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
+                    alt="Cybersecurity and Infrastructure Security Agency"
+                    className="h-24 w-auto object-contain"
+                  />
+                </div>
+              </motion.div>
+              <motion.div 
+                className="grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg h-32 w-full flex items-center justify-center">
+                  <img
+                    src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
+                    alt="United States Cyber Command"
+                    className="h-24 w-auto object-contain"
+                  />
+                </div>
+              </motion.div>
+              <motion.div 
+                className="grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg h-32 w-full flex items-center justify-center">
+                  <img
+                    src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
+                    alt="National Security Agency"
+                    className="h-24 w-auto object-contain"
+                  />
+                </div>
+              </motion.div>
+              <motion.div 
+                className="grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg h-32 w-full flex items-center justify-center">
+                  <img
+                    src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
+                    alt="US Air Force"
+                    className="h-24 w-auto object-contain"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Awards Section */}
       <section className="py-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">

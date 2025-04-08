@@ -69,7 +69,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Erias Ventures was founded to serve its customers with an entrepreneurial mindset. We value open communication, taking action, being committed, persevering through challenges and failures, and sharing innovative ideas.
+              Erias Ventures was founded to serve its customers with an entrepreneurial mindset. We value <span className="font-bold text-primary">open communication</span>, <span className="font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and <span className="font-bold text-primary">sharing innovative ideas</span>.
             </motion.p>
           </div>
         </div>
