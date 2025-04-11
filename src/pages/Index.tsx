@@ -23,7 +23,7 @@ const Index = () => {
       <Hero />
 
       {/* Values Section */}
-      <section className="py-12 bg-secondary/50 rounded-3xl">
+      <section className="py-8 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
@@ -33,9 +33,9 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="text-center mb-14">
-            <h2 className="text-3xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
+        }} className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-2">Our Core Values</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               These principles guide everything we do at Erias Ventures.
             </p>
           </motion.div>
@@ -59,8 +59,8 @@ const Index = () => {
       </section>
 
       {/* Approach Section */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12">
+        <div className="max-w-12xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
         }} whileInView={{
@@ -100,7 +100,7 @@ const Index = () => {
           }} transition={{
             delay: 0.2,
             duration: 0.6
-          }} className="text-muted-foreground mb-6 max-w-4xl mx-auto">
+          }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
               We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">data science</span>, network, target and signals analysis, and <span className="text-lg font-bold text-primary">cyber operations</span>. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
             </motion.p>
             <motion.p initial={{
@@ -114,7 +114,7 @@ const Index = () => {
           }} transition={{
             delay: 0.3,
             duration: 0.6
-          }} className="text-muted-foreground mb-6 max-w-4xl mx-auto">
+          }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
               With proven technical, task, and product leadership, our approach has led to constant growth. We believe that <span className="text-lg font-bold text-primary">innovation</span> is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing <span className="text-lg font-bold text-primary">innovative, scalable, and adaptive solutions</span>.
             </motion.p>
             <motion.p initial={{
@@ -128,7 +128,7 @@ const Index = () => {
           }} transition={{
             delay: 0.4,
             duration: 0.6
-          }} className="text-muted-foreground max-w-4xl mx-auto">
+          }} className="text-muted-foreground max-w-6xl mx-auto">
               We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while maintaining a lean, efficient operational model.
             </motion.p>
           </motion.div>
@@ -265,92 +265,186 @@ const Index = () => {
               We're proud to partner with leading organizations across government, intelligence, and defense sectors to deliver mission-critical solutions.
             </motion.p>
             
-            <div className="grid grid-cols-3 gap-8 lg:gap-12 justify-items-center items-center mb-8">
-              {/* First row - 3 logos */}
-              <motion.div 
-                className="opacity-90 hover:opacity-100 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 0.9, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="p-4 flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
-                    alt="Cybersecurity and Infrastructure Security Agency"
-                    className="h-32 w-auto object-contain"
-                  />
-                </div>
-              </motion.div>
-              <motion.div 
-                className="opacity-90 hover:opacity-100 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 0.9, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="p-4 flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
-                    alt="United States Cyber Command"
-                    className="h-32 w-auto object-contain"
-                  />
-                </div>
-              </motion.div>
-              <motion.div 
-                className="opacity-90 hover:opacity-100 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 0.9, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="p-4 flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
-                    alt="National Security Agency"
-                    className="h-32 w-auto object-contain"
-                  />
-                </div>
-              </motion.div>
-            </div>
+            <div className="mb-8">
+              {/* Mobile layout (2-2-1) */}
+              <div className="grid grid-cols-2 gap-8 justify-items-center items-center md:hidden">
+                {/* First row - 2 logos */}
+                <motion.div 
+                  className="opacity-90 hover:opacity-100 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 0.9, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="p-4 flex items-center justify-center">
+                    <img
+                      src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
+                      alt="Cybersecurity and Infrastructure Security Agency"
+                      className="h-24 sm:h-28 w-auto object-contain"
+                    />
+                  </div>
+                </motion.div>
+                <motion.div 
+                  className="opacity-90 hover:opacity-100 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 0.9, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="p-4 flex items-center justify-center">
+                    <img
+                      src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
+                      alt="United States Cyber Command"
+                      className="h-24 sm:h-28 w-auto object-contain"
+                    />
+                  </div>
+                </motion.div>
+                
+                {/* Second row - 2 logos */}
+                <motion.div 
+                  className="opacity-90 hover:opacity-100 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 0.9, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="p-4 flex items-center justify-center">
+                    <img
+                      src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
+                      alt="National Security Agency"
+                      className="h-24 sm:h-28 w-auto object-contain"
+                    />
+                  </div>
+                </motion.div>
+                <motion.div 
+                  className="opacity-90 hover:opacity-100 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 0.9, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6, duration: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="p-4 flex items-center justify-center">
+                    <img
+                      src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
+                      alt="US Air Force"
+                      className="h-24 sm:h-28 w-auto object-contain"
+                    />
+                  </div>
+                </motion.div>
+                
+                {/* Third row - 1 centered logo */}
+                <motion.div 
+                  className="opacity-90 hover:opacity-100 transition-all duration-300 col-span-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 0.9, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.7, duration: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="p-4 flex items-center justify-center">
+                    <img
+                      src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
+                      alt="US Army"
+                      className="h-24 sm:h-28 w-auto object-contain"
+                    />
+                  </div>
+                </motion.div>
+              </div>
               
-            {/* Second row - 2 logos side by side, perfectly aligned */}
-            <div className="flex justify-center items-center gap-48">
-              <motion.div 
-                className="opacity-90 hover:opacity-100 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 0.9, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="p-4 flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
-                    alt="US Air Force"
-                    className="h-32 w-auto object-contain"
-                  />
+              {/* Desktop layout */}
+              <div className="hidden md:block">
+                {/* Top row - 3 logos */}
+                <div className="grid grid-cols-3 gap-12 justify-items-center items-center mb-12">
+                  <motion.div 
+                    className="opacity-90 hover:opacity-100 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 0.9, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="p-4 flex items-center justify-center">
+                      <img
+                        src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
+                        alt="Cybersecurity and Infrastructure Security Agency"
+                        className="h-32 w-auto object-contain"
+                      />
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    className="opacity-90 hover:opacity-100 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 0.9, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="p-4 flex items-center justify-center">
+                      <img
+                        src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
+                        alt="United States Cyber Command"
+                        className="h-32 w-auto object-contain"
+                      />
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    className="opacity-90 hover:opacity-100 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 0.9, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="p-4 flex items-center justify-center">
+                      <img
+                        src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
+                        alt="National Security Agency"
+                        className="h-32 w-auto object-contain"
+                      />
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
-              <motion.div 
-                className="opacity-90 hover:opacity-100 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 0.9, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="p-4 flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
-                    alt="US Army"
-                    className="h-32 w-auto object-contain"
-                  />
+                
+                {/* Bottom row - 2 logos with spacing */}
+                <div className="flex justify-center items-center gap-48">
+                  <motion.div 
+                    className="opacity-90 hover:opacity-100 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 0.9, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="p-4 flex items-center justify-center">
+                      <img
+                        src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
+                        alt="US Air Force"
+                        className="h-32 w-auto object-contain"
+                      />
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    className="opacity-90 hover:opacity-100 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 0.9, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="p-4 flex items-center justify-center">
+                      <img
+                        src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
+                        alt="US Army"
+                        className="h-32 w-auto object-contain"
+                      />
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
