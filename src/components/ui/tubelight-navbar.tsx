@@ -82,14 +82,14 @@ export function NavBar({ items, className }: NavBarProps) {
               <>
                 <span className="hidden md:inline">{item.name}</span>
                 <span className="md:hidden">
-                  <Icon size={20} strokeWidth={2.5} />
+                  <Icon size={20} strokeWidth={2.5} className={isActive ? "text-[#B45364]" : ""} />
                 </span>
                 
                 {/* Only animate the highlighting */}
                 {isActive && (
                   <motion.div
                     layoutId="lamp"
-                    className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
+                    className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
                     initial={false}
                     transition={{
                       type: "spring",

@@ -74,9 +74,9 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                       }
                     }}
                     className={cn(
-                      "relative cursor-pointer p-3 rounded-full transition-colors",
+                      "relative cursor-pointer p-3 rounded-full transition-colors duration-300",
                       "text-white/70 hover:text-white",
-                      isActive && "text-white",
+                      isActive ? "text-[#B45364]" : "text-white/70",
                     )}
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                     onMouseEnter={() => setHoveredItem(item.name)}
@@ -85,7 +85,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     <>
                       <Icon size={24} strokeWidth={2.5} />
                       
-                      {/* Active highlight */}
+                      {/* Active highlight without the dot */}
                       {isActive && (
                         <motion.div
                           layoutId="vertical-highlight"
@@ -98,9 +98,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                             mass: 0.5
                           }}
                         >
-                          <div 
-                            className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-[#B45364] rounded-full"
-                          />
+                          {/* Removed the red dot */}
                         </motion.div>
                       )}
                     </>
