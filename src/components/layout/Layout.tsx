@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
-import { Home, Info, FileText } from 'lucide-react';
+import { Home, Info, FileText, Instagram } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Tooltip,
@@ -91,7 +90,7 @@ const Layout = ({ children }: LayoutProps) => {
           <img 
             src="/lovable-uploads/erias-name-dark.svg" 
             alt="Erias Ventures Logo" 
-            className="h-24 md:h-32 object-contain" // Increased size from h-20/h-24 to h-24/h-32
+            className="h-24 md:h-32 object-contain"
           />
         </motion.div>
         
@@ -126,6 +125,18 @@ const Layout = ({ children }: LayoutProps) => {
                 <img 
                   src="/lovable-uploads/9688ac47-3186-432a-bc18-8964834c849f.png" 
                   alt="LinkedIn" 
+                  className="w-5 h-5" 
+                />
+              </a>
+              <a 
+                href="https://www.instagram.com/eriasventures/#" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center text-primary hover:text-primary/80 transition-colors ml-2"
+              >
+                <img 
+                  src="/lovable-uploads/9688ac47-3186-432a-bc18-8964834c849f.png" 
+                  alt="Instagram" 
                   className="w-5 h-5" 
                 />
               </a>
