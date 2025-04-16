@@ -127,7 +127,7 @@ const Layout = ({ children }: LayoutProps) => {
                 href="https://www.instagram.com/eriasventures/#" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center text-primary hover:text-primary/80 transition-colors ml-2"
+                className="flex items-center text-primary hover:text-primary/80 transition-colors ml-1"
               >
                 <img 
                   src="/lovable-uploads/303d12eb-54b7-44e8-9c6c-3454c43fb0fd.png" 
