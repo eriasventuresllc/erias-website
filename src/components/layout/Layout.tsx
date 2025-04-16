@@ -42,7 +42,6 @@ const Layout = ({ children }: LayoutProps) => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Show navbar when scrolling up or at top, hide when scrolling down
       if (currentScrollY <= 0) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY) {
@@ -60,7 +59,6 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background text-foreground dark">
-      {/* Only show the top navbar on mobile */}
       {isMobile && (
         <header 
           className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
@@ -73,11 +71,9 @@ const Layout = ({ children }: LayoutProps) => {
         </header>
       )}
       
-      {/* Vertical navbar - only shown on desktop, now positioned at top right */}
       <VerticalNavBar items={navItems} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
-        {/* Erias Ventures Logo at the top of every page with animation */}
         <motion.div 
           className="w-full flex justify-center mb-10 mt-6"
           initial={{ opacity: 0, y: -20 }}
@@ -110,7 +106,6 @@ const Layout = ({ children }: LayoutProps) => {
               <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
             </div>
             
-            {/* Contact information */}
             <div className="flex items-center flex-wrap justify-center gap-2 text-sm font-medium text-muted-foreground">
               <span>443-300-8638</span>
               <span className="hidden md:inline">|</span>
@@ -135,7 +130,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="flex items-center text-primary hover:text-primary/80 transition-colors ml-2"
               >
                 <img 
-                  src="/lovable-uploads/9688ac47-3186-432a-bc18-8964834c849f.png" 
+                  src="/lovable-uploads/303d12eb-54b7-44e8-9c6c-3454c43fb0fd.png" 
                   alt="Instagram" 
                   className="w-5 h-5" 
                 />
