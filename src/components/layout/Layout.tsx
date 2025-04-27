@@ -10,7 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
 interface LayoutProps {
@@ -99,9 +99,18 @@ const Layout = ({ children }: LayoutProps) => {
           />
         </motion.div>
         
-        <div className="tracking-wide leading-relaxed text-content">
-          {children}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="tracking-wide leading-relaxed text-content"
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </main>
       <footer className="bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

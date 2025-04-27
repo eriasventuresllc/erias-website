@@ -22,12 +22,6 @@ export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
-  const [activeUrl, setActiveUrl] = useState("");
-
-  // Set initial active URL and update when location changes
-  useEffect(() => {
-    setActiveUrl(location.pathname);
-  }, [location.pathname]);
 
   // Handle responsive behavior
   useEffect(() => {
@@ -56,10 +50,13 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-6 py-1 px-3 rounded-full">
+      <motion.div 
+        className="flex items-center gap-6 py-1 px-3 rounded-full"
+        layoutId="tubelight-navbar"
+      >
         {items.map((item) => {
           const Icon = item.icon
-          const isActive = activeUrl === item.url;
+          const isActive = location.pathname === item.url;
 
           return (
             <div
@@ -102,7 +99,7 @@ export function NavBar({ items, className }: NavBarProps) {
             </div>
           )
         })}
-      </div>
+      </motion.div>
     </div>
   )
 }

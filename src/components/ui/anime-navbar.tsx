@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Link } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -16,14 +16,23 @@ interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
-  defaultActive?: string
 }
 
-export function AnimeNavBar({ items, className, defaultActive = "Home" }: NavBarProps) {
+export function AnimeNavBar({ items, className }: NavBarProps) {
   const [mounted, setMounted] = useState(false)
   const [hoveredTab, setHoveredTab] = useState<string | null>(null)
-  const [activeTab, setActiveTab] = useState<string>(defaultActive)
   const [isMobile, setIsMobile] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  
+  // Handle navigation
+  const handleNavigation = (url: string) => {
+    if (url === location.pathname) {
+      return; // Already on this page
+    }
+    
+    navigate(url);
+  };
 
   useEffect(() => {
     setMounted(true)
@@ -53,19 +62,17 @@ export function AnimeNavBar({ items, className, defaultActive = "Home" }: NavBar
             stiffness: 260,
             damping: 20,
           }}
+          layoutId="anime-navbar"
         >
           {items.map((item) => {
             const Icon = item.icon
-            const isActive = activeTab === item.name
+            const isActive = location.pathname === item.url
             const isHovered = hoveredTab === item.name
 
             return (
-              <Link
+              <div
                 key={item.name}
-                to={item.url}
-                onClick={(e) => {
-                  setActiveTab(item.name)
-                }}
+                onClick={() => handleNavigation(item.url)}
                 onMouseEnter={() => setHoveredTab(item.name)}
                 onMouseLeave={() => setHoveredTab(null)}
                 className={cn(
@@ -128,7 +135,7 @@ export function AnimeNavBar({ items, className, defaultActive = "Home" }: NavBar
                     />
                   )}
                 </AnimatePresence>
-              </Link>
+              </div>
             )
           })}
         </motion.div>

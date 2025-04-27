@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -22,12 +23,6 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const [activeUrl, setActiveUrl] = useState("/");
-
-  // Set initial active URL and update when location changes
-  useEffect(() => {
-    setActiveUrl(location.pathname);
-  }, [location.pathname]);
 
   // Custom navigation handler without any browser navigation
   const handleNavigation = (url: string) => {
@@ -35,8 +30,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
       return; // Already on this page
     }
     
-    setActiveUrl(url);
-    navigate(url, { replace: true });
+    navigate(url);
   };
 
   return (
@@ -55,11 +49,12 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
           stiffness: 260,
           damping: 20,
         }}
+        layoutId="vertical-navbar"
       >
         <TooltipProvider delayDuration={0}>
           {items.map((item) => {
             const Icon = item.icon
-            const isActive = activeUrl === item.url;
+            const isActive = location.pathname === item.url;
 
             return (
               <Tooltip key={item.name}>
@@ -85,10 +80,8 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     <>
                       <Icon size={24} strokeWidth={2.5} />
                       
-                      {/* Active highlight without the dot */}
                       {isActive && (
                         <motion.div
-                          layoutId="vertical-highlight"
                           className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
                           initial={false}
                           transition={{
@@ -97,9 +90,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                             damping: 35,
                             mass: 0.5
                           }}
-                        >
-                          {/* Removed the red dot */}
-                        </motion.div>
+                        />
                       )}
                     </>
                   </div>
