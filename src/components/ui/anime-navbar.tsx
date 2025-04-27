@@ -62,16 +62,19 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
             stiffness: 260,
             damping: 20,
           }}
+          layout="position"
           layoutId="anime-navbar"
         >
           {items.map((item) => {
             const Icon = item.icon
             const isActive = location.pathname === item.url
             const isHovered = hoveredTab === item.name
+            const itemKey = `anime-nav-${item.name}`
 
             return (
-              <div
-                key={item.name}
+              <motion.div
+                key={itemKey}
+                layout
                 onClick={() => handleNavigation(item.url)}
                 onMouseEnter={() => setHoveredTab(item.name)}
                 onMouseLeave={() => setHoveredTab(null)}
@@ -83,8 +86,9 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
               >
                 {isActive && (
                   <motion.div
+                    layoutId={`active-bg-${item.name}`}
                     className="absolute inset-0 rounded-full -z-10 overflow-hidden"
-                    initial={{ opacity: 0 }}
+                    initial={false}
                     animate={{ 
                       opacity: [0.3, 0.5, 0.3],
                       scale: [1, 1.03, 1]
@@ -135,7 +139,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                     />
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             )
           })}
         </motion.div>

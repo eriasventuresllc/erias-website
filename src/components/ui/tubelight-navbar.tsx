@@ -53,14 +53,17 @@ export function NavBar({ items, className }: NavBarProps) {
       <motion.div 
         className="flex items-center gap-6 py-1 px-3 rounded-full"
         layoutId="tubelight-navbar"
+        layout="position"
+        initial={false}
       >
         {items.map((item) => {
           const Icon = item.icon
           const isActive = location.pathname === item.url;
+          const itemKey = `nav-item-${item.name}`;
 
           return (
-            <div
-              key={item.name}
+            <motion.div
+              key={itemKey}
               role="button"
               tabIndex={0}
               onClick={() => handleNavigation(item.url)}
@@ -75,6 +78,8 @@ export function NavBar({ items, className }: NavBarProps) {
                 isActive && "text-primary",
               )}
               style={{ WebkitTapHighlightColor: 'transparent' }}
+              layout
+              initial={false}
             >
               <>
                 <span className="hidden md:inline">{item.name}</span>
@@ -84,7 +89,7 @@ export function NavBar({ items, className }: NavBarProps) {
                 
                 {isActive && (
                   <motion.div
-                    layoutId="lamp"
+                    layoutId={`lamp-${item.name}`}
                     className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
                     initial={false}
                     transition={{
@@ -96,7 +101,7 @@ export function NavBar({ items, className }: NavBarProps) {
                   />
                 )}
               </>
-            </div>
+            </motion.div>
           )
         })}
       </motion.div>

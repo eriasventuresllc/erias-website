@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
 import { Home, Info, FileText, Instagram } from 'lucide-react';
@@ -17,29 +17,30 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const navItems = [
-  {
-    name: "Company",
-    url: "/",
-    icon: Home,
-  },
-  {
-    name: "Expertise",
-    url: "/about",
-    icon: Info,
-  },
-  {
-    name: "Careers",
-    url: "/projects",
-    icon: FileText,
-  },
-];
-
 const Layout = ({ children }: LayoutProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const isMobile = useIsMobile();
   const location = useLocation();
+
+  // Memoize nav items to prevent unnecessary re-renders
+  const navItems = useMemo(() => [
+    {
+      name: "Company",
+      url: "/",
+      icon: Home,
+    },
+    {
+      name: "Expertise",
+      url: "/about",
+      icon: Info,
+    },
+    {
+      name: "Careers",
+      url: "/projects",
+      icon: FileText,
+    },
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +91,6 @@ const Layout = ({ children }: LayoutProps) => {
             duration: 0.5,
             ease: "easeOut"
           }}
-          key={location.pathname}
         >
           <img 
             src="/lovable-uploads/erias-name-dark.svg" 

@@ -50,6 +50,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
           damping: 20,
         }}
         layoutId="vertical-navbar"
+        layout="position"
       >
         <TooltipProvider delayDuration={0}>
           {items.map((item) => {
@@ -83,6 +84,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                       {isActive && (
                         <motion.div
                           className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
+                          layoutId={`active-indicator-${item.name}`}
                           initial={false}
                           transition={{
                             type: "spring",
