@@ -1,8 +1,9 @@
+
 "use client"
 
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -21,7 +22,7 @@ export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
-  const [activeUrl, setActiveUrl] = useState("/");
+  const [activeUrl, setActiveUrl] = useState("");
 
   // Set initial active URL and update when location changes
   useEffect(() => {
@@ -45,8 +46,7 @@ export function NavBar({ items, className }: NavBarProps) {
       return; // Already on this page
     }
     
-    setActiveUrl(url);
-    navigate(url, { replace: true });
+    navigate(url);
   };
 
   return (
@@ -85,7 +85,6 @@ export function NavBar({ items, className }: NavBarProps) {
                   <Icon size={20} strokeWidth={2.5} className={isActive ? "text-[#B45364]" : ""} />
                 </span>
                 
-                {/* Only animate the highlighting */}
                 {isActive && (
                   <motion.div
                     layoutId="lamp"
@@ -97,9 +96,7 @@ export function NavBar({ items, className }: NavBarProps) {
                       damping: 35,
                       mass: 0.5
                     }}
-                  >
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full" />
-                  </motion.div>
+                  />
                 )}
               </>
             </div>

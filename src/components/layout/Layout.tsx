@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
@@ -10,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -37,6 +39,7 @@ const Layout = ({ children }: LayoutProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,6 +59,11 @@ const Layout = ({ children }: LayoutProps) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  // Reset scroll position on page change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground dark">
@@ -82,6 +90,7 @@ const Layout = ({ children }: LayoutProps) => {
             duration: 0.5,
             ease: "easeOut"
           }}
+          key={location.pathname}
         >
           <img 
             src="/lovable-uploads/erias-name-dark.svg" 
