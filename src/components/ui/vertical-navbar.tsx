@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useNavigate, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -49,7 +49,6 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
         initial={false}
         animate={{ opacity: 1 }}
         layoutId="vertical-navbar"
-        layout="position"
         transition={{
           layout: { type: "spring", stiffness: 300, damping: 30 }
         }}
@@ -81,23 +80,22 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     onMouseEnter={() => setHoveredItem(item.name)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
-                    <>
-                      <Icon size={24} strokeWidth={2.5} />
-                      
-                      {active && (
-                        <motion.div
-                          layoutId={`vertical-indicator-${item.name}`}
-                          className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
-                          initial={false}
-                          transition={{
-                            type: "spring",
-                            stiffness: 650,
-                            damping: 35,
-                            mass: 0.5
-                          }}
-                        />
-                      )}
-                    </>
+                    <Icon size={24} strokeWidth={2.5} />
+                    
+                    {active && (
+                      <motion.div
+                        className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
+                        initial={false}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 650,
+                          damping: 35,
+                          mass: 0.5
+                        }}
+                      />
+                    )}
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center" sideOffset={5}>
