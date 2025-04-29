@@ -99,11 +99,6 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center" sideOffset={5}>
-                  <img 
-                    src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
-                    alt="Leaf" 
-                    className="h-3.5 w-auto mr-1.5 object-contain" 
-                  />
                   {item.name}
                 </TooltipContent>
               </Tooltip>
