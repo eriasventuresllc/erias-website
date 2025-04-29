@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -63,6 +63,7 @@ export function NavBar({ items, className }: NavBarProps) {
       <motion.div 
         className="flex items-center gap-6 py-1 px-3 rounded-full"
         layoutId="tubelight-navbar"
+        layout="position"
         initial={false}
         transition={{
           layout: { type: "spring", stiffness: 300, damping: 30 },
@@ -99,22 +100,19 @@ export function NavBar({ items, className }: NavBarProps) {
                   <Icon size={20} strokeWidth={2.5} className={active ? "text-[#B45364]" : ""} />
                 </span>
                 
-                <AnimatePresence mode="wait">
-                  {active && (
-                    <motion.div
-                      className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 500, 
-                        damping: 30,
-                        mass: 0.8
-                      }}
-                    />
-                  )}
-                </AnimatePresence>
+                {active && (
+                  <motion.div
+                    layoutId={`tube-lamp-${item.name}`}
+                    className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
+                    initial={false}
+                    transition={{
+                      type: "spring",
+                      stiffness: 650, 
+                      damping: 35,
+                      mass: 0.5
+                    }}
+                  />
+                )}
               </>
             </motion.div>
           )

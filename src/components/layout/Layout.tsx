@@ -150,7 +150,7 @@ const Layout = ({ children }: LayoutProps) => {
                 <img 
                   src="/lovable-uploads/13a66669-c032-43a3-b3f9-e404085aaeb3.png" 
                   alt="Instagram" 
-                  className="w-4 h-4" 
+                  className="w-5 h-5" 
                 />
               </a>
             </div>

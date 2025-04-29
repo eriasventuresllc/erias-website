@@ -82,22 +82,20 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                   >
                     <Icon size={24} strokeWidth={2.5} />
                     
-                    <AnimatePresence mode="wait">
-                      {active && (
-                        <motion.div
-                          className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 500, 
-                            damping: 30,
-                            mass: 0.8
-                          }}
-                        />
-                      )}
-                    </AnimatePresence>
+                    {active && (
+                      <motion.div
+                        className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
+                        initial={false}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 650,
+                          damping: 35,
+                          mass: 0.5
+                        }}
+                      />
+                    )}
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center" sideOffset={5}>
