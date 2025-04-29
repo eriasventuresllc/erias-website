@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { useNavigate, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
@@ -23,13 +23,16 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const navRef = useRef<HTMLDivElement>(null);
+  
+  // Prevent re-renders of nav items
+  const isActive = (url: string) => location.pathname === url;
 
   // Custom navigation handler without any browser navigation
   const handleNavigation = (url: string) => {
     if (url === location.pathname) {
       return; // Already on this page
     }
-    
     navigate(url);
   };
 
@@ -39,26 +42,26 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
         "fixed right-4 top-4 z-50 hidden md:flex flex-col",
         className,
       )}
+      ref={navRef}
     >
       <motion.div 
         className="flex flex-col items-center gap-6 py-5 px-4 rounded-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-lg"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-        }}
+        initial={false}
+        animate={{ opacity: 1 }}
         layoutId="vertical-navbar"
         layout="position"
+        transition={{
+          layout: { type: "spring", stiffness: 300, damping: 30 }
+        }}
       >
         <TooltipProvider delayDuration={0}>
           {items.map((item) => {
             const Icon = item.icon
-            const isActive = location.pathname === item.url;
+            const active = isActive(item.url);
+            const itemKey = `nav-vertical-${item.name}`;
 
             return (
-              <Tooltip key={item.name}>
+              <Tooltip key={itemKey}>
                 <TooltipTrigger asChild>
                   <div
                     role="button"
@@ -72,7 +75,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     className={cn(
                       "relative cursor-pointer p-3 rounded-full transition-colors duration-300",
                       "text-white/70 hover:text-white",
-                      isActive ? "text-[#B45364]" : "text-white/70",
+                      active ? "text-[#B45364]" : "text-white/70",
                     )}
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                     onMouseEnter={() => setHoveredItem(item.name)}
@@ -81,10 +84,10 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     <>
                       <Icon size={24} strokeWidth={2.5} />
                       
-                      {isActive && (
+                      {active && (
                         <motion.div
+                          layoutId={`vertical-indicator-${item.name}`}
                           className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
-                          layoutId={`active-indicator-${item.name}`}
                           initial={false}
                           transition={{
                             type: "spring",
@@ -97,7 +100,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     </>
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center">
+                <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center" sideOffset={5}>
                   <img 
                     src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
                     alt="Leaf" 
