@@ -148,7 +148,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="flex items-center text-primary hover:text-primary/80 transition-colors ml-1"
               >
                 <img 
-                  src="/lovable-uploads/303d12eb-54b7-44e8-9c6c-3454c43fb0fd.png" 
+                  src="/lovable-uploads/13a66669-c032-43a3-b3f9-e404085aaeb3.png" 
                   alt="Instagram" 
                   className="w-5 h-5" 
                 />
