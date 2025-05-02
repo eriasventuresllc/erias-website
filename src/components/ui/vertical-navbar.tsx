@@ -98,7 +98,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     )}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center transform -rotate-1" sideOffset={5}>
+                <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center" sideOffset={5}>
                   {item.name}
                 </TooltipContent>
               </Tooltip>
