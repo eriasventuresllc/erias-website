@@ -93,7 +93,7 @@ const Layout = ({ children }: LayoutProps) => {
           }}
         >
           <img 
-            src="/lovable-uploads/erias-name-dark.svg" 
+            src="/lovable-uploads/92723f16-1bf7-4b2b-8342-f35c47e57b2c.png" 
             alt="Erias Ventures Logo" 
             className="h-24 md:h-32 object-contain"
           />
