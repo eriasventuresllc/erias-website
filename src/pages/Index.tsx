@@ -295,13 +295,19 @@ const Index = () => {
                   transition={{ delay: 0.3, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="p-4 flex items-center justify-center">
+                  <a 
+                    href="https://www.cisa.gov" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-4 flex items-center justify-center"
+                    title="Cybersecurity and Infrastructure Security Agency"
+                  >
                     <img
                       src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
                       alt="Cybersecurity and Infrastructure Security Agency"
                       className="h-24 sm:h-28 w-auto object-contain"
                     />
-                  </div>
+                  </a>
                 </motion.div>
                 <motion.div 
                   className="opacity-90 hover:opacity-100 transition-all duration-300"
@@ -311,13 +317,19 @@ const Index = () => {
                   transition={{ delay: 0.4, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="p-4 flex items-center justify-center">
+                  <a 
+                    href="https://www.cybercom.mil" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-4 flex items-center justify-center"
+                    title="United States Cyber Command"
+                  >
                     <img
                       src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
                       alt="United States Cyber Command"
                       className="h-24 sm:h-28 w-auto object-contain"
                     />
-                  </div>
+                  </a>
                 </motion.div>
                 
                 {/* Second row - 2 logos */}
@@ -329,13 +341,19 @@ const Index = () => {
                   transition={{ delay: 0.5, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="p-4 flex items-center justify-center">
+                  <a 
+                    href="https://www.nsa.gov" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-4 flex items-center justify-center"
+                    title="National Security Agency"
+                  >
                     <img
                       src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
                       alt="National Security Agency"
                       className="h-24 sm:h-28 w-auto object-contain"
                     />
-                  </div>
+                  </a>
                 </motion.div>
                 <motion.div 
                   className="opacity-90 hover:opacity-100 transition-all duration-300"
@@ -345,13 +363,19 @@ const Index = () => {
                   transition={{ delay: 0.6, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="p-4 flex items-center justify-center">
+                  <a 
+                    href="https://www.af.mil" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-4 flex items-center justify-center"
+                    title="United States Air Force"
+                  >
                     <img
                       src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
                       alt="US Air Force"
                       className="h-24 sm:h-28 w-auto object-contain"
                     />
-                  </div>
+                  </a>
                 </motion.div>
                 
                 {/* Third row - 1 centered logo */}
@@ -363,13 +387,19 @@ const Index = () => {
                   transition={{ delay: 0.7, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="p-4 flex items-center justify-center">
+                  <a 
+                    href="https://www.army.mil" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-4 flex items-center justify-center"
+                    title="United States Army"
+                  >
                     <img
                       src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
                       alt="US Army"
                       className="h-24 sm:h-28 w-auto object-contain"
                     />
-                  </div>
+                  </a>
                 </motion.div>
               </div>
               
@@ -385,13 +415,19 @@ const Index = () => {
                     transition={{ delay: 0.3, duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="p-4 flex items-center justify-center">
+                    <a 
+                      href="https://www.cisa.gov" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 flex items-center justify-center"
+                      title="Cybersecurity and Infrastructure Security Agency"
+                    >
                       <img
                         src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
                         alt="Cybersecurity and Infrastructure Security Agency"
                         className="h-32 w-auto object-contain"
                       />
-                    </div>
+                    </a>
                   </motion.div>
                   <motion.div 
                     className="opacity-90 hover:opacity-100 transition-all duration-300"
@@ -401,13 +437,19 @@ const Index = () => {
                     transition={{ delay: 0.4, duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="p-4 flex items-center justify-center">
+                    <a 
+                      href="https://www.cybercom.mil" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 flex items-center justify-center"
+                      title="United States Cyber Command"
+                    >
                       <img
                         src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
                         alt="United States Cyber Command"
                         className="h-32 w-auto object-contain"
                       />
-                    </div>
+                    </a>
                   </motion.div>
                   <motion.div 
                     className="opacity-90 hover:opacity-100 transition-all duration-300"
@@ -417,13 +459,19 @@ const Index = () => {
                     transition={{ delay: 0.5, duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="p-4 flex items-center justify-center">
+                    <a 
+                      href="https://www.nsa.gov" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 flex items-center justify-center"
+                      title="National Security Agency"
+                    >
                       <img
                         src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
                         alt="National Security Agency"
                         className="h-32 w-auto object-contain"
                       />
-                    </div>
+                    </a>
                   </motion.div>
                 </div>
                 
@@ -437,13 +485,19 @@ const Index = () => {
                     transition={{ delay: 0.6, duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="p-4 flex items-center justify-center">
+                    <a 
+                      href="https://www.af.mil" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 flex items-center justify-center"
+                      title="United States Air Force"
+                    >
                       <img
                         src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
                         alt="US Air Force"
                         className="h-32 w-auto object-contain"
                       />
-                    </div>
+                    </a>
                   </motion.div>
                   <motion.div 
                     className="opacity-90 hover:opacity-100 transition-all duration-300"
@@ -453,13 +507,19 @@ const Index = () => {
                     transition={{ delay: 0.7, duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="p-4 flex items-center justify-center">
+                    <a 
+                      href="https://www.army.mil" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 flex items-center justify-center"
+                      title="United States Army"
+                    >
                       <img
                         src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
                         alt="US Army"
                         className="h-32 w-auto object-contain"
                       />
-                    </div>
+                    </a>
                   </motion.div>
                 </div>
               </div>
