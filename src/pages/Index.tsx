@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -38,6 +39,26 @@ const Index = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               These principles guide everything we do at Erias Ventures.
             </p>
+            <motion.p 
+              initial={{
+                opacity: 0,
+                y: 20
+              }} 
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }} 
+              viewport={{
+                once: true
+              }} 
+              transition={{
+                delay: 0.3,
+                duration: 0.6
+              }} 
+              className="text-muted-foreground max-w-2xl mx-auto mt-4 italic"
+            >
+              Erias Ventures was founded to serve its customers with an entrepreneurial mindset. We value open communication, taking action, being committed, persevering through challenges and failures, and sharing innovative ideas.
+            </motion.p>
           </motion.div>
           
           <motion.div initial={{
