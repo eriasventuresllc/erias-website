@@ -35,26 +35,6 @@ const Index = () => {
           duration: 0.6
         }} className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-2">Our Core Values</h2>
-            <motion.p 
-              initial={{
-                opacity: 0,
-                y: 20
-              }} 
-              whileInView={{
-                opacity: 1,
-                y: 0
-              }} 
-              viewport={{
-                once: true
-              }} 
-              transition={{
-                delay: 0.3,
-                duration: 0.6
-              }} 
-              className="text-muted-foreground max-w-2xl mx-auto mt-4"
-            >
-              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value <span className="text-lg font-bold text-primary">open communication</span>, <span className="text-lg font-bold text-primary">taking action</span>, being <span className="text-lg font-bold text-primary">committed</span>, persevering through challenges and failures, and <span className="text-lg font-bold text-primary">sharing innovative ideas</span>.
-            </motion.p>
           </motion.div>
           
           <motion.div initial={{
