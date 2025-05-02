@@ -1,9 +1,11 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
 import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Hero } from '@/components/ui/animated-hero';
 
 const Index = () => {
   const controls = useAnimation();
@@ -18,6 +20,9 @@ const Index = () => {
   }, [controls]);
 
   return <Layout>
+      {/* Hero Section */}
+      <Hero />
+
       {/* Values Section */}
       <section className="py-8 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
@@ -50,7 +55,7 @@ const Index = () => {
                 delay: 0.3,
                 duration: 0.6
               }} 
-              className="text-lg font-bold text-primary max-w-2xl mx-auto mt-4"
+              className="text-muted-foreground max-w-2xl mx-auto mt-4 italic"
             >
               Erias Ventures was founded to serve its customers with an entrepreneurial mindset. We value open communication, taking action, being committed, persevering through challenges and failures, and sharing innovative ideas.
             </motion.p>
