@@ -55,9 +55,9 @@ const Index = () => {
                 delay: 0.3,
                 duration: 0.6
               }} 
-              className="text-muted-foreground max-w-2xl mx-auto mt-4 italic"
+              className="text-muted-foreground max-w-2xl mx-auto mt-4"
             >
-              Erias Ventures was founded to serve its customers with an entrepreneurial mindset. We value open communication, taking action, being committed, persevering through challenges and failures, and sharing innovative ideas.
+              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value <span className="text-lg font-bold text-primary">open communication</span>, <span className="text-lg font-bold text-primary">taking action</span>, being <span className="text-lg font-bold text-primary">committed</span>, persevering through challenges and failures, and <span className="text-lg font-bold text-primary">sharing innovative ideas</span>.
             </motion.p>
           </motion.div>
           
@@ -532,3 +532,4 @@ const AwardImage = ({ imgSrc, alt, delay, width }) => {
 };
 
 export default Index;
+
