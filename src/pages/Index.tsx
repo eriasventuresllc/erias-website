@@ -293,7 +293,7 @@ const Index = () => {
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                 >
                   <a 
                     href="https://www.cisa.gov" 
@@ -315,7 +315,7 @@ const Index = () => {
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                 >
                   <a 
                     href="https://www.cybercom.mil" 
@@ -339,7 +339,7 @@ const Index = () => {
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5, duration: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                 >
                   <a 
                     href="https://www.nsa.gov" 
@@ -361,7 +361,7 @@ const Index = () => {
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.6, duration: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                 >
                   <a 
                     href="https://www.af.mil" 
@@ -385,7 +385,7 @@ const Index = () => {
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.7, duration: 0.4 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                 >
                   <a 
                     href="https://www.army.mil" 
@@ -413,7 +413,7 @@ const Index = () => {
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3, duration: 0.4 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                   >
                     <a 
                       href="https://www.cisa.gov" 
@@ -435,7 +435,7 @@ const Index = () => {
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4, duration: 0.4 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                   >
                     <a 
                       href="https://www.cybercom.mil" 
@@ -457,7 +457,7 @@ const Index = () => {
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5, duration: 0.4 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                   >
                     <a 
                       href="https://www.nsa.gov" 
@@ -483,7 +483,7 @@ const Index = () => {
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.6, duration: 0.4 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                   >
                     <a 
                       href="https://www.af.mil" 
@@ -505,7 +505,7 @@ const Index = () => {
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.7, duration: 0.4 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
                   >
                     <a 
                       href="https://www.army.mil" 
