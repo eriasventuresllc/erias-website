@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -36,9 +35,6 @@ const Index = () => {
           duration: 0.6
         }} className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-2">Our Core Values</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              These principles guide everything we do at Erias Ventures.
-            </p>
             <motion.p 
               initial={{
                 opacity: 0,
@@ -532,4 +528,3 @@ const AwardImage = ({ imgSrc, alt, delay, width }) => {
 };
 
 export default Index;
-
