@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -181,19 +182,4 @@ html {
   }
 }
 
-/* Logo initial animation (only runs once at page load) */
-@keyframes logoFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.logo-container {
-  animation: logoFadeIn 0.5s ease-out forwards;
-  animation-iteration-count: 1;
-}
+/* The logo-container class animation has been removed to prevent reanimation on navigation */

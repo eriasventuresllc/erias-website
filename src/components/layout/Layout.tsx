@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
@@ -76,10 +77,10 @@ const Layout = ({ children }: LayoutProps) => {
       <VerticalNavBar items={navItems} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
-        {/* Logo - static container with initial animation only on page load */}
-        <div className="w-full flex justify-center mb-10 mt-6 logo-container">
+        {/* Logo - static container without animation on navigation */}
+        <div className="w-full flex justify-center mb-10 mt-6">
           <img 
-            src="/lovable-uploads/92723f16-1bf7-4b2b-8342-f35c47e57b2c.png" 
+            src="/lovable-uploads/erias-name-dark.svg" 
             alt="Erias Ventures Logo" 
             className="h-24 md:h-32 object-contain"
           />
