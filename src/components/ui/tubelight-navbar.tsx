@@ -111,15 +111,53 @@ export function NavBar({ items, className }: NavBarProps) {
                   >
                     {item.name}
                   </motion.span>
-                  <motion.span 
-                    className="md:hidden"
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={{ scale: active ? 1.1 : 1 }}
-                    transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+                  
+                  {/* Enhanced icon animation for mobile */}
+                  <motion.div 
+                    className="md:hidden relative"
+                    initial={false}
                   >
-                    <Icon size={20} strokeWidth={2.5} className={active ? "text-[#B45364]" : ""} />
-                  </motion.span>
+                    {/* The icon with enhanced animation */}
+                    <motion.div
+                      initial={{ scale: 1, rotate: 0 }}
+                      animate={{ 
+                        scale: active ? 1.15 : 1,
+                        rotate: active ? [0, 5, 0, -5, 0] : 0,
+                      }}
+                      transition={{
+                        scale: { type: "spring", stiffness: 500, damping: 25 },
+                        rotate: active ? { 
+                          type: "spring", 
+                          stiffness: 300, 
+                          damping: 10,
+                          duration: 0.5,
+                        } : { duration: 0.2 }
+                      }}
+                    >
+                      <Icon 
+                        size={20} 
+                        strokeWidth={2.5} 
+                        className={cn(
+                          "transition-colors duration-300",
+                          active ? "text-primary" : "text-foreground/80"
+                        )} 
+                      />
+                    </motion.div>
+                    
+                    {/* Glow effect under active icon */}
+                    {active && (
+                      <motion.div
+                        className="absolute inset-0 rounded-full blur-md opacity-30 bg-primary"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1.5 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20
+                        }}
+                      />
+                    )}
+                  </motion.div>
                   
                   {active && (
                     <motion.div
