@@ -24,6 +24,7 @@ export function NavBar({ items, className }: NavBarProps) {
   const [isMobile, setIsMobile] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   // Function to determine if a URL is active
   const isActive = (url: string) => location.pathname === url;
@@ -72,6 +73,7 @@ export function NavBar({ items, className }: NavBarProps) {
         {items.map((item) => {
           const Icon = item.icon
           const active = isActive(item.url);
+          const isHovered = hoveredItem === item.name;
           const itemKey = `nav-tube-${item.name}`;
 
           return (
@@ -85,6 +87,8 @@ export function NavBar({ items, className }: NavBarProps) {
                   handleNavigation(item.url);
                 }
               }}
+              onMouseEnter={() => setHoveredItem(item.name)}
+              onMouseLeave={() => setHoveredItem(null)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                 "text-foreground/80 hover:text-primary",
@@ -96,9 +100,14 @@ export function NavBar({ items, className }: NavBarProps) {
             >
               <>
                 <span className="hidden md:inline">{item.name}</span>
-                <span className="md:hidden">
+                <motion.span 
+                  className="md:hidden"
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <Icon size={20} strokeWidth={2.5} className={active ? "text-[#B45364]" : ""} />
-                </span>
+                </motion.span>
                 
                 {active && (
                   <motion.div
@@ -111,6 +120,17 @@ export function NavBar({ items, className }: NavBarProps) {
                       damping: 35,
                       mass: 0.5
                     }}
+                  />
+                )}
+                
+                {/* Hover effect animation */}
+                {isHovered && !active && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.1 }}
+                    className="absolute inset-0 bg-primary/5 rounded-full -z-10"
                   />
                 )}
               </>
