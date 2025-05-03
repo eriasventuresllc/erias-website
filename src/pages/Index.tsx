@@ -1,8 +1,7 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
-import { MessageSquare, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
+import { BrainCircuit, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Hero } from '@/components/ui/animated-hero';
@@ -54,7 +53,7 @@ const Index = () => {
               }} 
               className="text-muted-foreground max-w-2xl mx-auto mt-4"
             >
-              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value <span className="text-lg font-bold text-primary">open communication</span>, <span className="text-lg font-bold text-primary">taking action</span>, being <span className="text-lg font-bold text-primary">committed</span>, persevering through challenges and failures, and <span className="text-lg font-bold text-primary">sharing innovative ideas</span>.
+              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary"> innovative ideas</span>.
             </motion.p>
           </motion.div>
           
@@ -67,11 +66,26 @@ const Index = () => {
         }} transition={{
           duration: 0.6
         }} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ValueCardWithPattern icon={<MessageSquare size={24} />} title="Open Communication" description="We ensure our employees, partners, and customers are kept informed of decisions and actions. By sharing intentions, we prevent mishaps during mission execution." delay={0.1} />
+            <ValueCardWithPattern 
+              icon={<BrainCircuit size={24} className="rotate-90" />} 
+              title="Entrepreneurial Mindset" 
+              description="We cultivate an environment where every engineer thinks like an owner, taking initiative, identifying opportunities, and driving solutions forward. This proactive mindset is amplified by the fact that over a third of our team brings direct leadership experience, guiding projects with foresight and accountability." 
+              delay={0.1} 
+            />
             
-            <ValueCardWithPattern icon={<Rocket size={24} />} title="Taking Action" description="We believe that with proper planning and deliberate focus, even the hardest problems can be dismantled into manageable pieces that can be committed to and worked." delay={0.2} />
+            <ValueCardWithPattern 
+              icon={<Rocket size={24} />} 
+              title="Taking Action" 
+              description="Ideas are valuable, but execution is paramount. We translate strategy into tangible results by meticulously planning, then acting decisively. Complex problems are systematically broken down into manageable tasks, enabling focused effort and consistent delivery." 
+              delay={0.2} 
+            />
             
-            <ValueCardWithPattern icon={<Lightbulb size={24} />} title="Innovation" description="We are committed to providing innovative, scalable, and adaptive solutions as we develop and build complex systems and products to satisfy our customers' unique challenges." delay={0.3} />
+            <ValueCardWithPattern 
+              icon={<Lightbulb size={24} />} 
+              title="Innovative Ideas" 
+              description="We champion a culture of open innovation where diverse perspectives converge. By actively sharing insights and challenging conventions, we collectively build more robust, scalable, and adaptive solutions that directly address the unique and demanding challenges our customers face." 
+              delay={0.3} 
+            />
           </motion.div>
         </div>
       </section>
@@ -103,7 +117,7 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
                 alt="Leaf icon" 
-                className="mr-2 h-10 w-auto" 
+                className="mr-2 h-10 w-auto opacity-80" 
               />
               Our Approach
             </motion.h2>
@@ -292,8 +306,8 @@ const Index = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                  transition={{ delay: 0.3, duration: 0.4, scale: { duration: 0.1 } }}
+                  whileHover={{ scale: 1.12 }}
                 >
                   <a 
                     href="https://www.cisa.gov" 
@@ -314,8 +328,8 @@ const Index = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                  transition={{ delay: 0.4, duration: 0.4, scale: { duration: 0.1 } }}
+                  whileHover={{ scale: 1.12 }}
                 >
                   <a 
                     href="https://www.cybercom.mil" 
@@ -338,8 +352,8 @@ const Index = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.4 }}
-                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                  transition={{ delay: 0.5, duration: 0.4, scale: { duration: 0.1 } }}
+                  whileHover={{ scale: 1.12 }}
                 >
                   <a 
                     href="https://www.nsa.gov" 
@@ -360,8 +374,8 @@ const Index = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.6, duration: 0.4 }}
-                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                  transition={{ delay: 0.6, duration: 0.4, scale: { duration: 0.1 } }}
+                  whileHover={{ scale: 1.12 }}
                 >
                   <a 
                     href="https://www.af.mil" 
@@ -384,8 +398,8 @@ const Index = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 0.9, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.7, duration: 0.4 }}
-                  whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                  transition={{ delay: 0.7, duration: 0.4, scale: { duration: 0.1 } }}
+                  whileHover={{ scale: 1.12 }}
                 >
                   <a 
                     href="https://www.army.mil" 
@@ -412,8 +426,8 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3, duration: 0.4 }}
-                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                    transition={{ delay: 0.3, duration: 0.4, scale: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.12 }}
                   >
                     <a 
                       href="https://www.cisa.gov" 
@@ -434,8 +448,8 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.4 }}
-                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                    transition={{ delay: 0.4, duration: 0.4, scale: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.12 }}
                   >
                     <a 
                       href="https://www.cybercom.mil" 
@@ -456,8 +470,8 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5, duration: 0.4 }}
-                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                    transition={{ delay: 0.5, duration: 0.4, scale: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.12 }}
                   >
                     <a 
                       href="https://www.nsa.gov" 
@@ -482,8 +496,8 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.6, duration: 0.4 }}
-                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                    transition={{ delay: 0.6, duration: 0.4, scale: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.12 }}
                   >
                     <a 
                       href="https://www.af.mil" 
@@ -504,8 +518,8 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 0.9, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.7, duration: 0.4 }}
-                    whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
+                    transition={{ delay: 0.7, duration: 0.4, scale: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.12 }}
                   >
                     <a 
                       href="https://www.army.mil" 
@@ -549,14 +563,16 @@ const ValueCardWithPattern = ({
     duration: 0.6
   }}>
       <PatternCard className="h-full hover:shadow-md transition-shadow">
-        <PatternCardBody>
-          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
+        <PatternCardBody className="flex items-start justify-between space-x-4">
+          <div className="flex-grow">
+            <h3 className="text-xl font-semibold mb-2">{title}</h3>
+            <p className="text-muted-foreground text-sm">
+              {description}
+            </p>
+          </div>
+          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
             {icon}
           </div>
-          <h3 className="text-xl font-semibold mb-3">{title}</h3>
-          <p className="text-muted-foreground">
-            {description}
-          </p>
         </PatternCardBody>
       </PatternCard>
     </motion.div>;

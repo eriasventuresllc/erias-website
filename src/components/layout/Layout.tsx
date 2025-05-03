@@ -1,15 +1,8 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
-import { Home, Info, FileText, Instagram } from 'lucide-react';
+import { Home, Info, FileText } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { 
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -83,29 +76,26 @@ const Layout = ({ children }: LayoutProps) => {
       <VerticalNavBar items={navItems} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
-        <motion.div 
-          className="w-full flex justify-center mb-10 mt-6"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.5,
-            ease: "easeOut"
-          }}
-        >
+        {/* Logo - static container with initial animation only on page load */}
+        <div className="w-full flex justify-center mb-10 mt-6 logo-container">
           <img 
             src="/lovable-uploads/92723f16-1bf7-4b2b-8342-f35c47e57b2c.png" 
             alt="Erias Ventures Logo" 
             className="h-24 md:h-32 object-contain"
           />
-        </motion.div>
+        </div>
         
+        {/* Page content transitions */}
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ 
+              duration: 0.25, 
+              ease: "easeInOut" 
+            }}
             className="tracking-wide leading-relaxed text-content"
           >
             {children}

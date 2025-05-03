@@ -1,8 +1,7 @@
-
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
-function Hero() {
+function HeroComponent() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
     () => ["Mission", "Growth"],
@@ -69,5 +68,7 @@ function Hero() {
     </div>
   );
 }
+
+const Hero = React.memo(HeroComponent);
 
 export { Hero };

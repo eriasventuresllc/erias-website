@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { Shield, Code, Database, Users, Brain, GraduationCap } from 'lucide-react';
+import { Lock, Code, Database, Users, Brain, GraduationCap } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 
 const About = () => {
@@ -44,7 +44,7 @@ const About = () => {
     },
     {
       title: "Cyber Engineering",
-      icon: <Shield className="h-8 w-8 text-primary" />,
+      icon: <Lock className="h-8 w-8 text-primary" />,
       description: "Experienced in all facets of Computer Network Operations, including both Offensive and Defensive capabilities, our Cyber Engineers are experts in researching, designing, implementing, and conducting Cyber operations using the latest tradecraft, tools, techniques, and processes in Cybersecurity.",
       features: [
         "Collection, Operations, Analysis, and Reporting Expertise",
