@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -70,73 +70,88 @@ export function NavBar({ items, className }: NavBarProps) {
           layout: { type: "spring", stiffness: 300, damping: 30 },
         }}
       >
-        {items.map((item) => {
-          const Icon = item.icon
-          const active = isActive(item.url);
-          const isHovered = hoveredItem === item.name;
-          const itemKey = `nav-tube-${item.name}`;
+        <AnimatePresence mode="wait">
+          {items.map((item) => {
+            const Icon = item.icon
+            const active = isActive(item.url);
+            const isHovered = hoveredItem === item.name;
+            const itemKey = `nav-tube-${item.name}`;
 
-          return (
-            <motion.div
-              key={itemKey}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleNavigation(item.url)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  handleNavigation(item.url);
-                }
-              }}
-              onMouseEnter={() => setHoveredItem(item.name)}
-              onMouseLeave={() => setHoveredItem(null)}
-              className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-foreground/80 hover:text-primary",
-                active && "text-primary",
-              )}
-              style={{ WebkitTapHighlightColor: 'transparent' }}
-              layout
-              initial={false}
-            >
-              <>
-                <span className="hidden md:inline">{item.name}</span>
-                <motion.span 
-                  className="md:hidden"
-                  whileHover={{ scale: 1.15 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Icon size={20} strokeWidth={2.5} className={active ? "text-[#B45364]" : ""} />
-                </motion.span>
-                
-                {active && (
-                  <motion.div
-                    layoutId={`tube-lamp-${item.name}`}
-                    className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
-                    initial={false}
-                    transition={{
-                      type: "spring",
-                      stiffness: 650, 
-                      damping: 35,
-                      mass: 0.5
-                    }}
-                  />
+            return (
+              <motion.div
+                key={itemKey}
+                role="button"
+                tabIndex={0}
+                onClick={() => handleNavigation(item.url)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleNavigation(item.url);
+                  }
+                }}
+                onMouseEnter={() => setHoveredItem(item.name)}
+                onMouseLeave={() => setHoveredItem(null)}
+                className={cn(
+                  "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300",
+                  "text-foreground/80 hover:text-primary",
+                  active && "text-primary",
                 )}
-                
-                {/* Hover effect animation */}
-                {isHovered && !active && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.1 }}
-                    className="absolute inset-0 bg-primary/5 rounded-full -z-10"
-                  />
-                )}
-              </>
-            </motion.div>
-          )
-        })}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+                layout
+                initial={false}
+                whileHover={{
+                  scale: 1.05,
+                }}
+              >
+                <>
+                  <motion.span 
+                    className="hidden md:inline"
+                    initial={{ y: 0 }}
+                    animate={{ y: active ? -2 : 0 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  >
+                    {item.name}
+                  </motion.span>
+                  <motion.span 
+                    className="md:hidden"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{ scale: active ? 1.1 : 1 }}
+                    transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+                  >
+                    <Icon size={20} strokeWidth={2.5} className={active ? "text-[#B45364]" : ""} />
+                  </motion.span>
+                  
+                  {active && (
+                    <motion.div
+                      layoutId="tube-lamp"
+                      className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
+                      initial={false}
+                      transition={{
+                        type: "spring",
+                        stiffness: 650, 
+                        damping: 35,
+                        mass: 0.5
+                      }}
+                    />
+                  )}
+                  
+                  {/* Hover effect animation */}
+                  <AnimatePresence>
+                    {isHovered && !active && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                        transition={{ duration: 0.2, type: "spring", stiffness: 300 }}
+                        className="absolute inset-0 bg-primary/5 rounded-full -z-10"
+                      />
+                    )}
+                  </AnimatePresence>
+                </>
+              </motion.div>
+            )
+          })}
+        </AnimatePresence>
       </motion.div>
     </div>
   )
