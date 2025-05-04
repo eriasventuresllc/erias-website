@@ -77,10 +77,10 @@ const Layout = ({ children }: LayoutProps) => {
       <VerticalNavBar items={navItems} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
-        {/* Logo - static container without animation on navigation */}
+        {/* Logo - using the new uploaded logo image */}
         <div className="w-full flex justify-center mb-10 mt-6">
           <img 
-            src="/lovable-uploads/erias-name-dark.svg" 
+            src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
             alt="Erias Ventures Logo" 
             className="h-24 md:h-32 object-contain"
           />
