@@ -1,5 +1,18 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
+
+// Consistent animation constants
+const SPRING_TRANSITION = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30
+};
+
+const FADE_TRANSITION = {
+  duration: 0.7,
+  ease: "easeOut"
+};
 
 function HeroComponent() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -29,11 +42,7 @@ function HeroComponent() {
                 className="text-primary text-5xl md:text-6xl font-bold"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.7, 
-                  delay: 0.1,
-                  ease: "easeOut"
-                }}
+                transition={FADE_TRANSITION}
               >
                 Engineering
               </motion.span>
@@ -44,7 +53,7 @@ function HeroComponent() {
                     key={index}
                     className="absolute font-semibold"
                     initial={{ opacity: 0, y: "-100" }}
-                    transition={{ type: "spring", stiffness: 50 }}
+                    transition={SPRING_TRANSITION}
                     animate={
                       titleNumber === index
                         ? {

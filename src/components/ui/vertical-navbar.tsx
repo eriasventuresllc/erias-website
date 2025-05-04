@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useNavigate, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
@@ -18,6 +18,18 @@ interface VerticalNavBarProps {
   items: NavItem[]
   className?: string
 }
+
+// Consistent animation constants
+const SPRING_TRANSITION = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30
+};
+
+const HOVER_TRANSITION = {
+  duration: 0.2,
+  ease: "easeInOut"
+};
 
 export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -46,12 +58,10 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
     >
       <motion.div 
         className="flex flex-col items-center gap-6 py-5 px-4 rounded-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-lg"
-        initial={false}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
         layoutId="vertical-navbar"
-        transition={{
-          layout: { type: "spring", stiffness: 300, damping: 30 }
-        }}
+        transition={SPRING_TRANSITION}
       >
         <TooltipProvider delayDuration={0}>
           {items.map((item) => {
@@ -62,7 +72,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
             return (
               <Tooltip key={itemKey}>
                 <TooltipTrigger asChild>
-                  <div
+                  <motion.div
                     role="button"
                     tabIndex={0}
                     onClick={() => handleNavigation(item.url)}
@@ -79,26 +89,38 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                     onMouseEnter={() => setHoveredItem(item.name)}
                     onMouseLeave={() => setHoveredItem(null)}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                    transition={SPRING_TRANSITION}
                   >
                     <Icon size={24} strokeWidth={2.5} />
                     
                     {active && (
                       <motion.div
                         className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
-                        initial={false}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 650,
-                          damping: 35,
-                          mass: 0.5
-                        }}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={SPRING_TRANSITION}
                       />
                     )}
-                  </div>
+                    
+                    {hoveredItem === item.name && !active && (
+                      <motion.div
+                        className="absolute inset-0 w-full h-full bg-white/10 rounded-full -z-10"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={HOVER_TRANSITION}
+                      />
+                    )}
+                  </motion.div>
                 </TooltipTrigger>
-                <TooltipContent side="left" className="bg-black/80 text-white border-white/10 flex items-center" sideOffset={5}>
+                <TooltipContent 
+                  side="left" 
+                  className="bg-black/80 text-white border-white/10 flex items-center" 
+                  sideOffset={5}
+                >
                   {item.name}
                 </TooltipContent>
               </Tooltip>

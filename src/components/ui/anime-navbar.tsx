@@ -18,6 +18,18 @@ interface NavBarProps {
   className?: string
 }
 
+// Consistent animation constants
+const SPRING_TRANSITION = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30
+};
+
+const HOVER_TRANSITION = {
+  duration: 0.2,
+  ease: "easeInOut"
+};
+
 export function AnimeNavBar({ items, className }: NavBarProps) {
   const [mounted, setMounted] = useState(false)
   const [hoveredTab, setHoveredTab] = useState<string | null>(null)
@@ -57,11 +69,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
           className="flex items-center gap-3 bg-black/50 border border-white/10 backdrop-blur-lg py-2 px-2 rounded-full shadow-lg relative"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-          }}
+          transition={SPRING_TRANSITION}
           layout="position"
           layoutId="anime-navbar"
         >
@@ -83,6 +91,10 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                   "text-white/70 hover:text-white",
                   isActive && "text-white"
                 )}
+                whileHover={{
+                  scale: 1.05,
+                }}
+                transition={SPRING_TRANSITION}
               >
                 {isActive && (
                   <motion.div
@@ -117,7 +129,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                   className="hidden md:inline relative z-10"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
+                  transition={HOVER_TRANSITION}
                 >
                   {item.name}
                 </motion.span>
@@ -125,6 +137,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                   className="md:hidden relative z-10"
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
+                  transition={SPRING_TRANSITION}
                 >
                   <Icon size={18} strokeWidth={2.5} />
                 </motion.span>
@@ -135,6 +148,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
+                      transition={HOVER_TRANSITION}
                       className="absolute inset-0 bg-white/10 rounded-full -z-10"
                     />
                   )}

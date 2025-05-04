@@ -11,6 +11,20 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+// Consistent animation variants for page transitions
+const pageVariants = {
+  initial: { opacity: 0, y: 20 },
+  enter: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 }
+};
+
+const pageTransition = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30,
+  duration: 0.3
+};
+
 const Layout = ({ children }: LayoutProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -86,17 +100,15 @@ const Layout = ({ children }: LayoutProps) => {
           />
         </div>
         
-        {/* Page content transitions */}
+        {/* Page content transitions - updated for consistency */}
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ 
-              duration: 0.25, 
-              ease: "easeInOut" 
-            }}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={pageVariants}
+            transition={pageTransition}
             className="tracking-wide leading-relaxed text-content"
           >
             {children}

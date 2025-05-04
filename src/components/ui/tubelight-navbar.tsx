@@ -18,6 +18,18 @@ interface NavBarProps {
   className?: string
 }
 
+// Consistent animation constants
+const SPRING_TRANSITION = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30
+};
+
+const HOVER_TRANSITION = {
+  duration: 0.2,
+  ease: "easeInOut"
+};
+
 export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -66,9 +78,7 @@ export function NavBar({ items, className }: NavBarProps) {
         layoutId="tubelight-navbar"
         layout="position"
         initial={false}
-        transition={{
-          layout: { type: "spring", stiffness: 300, damping: 30 },
-        }}
+        transition={SPRING_TRANSITION}
       >
         <AnimatePresence mode="wait">
           {items.map((item) => {
@@ -101,13 +111,14 @@ export function NavBar({ items, className }: NavBarProps) {
                 whileHover={{
                   scale: 1.05,
                 }}
+                transition={SPRING_TRANSITION}
               >
                 <>
                   <motion.span 
                     className="hidden md:inline"
                     initial={{ y: 0 }}
                     animate={{ y: active ? -2 : 0 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    transition={SPRING_TRANSITION}
                   >
                     {item.name}
                   </motion.span>
@@ -125,11 +136,9 @@ export function NavBar({ items, className }: NavBarProps) {
                         rotate: active ? [0, 5, 0, -5, 0] : 0,
                       }}
                       transition={{
-                        scale: { type: "spring", stiffness: 500, damping: 25 },
+                        scale: SPRING_TRANSITION,
                         rotate: active ? { 
-                          type: "spring", 
-                          stiffness: 300, 
-                          damping: 10,
+                          ...SPRING_TRANSITION,
                           duration: 0.5,
                         } : { duration: 0.2 }
                       }}
@@ -150,11 +159,7 @@ export function NavBar({ items, className }: NavBarProps) {
                         className="absolute inset-0 rounded-full blur-md opacity-30 bg-primary"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1.5 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 20
-                        }}
+                        transition={SPRING_TRANSITION}
                       />
                     )}
                   </motion.div>
@@ -164,12 +169,7 @@ export function NavBar({ items, className }: NavBarProps) {
                       layoutId="tube-lamp"
                       className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
                       initial={false}
-                      transition={{
-                        type: "spring",
-                        stiffness: 650, 
-                        damping: 35,
-                        mass: 0.5
-                      }}
+                      transition={SPRING_TRANSITION}
                     />
                   )}
                   
@@ -179,8 +179,8 @@ export function NavBar({ items, className }: NavBarProps) {
                       <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                        transition={{ duration: 0.2, type: "spring", stiffness: 300 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={HOVER_TRANSITION}
                         className="absolute inset-0 bg-primary/5 rounded-full -z-10"
                       />
                     )}
