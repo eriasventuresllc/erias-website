@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useRef } from "react"
@@ -58,9 +57,6 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
     >
       <motion.div 
         className="flex flex-col items-center gap-6 py-5 px-4 rounded-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-lg"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        layoutId="vertical-navbar"
         transition={SPRING_TRANSITION}
       >
         <TooltipProvider delayDuration={0}>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
@@ -22,7 +21,7 @@ const pageTransition = {
   type: "spring",
   stiffness: 300,
   damping: 30,
-  duration: 0.3
+  duration: 0.15
 };
 
 const Layout = ({ children }: LayoutProps) => {
