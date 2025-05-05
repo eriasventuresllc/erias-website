@@ -99,21 +99,24 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     {active && (
                       <motion.div
                         className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
-                        initial={{ scale: 0.8, opacity: 0 }}
+                        initial={false}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={SPRING_TRANSITION}
+                        layoutId={`vertical-active-${item.name}`}
                       />
                     )}
                     
-                    {hoveredItem === item.name && !active && (
-                      <motion.div
-                        className="absolute inset-0 w-full h-full bg-[#B45364]/20 rounded-md -z-10"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={HOVER_TRANSITION}
-                      />
-                    )}
+                    <AnimatePresence initial={false}>
+                      {hoveredItem === item.name && !active && (
+                        <motion.div
+                          className="absolute inset-0 w-full h-full bg-[#B45364]/20 rounded-full -z-10"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={HOVER_TRANSITION}
+                        />
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 </TooltipTrigger>
                 <TooltipContent 

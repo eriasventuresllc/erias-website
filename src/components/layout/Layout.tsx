@@ -76,6 +76,9 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background text-foreground dark">
+      {/* The VerticalNavBar should persist across page changes */}
+      <VerticalNavBar items={navItems} />
+      
       {isMobile && (
         <header 
           className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
@@ -88,8 +91,6 @@ const Layout = ({ children }: LayoutProps) => {
         </header>
       )}
       
-      <VerticalNavBar items={navItems} />
-      
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
         {/* Logo - using the new uploaded logo image */}
         <div className="w-full flex justify-center mb-10 mt-6">
@@ -101,7 +102,7 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
         
         {/* Page content transitions - updated for consistency */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}
             initial="initial"
@@ -115,6 +116,7 @@ const Layout = ({ children }: LayoutProps) => {
           </motion.div>
         </AnimatePresence>
       </main>
+      
       <footer className="bg-secondary py-8 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
