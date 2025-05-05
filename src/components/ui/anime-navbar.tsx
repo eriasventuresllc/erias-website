@@ -98,7 +98,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
               >
                 {isActive && (
                   <motion.div
-                    layoutId={`anime-active-${item.name}`}
+                    layoutId={`active-bg-${item.name}`}
                     className="absolute inset-0 rounded-full -z-10 overflow-hidden"
                     initial={false}
                     animate={{ 

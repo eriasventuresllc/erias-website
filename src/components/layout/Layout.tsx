@@ -101,7 +101,7 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
         
         {/* Page content transitions - updated for consistency */}
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
             initial="initial"

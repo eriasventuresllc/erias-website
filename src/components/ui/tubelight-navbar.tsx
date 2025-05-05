@@ -166,7 +166,7 @@ export function NavBar({ items, className }: NavBarProps) {
                   
                   {active && (
                     <motion.div
-                      layoutId={`tubelight-active-${item.name}`}
+                      layoutId="tube-lamp"
                       className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
                       initial={false}
                       transition={SPRING_TRANSITION}
