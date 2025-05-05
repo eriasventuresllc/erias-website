@@ -99,7 +99,8 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     {active && (
                       <motion.div
                         className="absolute inset-0 w-full h-full bg-primary/10 rounded-full -z-10"
-                        layoutId={`active-vertical-${item.name}`}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
                         transition={SPRING_TRANSITION}
                       />
                     )}
