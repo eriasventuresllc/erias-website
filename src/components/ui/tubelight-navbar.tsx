@@ -80,7 +80,7 @@ export function NavBar({ items, className }: NavBarProps) {
         initial={false}
         transition={SPRING_TRANSITION}
       >
-        <AnimatePresence initial={false} mode="wait">
+        <AnimatePresence mode="wait">
           {items.map((item) => {
             const Icon = item.icon
             const active = isActive(item.url);
@@ -116,7 +116,7 @@ export function NavBar({ items, className }: NavBarProps) {
                 <>
                   <motion.span 
                     className="hidden md:inline"
-                    initial={false}
+                    initial={{ y: 0 }}
                     animate={{ y: active ? -2 : 0 }}
                     transition={SPRING_TRANSITION}
                   >
@@ -130,7 +130,7 @@ export function NavBar({ items, className }: NavBarProps) {
                   >
                     {/* The icon with enhanced animation */}
                     <motion.div
-                      initial={false}
+                      initial={{ scale: 1, rotate: 0 }}
                       animate={{ 
                         scale: active ? 1.15 : 1,
                         rotate: active ? [0, 5, 0, -5, 0] : 0,
@@ -157,32 +157,31 @@ export function NavBar({ items, className }: NavBarProps) {
                     {active && (
                       <motion.div
                         className="absolute inset-0 rounded-full blur-md opacity-30 bg-primary"
-                        initial={false}
+                        initial={{ scale: 0 }}
                         animate={{ scale: 1.5 }}
                         transition={SPRING_TRANSITION}
-                        layoutId={`mobile-glow-${item.name}`}
                       />
                     )}
                   </motion.div>
                   
                   {active && (
                     <motion.div
-                      layoutId={`tube-lamp-${item.name}`}
+                      layoutId={`tubelight-active-${item.name}`}
                       className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 md:block hidden"
                       initial={false}
                       transition={SPRING_TRANSITION}
                     />
                   )}
                   
-                  {/* Hover effect animation */}
-                  <AnimatePresence initial={false}>
+                  {/* Hover effect animation - now red background for the popup */}
+                  <AnimatePresence>
                     {isHovered && !active && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={HOVER_TRANSITION}
-                        className="absolute inset-0 bg-[#B45364]/40 rounded-full -z-10"
+                        className="absolute inset-0 bg-[#B45364]/40 rounded-md -z-10"
                       />
                     )}
                   </AnimatePresence>
