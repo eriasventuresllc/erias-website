@@ -107,7 +107,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                     
                     {hoveredItem === item.name && !active && (
                       <motion.div
-                        className="absolute inset-0 w-full h-full bg-white/10 rounded-full -z-10"
+                        className="absolute inset-0 w-full h-full bg-[#B45364]/20 rounded-md -z-10"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -118,7 +118,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                 </TooltipTrigger>
                 <TooltipContent 
                   side="left" 
-                  className="bg-black/80 text-white border-white/10 flex items-center" 
+                  className="bg-[#B45364] text-white border-white/10 flex items-center rounded-md" 
                   sideOffset={5}
                 >
                   {item.name}

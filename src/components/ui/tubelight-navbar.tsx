@@ -173,7 +173,7 @@ export function NavBar({ items, className }: NavBarProps) {
                     />
                   )}
                   
-                  {/* Hover effect animation */}
+                  {/* Hover effect animation - now red background for the popup */}
                   <AnimatePresence>
                     {isHovered && !active && (
                       <motion.div
@@ -181,7 +181,7 @@ export function NavBar({ items, className }: NavBarProps) {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={HOVER_TRANSITION}
-                        className="absolute inset-0 bg-primary/5 rounded-full -z-10"
+                        className="absolute inset-0 bg-[#B45364]/40 rounded-md -z-10"
                       />
                     )}
                   </AnimatePresence>

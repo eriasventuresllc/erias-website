@@ -149,7 +149,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={HOVER_TRANSITION}
-                      className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                      className="absolute inset-0 bg-[#B45364]/40 rounded-md -z-10"
                     />
                   )}
                 </AnimatePresence>
