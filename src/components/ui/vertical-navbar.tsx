@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useRef } from "react"
@@ -115,7 +116,8 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                 <TooltipContent 
                   side="left" 
                   className="bg-[#B45364] text-white border-white/10 flex items-center rounded-md" 
-                  sideOffset={5}
+                  sideOffset={15}
+                  align="center"
                 >
                   {item.name}
                 </TooltipContent>
