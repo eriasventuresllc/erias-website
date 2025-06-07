@@ -115,9 +115,8 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                 </TooltipTrigger>
                 <TooltipContent 
                   side="left" 
-                  className="bg-[#B45364] text-white border-white/10 flex items-center rounded-md transform -translate-y-6" 
+                  className="bg-[#B45364] text-white border-white/10 flex items-center rounded-md transform rotate-0" 
                   sideOffset={0}
-                  //alignOffset={0}
                 >
                   {item.name}
                 </TooltipContent>
