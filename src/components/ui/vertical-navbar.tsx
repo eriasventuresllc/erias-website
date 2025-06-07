@@ -117,7 +117,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                   side="left" 
                   className="bg-[#B45364] text-white border-white/10 flex items-center rounded-md" 
                   sideOffset={8}
-                  alignOffset={0}
+                  alignOffset={-20}
                 >
                   {item.name}
                 </TooltipContent>
