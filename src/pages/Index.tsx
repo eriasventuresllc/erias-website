@@ -185,6 +185,70 @@ const Index = () => {
             </p>
           </motion.div>
           
+          {/* Mobile Layout - Circles Top, Banners Below */}
+          <div className="block md:hidden">
+            <div className="space-y-6">
+              {/* Circular Awards (BBJ) */}
+              <div className="flex justify-center gap-4">
+                <div className="w-28 sm:w-32">
+                  <AwardImage 
+                    imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
+                    alt="BBJ Best Places to Work 2024"
+                    delay={0.2}
+                    width="120px" 
+                  />
+                </div>
+                <div className="w-28 sm:w-32">
+                  <AwardImage 
+                    imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
+                    alt="BBJ Best Places to Work 2023"
+                    delay={0.3}
+                    width="120px" 
+                  />
+                </div>
+              </div>
+              
+              {/* Banner Awards (Baltimore Sun) */}
+              <div className="flex justify-center gap-4">
+                <div className="w-28 sm:w-32">
+                  <AwardImage 
+                    imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
+                    alt="Baltimore Sun Top Workplaces 2024"
+                    delay={0.4}
+                    width="120px" 
+                  />
+                </div>
+                <div className="w-28 sm:w-32">
+                  <AwardImage 
+                    imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
+                    alt="Baltimore Sun Top Workplaces 2023"
+                    delay={0.5}
+                    width="120px" 
+                  />
+                </div>
+              </div>
+              
+              {/* Glassdoor Rating */}
+              <div className="flex justify-center">
+                <div className="w-28 sm:w-32">
+                  <a 
+                    href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <img 
+                      src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
+                      alt="Glassdoor 5.0 Rating" 
+                      className="w-full h-auto object-contain rounded-sm shadow-sm"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Layout - Original */}
           <motion.div initial={{
           opacity: 0
         }} whileInView={{
@@ -193,7 +257,7 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8 justify-items-center">
+        }} className="hidden md:grid grid-cols-5 gap-6 lg:gap-8 justify-items-center">
             {/* First row: Circle awards side by side */}
             <div className="col-span-1 flex items-center h-full">
               <AwardImage 
@@ -215,23 +279,23 @@ const Index = () => {
             {/* Second row: Vertical awards side by side */}
             <div className="col-span-1">
               <AwardImage 
-                imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
-                alt="Baltimore Sun Top Workplaces 2023"
+                imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
+                alt="Baltimore Sun Top Workplaces 2024"
                 delay={0.4}
                 width="150px" 
               />
             </div>
             <div className="col-span-1">
               <AwardImage 
-                imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
-                alt="Baltimore Sun Top Workplaces 2024"
+                imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
+                alt="Baltimore Sun Top Workplaces 2023"
                 delay={0.5}
                 width="150px" 
               />
             </div>
             
             {/* Glassdoor Rating */}
-            <div className="col-span-2 md:col-span-1 flex items-center justify-center">
+            <div className="col-span-1 flex items-center justify-center">
               <motion.a 
                 href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                 target="_blank"
@@ -580,27 +644,12 @@ const ValueCardWithPattern = ({
 
 const AwardImage = ({ imgSrc, alt, delay, width }) => {
   return (
-    <motion.div 
-      initial={{
-        opacity: 0,
-        y: 20
-      }} 
-      whileInView={{
-        opacity: 1,
-        y: 0
-      }} 
-      viewport={{
-        once: true
-      }} 
-      transition={{
-        delay,
-        duration: 0.6
-      }}
+    <div 
       className="bg-transparent flex items-center justify-center"
       style={{ maxWidth: width || '150px', height: 'auto' }}
     >
       <img src={imgSrc} alt={alt} className="max-w-full h-auto object-contain" />
-    </motion.div>
+    </div>
   );
 };
 

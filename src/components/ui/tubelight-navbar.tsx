@@ -133,14 +133,14 @@ export function NavBar({ items, className }: NavBarProps) {
                       initial={{ scale: 1, rotate: 0 }}
                       animate={{ 
                         scale: active ? 1.15 : 1,
-                        rotate: active ? [0, 5, 0, -5, 0] : 0,
+                        rotate: active ? 2 : 0,
                       }}
                       transition={{
                         scale: SPRING_TRANSITION,
-                        rotate: active ? { 
-                          ...SPRING_TRANSITION,
-                          duration: 0.5,
-                        } : { duration: 0.2 }
+                        rotate: { 
+                          type: "tween",
+                          duration: active ? 0.3 : 0.2,
+                        }
                       }}
                     >
                       <Icon 
