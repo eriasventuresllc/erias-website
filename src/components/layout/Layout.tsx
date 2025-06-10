@@ -95,7 +95,7 @@ const Layout = ({ children }: LayoutProps) => {
           <img 
             src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
             alt="Erias Ventures Logo" 
-            className="h-24 md:h-32 object-contain"
+            className="h-20 md:h-24 object-contain"
           />
         </div>
         
