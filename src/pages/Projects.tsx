@@ -110,7 +110,7 @@ const Careers = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="max-w-3xl mx-auto text-lg text-muted-foreground"
           >
-            We are looking for engineers seeking to grow their careers and that want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Team members are provided a complete package of wealth, health, and happiness benefits. Take the next step and view our current openings.
+            We are looking for engineers seeking to grow their careers, that want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Team members are provided a complete package of wealth, health, and happiness benefits. Take the next step, and view our current openings.
           </motion.p>
           
           <motion.div
@@ -154,7 +154,7 @@ const Careers = () => {
                         className="flex items-start gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                        <span className="text-sm">{benefit}</span>
+                        <span className="text-sm">{benefit.replace(/ - /g, ", ")}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -180,7 +180,7 @@ const Careers = () => {
                 <div className="w-full h-72 sm:h-96 md:h-[420px] flex justify-center items-center overflow-hidden rounded-xl border bg-muted shadow-2xl shadow-primary/30 transition-all duration-500">
                   <img
                     src={img.src}
-                    alt={img.alt}
+                    alt={img.alt.replace(/ - /g, ", ")}
                     className="object-cover object-center w-full h-full transition-transform duration-500 hover:scale-105"
                     loading="lazy"
                   />
@@ -197,3 +197,4 @@ const Careers = () => {
 };
 
 export default Careers;
+

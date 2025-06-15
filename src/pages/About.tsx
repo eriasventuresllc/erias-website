@@ -102,7 +102,7 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        {/* Top row - 3 cards */}
+        {/* Top row, 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {topRowCards.map((area, index) => (
             <motion.div
@@ -146,7 +146,7 @@ const About = () => {
           ))}
         </div>
 
-        {/* Bottom row - 2 cards with offset */}
+        {/* Bottom row, 2 cards with offset */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-16 lg:px-24">
           {bottomRowCards.map((area, index) => (
             <motion.div

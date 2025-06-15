@@ -150,8 +150,8 @@ const DetailsSection = () => {
                 </div>
               </div>
               <p className="text-muted-foreground mt-6 text-sm">
-                We pride ourselves on a lean business model offering a diverse
-                mission experience across multiple organizations, products and focus
+                We pride ourselves on a lean business model, offering a diverse
+                mission experience across multiple organizations, products, and focus
                 areas with proven technical, task, and product leadership which has led to constant growth.
               </p>
             </PatternCardBody>
@@ -206,7 +206,7 @@ const DetailsSection = () => {
               </p>
               <p className="text-muted-foreground mt-6">
                 Support software development of various MASINT Enterprise software tools including
-                SPUD, EOS, MCS-PED, and SIP. We provide research and enhancement of existing NASIC tools.
+                SPUD, EOS, MCS, PED, and SIP. We provide research and enhancement of existing NASIC tools.
               </p>
             </PatternCardBody>
           </PatternCard>
@@ -217,3 +217,4 @@ const DetailsSection = () => {
 };
 
 export default DetailsSection;
+
