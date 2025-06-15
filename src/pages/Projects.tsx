@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -88,6 +89,7 @@ const Careers = () => {
         transition={{ duration: 0.6 }}
         className="py-16"
       >
+        {/* Benefits Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -164,7 +166,7 @@ const Careers = () => {
       </motion.section>
 
       {/* Our Team Section with Carousel */}
-      <section className="max-w-5xl mx-auto px-4 py-16">
+      <section className="max-w-5xl mx-auto px-4 pt-8 pb-16">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">Our Team</h2>
           <p className="text-lg text-muted-foreground">
@@ -175,7 +177,7 @@ const Careers = () => {
           <CarouselContent>
             {teamImages.map((img, idx) => (
               <CarouselItem key={img.src} className="flex justify-center items-center">
-                <div className="w-full h-72 sm:h-96 md:h-[420px] flex justify-center items-center overflow-hidden rounded-xl shadow border bg-muted">
+                <div className="w-full h-72 sm:h-96 md:h-[420px] flex justify-center items-center overflow-hidden rounded-xl border bg-muted shadow-2xl shadow-primary/30 transition-all duration-500">
                   <img
                     src={img.src}
                     alt={img.alt}
