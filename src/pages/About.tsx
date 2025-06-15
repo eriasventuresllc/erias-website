@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -22,14 +21,15 @@ const About = () => {
     {
       title: "Software Engineering",
       icon: <Code className="h-8 w-8 text-primary" />,
-      description: "Our Full-Stack Developers are knowledgeable about the complete life-cycle of systems development and are experienced in building modern, robust, scalable applications on Web, Cloud, Enterprise, and Data-Centric architectures.",
+      description: "Our Full-Stack Developers are knowledgeable about the complete life-cycle of systems development and are experienced in building modern, robust, scalable applications on Web, Cloud, Enterprise, and Data-Centric architectures—with extensive expertise in AWS and cloud infrastructure.",
       features: [
         "Software Architecture and Design",
         "Java, C++, C#, Groovy, Go, Python, Scala, Shell Scripting",
         "Linux, Windows, Unix",
         "Scrum, Kanban, Lean Development Methodologies",
         "System Administration and DevOps",
-        "Automated Dissemination and Reporting"
+        "Automated Dissemination and Reporting",
+        "AWS Cloud: Building, deploying, and managing solutions with Redshift, EMR, Lambda, EC2, S3, and cloud automation"
       ]
     },
     {
@@ -55,12 +55,13 @@ const About = () => {
     {
       title: "Data Science and Analytics",
       icon: <Database className="h-8 w-8 text-primary" />,
-      description: "With expertise in machine learning, analytics, data mining, and cloud and distributed computing, our Data Scientists are able to bring new insights and value to organizations facing the most complex analytical problems.",
+      description: "With expertise in machine learning, analytics, data mining, and cloud and distributed computing—including extensive AWS experience—our Data Scientists are able to bring new insights and value to organizations facing the most complex analytical problems.",
       features: [
         "Hadoop MapReduce, Spark",
         "Machine Learning, Deep Learning, Artificial Intelligence",
         "Data Mining and Visualization",
-        "Apache NiFi and Dataflow Management"
+        "Apache NiFi and Dataflow Management",
+        "AWS services: Redshift, EMR, S3, Lambda, and EC2 for scalable data analytics"
       ]
     }
   ];
