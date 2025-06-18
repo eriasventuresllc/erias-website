@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -33,7 +34,7 @@ const Index = () => {
             className="flex justify-center"
           >
             <img 
-              src="/lovable-uploads/YOUR_UPLOADED_IMAGE_FILENAME"
+              src="/lovable-uploads/c6436bc3-6272-48df-86e7-e60c909ca63e.png"
               alt="Cyber Security Mission"
               className="max-w-sm sm:max-w-md md:max-w-lg h-auto object-contain rounded-lg shadow-md"
             />
