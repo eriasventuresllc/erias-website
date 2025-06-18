@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -8,7 +9,7 @@ const About = () => {
   const expertiseAreas = [
     {
       title: "Software Engineering",
-      icon: <Code className="h-8 w-8 text-primary" />,
+      icon: <Code className="h-6 w-6 text-primary" />,
       description: "Our Full,Stack Developers and System Engineers are experts in the complete life,cycle of systems development, building modern, robust, scalable applications on Web, Cloud, Enterprise, and Data,Centric architectures with extensive AWS and cloud infrastructure expertise.",
       features: [
         "Requirements Gathering, Research and Analysis",
@@ -29,7 +30,7 @@ const About = () => {
     },
     {
       title: "AI/ML & Data Science",
-      icon: <Brain className="h-8 w-8 text-primary" />,
+      icon: <Brain className="h-6 w-6 text-primary" />,
       description: "We are proven innovators in developing automated intelligence solutions that augment human analysts. Our Data Scientists bring expertise in machine learning, analytics, data mining, and cloud computing to solve the most complex analytical problems, with extensive AWS experience for scalable data analytics.",
       features: [
         "Machine Learning, Deep Learning, Artificial Intelligence",
@@ -46,7 +47,7 @@ const About = () => {
     },
     {
       title: "Cyber Security",
-      icon: <Lock className="h-8 w-8 text-primary" />,
+      icon: <Lock className="h-6 w-6 text-primary" />,
       description: "Our Cyber Analysts specialize in comprehensive threat analysis, intelligence gathering, and security assessment. With deep expertise in both offensive and defensive cyber operations, our team delivers critical insights and analysis to support mission,critical decision making.",
       features: [
         "Cyber Threat Intelligence Analysis",
@@ -71,19 +72,19 @@ const About = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="py-16"
+        className="py-12"
       >
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
           >
             Our Expertise
           </motion.h1>
@@ -91,46 +92,48 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="max-w-2xl mx-auto text-lg text-muted-foreground"
+            className="max-w-2xl mx-auto text-base text-muted-foreground"
           >
             We bring together expertise across three core disciplines to deliver innovative solutions for the most complex challenges.
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {expertiseAreas.map((area, index) => (
             <motion.div
               key={area.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
+              transition={{ delay: 0.3 + (index * 0.15), duration: 0.6 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group"
             >
               <PatternCard 
-                className="h-full hover:shadow-lg transition-shadow duration-300"
+                className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02]"
               >
-                <PatternCardBody>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-2 rounded-full bg-primary/10">
+                <PatternCardBody className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
                       {area.icon}
                     </div>
-                    <h3 className="text-xl font-semibold">{area.title}</h3>
+                    <h3 className="text-lg font-bold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
                   </div>
                   
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {area.description}
                   </p>
                   
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {area.features.map((feature, i) => (
                       <motion.li 
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 + (i * 0.05), duration: 0.3 }}
-                        className="flex items-start gap-2"
+                        transition={{ delay: 0.5 + (i * 0.03), duration: 0.3 }}
+                        className="flex items-start gap-2.5 group-hover:translate-x-1 transition-transform duration-200"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                        <span className="text-sm">{feature}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:bg-primary/80 transition-colors duration-300"></div>
+                        <span className="text-sm leading-relaxed">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
