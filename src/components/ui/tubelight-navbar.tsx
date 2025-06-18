@@ -101,7 +101,7 @@ export function NavBar({ items, className }: NavBarProps) {
                 onMouseEnter={() => setHoveredItem(item.name)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className={cn(
-                  "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300",
+                  "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300 select-none",
                   "text-foreground/80 hover:text-primary",
                   active && "text-primary",
                 )}

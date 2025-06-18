@@ -79,7 +79,7 @@ export function VerticalNavBar({ items, className }: VerticalNavBarProps) {
                       }
                     }}
                     className={cn(
-                      "relative cursor-pointer p-3 rounded-full transition-colors duration-300",
+                      "relative cursor-pointer p-3 rounded-full transition-colors duration-300 select-none",
                       "text-white/70 hover:text-white",
                       active ? "text-[#B45364]" : "text-white/70",
                     )}

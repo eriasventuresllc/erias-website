@@ -88,7 +88,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                 onMouseLeave={() => setHoveredTab(null)}
                 className={cn(
                   "relative cursor-pointer text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300",
-                  "text-white/70 hover:text-white",
+                  "text-white/70 hover:text-white select-none",
                   isActive && "text-white"
                 )}
                 whileHover={{
