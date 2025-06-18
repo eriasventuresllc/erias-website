@@ -10,7 +10,7 @@ const About = () => {
     {
       title: "Software Engineering",
       icon: <Code className="h-8 w-8 text-primary" />,
-      description: "Our Full-Stack Developers and System Engineers are experts in the complete life-cycle of systems development, building modern, robust, scalable applications on Web, Cloud, Enterprise, and Data-Centric architectures with extensive AWS and cloud infrastructure expertise.",
+      description: "Our Full,Stack Developers and System Engineers are experts in the complete life,cycle of systems development, building modern, robust, scalable applications on Web, Cloud, Enterprise, and Data,Centric architectures with extensive AWS and cloud infrastructure expertise.",
       features: [
         "Requirements Gathering, Research and Analysis",
         "System Design and Architecture",
@@ -46,18 +46,22 @@ const About = () => {
       ]
     },
     {
-      title: "Cyber Engineering",
+      title: "Cyber",
       icon: <Lock className="h-8 w-8 text-primary" />,
-      description: "Experienced in all facets of Computer Network Operations, including both Offensive and Defensive capabilities, our Cyber Engineers are experts in researching, designing, implementing, and conducting Cyber operations using the latest tradecraft, tools, techniques, and processes in Cybersecurity.",
+      description: "Our Cyber Analysts specialize in comprehensive threat analysis, intelligence gathering, and security assessment. With deep expertise in both offensive and defensive cyber operations, our team delivers critical insights and analysis to support mission,critical decision making.",
       features: [
-        "Computer Network Operations (Offensive and Defensive)",
-        "Collection, Operations, Analysis, and Reporting Expertise",
-        "Information Systems Security",
-        "Vulnerability Discovery and Prevention",
-        "Latest Cybersecurity Tradecraft and Tools",
-        "Cyber Operations Research and Design",
-        "Advanced Cyber Techniques and Processes",
-        "Extensive Intelligence Community Experience"
+        "Cyber Threat Intelligence Analysis",
+        "Malware Analysis and Reverse Engineering",
+        "Network Traffic Analysis and Forensics",
+        "Vulnerability Assessment and Analysis",
+        "Incident Response and Investigation",
+        "Threat Hunting and Detection",
+        "Intelligence Report Writing and Briefing",
+        "Open Source Intelligence (OSINT) Collection",
+        "Adversary Tactics, Techniques, and Procedures (TTPs) Analysis",
+        "Risk Assessment and Mitigation Strategies",
+        "Cyber Operations Support and Analysis",
+        "Security Tool Development and Automation"
       ]
     }
   ];
@@ -82,7 +86,7 @@ const About = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
           >
-            Our Three Pillars of Expertise
+            Our Expertise
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
