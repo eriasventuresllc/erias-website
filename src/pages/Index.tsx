@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -24,8 +23,8 @@ const Index = () => {
       <Hero />
 
       {/* Mission Image Section */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-8">
+        <div className="max-w-4xl mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -34,9 +33,9 @@ const Index = () => {
             className="flex justify-center"
           >
             <img 
-              src="/lovable-uploads/22ac3038-7685-4cf9-b20d-d4c2c0cb8d6b.png"
+              src="/lovable-uploads/YOUR_UPLOADED_IMAGE_FILENAME"
               alt="Cyber Security Mission"
-              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+              className="max-w-sm sm:max-w-md md:max-w-lg h-auto object-contain rounded-lg shadow-md"
             />
           </motion.div>
         </div>
@@ -73,7 +72,7 @@ const Index = () => {
               }} 
               className="text-muted-foreground max-w-2xl mx-auto mt-4"
             >
-              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary"> innovative ideas</span>.
+              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary">innovative ideas</span>.
             </motion.p>
           </motion.div>
           
