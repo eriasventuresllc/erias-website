@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -46,7 +45,7 @@ const About = () => {
       ]
     },
     {
-      title: "Cyber",
+      title: "Cyber Security",
       icon: <Lock className="h-8 w-8 text-primary" />,
       description: "Our Cyber Analysts specialize in comprehensive threat analysis, intelligence gathering, and security assessment. With deep expertise in both offensive and defensive cyber operations, our team delivers critical insights and analysis to support mission,critical decision making.",
       features: [
