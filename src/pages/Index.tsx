@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -21,6 +22,25 @@ const Index = () => {
   return <Layout>
       {/* Hero Section */}
       <Hero />
+
+      {/* Mission Image Section */}
+      <section className="py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
+            <img 
+              src="/lovable-uploads/22ac3038-7685-4cf9-b20d-d4c2c0cb8d6b.png"
+              alt="Cyber Security Mission"
+              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+            />
+          </motion.div>
+        </div>
+      </section>
 
       {/* Values Section */}
       <section className="py-8 bg-secondary/50 rounded-3xl">
