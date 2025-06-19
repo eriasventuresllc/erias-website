@@ -39,12 +39,18 @@ function HeroComponent() {
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
               <motion.span 
-                className="text-primary text-5xl md:text-6xl font-bold"
+                className="text-primary text-5xl md:text-6xl font-bold relative inline-block"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={FADE_TRANSITION}
               >
-                Engineering
+                <div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 rounded-lg"
+                  style={{
+                    backgroundImage: `url('/lovable-uploads/16e9f91e-4332-48b9-9b71-32004ba296a0.png')`,
+                  }}
+                />
+                <span className="relative z-10">Engineering</span>
               </motion.span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-2 md:pt-4">
                 &nbsp;
