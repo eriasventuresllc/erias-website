@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -34,7 +33,7 @@ function HeroComponent() {
 
   return (
     <div 
-      className="w-full min-h-[85vh] relative bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden"
+      className="w-full min-h-[70vh] relative bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden"
       style={{
         backgroundImage: `url('/lovable-uploads/16e9f91e-4332-48b9-9b71-32004ba296a0.png')`,
       }}
@@ -43,7 +42,7 @@ function HeroComponent() {
       <div className="absolute inset-0 bg-black/40 rounded-3xl" />
       
       <div className="container mx-auto relative z-10">
-        <div className="flex gap-4 py-16 lg:py-24 items-center justify-center flex-col min-h-[85vh]">
+        <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[70vh]">
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
               <motion.span 

@@ -23,7 +23,7 @@ const Index = () => {
       <Hero />
 
       {/* Values Section */}
-      <section className="py-8 bg-secondary/50 rounded-3xl">
+      <section className="py-8 mt-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
           opacity: 0
