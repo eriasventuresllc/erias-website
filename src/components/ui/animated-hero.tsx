@@ -33,31 +33,33 @@ function HeroComponent() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full">
-      <div className="container mx-auto">
-        <div className="flex gap-4 py-2 lg:py-10 items-center justify-center flex-col">
+    <div 
+      className="w-full min-h-[85vh] relative bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden"
+      style={{
+        backgroundImage: `url('/lovable-uploads/16e9f91e-4332-48b9-9b71-32004ba296a0.png')`,
+      }}
+    >
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40 rounded-3xl" />
+      
+      <div className="container mx-auto relative z-10">
+        <div className="flex gap-4 py-16 lg:py-24 items-center justify-center flex-col min-h-[85vh]">
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
               <motion.span 
-                className="text-primary text-5xl md:text-6xl font-bold relative inline-block"
+                className="text-white text-5xl md:text-6xl font-bold relative inline-block drop-shadow-lg"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={FADE_TRANSITION}
               >
-                <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 rounded-lg"
-                  style={{
-                    backgroundImage: `url('/lovable-uploads/16e9f91e-4332-48b9-9b71-32004ba296a0.png')`,
-                  }}
-                />
-                <span className="relative z-10">Engineering</span>
+                Engineering
               </motion.span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-2 md:pt-4">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold"
+                    className="absolute font-semibold text-white drop-shadow-lg"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={SPRING_TRANSITION}
                     animate={
