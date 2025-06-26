@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { SparklesCore } from "./sparkles-core";
@@ -15,7 +14,7 @@ const FADE_TRANSITION = {
   ease: "easeOut"
 };
 
-function HeroComponent() {
+function HeroContent() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
     () => ["Mission", "Growth"],
@@ -34,7 +33,52 @@ function HeroComponent() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden bg-background">      
+    <div className="container mx-auto relative z-10">
+      <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[60vh]">
+        <div className="flex gap-4 flex-col">
+          <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
+            <motion.span
+              className="text-white text-5xl md:text-6xl font-bold relative inline-block"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={FADE_TRANSITION}
+            >
+              Engineering
+            </motion.span>
+            <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-2 md:pt-4">
+              &nbsp;
+              {titles.map((title, index) => (
+                <motion.span
+                  key={index}
+                  className="absolute font-semibold text-white"
+                  initial={{ opacity: 0, y: -100 }}
+                  transition={SPRING_TRANSITION}
+                  animate={
+                    titleNumber === index
+                      ? {
+                          y: 0,
+                          opacity: 1,
+                        }
+                      : {
+                          y: titleNumber > index ? -150 : 150,
+                          opacity: 0,
+                        }
+                  }
+                >
+                  {title}
+                </motion.span>
+              ))}
+            </span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeroComponent() {
+  return (
+    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden bg-background">
       {/* Starry Night Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -48,47 +92,8 @@ function HeroComponent() {
           speed={1}
         />
       </div>
-      
-      <div className="container mx-auto relative z-10">
-        <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[60vh]">
-          <div className="flex gap-4 flex-col">
-            <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
-              <motion.span 
-                className="text-white text-5xl md:text-6xl font-bold relative inline-block"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={FADE_TRANSITION}
-              >
-                Engineering
-              </motion.span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-2 md:pt-4">
-                &nbsp;
-                {titles.map((title, index) => (
-                  <motion.span
-                    key={index}
-                    className="absolute font-semibold text-white"
-                    initial={{ opacity: 0, y: -100 }}
-                    transition={SPRING_TRANSITION}
-                    animate={
-                      titleNumber === index
-                        ? {
-                            y: 0,
-                            opacity: 1,
-                          }
-                        : {
-                            y: titleNumber > index ? -150 : 150,
-                            opacity: 0,
-                          }
-                    }
-                  >
-                    {title}
-                  </motion.span>
-                ))}
-              </span>
-            </h1>
-          </div>
-        </div>
-      </div>
+
+      <HeroContent />
     </div>
   );
 }

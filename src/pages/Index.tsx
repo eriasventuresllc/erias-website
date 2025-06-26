@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -68,26 +67,41 @@ const Index = () => {
         }} transition={{
           duration: 0.6
         }} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ValueCardWithPattern 
-              icon={<BrainCircuit size={24} className="rotate-90" />} 
-              title="Entrepreneurial Mindset" 
-              description="We cultivate an environment where every engineer thinks like an owner, taking initiative, identifying opportunities, and driving solutions forward. This proactive mindset is amplified by the fact that over a third of our team brings direct leadership experience, guiding projects with foresight and accountability." 
-              delay={0.1} 
-            />
+            <motion.div
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group h-full"
+            >
+              <ValueCardWithPattern
+                icon={<BrainCircuit size={24} className="rotate-90" />}
+                title="Entrepreneurial Mindset"
+                description="We cultivate an environment where every engineer thinks like an owner, taking initiative, identifying opportunities, and driving solutions forward. This proactive mindset is amplified by the fact that over a third of our team brings direct leadership experience, guiding projects with foresight and accountability."
+                delay={0.1}
+              />
+            </motion.div>
             
-            <ValueCardWithPattern 
-              icon={<Rocket size={24} />} 
-              title="Taking Action" 
-              description="Ideas are valuable, but execution is paramount. We translate strategy into tangible results by meticulously planning, then acting decisively. Complex problems are systematically broken down into manageable tasks, enabling focused effort and consistent delivery." 
-              delay={0.2} 
-            />
+            <motion.div
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group h-full"
+            >
+              <ValueCardWithPattern
+                icon={<Rocket size={24} />}
+                title="Taking Action"
+                description="Ideas are valuable, but execution is paramount. We translate strategy into tangible results by meticulously planning, then acting decisively. Complex problems are systematically broken down into manageable tasks, enabling focused effort and consistent delivery."
+                delay={0.2}
+              />
+            </motion.div>
             
-            <ValueCardWithPattern 
-              icon={<Lightbulb size={24} />} 
-              title="Innovative Ideas" 
-              description="We champion a culture of open innovation where diverse perspectives converge. By actively sharing insights and challenging conventions, we collectively build more robust, scalable, and adaptive solutions that directly address the unique and demanding challenges our customers face." 
-              delay={0.3} 
-            />
+            <motion.div
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group h-full"
+            >
+              <ValueCardWithPattern
+                icon={<Lightbulb size={24} />}
+                title="Innovative Ideas"
+                description="We champion a culture of open innovation where diverse perspectives converge. By actively sharing insights and challenging conventions, we collectively build more robust, scalable, and adaptive solutions that directly address the unique and demanding challenges our customers face."
+                delay={0.3}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -618,7 +632,7 @@ const ValueCardWithPattern = ({
 }) => {
   return <motion.div initial={{
     opacity: 0,
-    y: 20
+    y: 30
   }} whileInView={{
     opacity: 1,
     y: 0
@@ -628,17 +642,15 @@ const ValueCardWithPattern = ({
     delay,
     duration: 0.6
   }}>
-      <PatternCard className="h-full hover:shadow-md transition-shadow">
-        <PatternCardBody className="flex items-start justify-between space-x-4">
-          <div className="flex-grow">
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-muted-foreground text-sm">
-              {description}
-            </p>
+      <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02]">
+        <PatternCardBody className="p-6">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
+              {icon}
+            </div>
+            <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
           </div>
-          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
-            {icon}
-          </div>
+          <p className="text-muted-foreground">{description}</p>
         </PatternCardBody>
       </PatternCard>
     </motion.div>;
