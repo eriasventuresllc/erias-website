@@ -1,8 +1,6 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { CyberParticles } from "./cyber-particles";
-import { CyberGrid } from "./cyber-grid";
 
 // Consistent animation constants
 const SPRING_TRANSITION = {
@@ -100,30 +98,6 @@ function HeroContent() {
 function HeroComponent() {
   return (
     <div className="w-full min-h-[60vh] relative overflow-hidden bg-background">
-      {/* Cyber Grid Background */}
-      <div className="absolute inset-0 z-0">
-        <CyberGrid
-          className="w-full h-full"
-          gridColor="#ff6b6b15"
-          glitchIntensity={0.3}
-        />
-      </div>
-      
-      {/* Enhanced Shark & Laser Particles */}
-      <div className="absolute inset-0 z-1">
-        <CyberParticles
-          id="shark-laser-particles"
-          background="transparent"
-          minSize={4}
-          maxSize={10}
-          particleDensity={85}
-          className="w-full h-full"
-          particleColor="#ff6b6b"
-          connectionColor="#00ffff"
-          speed={2}
-        />
-      </div>
-
       <HeroContent />
     </div>
   );
