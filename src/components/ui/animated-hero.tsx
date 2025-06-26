@@ -33,21 +33,13 @@ function HeroComponent() {
   }, [titleNumber, titles]);
 
   return (
-    <div 
-      className="w-full min-h-[60vh] relative bg-cover bg-center bg-no-repeat rounded-3xl overflow-hidden"
-      style={{
-        backgroundImage: `url('/lovable-uploads/16e9f91e-4332-48b9-9b71-32004ba296a0.png')`,
-      }}
-    >
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/60 rounded-3xl" />
-      
+    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden">      
       <div className="container mx-auto relative z-10">
         <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[60vh]">
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
               <motion.span 
-                className="text-white text-5xl md:text-6xl font-bold relative inline-block drop-shadow-lg"
+                className="text-foreground text-5xl md:text-6xl font-bold relative inline-block"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={FADE_TRANSITION}
@@ -59,7 +51,7 @@ function HeroComponent() {
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold text-white drop-shadow-lg"
+                    className="absolute font-semibold text-foreground"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={SPRING_TRANSITION}
                     animate={
