@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { SparklesCore } from "./sparkles-core";
+import { CyberParticles } from "./cyber-particles";
+import { CyberGrid } from "./cyber-grid";
 
 // Consistent animation constants
 const SPRING_TRANSITION = {
@@ -64,8 +65,28 @@ function HeroContent() {
                           opacity: 0,
                         }
                   }
+
                 >
                   {title}
+                  {/* Cyber data stream effect */}
+                  {titleNumber === index && (
+                    <motion.span
+                      className="absolute -right-8 top-1/2 transform -translate-y-1/2"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ 
+                        opacity: [0, 1, 0], 
+                        x: [0, 15, 30],
+                        scale: [1, 1.2, 0.8]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                                         >
+                       <span className="text-red-300 text-sm">{">>>"}</span>
+                     </motion.span>
+                  )}
                 </motion.span>
               ))}
             </span>
@@ -78,18 +99,28 @@ function HeroContent() {
 
 function HeroComponent() {
   return (
-    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden bg-background">
-      {/* Starry Night Background */}
+    <div className="w-full min-h-[60vh] relative overflow-hidden bg-background">
+      {/* Cyber Grid Background */}
       <div className="absolute inset-0 z-0">
-        <SparklesCore
-          id="tsparticles"
-          background="transparent"
-          minSize={1}
-          maxSize={4}
-          particleDensity={200}
+        <CyberGrid
           className="w-full h-full"
-          particleColor="#ffffff"
-          speed={1}
+          gridColor="#ff6b6b15"
+          glitchIntensity={0.2}
+        />
+      </div>
+      
+      {/* Cyber Particles Network */}
+      <div className="absolute inset-0 z-1">
+        <CyberParticles
+          id="cyber-particles"
+          background="transparent"
+          minSize={2}
+          maxSize={6}
+          particleDensity={60}
+          className="w-full h-full"
+          particleColor="#ff6b6b"
+          connectionColor="#ff6b6b"
+          speed={1.2}
         />
       </div>
 
