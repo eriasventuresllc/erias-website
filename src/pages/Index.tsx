@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
-import { BrainCircuit, Rocket, Lightbulb, BarChart4, Target, Network, Shield } from 'lucide-react';
+import { BrainCircuit, Rocket, Lightbulb } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Hero } from '@/components/ui/animated-hero';
+import { BarChart4, Target, Network, Shield } from 'lucide-react';
 
 const Index = () => {
   const controls = useAnimation();
@@ -19,9 +19,6 @@ const Index = () => {
   }, [controls]);
 
   return <Layout>
-      {/* Hero Section */}
-      <Hero />
-
       {/* Values Section */}
       <section className="py-8 mt-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
