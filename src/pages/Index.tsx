@@ -206,47 +206,53 @@ const Index = () => {
             <div className="space-y-6">
               {/* Circular Awards (BBJ) */}
               <div className="flex justify-center gap-4">
-                <div className="w-28 sm:w-32">
+                <div className="w-24 sm:w-28">
                   <AwardImage 
                     imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
                     alt="BBJ Best Places to Work 2024"
                     delay={0.2}
-                    width="120px" 
+                    width="100px" 
                   />
                 </div>
-                <div className="w-28 sm:w-32">
+                <div className="w-24 sm:w-28">
                   <AwardImage 
                     imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
                     alt="BBJ Best Places to Work 2023"
                     delay={0.3}
-                    width="120px" 
+                    width="100px" 
                   />
                 </div>
               </div>
               
-              {/* Banner Awards (Baltimore Sun) */}
-              <div className="flex justify-center gap-4">
-                <div className="w-28 sm:w-32">
+              {/* Banner Awards (Baltimore Sun + Washington Post) */}
+              <div className="grid grid-cols-2 gap-3 justify-items-center">
+                <div className="w-24 sm:w-28">
                   <AwardImage 
                     imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
                     alt="Baltimore Sun Top Workplaces 2024"
                     delay={0.4}
-                    width="120px" 
+                    width="100px" 
                   />
                 </div>
-                <div className="w-28 sm:w-32">
+                <div className="w-24 sm:w-28">
                   <AwardImage 
                     imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
                     alt="Baltimore Sun Top Workplaces 2023"
                     delay={0.5}
-                    width="120px" 
+                    width="100px" 
                   />
                 </div>
-              </div>
-              
-              {/* Glassdoor Rating */}
-              <div className="flex justify-center">
-                <div className="w-28 sm:w-32">
+                <div className="w-24 sm:w-28">
+                  <AwardImage 
+                    imgSrc="/lovable-uploads/af613ec9-b5af-42cb-9d4d-721550972ab0.png" 
+                    alt="Washington Post Top Workplaces 2025"
+                    delay={0.6}
+                    width="100px" 
+                  />
+                </div>
+                
+                {/* Glassdoor Rating */}
+                <div className="w-24 sm:w-28">
                   <a 
                     href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                     target="_blank"
@@ -264,7 +270,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Original */}
+          {/* Desktop Layout - Updated to accommodate 6 awards */}
           <motion.div initial={{
           opacity: 0
         }} whileInView={{
@@ -273,14 +279,14 @@ const Index = () => {
           once: true
         }} transition={{
           duration: 0.6
-        }} className="hidden md:grid grid-cols-5 gap-6 lg:gap-8 justify-items-center">
-            {/* First row: Circle awards side by side */}
+        }} className="hidden md:grid grid-cols-6 gap-4 lg:gap-6 justify-items-center items-center">
+            {/* First row: Circle awards */}
             <div className="col-span-1 flex items-center h-full">
               <AwardImage 
                 imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
                 alt="BBJ Best Places to Work 2024"
                 delay={0.2}
-                width="150px" 
+                width="120px" 
               />
             </div>
             <div className="col-span-1 flex items-center h-full">
@@ -288,17 +294,17 @@ const Index = () => {
                 imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
                 alt="BBJ Best Places to Work 2023"
                 delay={0.3}
-                width="150px" 
+                width="120px" 
               />
             </div>
             
-            {/* Second row: Vertical awards side by side */}
+            {/* Vertical awards */}
             <div className="col-span-1">
               <AwardImage 
                 imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
                 alt="Baltimore Sun Top Workplaces 2024"
                 delay={0.4}
-                width="150px" 
+                width="120px" 
               />
             </div>
             <div className="col-span-1">
@@ -306,7 +312,17 @@ const Index = () => {
                 imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
                 alt="Baltimore Sun Top Workplaces 2023"
                 delay={0.5}
-                width="150px" 
+                width="120px" 
+              />
+            </div>
+            
+            {/* New Washington Post award */}
+            <div className="col-span-1">
+              <AwardImage 
+                imgSrc="/lovable-uploads/af613ec9-b5af-42cb-9d4d-721550972ab0.png" 
+                alt="Washington Post Top Workplaces 2025"
+                delay={0.6}
+                width="120px" 
               />
             </div>
             
@@ -321,12 +337,12 @@ const Index = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.4 }}
+                transition={{ delay: 0.7, duration: 0.4 }}
               >
                 <img 
                   src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
                   alt="Glassdoor 5.0 Rating" 
-                  width={150} 
+                  width={120} 
                   height="auto"
                   className="rounded-sm shadow-sm"
                 />
