@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { CyberStarsBackground } from "./cyber-stars-background";
@@ -54,7 +55,7 @@ function HeroComponent() {
                   <motion.span
                     key={index}
                     className="absolute font-semibold text-foreground"
-                    initial={{ opacity: 0, y: "-100" }}
+                    initial={{ opacity: 0, y: -100 }}
                     transition={SPRING_TRANSITION}
                     animate={
                       titleNumber === index

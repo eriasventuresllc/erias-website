@@ -27,8 +27,8 @@ const CyberStarsBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20" />
+      {/* Black background */}
+      <div className="absolute inset-0 bg-black" />
       
       {/* Animated stars */}
       {stars.map((star) => (
@@ -43,13 +43,12 @@ const CyberStarsBackground = () => {
             opacity: star.opacity,
           }}
           animate={{
-            x: [0, -100, 0],
             opacity: [star.opacity, star.opacity * 0.3, star.opacity],
           }}
           transition={{
-            duration: 20 / star.speed,
+            duration: 3 + Math.random() * 2,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
           }}
         />
       ))}
@@ -91,8 +90,8 @@ const CyberStarsBackground = () => {
       />
       
       {/* Trailing effect on sides */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent" />
     </div>
   );
 };
