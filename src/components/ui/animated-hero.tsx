@@ -1,6 +1,6 @@
-
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { CyberStarsBackground } from "./cyber-stars-background";
 
 // Consistent animation constants
 const SPRING_TRANSITION = {
@@ -33,7 +33,9 @@ function HeroComponent() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden">      
+    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden">
+      <CyberStarsBackground />
+      
       <div className="container mx-auto relative z-10">
         <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[60vh]">
           <div className="flex gap-4 flex-col">

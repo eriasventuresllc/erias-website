@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';
@@ -6,6 +5,7 @@ import { Home, Info, FileText } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import { CyberStarsBackground } from '@/components/ui/cyber-stars-background';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -75,7 +75,9 @@ const Layout = ({ children }: LayoutProps) => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground dark">
+    <div className="min-h-screen bg-background text-foreground dark relative">
+      <CyberStarsBackground />
+      
       {isMobile && (
         <header 
           className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
@@ -90,13 +92,13 @@ const Layout = ({ children }: LayoutProps) => {
       
       <VerticalNavBar items={navItems} />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32 relative z-10">
         {/* Logo - using the new uploaded logo image */}
         <div className="w-full flex justify-center mb-10 mt-6">
           <img 
             src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
             alt="Erias Ventures Logo" 
-            className="h-24 md:h-28 object-contain"
+            className="h-24 md:h-28 object-contain relative z-20"
           />
         </div>
         
@@ -115,7 +117,7 @@ const Layout = ({ children }: LayoutProps) => {
           </motion.div>
         </AnimatePresence>
       </main>
-      <footer className="bg-secondary py-8 border-t border-border">
+      <footer className="bg-secondary py-8 border-t border-border relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center">
