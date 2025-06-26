@@ -34,7 +34,7 @@ function HeroComponent() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden bg-black">      
+    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden bg-background">      
       {/* Starry Night Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
