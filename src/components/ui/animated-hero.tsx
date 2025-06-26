@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { CyberParticles } from "./cyber-particles";
@@ -65,7 +66,6 @@ function HeroContent() {
                           opacity: 0,
                         }
                   }
-
                 >
                   {title}
                   {/* Cyber data stream effect */}
@@ -83,7 +83,7 @@ function HeroContent() {
                         repeat: Infinity,
                         ease: "easeInOut",
                       }}
-                                         >
+                    >
                        <span className="text-red-300 text-sm">{">>>"}</span>
                      </motion.span>
                   )}
@@ -105,22 +105,22 @@ function HeroComponent() {
         <CyberGrid
           className="w-full h-full"
           gridColor="#ff6b6b15"
-          glitchIntensity={0.2}
+          glitchIntensity={0.3}
         />
       </div>
       
-      {/* Cyber Particles Network */}
+      {/* Enhanced Shark & Laser Particles */}
       <div className="absolute inset-0 z-1">
         <CyberParticles
-          id="cyber-particles"
+          id="shark-laser-particles"
           background="transparent"
-          minSize={2}
-          maxSize={6}
-          particleDensity={60}
+          minSize={4}
+          maxSize={10}
+          particleDensity={85}
           className="w-full h-full"
           particleColor="#ff6b6b"
-          connectionColor="#ff6b6b"
-          speed={1.2}
+          connectionColor="#00ffff"
+          speed={2}
         />
       </div>
 

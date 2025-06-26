@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useId } from "react";
 import { useEffect, useState } from "react";
@@ -101,46 +102,48 @@ export const CyberParticles = (props: CyberParticlesProps) => {
                   quantity: 3,
                 },
                 grab: {
-                  distance: 180,
+                  distance: 200,
                   links: {
-                    opacity: 0.8,
-                    color: connectionColor || "#ff6b6b",
+                    opacity: 0.9,
+                    color: "#00ffff",
                   },
                 },
                 connect: {
-                  distance: 120,
+                  distance: 150,
                   links: {
-                    opacity: 0.6,
+                    opacity: 0.7,
                   },
                 },
                 bubble: {
-                  distance: 100,
-                  size: 8,
+                  distance: 120,
+                  size: 12,
                   duration: 2,
                 },
                 repulse: {
-                  distance: 150,
+                  distance: 180,
                   duration: 0.4,
                 },
               },
             },
             particles: {
               color: {
-                value: particleColor || "#ff6b6b",
+                value: ["#ff6b6b", "#00ffff", "#ff4444", "#44ffff", "#ff0000"],
               },
               links: {
-                color: connectionColor || "#ff6b6b",
-                distance: 140,
+                color: "#00ffff",
+                distance: 160,
                 enable: true,
-                opacity: 0.4,
-                width: 1.5,
+                opacity: 0.6,
+                width: 2,
                 triangles: {
-                  enable: false,
+                  enable: true,
+                  color: "#ff6b6b",
+                  opacity: 0.1,
                 },
                 shadow: {
                   enable: true,
-                  color: connectionColor || "#ff6b6b",
-                  blur: 2,
+                  color: "#00ffff",
+                  blur: 5,
                 },
               },
               move: {
@@ -149,61 +152,90 @@ export const CyberParticles = (props: CyberParticlesProps) => {
                 outModes: {
                   default: "bounce",
                 },
-                random: false,
-                speed: speed || 0.8,
+                random: true,
+                speed: speed || 1.5,
                 straight: false,
                 attract: {
                   enable: true,
-                  rotateX: 600,
-                  rotateY: 1200,
+                  rotate: {
+                    x: 800,
+                    y: 1600,
+                  },
+                },
+                trail: {
+                  enable: true,
+                  length: 6,
+                  fill: {
+                    color: "#000000",
+                  },
                 },
               },
               number: {
                 density: {
                   enable: true,
                 },
-                value: particleDensity || 80,
+                value: particleDensity || 70,
               },
               opacity: {
                 value: {
-                  min: 0.4,
-                  max: 0.9,
+                  min: 0.3,
+                  max: 1,
                 },
                 animation: {
                   enable: true,
-                  speed: speed || 0.8,
+                  speed: speed || 1.2,
                   sync: false,
                 },
               },
               shape: {
-                type: ["polygon", "circle"],
-                polygon: {
-                  sides: 6, // Hexagons for cyber look
+                type: ["triangle", "edge", "star"],
+                triangle: {
+                  sides: 3,
+                },
+                star: {
+                  sides: 5,
+                },
+                edge: {
+                  sides: 3,
                 },
               },
               size: {
                 value: {
-                  min: minSize || 2,
-                  max: maxSize || 5,
+                  min: minSize || 3,
+                  max: maxSize || 8,
                 },
                 animation: {
                   enable: true,
-                  speed: 2,
+                  speed: 3,
                   sync: false,
                 },
               },
               stroke: {
-                color: connectionColor || "#ff6b6b",
-                width: 1,
-                opacity: 0.8,
+                color: ["#ff6b6b", "#00ffff"],
+                width: 2,
+                opacity: 0.9,
               },
               shadow: {
                 enable: true,
-                color: particleColor || "#ff6b6b",
-                blur: 3,
+                color: ["#ff6b6b", "#00ffff"],
+                blur: 10,
                 offset: {
                   x: 0,
                   y: 0,
+                },
+              },
+              life: {
+                duration: {
+                  sync: false,
+                  value: 3,
+                },
+                count: 0,
+                delay: {
+                  random: {
+                    enable: true,
+                    minimumValue: 0.5,
+                  },
+                  value: 1,
                 },
               },
             },
