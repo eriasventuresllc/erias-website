@@ -70,7 +70,6 @@ export const SparklesCore = (props: ParticlesProps) => {
               enable: false,
               zIndex: 1,
             },
-
             fpsLimit: 120,
             interactivity: {
               events: {
@@ -325,111 +324,110 @@ export const SparklesCore = (props: ParticlesProps) => {
               },
               mode: "vertical",
               speed: 25,
-            },
-            tilt: {
-              value: 0,
-              animation: {
-                enable: false,
-                speed: 0,
-                decay: 0,
-                sync: false,
-              },
-              direction: "clockwise",
-              enable: false,
-            },
-            twinkle: {
-              lines: {
-                enable: false,
-                frequency: 0.05,
-                opacity: 1,
-              },
-              particles: {
-                enable: false,
-                frequency: 0.05,
-                opacity: 1,
-              },
-            },
-            wobble: {
-              distance: 5,
-              enable: false,
-              speed: {
-                angle: 50,
-                move: 10,
-              },
-            },
-            life: {
-              count: 0,
-              delay: {
+              tilt: {
                 value: 0,
-                sync: false,
-              },
-              duration: {
-                value: 0,
-                sync: false,
-              },
-            },
-            rotate: {
-              value: 0,
-              animation: {
+                animation: {
+                  enable: false,
+                  speed: 0,
+                  decay: 0,
+                  sync: false,
+                },
+                direction: "clockwise",
                 enable: false,
-                speed: 0,
-                decay: 0,
-                sync: false,
               },
-              direction: "clockwise",
-              path: false,
-            },
-            orbit: {
-              animation: {
+              twinkle: {
+                lines: {
+                  enable: false,
+                  frequency: 0.05,
+                  opacity: 1,
+                },
+                particles: {
+                  enable: false,
+                  frequency: 0.05,
+                  opacity: 1,
+                },
+              },
+              wobble: {
+                distance: 5,
+                enable: false,
+                speed: {
+                  angle: 50,
+                  move: 10,
+                },
+              },
+              life: {
                 count: 0,
-                enable: false,
-                speed: 1,
-                decay: 0,
-                delay: 0,
-                sync: false,
+                delay: {
+                  value: 0,
+                  sync: false,
+                },
+                duration: {
+                  value: 0,
+                  sync: false,
+                },
               },
-              enable: false,
-              opacity: 1,
-              rotation: {
-                value: 45,
+              rotate: {
+                value: 0,
+                animation: {
+                  enable: false,
+                  speed: 0,
+                  decay: 0,
+                  sync: false,
+                },
+                direction: "clockwise",
+                path: false,
               },
-              width: 1,
-            },
-            links: {
-              blink: false,
-              color: {
-                value: "#fff",
-              },
-              consent: false,
-              distance: 100,
-              enable: false,
-              frequency: 1,
-              opacity: 1,
-              shadow: {
-                blur: 5,
-                color: {
-                  value: "#000",
+              orbit: {
+                animation: {
+                  count: 0,
+                  enable: false,
+                  speed: 1,
+                  decay: 0,
+                  delay: 0,
+                  sync: false,
                 },
                 enable: false,
+                opacity: 1,
+                rotation: {
+                  value: 45,
+                },
+                width: 1,
               },
-              triangles: {
+              links: {
+                blink: false,
+                color: {
+                  value: "#fff",
+                },
+                consent: false,
+                distance: 100,
                 enable: false,
                 frequency: 1,
+                opacity: 1,
+                shadow: {
+                  blur: 5,
+                  color: {
+                    value: "#000",
+                  },
+                  enable: false,
+                },
+                triangles: {
+                  enable: false,
+                  frequency: 1,
+                },
+                width: 1,
+                warp: false,
               },
-              width: 1,
-              warp: false,
+              repulse: {
+                value: 0,
+                enabled: false,
+                distance: 1,
+                duration: 1,
+                factor: 1,
+                speed: 1,
+              },
             },
-            repulse: {
-              value: 0,
-              enabled: false,
-              distance: 1,
-              duration: 1,
-              factor: 1,
-              speed: 1,
-            },
-          },
-          detectRetina: true,
-        }}
+            detectRetina: true,
+          }}
         />
       )}
     </motion.div>
