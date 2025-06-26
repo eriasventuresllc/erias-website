@@ -16,14 +16,14 @@ const generateStars = (count: number): Star[] => {
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
+    size: Math.random() * 2 + 0.5,
     speed: Math.random() * 0.5 + 0.1,
-    opacity: Math.random() * 0.8 + 0.2,
+    opacity: Math.random() * 0.6 + 0.2,
   }));
 };
 
 const CyberStarsBackground = () => {
-  const stars = generateStars(150);
+  const stars = generateStars(100);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -43,10 +43,10 @@ const CyberStarsBackground = () => {
             opacity: star.opacity,
           }}
           animate={{
-            opacity: [star.opacity, star.opacity * 0.3, star.opacity],
+            opacity: [star.opacity * 0.8, star.opacity, star.opacity * 0.8],
           }}
           transition={{
-            duration: 3 + Math.random() * 2,
+            duration: 4 + Math.random() * 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -54,7 +54,7 @@ const CyberStarsBackground = () => {
       ))}
       
       {/* Cyber grid lines */}
-      <svg className="absolute inset-0 w-full h-full opacity-10">
+      <svg className="absolute inset-0 w-full h-full opacity-5">
         <defs>
           <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
             <path d="M 50 0 L 0 0 0 50" fill="none" stroke="cyan" strokeWidth="0.5"/>
@@ -65,25 +65,25 @@ const CyberStarsBackground = () => {
       
       {/* Glowing orbs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-500/10 rounded-full blur-xl"
+        className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-500/5 rounded-full blur-xl"
         animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.1, 1],
+          opacity: [0.2, 0.4, 0.2],
         }}
         transition={{
-          duration: 4,
+          duration: 6,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       <motion.div
-        className="absolute top-3/4 right-1/4 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"
+        className="absolute top-3/4 right-1/4 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"
         animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.4, 0.2, 0.4],
+          scale: [1.1, 1, 1.1],
+          opacity: [0.3, 0.1, 0.3],
         }}
         transition={{
-          duration: 6,
+          duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
