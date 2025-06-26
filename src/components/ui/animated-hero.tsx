@@ -34,18 +34,18 @@ function HeroComponent() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden">      
+    <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden bg-black">      
       {/* Starry Night Background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
           id="tsparticles"
-          background="#000000"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
+          background="transparent"
+          minSize={1}
+          maxSize={4}
+          particleDensity={200}
           className="w-full h-full"
           particleColor="#ffffff"
-          speed={0.5}
+          speed={1}
         />
       </div>
       
@@ -67,7 +67,7 @@ function HeroComponent() {
                   <motion.span
                     key={index}
                     className="absolute font-semibold text-white"
-                    initial={{ opacity: 0, y: "-100" }}
+                    initial={{ opacity: 0, y: -100 }}
                     transition={SPRING_TRANSITION}
                     animate={
                       titleNumber === index
