@@ -1,6 +1,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { SparklesCore } from "./sparkles-core";
 
 // Consistent animation constants
 const SPRING_TRANSITION = {
@@ -34,12 +35,26 @@ function HeroComponent() {
 
   return (
     <div className="w-full min-h-[60vh] relative rounded-3xl overflow-hidden">      
+      {/* Starry Night Background */}
+      <div className="absolute inset-0 z-0">
+        <SparklesCore
+          id="tsparticles"
+          background="#000000"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="#ffffff"
+          speed={0.5}
+        />
+      </div>
+      
       <div className="container mx-auto relative z-10">
         <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[60vh]">
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
               <motion.span 
-                className="text-foreground text-5xl md:text-6xl font-bold relative inline-block"
+                className="text-white text-5xl md:text-6xl font-bold relative inline-block"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={FADE_TRANSITION}
@@ -51,7 +66,7 @@ function HeroComponent() {
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold text-foreground"
+                    className="absolute font-semibold text-white"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={SPRING_TRANSITION}
                     animate={
