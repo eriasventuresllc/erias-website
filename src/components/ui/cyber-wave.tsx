@@ -74,12 +74,30 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
         }
       }
 
-      // Apply wave styling
+      // Draw multiple glow layers for enhanced effect
+      const glowLayers = [
+        { blur: 20, alpha: 0.1, width: 6 },
+        { blur: 15, alpha: 0.2, width: 4 },
+        { blur: 10, alpha: 0.3, width: 3 },
+        { blur: 5, alpha: 0.4, width: 2 }
+      ];
+
+      // Draw glow layers
+      glowLayers.forEach(layer => {
+        ctx.strokeStyle = wave.color;
+        ctx.lineWidth = layer.width;
+        ctx.globalAlpha = layer.alpha * (isMouseOver ? 1.5 : 1);
+        ctx.shadowColor = wave.color;
+        ctx.shadowBlur = layer.blur * (isMouseOver ? 1.5 : 1);
+        ctx.stroke();
+      });
+
+      // Draw main wave line
       ctx.strokeStyle = wave.color;
-      ctx.lineWidth = 3;
-      ctx.globalAlpha = 0.8;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.9;
       ctx.shadowColor = wave.color;
-      ctx.shadowBlur = isMouseOver ? 15 : 8;
+      ctx.shadowBlur = isMouseOver ? 25 : 15;
       ctx.stroke();
 
       // Apply fade effect
