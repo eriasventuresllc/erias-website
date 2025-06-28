@@ -37,17 +37,24 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
       { amplitude: 25, frequency: 0.01, speed: 0.018, offset: Math.PI, color: '#ff8888' },
     ];
 
-    const drawWave = (wave: any, mouseInfluence: number) => {
-      ctx.beginPath();
-      ctx.strokeStyle = wave.color;
-      ctx.lineWidth = 2;
-      ctx.globalAlpha = 0.7;
+    const createFadeGradient = (width: number) => {
+      const fadeDistance = width * 0.15; // Fade over 15% of width on each side
+      const gradient = ctx.createLinearGradient(0, 0, width, 0);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
+      gradient.addColorStop(fadeDistance / width, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(1 - fadeDistance / width, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      return gradient;
+    };
 
+    const drawWave = (wave: any, mouseInfluence: number) => {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
       const centerY = height / 2;
 
-      for (let x = 0; x <= width; x += 2) {
+      // Create path for the wave
+      ctx.beginPath();
+      for (let x = 0; x <= width; x += 1) {
         const baseY = centerY + 
           Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
         
@@ -64,8 +71,20 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
           ctx.lineTo(x, y);
         }
       }
-      
+
+      // Apply fade gradient as a mask
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.strokeStyle = wave.color;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.7;
       ctx.stroke();
+
+      // Apply fade effect using globalCompositeOperation
+      ctx.globalCompositeOperation = 'destination-in';
+      ctx.fillStyle = createFadeGradient(width);
+      ctx.fillRect(0, 0, width, height);
+      ctx.restore();
     };
 
     const animate = () => {
@@ -73,16 +92,16 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
       
       ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
       
-      time += 0.016;
+      time += 0.016; // Smooth animation increment
       const mouseInfluence = isMouseOver ? 2 : 1;
-      
-      waves.forEach(wave => {
-        drawWave(wave, mouseInfluence);
-      });
       
       // Add glow effect
       ctx.shadowColor = '#ff0000';
       ctx.shadowBlur = isMouseOver ? 20 : 10;
+      
+      waves.forEach(wave => {
+        drawWave(wave, mouseInfluence);
+      });
       
       animationRef.current = requestAnimationFrame(animate);
     };
