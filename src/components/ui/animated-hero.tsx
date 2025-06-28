@@ -1,6 +1,6 @@
-
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { CyberWave } from "./cyber-wave";
 
 // Consistent animation constants
 const SPRING_TRANSITION = {
@@ -98,6 +98,11 @@ function HeroContent() {
 function HeroComponent() {
   return (
     <div className="w-full min-h-[60vh] relative overflow-hidden bg-background">
+      {/* Cyber Wave Background */}
+      <div className="absolute inset-0 z-0">
+        <CyberWave className="w-full h-full opacity-30" />
+      </div>
+      
       <HeroContent />
     </div>
   );
