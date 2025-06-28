@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { CyberWave } from "./cyber-wave";
@@ -34,7 +35,7 @@ function HeroContent() {
 
   return (
     <div className="container mx-auto relative z-10">
-      <div className="flex gap-4 py-16 lg:py-20 items-center justify-center flex-col min-h-[60vh]">
+      <div className="flex gap-4 py-8 lg:py-12 items-center justify-center flex-col min-h-[50vh]">
         <div className="flex gap-4 flex-col">
           <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
             <motion.span
@@ -97,9 +98,9 @@ function HeroContent() {
 
 function HeroComponent() {
   return (
-    <div className="w-full min-h-[60vh] relative overflow-hidden bg-background">
-      {/* Cyber Wave Background */}
-      <div className="absolute inset-0 z-0">
+    <div className="w-full min-h-[50vh] relative overflow-hidden bg-background">
+      {/* Cyber Wave Background - positioned lower */}
+      <div className="absolute inset-0 z-0 translate-y-8">
         <CyberWave className="w-full h-full opacity-30" />
       </div>
       
