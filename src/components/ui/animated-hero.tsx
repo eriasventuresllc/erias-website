@@ -35,7 +35,7 @@ function HeroContent() {
 
   return (
     <div className="container mx-auto relative z-10">
-      <div className="flex gap-4 py-2 lg:py-4 items-center justify-center flex-col min-h-[32vh]">
+      <div className="flex gap-4 py-4 lg:py-6 items-center justify-center flex-col min-h-[40vh]">
         <div className="flex gap-4 flex-col">
           <h1 className="text-4xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
             <motion.span
@@ -98,10 +98,10 @@ function HeroContent() {
 
 function HeroComponent() {
   return (
-    <div className="w-full min-h-[32vh] relative overflow-hidden bg-background">
-      {/* Cyber Wave Background - positioned much lower */}
-      <div className="absolute inset-0 z-0 translate-y-24">
-        <CyberWave className="w-full h-full opacity-40" />
+    <div className="w-full min-h-[40vh] relative overflow-hidden bg-background">
+      {/* Cyber Wave Background - positioned even lower */}
+      <div className="absolute inset-0 z-0 translate-y-16">
+        <CyberWave className="w-full h-full opacity-30" />
       </div>
       
       <HeroContent />
