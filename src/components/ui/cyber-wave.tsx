@@ -28,17 +28,17 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Wave parameters - increased frequency and speed for more visible animation
+    // Wave parameters - sharper and more bold
     let time = 0;
     const waves = [
-      { amplitude: 60, frequency: 0.008, speed: 0.04, offset: 0, color: '#ff0000' },
-      { amplitude: 40, frequency: 0.012, speed: 0.03, offset: Math.PI / 3, color: '#ff3333' },
-      { amplitude: 50, frequency: 0.01, speed: 0.05, offset: Math.PI / 2, color: '#ff6666' },
-      { amplitude: 35, frequency: 0.015, speed: 0.035, offset: Math.PI, color: '#ff9999' },
+      { amplitude: 80, frequency: 0.012, speed: 0.05, offset: 0, color: '#ff0000' },
+      { amplitude: 60, frequency: 0.018, speed: 0.04, offset: Math.PI / 3, color: '#ff2222' },
+      { amplitude: 70, frequency: 0.015, speed: 0.06, offset: Math.PI / 2, color: '#ff4444' },
+      { amplitude: 50, frequency: 0.022, speed: 0.045, offset: Math.PI, color: '#ff6666' },
     ];
 
     const createFadeGradient = (width: number) => {
-      const fadeDistance = width * 0.2; // Increase fade distance for better effect
+      const fadeDistance = width * 0.15; // Reduced fade for sharper edges
       const gradient = ctx.createLinearGradient(0, 0, width, 0);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
       gradient.addColorStop(fadeDistance / width, 'rgba(255, 255, 255, 1)');
@@ -56,16 +56,16 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
       
       // Create path for the wave
       ctx.beginPath();
-      for (let x = 0; x <= width; x += 1) {
+      for (let x = 0; x <= width; x += 0.5) { // Smaller step for sharper curves
         const baseY = centerY + 
           Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
         
         // Mouse influence - more dramatic effect
         const mouseDistance = Math.abs(x - mouseRef.current.x);
         const mouseEffect = isMouseOver ? 
-          Math.exp(-mouseDistance / 80) * mouseInfluence * 40 : 0;
+          Math.exp(-mouseDistance / 80) * mouseInfluence * 50 : 0;
         
-        const y = baseY + mouseEffect * Math.sin(time * 0.08 + x * 0.02);
+        const y = baseY + mouseEffect * Math.sin(time * 0.1 + x * 0.03);
         
         if (x === 0) {
           ctx.moveTo(x, y);
@@ -74,30 +74,30 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
         }
       }
 
-      // Draw multiple glow layers for enhanced effect
+      // Draw multiple glow layers for enhanced boldness
       const glowLayers = [
-        { blur: 20, alpha: 0.1, width: 6 },
-        { blur: 15, alpha: 0.2, width: 4 },
-        { blur: 10, alpha: 0.3, width: 3 },
-        { blur: 5, alpha: 0.4, width: 2 }
+        { blur: 30, alpha: 0.15, width: 8 },
+        { blur: 20, alpha: 0.25, width: 6 },
+        { blur: 15, alpha: 0.35, width: 4 },
+        { blur: 8, alpha: 0.5, width: 3 }
       ];
 
       // Draw glow layers
       glowLayers.forEach(layer => {
         ctx.strokeStyle = wave.color;
         ctx.lineWidth = layer.width;
-        ctx.globalAlpha = layer.alpha * (isMouseOver ? 1.5 : 1);
+        ctx.globalAlpha = layer.alpha * (isMouseOver ? 1.8 : 1.2);
         ctx.shadowColor = wave.color;
-        ctx.shadowBlur = layer.blur * (isMouseOver ? 1.5 : 1);
+        ctx.shadowBlur = layer.blur * (isMouseOver ? 1.8 : 1.2);
         ctx.stroke();
       });
 
-      // Draw main wave line
+      // Draw main wave line - bolder
       ctx.strokeStyle = wave.color;
-      ctx.lineWidth = 2;
-      ctx.globalAlpha = 0.9;
+      ctx.lineWidth = 3;
+      ctx.globalAlpha = 1;
       ctx.shadowColor = wave.color;
-      ctx.shadowBlur = isMouseOver ? 25 : 15;
+      ctx.shadowBlur = isMouseOver ? 35 : 20;
       ctx.stroke();
 
       // Apply fade effect
@@ -115,8 +115,8 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
       ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
       
       // Increment time for animation - increased for more visible movement
-      time += 0.03;
-      const mouseInfluence = isMouseOver ? 3 : 1;
+      time += 0.04;
+      const mouseInfluence = isMouseOver ? 4 : 1.5;
       
       // Draw all waves
       waves.forEach(wave => {
