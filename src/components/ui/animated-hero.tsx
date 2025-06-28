@@ -99,8 +99,8 @@ function HeroContent() {
 function HeroComponent() {
   return (
     <div className="w-full min-h-[35vh] relative overflow-hidden bg-background">
-      {/* Cyber Wave Background - positioned to sit just below the text */}
-      <div className="absolute inset-0 z-0 translate-y-20">
+      {/* Cyber Wave Background - positioned lower */}
+      <div className="absolute inset-0 z-0 translate-y-8">
         <CyberWave className="w-full h-full opacity-30" />
       </div>
       
