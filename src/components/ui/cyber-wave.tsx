@@ -28,17 +28,17 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Wave parameters
+    // Wave parameters - increased frequency and speed for more visible animation
     let time = 0;
     const waves = [
-      { amplitude: 50, frequency: 0.005, speed: 0.02, offset: 0, color: '#ff0000' },
-      { amplitude: 30, frequency: 0.008, speed: 0.015, offset: Math.PI / 3, color: '#ff4444' },
-      { amplitude: 40, frequency: 0.006, speed: 0.025, offset: Math.PI / 2, color: '#ff6666' },
-      { amplitude: 25, frequency: 0.01, speed: 0.018, offset: Math.PI, color: '#ff8888' },
+      { amplitude: 60, frequency: 0.008, speed: 0.04, offset: 0, color: '#ff0000' },
+      { amplitude: 40, frequency: 0.012, speed: 0.03, offset: Math.PI / 3, color: '#ff3333' },
+      { amplitude: 50, frequency: 0.01, speed: 0.05, offset: Math.PI / 2, color: '#ff6666' },
+      { amplitude: 35, frequency: 0.015, speed: 0.035, offset: Math.PI, color: '#ff9999' },
     ];
 
     const createFadeGradient = (width: number) => {
-      const fadeDistance = width * 0.15; // Fade over 15% of width on each side
+      const fadeDistance = width * 0.2; // Increase fade distance for better effect
       const gradient = ctx.createLinearGradient(0, 0, width, 0);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
       gradient.addColorStop(fadeDistance / width, 'rgba(255, 255, 255, 1)');
@@ -52,18 +52,20 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
       const height = canvas.clientHeight;
       const centerY = height / 2;
 
+      ctx.save();
+      
       // Create path for the wave
       ctx.beginPath();
       for (let x = 0; x <= width; x += 1) {
         const baseY = centerY + 
           Math.sin(x * wave.frequency + time * wave.speed + wave.offset) * wave.amplitude;
         
-        // Mouse influence
+        // Mouse influence - more dramatic effect
         const mouseDistance = Math.abs(x - mouseRef.current.x);
         const mouseEffect = isMouseOver ? 
-          Math.exp(-mouseDistance / 100) * mouseInfluence * 50 : 0;
+          Math.exp(-mouseDistance / 80) * mouseInfluence * 40 : 0;
         
-        const y = baseY + mouseEffect * Math.sin(time * 0.05 + x * 0.01);
+        const y = baseY + mouseEffect * Math.sin(time * 0.08 + x * 0.02);
         
         if (x === 0) {
           ctx.moveTo(x, y);
@@ -72,40 +74,42 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
         }
       }
 
-      // Apply fade gradient as a mask
-      ctx.save();
-      ctx.globalCompositeOperation = 'source-over';
+      // Apply wave styling
       ctx.strokeStyle = wave.color;
-      ctx.lineWidth = 2;
-      ctx.globalAlpha = 0.7;
+      ctx.lineWidth = 3;
+      ctx.globalAlpha = 0.8;
+      ctx.shadowColor = wave.color;
+      ctx.shadowBlur = isMouseOver ? 15 : 8;
       ctx.stroke();
 
-      // Apply fade effect using globalCompositeOperation
+      // Apply fade effect
       ctx.globalCompositeOperation = 'destination-in';
       ctx.fillStyle = createFadeGradient(width);
       ctx.fillRect(0, 0, width, height);
+      
       ctx.restore();
     };
 
     const animate = () => {
       if (!ctx || !canvas) return;
       
+      // Clear canvas
       ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
       
-      time += 0.016; // Smooth animation increment
-      const mouseInfluence = isMouseOver ? 2 : 1;
+      // Increment time for animation - increased for more visible movement
+      time += 0.03;
+      const mouseInfluence = isMouseOver ? 3 : 1;
       
-      // Add glow effect
-      ctx.shadowColor = '#ff0000';
-      ctx.shadowBlur = isMouseOver ? 20 : 10;
-      
+      // Draw all waves
       waves.forEach(wave => {
         drawWave(wave, mouseInfluence);
       });
       
+      // Continue animation loop
       animationRef.current = requestAnimationFrame(animate);
     };
 
+    // Start animation
     animate();
 
     return () => {
