@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
@@ -29,7 +28,7 @@ const About = () => {
       ]
     },
     {
-      title: "AI/ML & Data Science",
+      title: "AI/ML, Cloud, & Data Science",
       icon: <Brain className="h-6 w-6 text-primary" />,
       description: "We are proven innovators in developing automated intelligence solutions that augment human analysts. Our Data Scientists bring expertise in machine learning, analytics, data mining, and cloud computing to solve the most complex analytical problems, with extensive AWS experience for scalable data analytics.",
       features: [
@@ -46,7 +45,7 @@ const About = () => {
       ]
     },
     {
-      title: "Cyber Security",
+      title: "Cybersecurity",
       icon: <Lock className="h-6 w-6 text-primary" />,
       description: "Our Cyber Analysts specialize in comprehensive threat analysis, intelligence gathering, and security assessment. With deep expertise in both offensive and defensive cyber operations, our team delivers critical insights and analysis to support mission,critical decision making.",
       features: [

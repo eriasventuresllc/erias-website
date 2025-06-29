@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { VerticalNavBar } from '@/components/ui/vertical-navbar';

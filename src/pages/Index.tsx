@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -22,20 +21,34 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <Hero />
+      <div className="relative w-full min-h-[60vh] overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        >
+          <source src="/lovable-uploads/website_backgrond.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="relative z-10">
+          <Hero />
+        </div>
+      </div>
 
       {/* Values Section */}
       <section className="py-8 mt-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="text-center mb-10">
+            opacity: 0
+          }} whileInView={{
+            opacity: 1
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-2">Our Core Values</h2>
             <motion.p 
               initial={{
@@ -60,14 +73,14 @@ const Index = () => {
           </motion.div>
           
           <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            opacity: 0
+          }} whileInView={{
+            opacity: 1
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group h-full"
@@ -111,26 +124,26 @@ const Index = () => {
       <section className="py-12">
         <div className="max-w-12xl mx-auto px-4">
           <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="mb-12 text-center">
-            <motion.h2 initial={{
-            opacity: 0,
-            y: 20
+            opacity: 0
           }} whileInView={{
-            opacity: 1,
-            y: 0
+            opacity: 1
           }} viewport={{
             once: true
           }} transition={{
-            delay: 0.1,
             duration: 0.6
-          }} className="text-3xl font-bold mb-6 flex items-center justify-center">
+          }} className="mb-12 text-center">
+            <motion.h2 initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.1,
+              duration: 0.6
+            }} className="text-3xl font-bold mb-6 flex items-center justify-center">
               <img 
                 src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
                 alt="Leaf icon" 
@@ -139,45 +152,45 @@ const Index = () => {
               Our Approach
             </motion.h2>
             <motion.p initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: 0.2,
-            duration: 0.6
-          }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.2,
+              duration: 0.6
+            }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
               We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">data science</span>, network, target and signals analysis, and <span className="text-lg font-bold text-primary">cyber operations</span>. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
             </motion.p>
             <motion.p initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: 0.3,
-            duration: 0.6
-          }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.3,
+              duration: 0.6
+            }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
               With proven technical, task, and product leadership, our approach has led to constant growth. We believe that <span className="text-lg font-bold text-primary">innovation</span> is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing <span className="text-lg font-bold text-primary">innovative, scalable, and adaptive solutions</span>.
             </motion.p>
             <motion.p initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: 0.4,
-            duration: 0.6
-          }} className="text-muted-foreground max-w-6xl mx-auto">
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.4,
+              duration: 0.6
+            }} className="text-muted-foreground max-w-6xl mx-auto">
               We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while maintaining a lean, efficient operational model.
             </motion.p>
           </motion.div>
@@ -188,14 +201,14 @@ const Index = () => {
       <section className="py-12 bg-secondary/50 rounded-3xl">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="text-center mb-10">
+            opacity: 0
+          }} whileInView={{
+            opacity: 1
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-4">Awards & Recognition</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our commitment to excellence has been recognized through these prestigious awards.
@@ -273,14 +286,14 @@ const Index = () => {
 
           {/* Desktop Layout - Updated to swap 2023 and 2024 Baltimore Sun logos */}
           <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="hidden md:grid grid-cols-6 gap-4 lg:gap-6 justify-items-center items-center">
+            opacity: 0
+          }} whileInView={{
+            opacity: 1
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="hidden md:grid grid-cols-6 gap-4 lg:gap-6 justify-items-center items-center">
             {/* First row: Circle awards */}
             <div className="col-span-1 flex items-center h-full">
               <AwardImage 
@@ -357,40 +370,40 @@ const Index = () => {
       <section className="py-12 mb-8">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
-          opacity: 0
-        }} whileInView={{
-          opacity: 1
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="text-center mb-12">
-            <motion.h2 initial={{
-            opacity: 0,
-            y: 20
+            opacity: 0
           }} whileInView={{
-            opacity: 1,
-            y: 0
+            opacity: 1
           }} viewport={{
             once: true
           }} transition={{
-            delay: 0.1,
             duration: 0.6
-          }} className="text-3xl font-bold mb-6 flex items-center justify-center">
+          }} className="text-center mb-12">
+            <motion.h2 initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.1,
+              duration: 0.6
+            }} className="text-3xl font-bold mb-6 flex items-center justify-center">
               Our Customers
             </motion.h2>
             <motion.p initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: 0.2,
-            duration: 0.6
-          }} className="text-muted-foreground mb-10 max-w-3xl mx-auto">
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.2,
+              duration: 0.6
+            }} className="text-muted-foreground mb-10 max-w-3xl mx-auto">
               We're proud to partner with leading organizations across government, intelligence, and defense sectors to deliver mission-critical solutions.
             </motion.p>
             
