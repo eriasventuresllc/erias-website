@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
@@ -270,7 +271,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Updated to accommodate 6 awards */}
+          {/* Desktop Layout - Updated to swap 2023 and 2024 Baltimore Sun logos */}
           <motion.div initial={{
           opacity: 0
         }} whileInView={{
@@ -298,19 +299,19 @@ const Index = () => {
               />
             </div>
             
-            {/* Vertical awards */}
+            {/* Vertical awards - Swapped 2023 and 2024 */}
             <div className="col-span-1">
               <AwardImage 
-                imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
-                alt="Baltimore Sun Top Workplaces 2024"
+                imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
+                alt="Baltimore Sun Top Workplaces 2023"
                 delay={0.4}
                 width="120px" 
               />
             </div>
             <div className="col-span-1">
               <AwardImage 
-                imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
-                alt="Baltimore Sun Top Workplaces 2023"
+                imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
+                alt="Baltimore Sun Top Workplaces 2024"
                 delay={0.5}
                 width="120px" 
               />
