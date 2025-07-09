@@ -41,6 +41,7 @@ interface ParticlesProps {
   vx?: number
   vy?: number
 }
+
 function hexToRgb(hex: string): number[] {
   hex = hex.replace("#", "")
 
@@ -72,11 +73,14 @@ const Particles: React.FC<ParticlesProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
   const context = useRef<CanvasRenderingContext2D | null>(null)
-  const circles = useRef<Circle[]>([])
+  const particles = useRef<Particle[]>([])
   const mousePosition = MousePosition()
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
+
+  // Matrix-style characters
+  const codeCharacters = ['0', '1', '{', '}', '<', '>', '/', '\\', '=', '+', '-', '*', '(', ')', '[', ']', ';', ':', '.', ',', '?', '!', '@', '#', '$', '%', '^', '&', '|', '~', '`', '"', "'"]
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -118,7 +122,7 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   }
 
-  type Circle = {
+  type Particle = {
     x: number
     y: number
     translateX: number
@@ -129,11 +133,12 @@ const Particles: React.FC<ParticlesProps> = ({
     dx: number
     dy: number
     magnetism: number
+    character: string
   }
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
-      circles.current.length = 0
+      particles.current.length = 0
       canvasSize.current.w = canvasContainerRef.current.offsetWidth
       canvasSize.current.h = canvasContainerRef.current.offsetHeight
       canvasRef.current.width = canvasSize.current.w * dpr
@@ -144,17 +149,18 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   }
 
-  const circleParams = (): Circle => {
+  const particleParams = (): Particle => {
     const x = Math.floor(Math.random() * canvasSize.current.w)
     const y = Math.floor(Math.random() * canvasSize.current.h)
     const translateX = 0
     const translateY = 0
-    const pSize = Math.floor(Math.random() * 2) + size
+    const pSize = Math.floor(Math.random() * 8) + size * 10 // Larger size for text
     const alpha = 0
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
     const dx = (Math.random() - 0.5) * 0.1
     const dy = (Math.random() - 0.5) * 0.1
     const magnetism = 0.1 + Math.random() * 4
+    const character = codeCharacters[Math.floor(Math.random() * codeCharacters.length)]
     return {
       x,
       y,
@@ -166,23 +172,27 @@ const Particles: React.FC<ParticlesProps> = ({
       dx,
       dy,
       magnetism,
+      character,
     }
   }
 
   const rgb = hexToRgb(color)
 
-  const drawCircle = (circle: Circle, update = false) => {
+  const drawParticle = (particle: Particle, update = false) => {
     if (context.current) {
-      const { x, y, translateX, translateY, size, alpha } = circle
-      context.current.translate(translateX, translateY)
-      context.current.beginPath()
-      context.current.arc(x, y, size, 0, 2 * Math.PI)
+      const { x, y, translateX, translateY, size, alpha, character } = particle
+      
+      context.current.save()
+      context.current.translate(x + translateX, y + translateY)
       context.current.fillStyle = `rgba(${rgb.join(", ")}, ${alpha})`
-      context.current.fill()
-      context.current.setTransform(dpr, 0, 0, dpr, 0, 0)
+      context.current.font = `${size}px 'Courier New', monospace`
+      context.current.textAlign = 'center'
+      context.current.textBaseline = 'middle'
+      context.current.fillText(character, 0, 0)
+      context.current.restore()
 
       if (!update) {
-        circles.current.push(circle)
+        particles.current.push(particle)
       }
     }
   }
@@ -202,8 +212,8 @@ const Particles: React.FC<ParticlesProps> = ({
     clearContext()
     const particleCount = quantity
     for (let i = 0; i < particleCount; i++) {
-      const circle = circleParams()
-      drawCircle(circle)
+      const particle = particleParams()
+      drawParticle(particle)
     }
   }
 
@@ -221,50 +231,54 @@ const Particles: React.FC<ParticlesProps> = ({
 
   const animate = () => {
     clearContext()
-    circles.current.forEach((circle: Circle, i: number) => {
+    particles.current.forEach((particle: Particle, i: number) => {
       // Handle the alpha value
       const edge = [
-        circle.x + circle.translateX - circle.size, // distance from left edge
-        canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-        circle.y + circle.translateY - circle.size, // distance from top edge
-        canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+        particle.x + particle.translateX - particle.size, // distance from left edge
+        canvasSize.current.w - particle.x - particle.translateX - particle.size, // distance from right edge
+        particle.y + particle.translateY - particle.size, // distance from top edge
+        canvasSize.current.h - particle.y - particle.translateY - particle.size, // distance from bottom edge
       ]
       const closestEdge = edge.reduce((a, b) => Math.min(a, b))
       const remapClosestEdge = parseFloat(
         remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
       )
       if (remapClosestEdge > 1) {
-        circle.alpha += 0.02
-        if (circle.alpha > circle.targetAlpha) {
-          circle.alpha = circle.targetAlpha
+        particle.alpha += 0.02
+        if (particle.alpha > particle.targetAlpha) {
+          particle.alpha = particle.targetAlpha
         }
       } else {
-        circle.alpha = circle.targetAlpha * remapClosestEdge
+        particle.alpha = particle.targetAlpha * remapClosestEdge
       }
-      circle.x += circle.dx + vx
-      circle.y += circle.dy + vy
-      circle.translateX +=
-        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
+      particle.x += particle.dx + vx
+      particle.y += particle.dy + vy
+      particle.translateX +=
+        (mouse.current.x / (staticity / particle.magnetism) - particle.translateX) /
         ease
-      circle.translateY +=
-        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
+      particle.translateY +=
+        (mouse.current.y / (staticity / particle.magnetism) - particle.translateY) /
         ease
 
-      drawCircle(circle, true)
+      // Randomly change character occasionally for matrix effect
+      if (Math.random() < 0.01) {
+        particle.character = codeCharacters[Math.floor(Math.random() * codeCharacters.length)]
+      }
 
-      // circle gets out of the canvas
+      drawParticle(particle, true)
+
+      // particle gets out of the canvas
       if (
-        circle.x < -circle.size ||
-        circle.x > canvasSize.current.w + circle.size ||
-        circle.y < -circle.size ||
-        circle.y > canvasSize.current.h + circle.size
+        particle.x < -particle.size ||
+        particle.x > canvasSize.current.w + particle.size ||
+        particle.y < -particle.size ||
+        particle.y > canvasSize.current.h + particle.size
       ) {
-        // remove the circle from the array
-        circles.current.splice(i, 1)
-        // create a new circle
-        const newCircle = circleParams()
-        drawCircle(newCircle)
-        // update the circle position
+        // remove the particle from the array
+        particles.current.splice(i, 1)
+        // create a new particle
+        const newParticle = particleParams()
+        drawParticle(newParticle)
       }
     })
     window.requestAnimationFrame(animate)
