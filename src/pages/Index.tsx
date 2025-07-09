@@ -6,6 +6,7 @@ import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
 import { Hero } from '@/components/ui/animated-hero';
+import { Particles } from '@/components/ui/particles';
 
 const Index = () => {
   const controls = useAnimation();
@@ -21,17 +22,15 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <div className="relative w-full min-h-[60vh] overflow-hidden">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        >
-          <source src="/lovable-uploads/website_backgrond.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <div className="relative w-full min-h-[60vh] overflow-hidden bg-gradient-to-br from-background via-background/95 to-background/90">
+        <Particles
+          className="absolute inset-0"
+          quantity={80}
+          ease={70}
+          color="#ffffff"
+          size={1.2}
+          staticity={40}
+        />
         <div className="relative z-10">
           <Hero />
         </div>
