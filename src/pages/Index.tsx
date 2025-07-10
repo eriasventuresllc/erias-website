@@ -6,7 +6,7 @@ import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
 import { Hero } from '@/components/ui/animated-hero';
-import { Particles } from '@/components/ui/particles';
+import { GeometricBackground } from '@/components/ui/geometric-background';
 
 const Index = () => {
   const controls = useAnimation();
@@ -22,15 +22,8 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <div className="relative w-full min-h-[60vh] overflow-hidden bg-gradient-to-br from-background via-background/95 to-background/90">
-        <Particles
-          className="absolute inset-0"
-          quantity={80}
-          ease={70}
-          color="#ffffff"
-          size={1.2}
-          staticity={40}
-        />
+      <div className="relative w-full min-h-[60vh] overflow-hidden">
+        <GeometricBackground className="absolute inset-0" />
         <div className="relative z-10">
           <Hero />
         </div>
