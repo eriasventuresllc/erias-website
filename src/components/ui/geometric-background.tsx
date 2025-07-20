@@ -11,7 +11,7 @@ export const GeometricBackground: React.FC<GeometricBackgroundProps> = ({
   return (
     <div className={cn("absolute inset-0 overflow-hidden", className)}>
       {/* Transparent overlay instead of solid gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-blue-900/3" />
       
       {/* Geometric shapes with ultra-soft edges and minimal opacity */}
       <div className="absolute inset-0">
