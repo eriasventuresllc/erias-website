@@ -6,7 +6,7 @@ import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
 import { Hero } from '@/components/ui/animated-hero';
-import { GeometricBackground } from '@/components/ui/geometric-background';
+ 
 
 const Index = () => {
   const controls = useAnimation();
@@ -22,10 +22,28 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <div className="relative w-full min-h-[60vh] overflow-hidden">
-        <GeometricBackground className="absolute inset-0" />
+      <div className="relative min-h-screen overflow-hidden mx-[calc(50%-50vw)]">
+        <video
+          className="absolute inset-0 w-full h-full object-cover object-[right_-8%] scale-[1.01]"
+          src="/lovable-uploads/main.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10">
-          <Hero />
+          {/* Top logo over video */}
+          <div className="w-full flex justify-center pt-28 md:pt-12">
+            <img 
+              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
+              alt="Erias Ventures Logo" 
+              className="h-20 md:h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+            />
+          </div>
+          <div className="mt-16 md:mt-24">
+            <Hero />
+          </div>
         </div>
       </div>
 

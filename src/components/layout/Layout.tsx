@@ -29,6 +29,7 @@ const Layout = ({ children }: LayoutProps) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const isMobile = useIsMobile();
   const location = useLocation();
+  const isHome = location.pathname === "/";
 
   // Memoize nav items to prevent unnecessary re-renders
   const navItems = useMemo(() => [
@@ -74,7 +75,7 @@ const Layout = ({ children }: LayoutProps) => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground dark">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground dark">
       {isMobile && (
         <header 
           className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
@@ -89,15 +90,17 @@ const Layout = ({ children }: LayoutProps) => {
       
       <VerticalNavBar items={navItems} />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-32">
-        {/* Logo - using the new uploaded logo image */}
-        <div className="w-full flex justify-center mb-10 mt-6">
-          <img 
-            src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
-            alt="Erias Ventures Logo" 
-            className="h-24 md:h-28 object-contain"
-          />
-        </div>
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-10'} pb-32`}>
+        {/* Logo - show globally except on home (home renders logo over video) */}
+        {!isHome && (
+          <div className="w-full flex justify-center mb-10 mt-6">
+            <img 
+              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
+              alt="Erias Ventures Logo" 
+              className="h-24 md:h-28 object-contain"
+            />
+          </div>
+        )}
         
         {/* Page content transitions - updated for consistency */}
         <AnimatePresence mode="wait">
