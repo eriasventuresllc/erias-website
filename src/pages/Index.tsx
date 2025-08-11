@@ -24,7 +24,7 @@ const Index = () => {
       {/* Hero Section */}
       <div className="relative min-h-screen overflow-hidden mx-[calc(50%-50vw)] -mt-4 md:-mt-6">
         <video
-          className="absolute inset-0 w-full h-full object-cover object-[right_-8%] scale-[1.01]"
+          className="absolute inset-0 w-full h-full object-cover object-center md:object-[right_-8%] scale-[1.01]"
           src="/lovable-uploads/main.mp4"
           autoPlay
           muted
@@ -34,11 +34,11 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10">
           {/* Top logo over video */}
-          <div className="w-full flex justify-center pt-20 md:pt-16">
+          <div className="w-full flex justify-center pt-28 md:pt-16">
             <img 
               src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
               alt="Erias Ventures Logo" 
-              className="h-20 md:h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+              className="h-16 md:h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
             />
           </div>
           <div className="mt-36 md:mt-48">
