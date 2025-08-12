@@ -133,10 +133,10 @@ const Careers = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
             >
-              <PatternCard className="h-full hover:shadow-lg transition-shadow duration-300">
+              <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02] bg-white/5 backdrop-blur-xl border-white/10">
                 <PatternCardBody>
                   <div className="flex items-center gap-4 mb-2">
-                    <div className="p-2 rounded-full bg-primary/10">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
                       {category.icon}
                     </div>
                     <h3 className="text-xl font-semibold">{category.title}</h3>
@@ -151,7 +151,7 @@ const Careers = () => {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.8 + (i * 0.05), duration: 0.3 }}
-                        className="flex items-start gap-2"
+                        className="flex items-start gap-2 group-hover:translate-x-1 transition-transform duration-200"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
                         <span className="text-sm">{benefit.replace(/ - /g, ", ")}</span>
@@ -177,7 +177,7 @@ const Careers = () => {
           <CarouselContent>
             {teamImages.map((img, idx) => (
               <CarouselItem key={img.src} className="flex justify-center items-center">
-                <div className="w-full h-72 sm:h-96 md:h-[420px] flex justify-center items-center overflow-hidden rounded-xl border bg-muted shadow-2xl shadow-primary/30 transition-all duration-500">
+                <div className="w-full h-72 sm:h-96 md:h-[420px] flex justify-center items-center overflow-hidden rounded-xl border bg-muted/50 backdrop-blur-md shadow-2xl shadow-primary/30 transition-all duration-500">
                   <img
                     src={img.src}
                     alt={img.alt.replace(/ - /g, ", ")}

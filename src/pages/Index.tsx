@@ -6,6 +6,7 @@ import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
 import { Hero } from '@/components/ui/animated-hero';
+import { Button } from '@/components/ui/button';
  
 
 const Index = () => {
@@ -22,33 +23,38 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <div className="relative min-h-screen overflow-hidden mx-[calc(50%-50vw)] -mt-4 md:-mt-6">
+      <div className="relative min-h-screen overflow-hidden mx-[calc(50%-50vw)] -mt-4 md:-mt-6 bg-black">
         <video
-          className="absolute inset-0 w-full h-full object-cover object-center md:object-[right_-8%] scale-[1.01]"
+          className="absolute inset-0 w-full h-full object-cover"
           src="/lovable-uploads/main.mp4"
           autoPlay
           muted
           loop
           playsInline
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
         <div className="relative z-10">
-          {/* Top logo over video */}
-          <div className="w-full flex justify-center pt-28 md:pt-16">
-            <img 
-              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
-              alt="Erias Ventures Logo" 
-              className="h-16 md:h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
-            />
-          </div>
-          <div className="mt-36 md:mt-48">
+          <div className="pt-56 md:pt-48">
             <Hero />
+            <motion.div 
+              className="mt-6 flex items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <Button asChild className="rounded-full px-6 h-11 text-base shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+                <a href="/about">Explore Expertise</a>
+              </Button>
+              <Button asChild variant="secondary" className="rounded-full px-6 h-11 text-base backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/15">
+                <a href="/careers">Join Our Team</a>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </div>
 
       {/* Values Section */}
-      <section className="py-8 mt-12 bg-secondary/50 rounded-3xl">
+      <section id="values" className="py-14 mt-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
             opacity: 0
@@ -59,7 +65,7 @@ const Index = () => {
           }} transition={{
             duration: 0.6
           }} className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2">Our Core Values</h2>
+            <h2 className="text-4xl font-bold mb-3 tracking-tight">Our Core Values</h2>
             <motion.p 
               initial={{
                 opacity: 0,
@@ -90,7 +96,7 @@ const Index = () => {
             once: true
           }} transition={{
             duration: 0.6
-          }} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          }} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <motion.div
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group h-full"
@@ -131,7 +137,7 @@ const Index = () => {
       </section>
 
       {/* Approach Section */}
-      <section className="py-12">
+      <section className="py-14">
         <div className="max-w-12xl mx-auto px-4">
           <motion.div initial={{
             opacity: 0
@@ -153,7 +159,7 @@ const Index = () => {
             }} transition={{
               delay: 0.1,
               duration: 0.6
-            }} className="text-3xl font-bold mb-6 flex items-center justify-center">
+            }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
               <img 
                 src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
                 alt="Leaf icon" 
@@ -161,6 +167,7 @@ const Index = () => {
               />
               Our Approach
             </motion.h2>
+            
             <motion.p initial={{
               opacity: 0,
               y: 20
@@ -208,7 +215,7 @@ const Index = () => {
       </section>
 
       {/* Awards Section */}
-      <section className="py-12 bg-secondary/50 rounded-3xl">
+      <section className="py-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
             opacity: 0
@@ -219,7 +226,7 @@ const Index = () => {
           }} transition={{
             duration: 0.6
           }} className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-4">Awards & Recognition</h2>
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">Awards & Recognition</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our commitment to excellence has been recognized through these prestigious awards.
             </p>
@@ -377,7 +384,7 @@ const Index = () => {
       </section>
 
       {/* Our Customers Section */}
-      <section className="py-12 mb-8">
+      <section className="py-14 mb-8">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
             opacity: 0
@@ -399,7 +406,7 @@ const Index = () => {
             }} transition={{
               delay: 0.1,
               duration: 0.6
-            }} className="text-3xl font-bold mb-6 flex items-center justify-center">
+            }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
               Our Customers
             </motion.h2>
             <motion.p initial={{

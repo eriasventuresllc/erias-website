@@ -9,58 +9,46 @@ const About = () => {
     {
       title: "Software Engineering",
       icon: <Code className="h-6 w-6 text-primary" />,
-      description: "Our Full,Stack Developers and System Engineers are experts in the complete life,cycle of systems development, building modern, robust, scalable applications on Web, Cloud, Enterprise, and Data,Centric architectures with extensive AWS and cloud infrastructure expertise.",
+      description: "Our full‑stack engineers and systems architects deliver across the entire lifecycle, building robust, scalable solutions for web, cloud, and enterprise environments with deep AWS and cloud infrastructure expertise.",
       features: [
-        "Requirements Gathering, Research and Analysis",
-        "System Design and Architecture",
-        "Software Architecture and Design",
-        "Java, C++, C#, Groovy, Go, Python, Scala, Shell Scripting",
-        "Linux, Windows, Unix",
-        "Agile Development Methodologies, Scrum, Kanban, Lean",
-        "Product Management and Leadership",
-        "Certified Scrum Masters",
-        "Thread, Workflow, and Dataflow Engineering",
-        "Knowledge Management and Information Sharing",
-        "Software and System Testing",
-        "System Administration and DevOps",
-        "Automated Dissemination and Reporting",
-        "AWS Cloud: Building, deploying, and managing solutions with Redshift, EMR, Lambda, EC2, S3, and cloud automation"
+        "Requirements analysis and discovery",
+        "System architecture and design",
+        "Front‑end and back‑end development (Java, C++, Go, Python, C#)",
+        "Linux, Windows, and Unix platforms",
+        "Agile delivery (Scrum, Kanban)",
+        "Testing and quality engineering",
+        "DevOps and CI/CD",
+        "AWS (Lambda, EC2, S3, Redshift, EMR) and automation"
       ]
     },
     {
-      title: "AI/ML, Cloud, & Data Science",
+      title: "AI/ML & Data Science",
       icon: <Brain className="h-6 w-6 text-primary" />,
-      description: "We are proven innovators in developing automated intelligence solutions that augment human analysts. Our Data Scientists bring expertise in machine learning, analytics, data mining, and cloud computing to solve the most complex analytical problems, with extensive AWS experience for scalable data analytics.",
+      description: "We design and deploy ML systems that augment analysts, combining machine learning, deep learning, and data engineering on scalable cloud platforms.",
       features: [
-        "Machine Learning, Deep Learning, Artificial Intelligence",
-        "Automating Analyst Workflows",
-        "Automated Intelligence and Analysis Reports",
-        "Data Mining and Visualization",
-        "Hadoop MapReduce, Spark",
-        "Apache NiFi and Dataflow Management",
-        "Repeatable, Scalable, Automated Solutions",
-        "AWS services: Redshift, EMR, S3, Lambda, and EC2 for scalable data analytics",
-        "Legal, Policy, Oversight, and Compliance Knowledge",
-        "Subject Matter Experts on Policy and Technical Capabilities"
+        "Model development (ML/DL) and evaluation",
+        "Workflow automation for analysts",
+        "Data pipelines and processing (Spark, Hadoop)",
+        "Dataflow orchestration (Apache NiFi)",
+        "Visualization and analytics",
+        "AWS analytics stack (Redshift, EMR, S3, Lambda, EC2)",
+        "MLOps and repeatable pipelines",
+        "Governance, oversight, and compliance"
       ]
     },
     {
       title: "Cybersecurity",
       icon: <Lock className="h-6 w-6 text-primary" />,
-      description: "Our Cyber Analysts specialize in comprehensive threat analysis, intelligence gathering, and security assessment. With deep expertise in both offensive and defensive cyber operations, our team delivers critical insights and analysis to support mission,critical decision making.",
+      description: "We deliver comprehensive threat analysis, intelligence, and security assessment. Our team spans offensive and defensive operations to support mission‑critical decision making.",
       features: [
-        "Cyber Threat Intelligence Analysis",
-        "Malware Analysis and Reverse Engineering",
-        "Network Traffic Analysis and Forensics",
-        "Vulnerability Assessment and Analysis",
-        "Incident Response and Investigation",
-        "Threat Hunting and Detection",
-        "Intelligence Report Writing and Briefing",
-        "Open Source Intelligence (OSINT) Collection",
-        "Adversary Tactics, Techniques, and Procedures (TTPs) Analysis",
-        "Risk Assessment and Mitigation Strategies",
-        "Cyber Operations Support and Analysis",
-        "Security Tool Development and Automation"
+        "Threat intelligence and reporting",
+        "Malware analysis and reverse engineering",
+        "Network forensics and traffic analysis",
+        "Vulnerability assessment and remediation",
+        "Incident response and investigation",
+        "Threat hunting and detection",
+        "OSINT collection",
+        "TTP analysis and security automation"
       ]
     }
   ];
@@ -71,7 +59,7 @@ const About = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="py-12"
+        className="py-14"
       >
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -83,7 +71,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
           >
             Our Expertise
           </motion.h1>
@@ -91,7 +79,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="max-w-2xl mx-auto text-base text-muted-foreground"
+            className="max-w-3xl mx-auto text-lg text-muted-foreground"
           >
             We bring together expertise across three core disciplines to deliver innovative solutions for the most complex challenges.
           </motion.p>
@@ -108,7 +96,7 @@ const About = () => {
               className="group"
             >
               <PatternCard 
-                className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02]"
+                className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02] bg-white/5 backdrop-blur-xl border-white/10"
               >
                 <PatternCardBody className="p-6">
                   <div className="flex items-center gap-3 mb-4">

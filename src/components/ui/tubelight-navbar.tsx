@@ -1,8 +1,8 @@
 
 "use client"
 
-import React, { useEffect, useState, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react"
+import { motion, AnimatePresence, useMotionValue, animate } from "framer-motion"
 import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -16,6 +16,7 @@ interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
+  align?: "start" | "center" | "end"
 }
 
 // Consistent animation constants
@@ -30,13 +31,19 @@ const HOVER_TRANSITION = {
   ease: "easeInOut"
 };
 
-export function NavBar({ items, className }: NavBarProps) {
+export function NavBar({ items, className, align = "center" }: NavBarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const isFirstRender = useRef(true);
+  const prevPathRef = useRef(location.pathname);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [indicatorReady, setIndicatorReady] = useState(false);
+  const indicatorLeft = useMotionValue(0);
+  const indicatorWidth = useMotionValue(0);
 
   // Function to determine if a URL is active
   const isActive = (url: string) => location.pathname === url;
@@ -65,21 +72,63 @@ export function NavBar({ items, className }: NavBarProps) {
     navigate(url);
   };
 
+  // Recompute the sliding indicator position and width when route, hover, or size changes
+  useLayoutEffect(() => {
+    const recomputeIndicator = () => {
+      const activeItem = items.find((i) => isActive(i.url)) ?? items[0];
+      const targetItemName = hoveredItem ?? activeItem.name;
+      const barElement = barRef.current;
+      const itemElement = targetItemName ? itemRefs.current[targetItemName] : null;
+      if (!barElement || !itemElement) {
+        return;
+      }
+      const barRect = barElement.getBoundingClientRect();
+      const itemRect = itemElement.getBoundingClientRect();
+      const left = itemRect.left - barRect.left + 8; // slight inset
+      const width = Math.max(24, itemRect.width - 16); // avoid too small width
+      const pathChanged = prevPathRef.current !== location.pathname;
+      const shouldAnimate = indicatorReady && (hoveredItem !== null || pathChanged) && !isFirstRender.current;
+      if (!indicatorReady || !shouldAnimate) {
+        indicatorLeft.set(left);
+        indicatorWidth.set(width);
+        if (!indicatorReady) setIndicatorReady(true);
+      } else {
+        animate(indicatorLeft, left, SPRING_TRANSITION as any);
+        animate(indicatorWidth, width, SPRING_TRANSITION as any);
+      }
+      prevPathRef.current = location.pathname;
+    };
+
+    recomputeIndicator();
+    const onResize = () => recomputeIndicator();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [location.pathname, items, hoveredItem]);
+
+  const alignmentClass = align === "start" ? "justify-start" : align === "end" ? "justify-end" : "justify-center";
+
   return (
     <div
       className={cn(
-        "flex justify-center z-50",
+        "flex z-50",
+        alignmentClass,
         className,
       )}
       ref={navRef}
     >
       <motion.div 
-        className="flex items-center gap-6 py-1 px-3 rounded-full"
-        layoutId="tubelight-navbar"
-        layout="position"
+        className="relative flex items-center gap-6 py-1 px-3 rounded-full"
         initial={false}
         transition={SPRING_TRANSITION}
+        ref={barRef}
+        onMouseLeave={() => setHoveredItem(null)}
       >
+        {indicatorReady && (
+          <motion.div
+            className="absolute bottom-0 h-[2px] bg-gradient-to-r from-primary/60 via-primary to-primary/60 rounded-full opacity-90"
+            style={{ left: indicatorLeft, width: indicatorWidth }}
+          />
+        )}
         <AnimatePresence mode="wait">
           {items.map((item) => {
             const Icon = item.icon
@@ -90,6 +139,9 @@ export function NavBar({ items, className }: NavBarProps) {
             return (
               <motion.div
                 key={itemKey}
+                ref={(el: HTMLDivElement | null) => {
+                  itemRefs.current[item.name] = el;
+                }}
                 role="button"
                 tabIndex={0}
                 onClick={() => handleNavigation(item.url)}

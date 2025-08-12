@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import { VerticalNavBar } from '@/components/ui/vertical-navbar';
 import { Home, Info, FileText } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+// Theme toggle intentionally removed from the home header per design update
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,9 +24,7 @@ const pageTransition = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const isMobile = useIsMobile();
+  // Header is always visible; remove hide-on-scroll to avoid initial flicker
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -50,24 +47,7 @@ const Layout = ({ children }: LayoutProps) => {
     },
   ], []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY <= 0) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  // Removed scroll-based header visibility to prevent initial fly-away animation
 
   // Reset scroll position on page change
   useEffect(() => {
@@ -76,31 +56,46 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground dark">
-      {isMobile && (
-        <header 
-          className={`w-full bg-transparent backdrop-blur-sm border-b border-border/30 fixed top-0 left-0 z-50 transition-transform duration-300 ${
-            isVisible ? 'translate-y-0' : '-translate-y-full'
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-16">
-            <NavBar items={navItems} />
+      <header className="w-full fixed top-0 left-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Desktop/tablet layout: logo left, nav centered */}
+          <div className="hidden md:grid grid-cols-3 items-center mt-4">
+            <div className="flex items-center justify-start">
+              <Link to="/" aria-label="Go to home">
+                <img
+                  src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+                  alt="Erias Ventures Logo"
+                  className="h-10 md:h-12 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+                />
+              </Link>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
+                <NavBar items={navItems} align="center" />
+              </div>
+            </div>
+            <div />
           </div>
-        </header>
-      )}
-      
-      <VerticalNavBar items={navItems} />
-      
-      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-10'} pb-32`}>
-        {/* Logo - show globally except on home (home renders logo over video) */}
-        {!isHome && (
-          <div className="w-full flex justify-center mb-10 mt-6">
-            <img 
-              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png" 
-              alt="Erias Ventures Logo" 
-              className="h-24 md:h-28 object-contain"
-            />
+
+          {/* Mobile layout: nav on top, logo below */}
+            <div className="md:hidden flex flex-col items-center gap-2 mt-8">
+            <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
+              <NavBar items={navItems} align="center" />
+            </div>
+              <Link to="/" aria-label="Go to home">
+                <img
+                  src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+                  alt="Erias Ventures Logo"
+                  className="h-12 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+                />
+              </Link>
           </div>
-        )}
+        </div>
+      </header>
+      
+      {/* Side vertical navbar removed to match new top header across pages */}
+      
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-24'} pb-32`}>
         
         {/* Page content transitions - updated for consistency */}
         <AnimatePresence mode="wait">
