@@ -9,18 +9,17 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-// Consistent animation variants for page transitions
+// Consistent animation variants for page transitions (gentle crossfade)
 const pageVariants = {
-  initial: { opacity: 0, y: 20 },
-  enter: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 }
+  initial: { opacity: 0 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0 }
 };
 
 const pageTransition = {
-  type: "spring",
-  stiffness: 300,
-  damping: 30,
-  duration: 0.15
+  type: "tween",
+  ease: [0.22, 1, 0.36, 1],
+  duration: 0.35
 };
 
 const Layout = ({ children }: LayoutProps) => {
@@ -54,48 +53,43 @@ const Layout = ({ children }: LayoutProps) => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Logo remains fixed in place without scroll-based transforms
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground dark">
       <header className="w-full fixed top-0 left-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Desktop/tablet layout: logo left, nav centered */}
-          <div className="hidden md:grid grid-cols-3 items-center mt-4">
-            <div className="flex items-center justify-start">
-              <Link to="/" aria-label="Go to home">
-                <img
-                  src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
-                  alt="Erias Ventures Logo"
-                  className="h-10 md:h-12 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
-                />
-              </Link>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
-                <NavBar items={navItems} align="center" />
-              </div>
-            </div>
-            <div />
-          </div>
-
-          {/* Mobile layout: nav on top, logo below */}
-            <div className="md:hidden flex flex-col items-center gap-2 mt-8">
+          {/* Desktop/tablet layout: fixed header contains only nav */}
+          <div className="hidden md:flex flex-col items-center mt-4">
             <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
               <NavBar items={navItems} align="center" />
             </div>
-              <Link to="/" aria-label="Go to home">
-                <img
-                  src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
-                  alt="Erias Ventures Logo"
-                  className="h-12 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
-                />
-              </Link>
+          </div>
+
+          {/* Mobile layout: fixed header contains only nav */}
+          <div className="md:hidden flex flex-col items-center gap-4 mt-10">
+            <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
+              <NavBar items={navItems} align="center" />
+            </div>
           </div>
         </div>
       </header>
       
       {/* Side vertical navbar removed to match new top header across pages */}
       
-      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-24'} pb-32`}>
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:pg-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
+        {/* Non-sticky ERIAS logo below fixed nav on non-home pages */}
+        {!isHome && (
+          <div className="pt-36 md:pt-36 flex items-center justify-center mb-8 md:mb-10">
+            <Link to="/" aria-label="Go to home">
+              <img
+                src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+                alt="Erias Ventures Logo"
+                className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+              />
+            </Link>
+          </div>
+        )}
         
         {/* Page content transitions - updated for consistency */}
         <AnimatePresence mode="wait">

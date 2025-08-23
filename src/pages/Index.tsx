@@ -6,7 +6,9 @@ import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
 import { Hero } from '@/components/ui/animated-hero';
+import CanvasRevealEffect from '@/components/ui/canvas-reveal-effect';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
  
 
 const Index = () => {
@@ -23,30 +25,40 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <div className="relative min-h-screen overflow-hidden mx-[calc(50%-50vw)] -mt-4 md:-mt-6 bg-black">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/lovable-uploads/main.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
+      <div className="relative min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black">
+        {/* Replaced background video with shader background */}
+        <div className="absolute inset-0">
+          <CanvasRevealEffect
+            animationSpeed={3}
+            containerClassName="bg-black"
+            colors={[[255, 255, 255], [255, 255, 255]]}
+            dotSize={6}
+            reverse={false}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-transparent" />
         <div className="relative z-10">
-          <div className="pt-56 md:pt-48">
+          {/* Home logo over the background, comfortably below the fixed nav */}
+          <div className="pt-36 md:pt-36 mb-8 md:mb-10 flex items-center justify-center">
+            <img 
+              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+              alt="Erias Ventures Logo"
+              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+            />
+          </div>
+          <div className="pt-2 md:pt-1">
             <Hero />
             <motion.div 
-              className="mt-6 flex items-center justify-center gap-4"
+              className="-mt-16 md:-mt-20 flex items-center justify-center gap-4"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               <Button asChild className="rounded-full px-6 h-11 text-base shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-                <a href="/about">Explore Expertise</a>
+                <Link to="/about">Explore Expertise</Link>
               </Button>
               <Button asChild variant="secondary" className="rounded-full px-6 h-11 text-base backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/15">
-                <a href="/careers">Join Our Team</a>
+                <Link to="/careers">Join Our Team</Link>
               </Button>
             </motion.div>
           </div>
@@ -54,7 +66,7 @@ const Index = () => {
       </div>
 
       {/* Values Section */}
-      <section id="values" className="py-14 mt-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
+      <section id="values" className="py-12 mt-4 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
             opacity: 0
@@ -64,7 +76,7 @@ const Index = () => {
             once: true
           }} transition={{
             duration: 0.6
-          }} className="text-center mb-10">
+          }} className="text-center mb-8">
             <h2 className="text-4xl font-bold mb-3 tracking-tight">Our Core Values</h2>
             <motion.p 
               initial={{
