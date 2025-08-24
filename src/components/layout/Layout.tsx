@@ -78,19 +78,15 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Side vertical navbar removed to match new top header across pages */}
       
       {/* ERIAS logo positioned consistently across all pages */}
-      {!isHome ? (
-        <div className="pt-36 md:pt-36 flex items-center justify-center mb-8 md:mb-10">
-          <Link to="/" aria-label="Go to home">
-            <img
-              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
-              alt="Erias Ventures Logo"
-              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
-            />
-          </Link>
-        </div>
-      ) : (
-        <div className="pt-36 md:pt-36"></div>
-      )}
+      <div className="pt-36 md:pt-36 flex items-center justify-center mb-8 md:mb-10">
+        <Link to="/" aria-label="Go to home">
+          <img
+            src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+            alt="Erias Ventures Logo"
+            className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+          />
+        </Link>
+      </div>
 
       <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
         
