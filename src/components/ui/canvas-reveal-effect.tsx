@@ -29,8 +29,8 @@ type CanvasRevealEffectProps = {
 };
 
 export const CanvasRevealEffect: React.FC<CanvasRevealEffectProps> = ({
-  animationSpeed = 10,
-  opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
+  animationSpeed = 6,
+  opacities = [0.18, 0.22, 0.24, 0.28, 0.32, 0.34, 0.38, 0.42, 0.46, 0.5],
   colors = [[0, 255, 255]],
   containerClassName,
   dotSize,
@@ -174,7 +174,7 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
 
             vec2 st2 = vec2(int(st.x / u_total_size), int(st.y / u_total_size));
 
-            float frequency = 5.0;
+            float frequency = 7.5; // slower tile update cadence
             float show_offset = random(st2);
             float rand = random(st2 * floor((u_time / frequency) + show_offset + frequency));
             opacity *= u_opacities[int(rand * 10.0)];
@@ -183,31 +183,35 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
 
             vec3 color = u_colors[int(show_offset * 6.0)];
 
-            float animation_speed_factor = 0.5;
+            float animation_speed_factor = 0.35; // overall slower animation
             vec2 center_grid = u_resolution / 2.0 / u_total_size;
             float dist_from_center = distance(center_grid, st2);
 
-            float timing_offset_intro = dist_from_center * 0.01 + (random(st2) * 0.15);
+            float timing_offset_intro = dist_from_center * 0.012 + (random(st2) * 0.12);
 
             float max_grid_dist = distance(center_grid, vec2(0.0, 0.0));
-            float timing_offset_outro = (max_grid_dist - dist_from_center) * 0.02 + (random(st2 + 42.0) * 0.2);
+            float timing_offset_outro = (max_grid_dist - dist_from_center) * 0.018 + (random(st2 + 42.0) * 0.16);
 
             float current_timing_offset;
             if (u_reverse == 1) {
                 current_timing_offset = timing_offset_outro;
                 opacity *= 1.0 - step(current_timing_offset, u_time * animation_speed_factor);
-                opacity *= clamp((step(current_timing_offset + 0.1, u_time * animation_speed_factor)) * 1.25, 1.0, 1.25);
+                opacity *= clamp((step(current_timing_offset + 0.12, u_time * animation_speed_factor)) * 1.15, 1.0, 1.15);
             } else {
                 current_timing_offset = timing_offset_intro;
                 opacity *= step(current_timing_offset, u_time * animation_speed_factor);
-                opacity *= clamp((1.0 - step(current_timing_offset + 0.1, u_time * animation_speed_factor)) * 1.25, 1.0, 1.25);
+                opacity *= clamp((1.0 - step(current_timing_offset + 0.12, u_time * animation_speed_factor)) * 1.15, 1.0, 1.15);
             }
+
+            // Reduce visual activity near center for better text readability
+            float center_mask = smoothstep(0.0, 0.35, dist_from_center / max_grid_dist);
+            opacity *= mix(0.6, 1.0, center_mask);
 
             fragColor = vec4(color, opacity);
             fragColor.rgb *= fragColor.a;
         }`}
       uniforms={uniforms}
-      maxFps={60}
+      maxFps={45}
     />
   );
 };
