@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
-import { BrainCircuit, Rocket, Lightbulb } from 'lucide-react';
+import { BrainCircuit, Rocket, Lightbulb, Leaf } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
@@ -60,12 +60,12 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <Button asChild className="rounded-full px-6 h-11 text-base shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+              {/* <Button asChild className="rounded-full px-6 h-11 text-base shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
                 <Link to="/about">Explore Expertise</Link>
               </Button>
               <Button asChild variant="secondary" className="rounded-full px-6 h-11 text-base backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/15">
                 <Link to="/careers">Join Our Team</Link>
-              </Button>
+              </Button> */}
             </motion.div>
           </div>
         </div>
@@ -178,11 +178,7 @@ const Index = () => {
               delay: 0.1,
               duration: 0.6
             }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
-              <img 
-                src="/lovable-uploads/08860f36-fa2d-4182-bcba-1e2d2476d92a.png"
-                alt="Leaf icon" 
-                className="mr-2 h-10 w-auto opacity-80" 
-              />
+              <Leaf size={28} className="mr-2 opacity-80" />
               Our Approach
             </motion.h2>
             

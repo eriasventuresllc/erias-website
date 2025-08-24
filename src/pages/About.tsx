@@ -96,14 +96,14 @@ const About = () => {
               className="group"
             >
               <PatternCard 
-                className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02] bg-white/5 backdrop-blur-xl border-white/10"
+                className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10"
               >
                 <PatternCardBody className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 group-hover:from-primary/25 group-hover:to-primary/15 transition-all duration-300">
                       {area.icon}
                     </div>
-                    <h3 className="text-lg font-bold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
+                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
                   </div>
                   
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
@@ -117,10 +117,10 @@ const About = () => {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 + (i * 0.03), duration: 0.3 }}
-                        className="flex items-start gap-2.5 group-hover:translate-x-1 transition-transform duration-200"
+                        className="flex items-start gap-2.5 group-hover:translate-x-[2px] transition-transform duration-200"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:bg-primary/80 transition-colors duration-300"></div>
-                        <span className="text-sm leading-relaxed">{feature}</span>
+                        <span className="text-sm leading-relaxed text-foreground/90">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>

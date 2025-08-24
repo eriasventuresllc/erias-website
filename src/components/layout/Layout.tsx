@@ -61,14 +61,14 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Desktop/tablet layout: fixed header contains only nav */}
           <div className="hidden md:flex flex-col items-center mt-4">
-            <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
+            <div className="rounded-full border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-2 py-1">
               <NavBar items={navItems} align="center" />
             </div>
           </div>
 
           {/* Mobile layout: fixed header contains only nav */}
           <div className="md:hidden flex flex-col items-center gap-4 mt-10">
-            <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg px-2 py-1">
+            <div className="rounded-full border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-2 py-1">
               <NavBar items={navItems} align="center" />
             </div>
           </div>
@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
       
       {/* Side vertical navbar removed to match new top header across pages */}
       
-      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:pg-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
         {/* Non-sticky ERIAS logo below fixed nav on non-home pages */}
         {!isHome && (
           <div className="pt-36 md:pt-36 flex items-center justify-center mb-8 md:mb-10">
@@ -106,8 +106,8 @@ const Layout = ({ children }: LayoutProps) => {
           </motion.div>
         </AnimatePresence>
       </main>
-      <footer className="bg-secondary py-8 border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center">
               <img 
@@ -115,19 +115,20 @@ const Layout = ({ children }: LayoutProps) => {
                 alt="Erias Ventures Icon" 
                 className="h-5 w-5 mr-2 object-contain" 
               />
-              <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC. All rights reserved.</p>
+              <p className="text-muted-foreground text-sm">© 2025 Erias Ventures, LLC.</p>
             </div>
             
-            <div className="flex items-center flex-wrap justify-center gap-2 text-sm font-medium text-muted-foreground">
+            <div className="flex items-center flex-wrap justify-center gap-3 text-sm font-medium text-muted-foreground">
               <span>443-300-8638</span>
-              <span className="hidden md:inline">|</span>
-              <a href="mailto:info@eriasventures.com" className="text-primary hover:text-primary/80 transition-colors">info@eriasventures.com</a>
-              <span className="hidden md:inline">|</span>
+              <span className="hidden md:inline text-white/20">|</span>
+              <a href="mailto:info@eriasventures.com" className="hover:text-foreground transition-colors">info@eriasventures.com</a>
+              <span className="hidden md:inline text-white/20">|</span>
               <a 
                 href="https://www.linkedin.com/company/eriasventures/posts/?feedView=all" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center text-primary hover:text-primary/80 transition-colors"
+                className="flex items-center hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
               >
                 <img 
                   src="/lovable-uploads/9688ac47-3186-432a-bc18-8964834c849f.png" 
@@ -139,7 +140,8 @@ const Layout = ({ children }: LayoutProps) => {
                 href="https://www.instagram.com/eriasventures/#" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center text-primary hover:text-primary/80 transition-colors ml-1"
+                className="flex items-center hover:text-foreground transition-colors ml-1"
+                aria-label="Instagram"
               >
                 <img 
                   src="/lovable-uploads/13a66669-c032-43a3-b3f9-e404085aaeb3.png" 

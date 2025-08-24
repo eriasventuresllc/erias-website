@@ -9,6 +9,20 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  build: {
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: [
+            "react",
+            "react-dom",
+            "framer-motion",
+          ],
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     mode === 'development' &&

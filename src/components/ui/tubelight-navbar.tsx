@@ -108,16 +108,17 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
   const alignmentClass = align === "start" ? "justify-start" : align === "end" ? "justify-end" : "justify-center";
 
   return (
-    <div
+    <nav
       className={cn(
         "flex z-50",
         alignmentClass,
         className,
       )}
       ref={navRef}
+      aria-label="Primary"
     >
       <motion.div 
-        className="relative flex items-center gap-6 py-1 px-3 rounded-full"
+        className="relative flex items-center gap-4 py-1.5 px-3 rounded-full"
         initial={false}
         transition={SPRING_TRANSITION}
         ref={barRef}
@@ -125,7 +126,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
       >
         {indicatorReady && (
           <motion.div
-            className="absolute bottom-0 h-[2px] bg-gradient-to-r from-primary/60 via-primary to-primary/60 rounded-full opacity-90"
+            className="pointer-events-none absolute bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/70 to-transparent rounded-full opacity-90"
             style={{ left: indicatorLeft, width: indicatorWidth }}
           />
         )}
@@ -153,17 +154,18 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                 onMouseEnter={() => setHoveredItem(item.name)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className={cn(
-                  "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300 select-none",
-                  "text-foreground/80 hover:text-primary",
+                  "relative cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 select-none",
+                  "text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                   active && "text-primary",
                 )}
                 style={{ WebkitTapHighlightColor: 'transparent' }}
                 layout
                 initial={false}
                 whileHover={{
-                  scale: 1.05,
+                  scale: 1.03,
                 }}
                 transition={SPRING_TRANSITION}
+                aria-current={active ? "page" : undefined}
               >
                 <>
                   <motion.span 
@@ -184,7 +186,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                     <motion.div
                       initial={{ scale: 1, rotate: 0 }}
                       animate={{ 
-                        scale: active ? 1.15 : 1,
+                        scale: active ? 1.1 : 1,
                         rotate: active ? 2 : 0,
                       }}
                       transition={{
@@ -208,7 +210,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                     {/* Glow effect under active icon */}
                     {active && (
                       <motion.div
-                        className="absolute inset-0 rounded-full blur-md opacity-30 bg-primary"
+                        className="absolute inset-0 rounded-full blur-md opacity-25 bg-primary"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1.5 }}
                         transition={SPRING_TRANSITION}
@@ -233,7 +235,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={HOVER_TRANSITION}
-                        className="absolute inset-0 bg-[#B45364]/40 rounded-md -z-10"
+                        className="absolute inset-0 bg-white/5 rounded-md -z-10"
                       />
                     )}
                   </AnimatePresence>
@@ -243,6 +245,6 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
           })}
         </AnimatePresence>
       </motion.div>
-    </div>
+    </nav>
   )
 }

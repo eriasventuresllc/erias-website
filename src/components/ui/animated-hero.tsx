@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { CyberWave } from "./cyber-wave";
 
 // Consistent animation constants
 const SPRING_TRANSITION = {
