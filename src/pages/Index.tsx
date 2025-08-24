@@ -24,8 +24,8 @@ const Index = () => {
   }, [controls]);
 
   return <Layout>
-      {/* Hero Section - adjusted positioning for logo */}
-      <div className="relative min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-36 md:-mt-36 pt-36 md:pt-36">
+      {/* Hero Section */}
+      <div className="relative min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black">
         {/* Replaced background video with shader background */}
         <div className="absolute inset-0">
           <CanvasRevealEffect
@@ -44,7 +44,7 @@ const Index = () => {
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
         </div>
         <div className="relative z-10">
-          {/* Logo is handled by Layout component for consistency */}
+          {/* Logo is now handled by Layout component for consistency */}
           <div className="pt-2 md:pt-1">
             <Hero />
             <motion.div 
