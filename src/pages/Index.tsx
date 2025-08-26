@@ -45,7 +45,7 @@ const Index = () => {
         </div>
         <div className="relative z-10">
           {/* Home logo over the background, comfortably below the fixed nav */}
-          <div className="pt-36 md:pt-36 mb-8 md:mb-10 flex items-center justify-center">
+          <div className="pt-24 md:pt-20 mb-8 md:mb-10 flex items-center justify-center">
             <img 
               src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
               alt="Erias Ventures Logo"
