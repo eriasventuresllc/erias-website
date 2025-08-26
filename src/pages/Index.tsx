@@ -24,9 +24,9 @@ const Index = () => {
   }, [controls]);
 
   return <Layout>
-      {/* Hero Section */}
-      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black">
-        {/* Replaced background video with shader background */}
+      {/* Hero Section with particles background */}
+      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
+        {/* Particles background */}
         <div className="absolute inset-0">
           <CanvasRevealEffect
             animationSpeed={3}
@@ -36,14 +36,11 @@ const Index = () => {
             reverse={false}
           />
         </div>
-        {/* Top and bottom fades to blend the dot matrix with page background */}
+        {/* Bottom fade to blend into the next section */}
         <div className="pointer-events-none absolute inset-0">
-          {/* Top fade: reduced to allow particles to show behind header */}
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background/20 via-background/10 to-transparent" />
-          {/* Bottom fade: ensures seamless transition into the next section */}
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
         </div>
-        <div className="relative z-30">
+        <div className="relative z-50">
           {/* Home logo over the background, comfortably below the fixed nav */}
           <div className="pt-24 md:pt-20 mb-8 md:mb-10 flex items-center justify-center">
             <img 

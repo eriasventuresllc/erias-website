@@ -57,18 +57,18 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground dark">
-      <header className="w-full md:relative md:top-auto md:left-auto fixed top-0 left-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="w-full md:relative md:top-auto md:left-auto fixed top-0 left-0 z-40 bg-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-transparent">
           {/* Desktop/tablet layout: fixed header contains only nav */}
-          <div className="hidden md:flex flex-col items-center mt-4">
-            <div className="rounded-full border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-2 py-1">
+          <div className="hidden md:flex flex-col items-center mt-4 bg-transparent">
+            <div className="rounded-full border border-white/10 px-2 py-1 bg-black/20 backdrop-blur-md">
               <NavBar items={navItems} align="center" />
             </div>
           </div>
 
           {/* Mobile layout: fixed header contains only nav */}
-          <div className="md:hidden flex flex-col items-center gap-4 mt-10">
-            <div className="rounded-full border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-2 py-1">
+          <div className="md:hidden flex flex-col items-center gap-4 mt-10 bg-transparent">
+            <div className="rounded-full border border-white/10 px-2 py-1 bg-black/20 backdrop-blur-md">
               <NavBar items={navItems} align="center" />
             </div>
           </div>
@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
       
       {/* Side vertical navbar removed to match new top header across pages */}
       
-      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32 bg-transparent relative`}>
         {/* Non-sticky ERIAS logo below fixed nav on non-home pages */}
         {!isHome && (
           <div className="pt-24 md:pt-20 flex items-center justify-center mb-8 md:mb-10">
