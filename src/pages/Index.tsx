@@ -25,12 +25,12 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section with particles background */}
-      <div className="relative min-h-[60vh] md:min-h-[85vh] mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
+      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
         {/* Particles background */}
-        <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0">
           <CanvasRevealEffect
             animationSpeed={3}
-            containerClassName="bg-black h-screen w-screen"
+            containerClassName="bg-black"
             colors={[[255, 255, 255], [255, 255, 255]]}
             dotSize={6}
             reverse={false}
