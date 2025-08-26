@@ -57,7 +57,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground dark">
-      <header className="w-full md:relative md:top-auto md:left-auto fixed top-0 left-0 z-40">
+      <header className="w-full md:relative md:top-auto md:left-auto fixed top-0 left-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Desktop/tablet layout: fixed header contains only nav */}
           <div className="hidden md:flex flex-col items-center mt-4">
@@ -78,18 +78,16 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Side vertical navbar removed to match new top header across pages */}
       
       <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
-        {/* Non-sticky ERIAS logo below fixed nav on non-home pages */}
-        {!isHome && (
-          <div className="pt-24 md:pt-20 flex items-center justify-center mb-8 md:mb-10">
-            <Link to="/" aria-label="Go to home">
-              <img
-                src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
-                alt="Erias Ventures Logo"
-                className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
-              />
-            </Link>
-          </div>
-        )}
+        {/* Consistent ERIAS logo position for all pages */}
+        <div className="pt-24 md:pt-20 flex items-center justify-center mb-8 md:mb-10">
+          <Link to="/" aria-label="Go to home">
+            <img
+              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+              alt="Erias Ventures Logo"
+              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+            />
+          </Link>
+        </div>
         
         {/* Page content transitions - updated for consistency */}
         <AnimatePresence mode="wait">
