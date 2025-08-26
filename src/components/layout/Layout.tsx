@@ -80,7 +80,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32`}>
         {/* Non-sticky ERIAS logo below fixed nav on non-home pages */}
         {!isHome && (
-          <div className="pt-36 md:pt-36 flex items-center justify-center mb-8 md:mb-10">
+          <div className="pt-24 md:pt-20 flex items-center justify-center mb-8 md:mb-10">
             <Link to="/" aria-label="Go to home">
               <img
                 src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
