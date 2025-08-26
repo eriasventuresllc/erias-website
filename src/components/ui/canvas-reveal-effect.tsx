@@ -329,7 +329,7 @@ const ShaderMaterialComponent = ({
 
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
   return (
-    <Canvas className="absolute inset-0 h-full w-full z-10">
+    <Canvas className="absolute inset-0 h-full w-full z-30">
       <ShaderMaterialComponent source={source} uniforms={uniforms} maxFps={maxFps} />
     </Canvas>
   );
