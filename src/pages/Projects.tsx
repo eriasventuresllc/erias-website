@@ -2,7 +2,6 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { Wallet, HeartPulse, Smile } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import {
@@ -120,11 +119,9 @@ const Careers = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="mt-8"
           >
-            <Button asChild className="rounded-full px-6 py-3 bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-              <a href="https://careers.eriasventures.com/" target="_blank" rel="noopener noreferrer">
-                View Current Openings
-              </a>
-            </Button>
+            <a href="https://careers.eriasventures.com/" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+              View Current Openings
+            </a>
           </motion.div>
         </motion.div>
 
