@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useAnimation } from 'framer-motion';
-import { BrainCircuit, Rocket, Lightbulb, Leaf } from 'lucide-react';
+import { BrainCircuit, Rocket, Lightbulb } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { BarChart4, Target, Network, Shield } from 'lucide-react';
@@ -25,7 +25,7 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section */}
-      <div className="relative min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black">
+      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black">
         {/* Replaced background video with shader background */}
         <div className="absolute inset-0">
           <CanvasRevealEffect
@@ -39,9 +39,9 @@ const Index = () => {
         {/* Top and bottom fades to blend the dot matrix with page background */}
         <div className="pointer-events-none absolute inset-0">
           {/* Top fade: slightly stronger to soften edge under fixed nav */}
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/80 via-background/40 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background/80 via-background/40 to-transparent" />
           {/* Bottom fade: ensures seamless transition into the next section */}
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
         </div>
         <div className="relative z-10">
           {/* Home logo over the background, comfortably below the fixed nav */}
@@ -178,7 +178,7 @@ const Index = () => {
               delay: 0.1,
               duration: 0.6
             }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
-              <Leaf size={28} className="mr-2 opacity-80" />
+              <img src="/lovable-uploads/erias-leaf-dark.png" alt="Erias Leaf" className="mr-2 opacity-80 h-7 w-auto object-contain" />
               Our Approach
             </motion.h2>
             
