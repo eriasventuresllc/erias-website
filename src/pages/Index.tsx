@@ -44,15 +44,8 @@ const Index = () => {
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
         </div>
         <div className="relative z-10">
-          {/* Home logo over the background, comfortably below the fixed nav */}
-          <div className="pt-24 md:pt-20 mb-8 md:mb-10 flex items-center justify-center">
-            <img 
-              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
-              alt="Erias Ventures Logo"
-              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
-            />
-          </div>
-          <div className="pt-2 md:pt-1">
+          {/* Logo removed from home page - now handled consistently in Layout */}
+          <div className="pt-32 md:pt-24">
             <Hero />
             <motion.div 
               className="-mt-16 md:-mt-20 flex items-center justify-center gap-4"
