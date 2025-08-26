@@ -57,7 +57,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground dark">
-      <header className="w-full md:relative md:top-auto md:left-auto fixed top-0 left-0 z-50">
+      <header className="w-full md:relative md:top-auto md:left-auto fixed top-0 left-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Desktop/tablet layout: fixed header contains only nav */}
           <div className="hidden md:flex flex-col items-center mt-4">

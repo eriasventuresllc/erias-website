@@ -38,12 +38,12 @@ const Index = () => {
         </div>
         {/* Top and bottom fades to blend the dot matrix with page background */}
         <div className="pointer-events-none absolute inset-0">
-          {/* Top fade: slightly stronger to soften edge under fixed nav */}
-          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background/80 via-background/40 to-transparent" />
+          {/* Top fade: reduced to allow particles to show behind header */}
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background/20 via-background/10 to-transparent" />
           {/* Bottom fade: ensures seamless transition into the next section */}
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-30">
           {/* Home logo over the background, comfortably below the fixed nav */}
           <div className="pt-24 md:pt-20 mb-8 md:mb-10 flex items-center justify-center">
             <img 
