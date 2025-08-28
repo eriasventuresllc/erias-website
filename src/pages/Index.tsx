@@ -46,7 +46,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
               alt="Erias Ventures Logo"
-              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+              className="h-20 md:h-24 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
             />
           </div>
           <div className="pt-2 md:pt-1">
@@ -432,7 +432,7 @@ const Index = () => {
               delay: 0.2,
               duration: 0.6
             }} className="text-muted-foreground mb-10 max-w-3xl mx-auto">
-              We're proud to partner with leading organizations across government, intelligence, and defense sectors to deliver mission-critical solutions.
+              We're proud to partner with leading organizations across intelligence and defense sectors to deliver mission-critical solutions.
             </motion.p>
             
             <div className="mb-8">

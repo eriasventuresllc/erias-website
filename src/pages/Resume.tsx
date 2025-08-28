@@ -2,6 +2,7 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
+import { EASE_STANDARD, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from '@/lib/animation';
 
 const Resume = () => {
   const experiences = [
@@ -50,35 +51,35 @@ const Resume = () => {
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, ease: EASE_STANDARD as any }}
         className="py-20"
       >
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          initial={INITIAL_FADE_DOWN}
+          animate={ENTER_SOFT}
+          transition={{ delay: 0.2, duration: 0.6, ease: EASE_STANDARD as any }}
           className="text-center mb-16"
         >
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6, ease: EASE_STANDARD as any }}
             className="inline-block px-3 py-1 text-xs font-medium bg-primary/5 text-primary rounded-full mb-4"
           >
             Resume
           </motion.span>
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            initial={INITIAL_FADE_DOWN}
+            animate={ENTER_SOFT}
+            transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
             className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
           >
             Experience & Education
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            initial={INITIAL_FADE_DOWN}
+            animate={ENTER_SOFT}
+            transition={{ delay: 0.5, duration: 0.6, ease: EASE_STANDARD as any }}
             className="max-w-2xl mx-auto text-lg text-gray-500"
           >
             An overview of my professional background and educational qualifications.
@@ -89,16 +90,16 @@ const Resume = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.6, ease: EASE_STANDARD as any }}
           >
             <h2 className="text-2xl font-bold mb-8 border-b pb-4">Professional Experience</h2>
             <div className="space-y-12">
               {experiences.map((item, index) => (
                 <motion.div 
                   key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
+                  initial={INITIAL_FADE_DOWN}
+                  animate={ENTER_SOFT}
+                  transition={{ delay: 0.7 + (index * 0.1), duration: 0.5, ease: EASE_STANDARD as any }}
                   className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8"
                 >
                   <div>
@@ -117,16 +118,16 @@ const Resume = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
+            transition={{ delay: 0.9, duration: 0.6, ease: EASE_STANDARD as any }}
           >
             <h2 className="text-2xl font-bold mb-8 border-b pb-4">Education</h2>
             <div className="space-y-12">
               {education.map((item, index) => (
                 <motion.div 
                   key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + (index * 0.1), duration: 0.5 }}
+                  initial={INITIAL_FADE_DOWN}
+                  animate={ENTER_SOFT}
+                  transition={{ delay: 1 + (index * 0.1), duration: 0.5, ease: EASE_STANDARD as any }}
                   className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8"
                 >
                   <div>

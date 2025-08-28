@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { EASE_STANDARD, SPRING_SOFT, FADE_SOFT } from "@/lib/animation"
 import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -19,15 +20,11 @@ interface NavBarProps {
 }
 
 // Consistent animation constants
-const SPRING_TRANSITION = {
-  type: "spring",
-  stiffness: 300,
-  damping: 30
-};
+const SPRING_TRANSITION = SPRING_SOFT;
 
 const HOVER_TRANSITION = {
-  duration: 0.2,
-  ease: "easeInOut"
+  duration: 0.25,
+  ease: EASE_STANDARD as any,
 };
 
 export function AnimeNavBar({ items, className }: NavBarProps) {
@@ -106,9 +103,9 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                       scale: [1, 1.03, 1]
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.2,
                       repeat: Infinity,
-                      ease: "easeInOut"
+                      ease: EASE_STANDARD as any,
                     }}
                   >
                     <div className="absolute inset-0 bg-primary/25 rounded-full blur-md" />

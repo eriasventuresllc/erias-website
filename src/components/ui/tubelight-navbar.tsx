@@ -3,6 +3,7 @@
 
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, animate } from "framer-motion"
+import { EASE_STANDARD, SPRING_SOFT } from "@/lib/animation"
 import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -20,15 +21,11 @@ interface NavBarProps {
 }
 
 // Consistent animation constants
-const SPRING_TRANSITION = {
-  type: "spring",
-  stiffness: 300,
-  damping: 30
-};
+const SPRING_TRANSITION = SPRING_SOFT;
 
 const HOVER_TRANSITION = {
-  duration: 0.2,
-  ease: "easeInOut"
+  duration: 0.25,
+  ease: EASE_STANDARD as any,
 };
 
 export function NavBar({ items, className, align = "center" }: NavBarProps) {
@@ -110,7 +107,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
   return (
     <nav
       className={cn(
-        "flex z-50",
+        "flex z-50 relative isolate",
         alignmentClass,
         className,
       )}
@@ -118,15 +115,17 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
       aria-label="Primary"
     >
       <motion.div 
-        className="relative flex items-center gap-4 py-1.5 px-3 rounded-full"
+        className="relative flex items-center gap-4 py-1.5 px-3 rounded-full overflow-hidden isolate bg-black border border-white/10"
         initial={false}
         transition={SPRING_TRANSITION}
         ref={barRef}
         onMouseLeave={() => setHoveredItem(null)}
       >
+        {/* Solid background layer for mobile to prevent transparency bleed-through */}
+        <div className="absolute inset-0 bg-black z-0" aria-hidden="true" />
         {indicatorReady && (
           <motion.div
-            className="pointer-events-none absolute bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/70 to-transparent rounded-full opacity-90"
+            className="hidden md:block pointer-events-none absolute bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/70 to-transparent rounded-full opacity-90"
             style={{ left: indicatorLeft, width: indicatorWidth }}
           />
         )}
@@ -154,7 +153,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                 onMouseEnter={() => setHoveredItem(item.name)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className={cn(
-                  "relative cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 select-none",
+                  "relative z-10 cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 select-none",
                   "text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                   active && "text-primary",
                 )}
@@ -207,8 +206,8 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                       />
                     </motion.div>
                     
-                    {/* Glow effect under active icon */}
-                    {active && (
+                    {/* Glow effect under active icon (desktop only) */}
+                    {active && !isMobile && (
                       <motion.div
                         className="absolute inset-0 rounded-full blur-md opacity-25 bg-primary"
                         initial={{ scale: 0 }}
@@ -235,7 +234,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={HOVER_TRANSITION}
-                        className="absolute inset-0 bg-white/5 rounded-md -z-10"
+                        className="absolute inset-0 bg-white/5 rounded-md -z-10 hidden md:block"
                       />
                     )}
                   </AnimatePresence>

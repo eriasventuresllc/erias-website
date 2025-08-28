@@ -1,16 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { EASE_STANDARD, SPRING_SOFT } from "@/lib/animation";
 
 // Consistent animation constants
-const SPRING_TRANSITION = {
-  type: "spring",
-  stiffness: 300,
-  damping: 30
-};
+const SPRING_TRANSITION = SPRING_SOFT;
 
 const FADE_TRANSITION = {
-  duration: 0.7,
-  ease: "easeOut"
+  duration: 0.8,
+  ease: EASE_STANDARD as any,
 };
 
 function HeroContent() {
@@ -76,9 +73,9 @@ function HeroContent() {
                         scale: [1, 1.2, 0.8]
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 2.2,
                         repeat: Infinity,
-                        ease: "easeInOut",
+                        ease: [0.45, 0.05, 0.55, 0.95],
                       }}
                     >
                        <span className="text-red-300 text-sm">{">>>"}</span>

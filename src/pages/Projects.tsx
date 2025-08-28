@@ -2,6 +2,8 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
+import { FADE_SOFT } from '@/lib/animation';
+import { EASE_STANDARD } from '@/lib/animation';
 import { Wallet, HeartPulse, Smile } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import {
@@ -35,10 +37,10 @@ const benefitCategories = [
   {
     id: 1,
     title: "Wealth Benefits",
-    description: "We provide an industry-leading compensation package so that team members can invest in their future.",
+    description: "We provide an industry-leading compensation package so that team members can both be compensated now while investing in their future.",
     icon: <Wallet className="h-8 w-8 text-primary" />,
     benefits: [
-      "Above Market Pay",
+      "Above Market Salary",
       "Annual Profit Sharing Bonuses",
       "11% Roth or Traditional 401k with Immediate Vesting and Contributions",
       "Spot Bonuses for Awesome Customer Support, Business Development, and Operational Support",
@@ -52,13 +54,14 @@ const benefitCategories = [
     description: "We provide a complete set of insurance benefits to keep our team healthy and protected.",
     icon: <HeartPulse className="h-8 w-8 text-primary" />,
     benefits: [
-      "Company Subsidized Medical Coverage",
+      "100% Company Paid Medical Coverage",
       "100% Company Paid Vision Coverage",
       "100% Company Paid Dental Coverage",
       "100% Company Paid Long Term Disability",
       "100% Company Paid Short Term Disability Insurance",
       "100% Company Paid Life Insurance",
       "100% Company Paid AD&D Insurance",
+      "Company HSA Contribution",
       "Monthly Wellness Reimbursement"
     ]
   },
@@ -86,37 +89,37 @@ const Careers = () => {
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, ease: EASE_STANDARD as any }}
         className="py-16"
       >
         {/* Benefits Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: EASE_STANDARD as any }}
           className="text-center mb-16"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
           >
             Careers
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...FADE_SOFT, delay: 0.5 }}
             className="max-w-3xl mx-auto text-lg text-muted-foreground"
           >
-            We are looking for engineers seeking to grow their careers, that want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Team members are provided a complete package of wealth, health, and happiness benefits. Take the next step, and view our current openings.
+            We are looking for engineers seeking to grow their careers, who want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Our team members are provided a complete package of wealth, health, and happiness benefits. Take the next step and join the team!
           </motion.p>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.6, ease: EASE_STANDARD as any }}
             className="mt-8"
           >
             <a href="https://careers.eriasventures.com/" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
@@ -131,7 +134,7 @@ const Careers = () => {
               key={category.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 + (index * 0.1), duration: 0.5 }}
+              transition={{ delay: 0.7 + (index * 0.1), duration: 0.5, ease: EASE_STANDARD as any }}
             >
               <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10">
                 <PatternCardBody>
@@ -148,9 +151,9 @@ const Careers = () => {
                     {category.benefits.map((benefit, i) => (
                       <motion.li 
                         key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + (i * 0.05), duration: 0.3 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ...FADE_SOFT, delay: 0.8 + (i * 0.05) }}
                         className="flex items-start gap-2 group-hover:translate-x-[2px] transition-transform duration-200"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
