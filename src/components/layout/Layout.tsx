@@ -21,11 +21,9 @@ const pageVariants = {
 const pageTransition = PAGE_TRANSITION;
 
 const Layout = ({ children }: LayoutProps) => {
-  // Header is always visible; remove hide-on-scroll to avoid initial flicker
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isMobile = useIsMobile();
-
   // Mobile-only: hide header on scroll down, show on scroll up
   const [showHeader, setShowHeader] = useState(true);
   const lastScrollYRef = useRef(0);
