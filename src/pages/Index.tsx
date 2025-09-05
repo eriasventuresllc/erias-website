@@ -9,11 +9,53 @@ import { Hero } from '@/components/ui/animated-hero';
 import CanvasRevealEffect from '@/components/ui/canvas-reveal-effect';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+// Analytics is dynamically imported in production to avoid ad-blocker noise in dev
+import { initializeApp } from "firebase/app";
  
 
 const Index = () => {
   const controls = useAnimation();
   const isMobile = useIsMobile();
+  // Import the functions you need from the SDKs you need
+
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAqqSwztIW-lkqf_Md4liG86UyNhr899Tc",
+    authDomain: "erias-website.firebaseapp.com",
+    projectId: "erias-website",
+    storageBucket: "erias-website.firebasestorage.app",
+    messagingSenderId: "427921251921",
+    appId: "1:427921251921:web:4cededa3003e2717116270",
+    measurementId: "G-R3GKGJ8QFZ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Analytics only in production; ignore blockers silently
+  useEffect(() => {
+    if (!import.meta.env.PROD) return;
+    (async () => {
+      try {
+        const { isSupported, getAnalytics } = await import("firebase/analytics");
+        const supported = await isSupported();
+        if (supported) {
+          try {
+            getAnalytics(app);
+          } catch (_) {
+            // no-op
+          }
+        }
+      } catch (_) {
+        // no-op: dynamic import blocked or unavailable
+      }
+    })();
+  }, [app]);
 
   useEffect(() => {
     controls.start({
