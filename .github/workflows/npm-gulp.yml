@@ -1,8 +1,9 @@
-name: Deploy Jekyll with GitHub Pages
+# .github/workflows/deploy-pages.yml
+name: Build & Deploy (Node) to GitHub Pages
 
 on:
   push:
-    branches: [ "prod" ]
+    branches: [ "prod" ]     # or your default branch
   workflow_dispatch:
 
 permissions:
@@ -20,18 +21,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+        uses: actions/configure-pages@v5  # prepares the Pages env/metadata
+        # no inputs needed for generic Node builds
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          source: ./
-          destination: ./_site
-          # future: true   # uncomment only if your content is dated in the future
+          node-version: "20"
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        # Make sure your build outputs to a folder below (e.g., dist, build, site)
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: dist          # <-- change to your output folder (e.g., build, site)
 
   deploy:
     runs-on: ubuntu-latest
