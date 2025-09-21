@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import { Home, Info, FileText } from 'lucide-react';
+import { Home, Info, FileText, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PAGE_TRANSITION } from '@/lib/animation';
 import { useLocation, Link } from 'react-router-dom';
@@ -42,9 +42,19 @@ const Layout = ({ children }: LayoutProps) => {
       icon: Info,
     },
     {
+      name: "Leaf",
+      imageSrc: "/lovable-uploads/erias-leaf-dark.png",
+      imageAlt: "Erias leaf",
+    },
+    {
       name: "Careers",
       url: "/careers",
       icon: FileText,
+    },
+    {
+      name: "Openings",
+      url: "https://careers.eriasventures.com/",
+      icon: Briefcase,
     },
   ], []);
 
