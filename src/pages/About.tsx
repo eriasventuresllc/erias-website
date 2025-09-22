@@ -8,7 +8,7 @@ import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis
 const About = () => {
   const expertiseAreas = [
     {
-      title: "Software Engineering",
+      title: "Software & System Engineering",
       icon: <Code className="h-6 w-6 text-primary" />,
       description: "Our team deliver across the entire product lifecycle. We build robust, scalable solutions for web, cloud, and enterprise environments.",
       features: [
@@ -28,6 +28,8 @@ const About = () => {
       description: "Our team designs and deploys ML systems that augment analysts, combining machine learning, deep learning, and data engineering on scalable cloud platforms.",
       features: [
         "Model development (ML/DL) and evaluation",
+        "Computer vision (object detection, tracking, OCR)",
+        "Large Language Models (RAG, fine-tuning, agents)",
         "Workflow automation for analysts",
         "Data pipelines and processing (Spark, Hadoop)",
         "Dataflow orchestration (Apache NiFi)",
@@ -100,11 +102,11 @@ const About = () => {
                 className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10"
               >
                 <PatternCardBody className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center mb-4 justify-between gap-3">
+                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
                     <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 group-hover:from-primary/25 group-hover:to-primary/15 transition-all duration-300">
                       {area.icon}
                     </div>
-                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
                   </div>
                   
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">

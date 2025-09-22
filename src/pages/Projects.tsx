@@ -83,6 +83,21 @@ const benefitCategories = [
   }
 ];
 
+// Render benefits in lowercase style similar to Expertise bullets,
+// while preserving acronyms written in all caps (e.g., HSA, AD&D, AWS)
+const formatBenefitBullet = (text: string): string => {
+  const withCommas = text.replace(/ - /g, ", ");
+  return withCommas
+    .split(/\s+/)
+    .map((token) => {
+      const lettersOnly = token.replace(/[^A-Za-z]/g, "");
+      const hasLetters = lettersOnly.length > 0;
+      const isAllCaps = hasLetters && lettersOnly === lettersOnly.toUpperCase();
+      return isAllCaps ? token : token.toLowerCase();
+    })
+    .join(" ");
+};
+
 const Careers = () => {
   return (
     <Layout>
@@ -113,19 +128,10 @@ const Careers = () => {
             transition={{ ...FADE_SOFT, delay: 0.5 }}
             className="max-w-3xl mx-auto text-lg text-muted-foreground"
           >
-            We are looking for engineers seeking to grow their careers, who want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Our team members are provided a complete package of wealth, health, and happiness benefits. Take the next step and join the team!
+            We are looking for engineers seeking to grow their careers, who want to become part of a <span className="font-bold text-primary">strong</span>, <span className="font-bold text-primary">technical-minded</span>, <span className="font-bold text-primary">mission-focused</span> company seeking to change how the government does business. Our team members are provided a complete package of <span className="font-bold text-primary">wealth</span>, <span className="font-bold text-primary">health</span>, and <span className="font-bold text-primary">happiness</span> benefits. Take the next step and join the team!
           </motion.p>
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: EASE_STANDARD as any }}
-            className="mt-8"
-          >
-            <a href="https://careers.eriasventures.com/" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-              View Current Openings
-            </a>
-          </motion.div>
+          
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -157,7 +163,7 @@ const Careers = () => {
                         className="flex items-start gap-2 group-hover:translate-x-[2px] transition-transform duration-200"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                        <span className="text-sm">{benefit.replace(/ - /g, ", ")}</span>
+                        <span className="text-sm">{formatBenefitBullet(benefit)}</span>
                       </motion.li>
                     ))}
                   </ul>
