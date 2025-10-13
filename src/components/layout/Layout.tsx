@@ -43,7 +43,7 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       name: "Leaf",
-      imageSrc: isMobile ? "/lovable-uploads/erias-bbptw-2025.png" : "/lovable-uploads/erias-leaf-dark.png",
+      imageSrc: isMobile ? "/lovable-uploads/erias-leaf-dark.png" : "/lovable-uploads/erias-leaf-dark.png",
       imageAlt: "Erias leaf",
     },
     {

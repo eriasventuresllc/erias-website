@@ -113,6 +113,96 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
 
   const alignmentClass = align === "start" ? "justify-start" : align === "end" ? "justify-end" : "justify-center";
 
+  // Mobile: render a three-zone layout to keep the leaf/logo perfectly centered
+  if (isMobile) {
+    const leafIndex = items.findIndex((i) => !!i.imageSrc);
+    const centerItem = leafIndex >= 0 ? items[leafIndex] : items[Math.floor(items.length / 2)];
+    const leftItems = leafIndex >= 0 ? items.slice(0, leafIndex) : items.slice(0, Math.floor(items.length / 2));
+    const rightItems = leafIndex >= 0 ? items.slice(leafIndex + 1) : items.slice(Math.floor(items.length / 2) + 1);
+
+    const renderLinkItem = (item: NavItem) => {
+      const Icon = item.icon;
+      const isLink = !!item.url;
+      const active = isActive(item.url);
+      const itemKey = `nav-mobile-${item.name}`;
+      return (
+        <motion.div
+          key={itemKey}
+          role={isLink ? "button" : undefined}
+          tabIndex={isLink ? 0 : -1}
+          onClick={() => isLink && handleNavigation(item.url)}
+          onKeyDown={(e) => {
+            if (!isLink) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleNavigation(item.url);
+            }
+          }}
+          className={cn(
+            "relative z-10 text-sm rounded-full transition-all duration-300 select-none",
+            isLink ? "cursor-pointer font-medium px-3 py-2 text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40" : "cursor-default px-2 py-2",
+            active && "text-primary",
+          )}
+          style={{ WebkitTapHighlightColor: 'transparent' }}
+          layout
+          initial={false}
+          whileHover={isLink ? { scale: 1.03 } : undefined}
+          transition={SPRING_TRANSITION}
+          aria-current={active ? "page" : undefined}
+        >
+          {Icon ? (
+            <Icon 
+              size={20} 
+              strokeWidth={2.5} 
+              className={cn(
+                "transition-colors duration-300",
+                active ? "text-primary" : "text-foreground/80"
+              )} 
+            />
+          ) : (
+            <span className="text-xs">{item.name}</span>
+          )}
+        </motion.div>
+      );
+    };
+
+    return (
+      <nav
+        className={cn(
+          "w-full z-50 relative isolate",
+          className,
+        )}
+        ref={navRef}
+        aria-label="Primary"
+      >
+        <motion.div
+          className="grid grid-cols-3 items-center w-full rounded-full overflow-hidden isolate bg-black border border-white/10 py-1.5 px-2"
+          initial={false}
+          transition={SPRING_TRANSITION}
+        >
+          <div className="flex items-center justify-start gap-2">
+            {leftItems.map(renderLinkItem)}
+          </div>
+          <div className="flex items-center justify-center">
+            {centerItem?.imageSrc ? (
+              <img
+                src={centerItem.imageSrc}
+                alt={centerItem.imageAlt ?? ""}
+                className="h-8 w-auto object-contain select-none"
+                aria-hidden={true}
+              />
+            ) : (
+              // Fallback: if no dedicated center image, show name/icon
+              renderLinkItem(centerItem)
+            )}
+          </div>
+          <div className="flex items-center justify-end gap-2">
+            {rightItems.map(renderLinkItem)}
+          </div>
+        </motion.div>
+      </nav>
+    );
+  }
+
   return (
     <nav
       className={cn(

@@ -37,10 +37,10 @@ const benefitCategories = [
   {
     id: 1,
     title: "Wealth Benefits",
-    description: "We provide an industry-leading compensation package so that team members can both be compensated now while investing in their future.",
+    description: "We provide an industry-leading compensation package so that team members can invest in their future.",
     icon: <Wallet className="h-8 w-8 text-primary" />,
     benefits: [
-      "Above Market Salary",
+      "Above Market Pay",
       "Annual Profit Sharing Bonuses",
       "11% Roth or Traditional 401k with Immediate Vesting and Contributions",
       "Spot Bonuses for Awesome Customer Support, Business Development, and Operational Support",
@@ -54,14 +54,13 @@ const benefitCategories = [
     description: "We provide a complete set of insurance benefits to keep our team healthy and protected.",
     icon: <HeartPulse className="h-8 w-8 text-primary" />,
     benefits: [
-      "100% Company Paid Medical Coverage",
+      "Company Subsidized Medical Coverage",
       "100% Company Paid Vision Coverage",
       "100% Company Paid Dental Coverage",
       "100% Company Paid Long Term Disability",
       "100% Company Paid Short Term Disability Insurance",
       "100% Company Paid Life Insurance",
       "100% Company Paid AD&D Insurance",
-      "Company HSA Contribution",
       "Monthly Wellness Reimbursement"
     ]
   },
@@ -83,20 +82,7 @@ const benefitCategories = [
   }
 ];
 
-// Render benefits in lowercase style similar to Expertise bullets,
-// while preserving acronyms written in all caps (e.g., HSA, AD&D, AWS)
-const formatBenefitBullet = (text: string): string => {
-  const withCommas = text.replace(/ - /g, ", ");
-  return withCommas
-    .split(/\s+/)
-    .map((token) => {
-      const lettersOnly = token.replace(/[^A-Za-z]/g, "");
-      const hasLetters = lettersOnly.length > 0;
-      const isAllCaps = hasLetters && lettersOnly === lettersOnly.toUpperCase();
-      return isAllCaps ? token : token.toLowerCase();
-    })
-    .join(" ");
-};
+// Removed bullet lowercasing to preserve provided capitalization
 
 const Careers = () => {
   return (
@@ -163,7 +149,7 @@ const Careers = () => {
                         className="flex items-start gap-2 group-hover:translate-x-[2px] transition-transform duration-200"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                        <span className="text-sm">{formatBenefitBullet(benefit)}</span>
+                        <span className="text-sm">{benefit}</span>
                       </motion.li>
                     ))}
                   </ul>
