@@ -43,6 +43,7 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       name: "Leaf",
+      url: "/",
       imageSrc: isMobile ? "/lovable-uploads/erias-leaf-dark.png" : "/lovable-uploads/erias-leaf-dark.png",
       imageAlt: "Erias leaf",
     },
@@ -112,7 +113,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
 
           {/* Mobile layout: fixed header contains only nav */}
-          <div className="md:hidden flex flex-col items-center gap-4 mt-10 bg-transparent">
+          <div className="md:hidden flex flex-col items-center gap-4 mt-6 bg-transparent">
             <NavBar items={navItems} align="center" />
           </div>
         </div>

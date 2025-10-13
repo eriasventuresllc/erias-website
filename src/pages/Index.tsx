@@ -451,12 +451,17 @@ const Index = () => {
                 href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.12 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.7, duration: 0.4, ease: EASE_STANDARD as any }}
+                transition={{ 
+                  delay: 0.7, 
+                  duration: 0.4, 
+                  ease: EASE_STANDARD as any,
+                  scale: { duration: 0.1 }
+                }}
               >
                 <img 
                   src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
@@ -818,8 +823,12 @@ const AwardImage = ({ imgSrc, alt, delay, width }) => {
       initial={INITIAL_FADE_DOWN}
       whileInView={ENTER_SOFT}
       viewport={{ once: true }}
-      transition={{ ...FADE_SOFT, delay }}
-      whileHover={{ scale: 1.06 }}
+      transition={{
+        opacity: { duration: FADE_SOFT.duration, ease: EASE_STANDARD as any, delay },
+        y: { duration: FADE_SOFT.duration, ease: EASE_STANDARD as any, delay },
+        scale: { duration: 0.1 }
+      }}
+      whileHover={{ scale: 1.12 }}
     >
       <img src={imgSrc} alt={alt} className="max-w-full h-auto object-contain" />
     </motion.div>

@@ -88,49 +88,51 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {expertiseAreas.map((area, index) => (
-            <motion.div
-              key={area.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + (index * 0.15), duration: 0.6, ease: EASE_STANDARD as any }}
-              whileHover={{ y: -6, transition: { duration: 0.25, ease: EASE_STANDARD as any } }}
-              className="group"
-            >
-              <PatternCard 
-                className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10"
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {expertiseAreas.map((area, index) => (
+              <motion.div
+                key={area.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + (index * 0.15), duration: 0.6, ease: EASE_STANDARD as any }}
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: EASE_STANDARD as any } }}
+                className="group"
               >
-                <PatternCardBody className="p-6">
-                  <div className="flex items-center mb-4 justify-between gap-3">
-                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 group-hover:from-primary/25 group-hover:to-primary/15 transition-all duration-300">
-                      {area.icon}
+                <PatternCard 
+                  className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10"
+                >
+                  <PatternCardBody className="p-6">
+                    <div className="flex items-center mb-4 justify-between gap-3">
+                      <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">{area.title}</h3>
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 group-hover:from-primary/25 group-hover:to-primary/15 transition-all duration-300">
+                        {area.icon}
+                      </div>
                     </div>
-                  </div>
-                  
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                    {area.description}
-                  </p>
-                  
-                  <ul className="space-y-2.5">
-                    {area.features.map((feature, i) => (
-                      <motion.li 
-                        key={i}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ...FADE_SOFT, delay: 0.5 + (i * 0.03) }}
-                        className="flex items-start gap-2.5 group-hover:translate-x-[2px] transition-transform duration-200"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:bg-primary/80 transition-colors duration-300"></div>
-                        <span className="text-sm leading-relaxed text-foreground/90">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </PatternCardBody>
-              </PatternCard>
-            </motion.div>
-          ))}
+                    
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                      {area.description}
+                    </p>
+                    
+                    <ul className="space-y-2.5">
+                      {area.features.map((feature, i) => (
+                        <motion.li 
+                          key={i}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ ...FADE_SOFT, delay: 0.5 + (i * 0.03) }}
+                          className="flex items-start gap-2.5 group-hover:translate-x-[2px] transition-transform duration-200"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:bg-primary/80 transition-colors duration-300"></div>
+                          <span className="text-sm leading-relaxed text-foreground/90">{feature}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </PatternCardBody>
+                </PatternCard>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
     </Layout>

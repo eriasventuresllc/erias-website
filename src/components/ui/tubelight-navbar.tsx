@@ -175,27 +175,41 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
         aria-label="Primary"
       >
         <motion.div
-          className="grid grid-cols-3 items-center w-full rounded-full overflow-hidden isolate bg-black border border-white/10 py-1.5 px-2"
+          className="grid grid-cols-3 items-center w-full rounded-full overflow-hidden isolate supports-[backdrop-filter]:bg-white/10 bg-white/5 backdrop-blur-xl border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] py-1.5 px-4"
           initial={false}
           transition={SPRING_TRANSITION}
         >
-          <div className="flex items-center justify-start gap-2">
+          <div className="flex items-center justify-start gap-4">
             {leftItems.map(renderLinkItem)}
           </div>
           <div className="flex items-center justify-center">
             {centerItem?.imageSrc ? (
-              <img
-                src={centerItem.imageSrc}
-                alt={centerItem.imageAlt ?? ""}
-                className="h-8 w-auto object-contain select-none"
-                aria-hidden={true}
-              />
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => handleNavigation(centerItem.url || "/")}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleNavigation(centerItem.url || "/");
+                  }
+                }}
+                aria-label="Go to home"
+                className="cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-full"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                <img
+                  src={centerItem.imageSrc}
+                  alt={centerItem.imageAlt ?? ""}
+                  className="h-8 w-auto object-contain select-none"
+                  aria-hidden={true}
+                />
+              </div>
             ) : (
               // Fallback: if no dedicated center image, show name/icon
               renderLinkItem(centerItem)
             )}
           </div>
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end gap-4">
             {rightItems.map(renderLinkItem)}
           </div>
         </motion.div>
@@ -214,14 +228,14 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
       aria-label="Primary"
     >
       <motion.div 
-        className="relative flex items-center gap-4 py-1.5 px-3 rounded-full overflow-hidden isolate bg-black border border-white/10"
+        className="relative flex items-center gap-4 py-1.5 px-3 rounded-full overflow-hidden isolate supports-[backdrop-filter]:bg-white/10 bg-white/5 backdrop-blur-xl border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]"
         initial={false}
         transition={SPRING_TRANSITION}
         ref={barRef}
         onMouseLeave={() => setHoveredItem(null)}
       >
-        {/* Solid background layer for mobile to prevent transparency bleed-through */}
-        <div className="absolute inset-0 bg-black z-0" aria-hidden="true" />
+        {/* Subtle inner gradient for depth */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-white/0" aria-hidden="true" />
         {indicatorReady && (
           <motion.div
             className="hidden md:block pointer-events-none absolute bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/70 to-transparent rounded-full opacity-90"
@@ -266,12 +280,25 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                 aria-current={active ? "page" : undefined}
               >
                 {item.imageSrc ? (
-                  <img
-                    src={item.imageSrc}
-                    alt={item.imageAlt ?? ""}
-                    className="h-8 md:h-9 w-auto object-contain select-none transform-none rotate-0 skew-x-0 skew-y-0 md:opacity-80 opacity-90 md:brightness-100 brightness-110 md:contrast-100 contrast-110"
-                    aria-hidden={true}
-                  />
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => handleNavigation(item.url || "/")}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        handleNavigation(item.url || "/");
+                      }
+                    }}
+                    aria-label="Go to home"
+                    className="cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-full"
+                  >
+                    <img
+                      src={item.imageSrc}
+                      alt={item.imageAlt ?? ""}
+                      className="h-8 md:h-9 w-auto object-contain select-none transform-none rotate-0 skew-x-0 skew-y-0 md:opacity-80 opacity-90 md:brightness-100 brightness-110 md:contrast-100 contrast-110"
+                      aria-hidden={true}
+                    />
+                  </div>
                 ) : (
                   <>
                     <motion.span 
@@ -344,7 +371,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={HOVER_TRANSITION}
-                            className="absolute inset-0 bg-white/5 rounded-md -z-10 hidden md:block"
+                            className="absolute inset-0 bg-white/5 rounded-full -z-10 hidden md:block"
                           />
                         )}
                       </AnimatePresence>

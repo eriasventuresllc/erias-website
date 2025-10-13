@@ -14,6 +14,25 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 
+// Normalize benefit bullets to sentence case while preserving acronyms and numbers.
+function formatBenefitText(benefit: string): string {
+  const trimmed = (benefit || "").trim();
+  if (!trimmed) return trimmed;
+  const startsWithLetter = /^[A-Za-z]/.test(trimmed);
+
+  const words = trimmed.split(/\s+/).map((word) => {
+    // Preserve obvious acronyms or tokens with symbols commonly uppercased (e.g., AD&D)
+    if (/^[A-Z0-9&+/.-]+$/.test(word) && /[A-Z]/.test(word)) {
+      return word; // keep as-is
+    }
+    return word.toLowerCase();
+  });
+
+  const sentence = words.join(" ");
+  if (!startsWithLetter) return sentence; // e.g., "100% company paid ..."
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+}
+
 const teamImages = [
   {
     src: "/lovable-uploads/62ca1c37-324b-4c81-b8a9-5bd90eb839e8.png",
@@ -120,7 +139,8 @@ const Careers = () => {
           
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {benefitCategories.map((category, index) => (
             <motion.div
               key={category.id}
@@ -128,28 +148,28 @@ const Careers = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + (index * 0.1), duration: 0.5, ease: EASE_STANDARD as any }}
             >
-              <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10">
-                <PatternCardBody>
-                  <div className="flex items-center gap-4 mb-2">
+              <PatternCard className="group h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10">
+                <PatternCardBody className="p-6">
+                  <div className="flex items-center mb-4 justify-between gap-3">
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors duration-300">{category.title}</h3>
                     <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 group-hover:from-primary/25 group-hover:to-primary/15 transition-all duration-300">
                       {category.icon}
                     </div>
-                    <h3 className="text-xl font-semibold">{category.title}</h3>
                   </div>
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {category.description}
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5">
                     {category.benefits.map((benefit, i) => (
                       <motion.li 
                         key={i}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ ...FADE_SOFT, delay: 0.8 + (i * 0.05) }}
-                        className="flex items-start gap-2 group-hover:translate-x-[2px] transition-transform duration-200"
+                        className="flex items-start gap-2.5 group-hover:translate-x-[2px] transition-transform duration-200"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                        <span className="text-sm">{benefit}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:bg-primary/80 transition-colors duration-300"></div>
+                        <span className="text-sm leading-relaxed text-foreground/90">{formatBenefitText(benefit)}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -157,6 +177,7 @@ const Careers = () => {
               </PatternCard>
             </motion.div>
           ))}
+          </div>
         </div>
       </motion.section>
 
