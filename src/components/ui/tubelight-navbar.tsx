@@ -139,8 +139,8 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
           }}
           className={cn(
             "relative z-10 text-sm rounded-full transition-all duration-300 select-none",
-            isLink ? "cursor-pointer font-medium px-3 py-2 text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40" : "cursor-default px-2 py-2",
-            active && "text-primary",
+            isLink ? "cursor-pointer font-medium px-3 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40" : "cursor-default px-2 py-2",
+            active && "text-white",
           )}
           style={{ WebkitTapHighlightColor: 'transparent' }}
           layout
@@ -155,7 +155,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
               strokeWidth={2.5} 
               className={cn(
                 "transition-colors duration-300",
-                active ? "text-primary" : "text-foreground/80"
+                  "text-white"
               )} 
             />
           ) : (
@@ -237,10 +237,18 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
         {/* Subtle inner gradient for depth */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-white/0" aria-hidden="true" />
         {indicatorReady && (
-          <motion.div
-            className="hidden md:block pointer-events-none absolute bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/70 to-transparent rounded-full opacity-90"
-            style={{ left: indicatorLeft, width: indicatorWidth }}
-          />
+          <>
+            {/* Glow underline for stronger emphasis on the active tab */}
+            <motion.div
+              className="hidden md:block pointer-events-none absolute -bottom-1.5 h-[8px] rounded-full bg-primary/35 blur-md"
+              style={{ left: indicatorLeft, width: indicatorWidth }}
+            />
+            {/* Crisp underline on top */}
+            <motion.div
+              className="hidden md:block pointer-events-none absolute bottom-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent rounded-full opacity-100"
+              style={{ left: indicatorLeft, width: indicatorWidth }}
+            />
+          </>
         )}
         <AnimatePresence mode="wait">
           {items.map((item) => {
@@ -269,8 +277,8 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                 onMouseLeave={() => isLink && setHoveredItem(null)}
                 className={cn(
                   "relative z-10 text-sm rounded-full transition-all duration-300 select-none",
-                  isLink ? "cursor-pointer font-medium px-5 py-2 text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40" : "cursor-default px-2 py-2",
-                  active && "text-primary",
+                  isLink ? "cursor-pointer font-medium px-5 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40" : "cursor-default px-2 py-2",
+                  active && "text-white",
                 )}
                 style={{ WebkitTapHighlightColor: 'transparent' }}
                 layout
@@ -336,7 +344,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                             strokeWidth={2.5} 
                             className={cn(
                               "transition-colors duration-300",
-                              active ? "text-primary" : "text-foreground/80"
+                              "text-white"
                             )} 
                           />
                         </motion.div>

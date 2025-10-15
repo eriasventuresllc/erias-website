@@ -129,7 +129,7 @@ const Layout = ({ children }: LayoutProps) => {
               <img
                 src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
                 alt="Erias Ventures Logo"
-                className="h-24 md:h-28 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+                className="h-24 md:h-28 lg:h-[7.7rem] w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
               />
             </Link>
           </div>

@@ -89,7 +89,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
               alt="Erias Ventures Logo"
-              className="h-24 md:h-28 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+              className="h-24 md:h-28 lg:h-[7.7rem] w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
             />
           </div>
           <div className="pt-2 md:pt-1">
@@ -140,7 +140,7 @@ const Index = () => {
                 delay: 0.3,
                 duration: 0.6
               }} 
-              className="text-muted-foreground max-w-2xl mx-auto mt-5"
+              className="text-muted-foreground max-w-6xl mx-auto mt-5 mb-6"
             >
               Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary">innovative ideas</span>.
             </motion.p>
@@ -362,12 +362,12 @@ const Index = () => {
                 </div>
                 
                 {/* Glassdoor Rating */}
-                <div className="w-24 sm:w-28">
+                <div className="w-24 sm:w-28 self-center">
                   <a 
                     href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="flex items-center justify-center"
                   >
                     <img 
                       src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
