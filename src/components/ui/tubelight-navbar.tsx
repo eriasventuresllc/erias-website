@@ -155,7 +155,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
               strokeWidth={2.5} 
               className={cn(
                 "transition-colors duration-300",
-                  "text-white"
+                active ? "text-primary" : "text-white"
               )} 
             />
           ) : (
@@ -303,7 +303,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                     <img
                       src={item.imageSrc}
                       alt={item.imageAlt ?? ""}
-                      className="h-8 md:h-9 w-auto object-contain select-none transform-none rotate-0 skew-x-0 skew-y-0 md:opacity-80 opacity-90 md:brightness-100 brightness-110 md:contrast-100 contrast-110"
+                      className="h-8 md:h-9 w-auto object-contain select-none transform-none rotate-0 skew-x-0 skew-y-0 md:brightness-100 brightness-110 md:contrast-100 contrast-110"
                       aria-hidden={true}
                     />
                   </div>
@@ -344,7 +344,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
                             strokeWidth={2.5} 
                             className={cn(
                               "transition-colors duration-300",
-                              "text-white"
+                              active ? "text-primary" : "text-white"
                             )} 
                           />
                         </motion.div>

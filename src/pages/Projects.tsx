@@ -125,7 +125,7 @@ const Careers = () => {
             transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
           >
-            Careers
+            Benefits
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
