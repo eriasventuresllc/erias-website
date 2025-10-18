@@ -53,7 +53,7 @@ const Layout = ({ children }: LayoutProps) => {
       icon: FileText,
     },
     {
-      name: "Openings",
+      name: "Careers",
       url: "https://careers.eriasventures.com/",
       icon: Briefcase,
     },
