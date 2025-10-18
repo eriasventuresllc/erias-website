@@ -68,7 +68,7 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section with particles background */}
-      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
+      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden bg-black -mt-24 pt-24">
         {/* Particles background */}
         <div className="absolute inset-0">
           <CanvasRevealEffect

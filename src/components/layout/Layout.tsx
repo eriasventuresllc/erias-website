@@ -48,8 +48,8 @@ const Layout = ({ children }: LayoutProps) => {
       imageAlt: "Erias leaf",
     },
     {
-      name: "Careers",
-      url: "/careers",
+      name: "Benefits",
+      url: "/benefits",
       icon: FileText,
     },
     {
