@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import { Home, Info, FileText } from 'lucide-react';
+import { Home, Info, FileText, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PAGE_TRANSITION } from '@/lib/animation';
 import { useLocation, Link } from 'react-router-dom';
@@ -42,11 +42,22 @@ const Layout = ({ children }: LayoutProps) => {
       icon: Info,
     },
     {
-      name: "Careers",
-      url: "/careers",
+      name: "Leaf",
+      url: "/",
+      imageSrc: isMobile ? "/lovable-uploads/erias-leaf-dark.png" : "/lovable-uploads/erias-leaf-dark.png",
+      imageAlt: "Erias leaf",
+    },
+    {
+      name: "Benefits",
+      url: "/benefits",
       icon: FileText,
     },
-  ], []);
+    {
+      name: "Openings",
+      url: "https://careers.eriasventures.com/",
+      icon: Briefcase,
+    },
+  ], [isMobile]);
 
   // Track scroll direction (mobile only)
   useEffect(() => {
@@ -102,7 +113,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
 
           {/* Mobile layout: fixed header contains only nav */}
-          <div className="md:hidden flex flex-col items-center gap-4 mt-10 bg-transparent">
+          <div className="md:hidden flex flex-col items-center gap-4 mt-6 bg-transparent">
             <NavBar items={navItems} align="center" />
           </div>
         </div>
@@ -113,12 +124,12 @@ const Layout = ({ children }: LayoutProps) => {
       <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isHome ? 'pt-0' : 'pt-0'} pb-32 bg-transparent relative`}>
         {/* Non-sticky ERIAS logo below fixed nav on non-home pages */}
         {!isHome && (
-          <div className="pt-24 md:pt-20 flex items-center justify-center mb-8 md:mb-10">
+          <div className="pt-28 md:pt-20 flex items-center justify-center mb-8 md:mb-10">
             <Link to="/" aria-label="Go to home">
               <img
                 src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
                 alt="Erias Ventures Logo"
-                className="h-20 md:h-24 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
+                className="h-24 md:h-28 lg:h-[7.7rem] w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
               />
             </Link>
           </div>

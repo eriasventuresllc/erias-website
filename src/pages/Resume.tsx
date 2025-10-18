@@ -72,7 +72,7 @@ const Resume = () => {
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
             transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
           >
             Experience & Education
           </motion.h1>
@@ -80,7 +80,7 @@ const Resume = () => {
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
             transition={{ delay: 0.5, duration: 0.6, ease: EASE_STANDARD as any }}
-            className="max-w-2xl mx-auto text-lg text-gray-500"
+            className="max-w-2xl mx-auto text-lg text-white/80"
           >
             An overview of my professional background and educational qualifications.
           </motion.p>
@@ -103,12 +103,12 @@ const Resume = () => {
                   className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8"
                 >
                   <div>
-                    <span className="text-sm font-medium text-gray-500">{item.period}</span>
+                    <span className="text-sm font-medium text-white/70">{item.period}</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                     <p className="text-primary font-medium mb-3">{item.company}</p>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-white/80">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -131,12 +131,12 @@ const Resume = () => {
                   className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8"
                 >
                   <div>
-                    <span className="text-sm font-medium text-gray-500">{item.period}</span>
+                    <span className="text-sm font-medium text-white/70">{item.period}</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">{item.degree}</h3>
                     <p className="text-primary font-medium mb-3">{item.institution}</p>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-white/80">{item.description}</p>
                   </div>
                 </motion.div>
               ))}

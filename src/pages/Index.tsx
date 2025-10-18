@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 // Analytics is dynamically imported in production to avoid ad-blocker noise in dev
 import { initializeApp } from "firebase/app";
+import { EASE_STANDARD, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from '@/lib/animation';
  
 
 const Index = () => {
@@ -67,7 +68,7 @@ const Index = () => {
 
   return <Layout>
       {/* Hero Section with particles background */}
-      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
+      <div className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden bg-black -mt-24 pt-24">
         {/* Particles background */}
         <div className="absolute inset-0">
           <CanvasRevealEffect
@@ -88,7 +89,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
               alt="Erias Ventures Logo"
-              className="h-20 md:h-24 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+              className="h-24 md:h-28 lg:h-[7.7rem] w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
             />
           </div>
           <div className="pt-2 md:pt-1">
@@ -121,8 +122,8 @@ const Index = () => {
             once: true
           }} transition={{
             duration: 0.6
-          }} className="text-center mb-8">
-            <h2 className="text-4xl font-bold mb-3 tracking-tight">Our Core Values</h2>
+          }} className="text-center mb-10">
+            <h2 className="text-4xl font-bold mb-3 tracking-tight">Our Values</h2>
             <motion.p 
               initial={{
                 opacity: 0,
@@ -139,7 +140,7 @@ const Index = () => {
                 delay: 0.3,
                 duration: 0.6
               }} 
-              className="text-muted-foreground max-w-2xl mx-auto mt-4"
+              className="text-muted-foreground max-w-6xl mx-auto mt-5 mb-6"
             >
               Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary">innovative ideas</span>.
             </motion.p>
@@ -159,6 +160,7 @@ const Index = () => {
               className="group h-full"
             >
               <ValueCardWithPattern
+                iconPosition="right"
                 icon={<BrainCircuit size={24} className="rotate-90" />}
                 title="Entrepreneurial Mindset"
                 description="We cultivate an environment where every engineer thinks like an owner, taking initiative, identifying opportunities, and driving solutions forward. This proactive mindset is amplified by the fact that over a third of our team brings direct leadership experience, guiding projects with foresight and accountability."
@@ -171,6 +173,7 @@ const Index = () => {
               className="group h-full"
             >
               <ValueCardWithPattern
+                iconPosition="right"
                 icon={<Rocket size={24} />}
                 title="Taking Action"
                 description="Ideas are valuable, but execution is paramount. We translate strategy into tangible results by meticulously planning, then acting decisively. Complex problems are systematically broken down into manageable tasks, enabling focused effort and consistent delivery."
@@ -183,6 +186,7 @@ const Index = () => {
               className="group h-full"
             >
               <ValueCardWithPattern
+                iconPosition="right"
                 icon={<Lightbulb size={24} />}
                 title="Innovative Ideas"
                 description="We champion a culture of open innovation where diverse perspectives converge. By actively sharing insights and challenging conventions, we collectively build more robust, scalable, and adaptive solutions that directly address the unique and demanding challenges our customers face."
@@ -217,7 +221,6 @@ const Index = () => {
               delay: 0.1,
               duration: 0.6
             }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
-              <img src="/lovable-uploads/erias-leaf-dark.png" alt="Erias Leaf" className="mr-2 opacity-80 h-7 w-auto object-contain" />
               Our Approach
             </motion.h2>
             
@@ -233,7 +236,7 @@ const Index = () => {
               delay: 0.2,
               duration: 0.6
             }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
-              We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">data science</span>, network, target and signals analysis, and <span className="text-lg font-bold text-primary">cyber operations</span>. We pride ourselves on a lean business model offering a diverse mission experience across multiple organizations, products and focus areas.
+              We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">AI/ML</span>, <span className="text-lg font-bold text-primary">data science</span>, and <span className="text-lg font-bold text-primary">cybersecurity</span>. We pride ourselves on a lean business structure offering a diverse mission experience across multiple organizations, products and focus areas.
             </motion.p>
             <motion.p initial={{
               opacity: 0,
@@ -261,7 +264,7 @@ const Index = () => {
               delay: 0.4,
               duration: 0.6
             }} className="text-muted-foreground max-w-6xl mx-auto">
-              We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while maintaining a lean, efficient operational model.
+              We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while remaining lean and efficient.
             </motion.p>
           </motion.div>
         </div>
@@ -277,32 +280,55 @@ const Index = () => {
           }} viewport={{
             once: true
           }} transition={{
-            duration: 0.6
+            duration: 0.6,
+            ease: EASE_STANDARD as any
           }} className="text-center mb-10">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">Awards & Recognition</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <motion.h2 
+              initial={INITIAL_FADE_DOWN}
+              whileInView={ENTER_SOFT}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6, ease: EASE_STANDARD as any }}
+              className="text-4xl font-bold mb-4 tracking-tight"
+            >
+              Awards & Recognition
+            </motion.h2>
+            <motion.p 
+              initial={INITIAL_FADE_DOWN}
+              whileInView={ENTER_SOFT}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6, ease: EASE_STANDARD as any }}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
               Our commitment to excellence has been recognized through these prestigious awards.
-            </p>
+            </motion.p>
           </motion.div>
           
           {/* Mobile Layout - Circles Top, Banners Below */}
           <div className="block md:hidden">
             <div className="space-y-6">
-              {/* Circular Awards (BBJ) */}
+              {/* Circular Awards (BBJ) - 2023, 2024, 2025 */}
               <div className="flex justify-center gap-4">
                 <div className="w-24 sm:w-28">
                   <AwardImage 
-                    imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
-                    alt="BBJ Best Places to Work 2024"
-                    delay={0.2}
+                    imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
+                    alt="BBJ Best Places to Work 2023"
+                    delay={0.15}
                     width="100px" 
                   />
                 </div>
                 <div className="w-24 sm:w-28">
                   <AwardImage 
-                    imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
-                    alt="BBJ Best Places to Work 2023"
-                    delay={0.3}
+                    imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
+                    alt="BBJ Best Places to Work 2024"
+                    delay={0.25}
+                    width="100px" 
+                  />
+                </div>
+                <div className="w-24 sm:w-28">
+                  <AwardImage 
+                    imgSrc="/lovable-uploads/erias-bbptw-2025.png" 
+                    alt="BBJ Best Places to Work 2025"
+                    delay={0.35}
                     width="100px" 
                   />
                 </div>
@@ -336,12 +362,12 @@ const Index = () => {
                 </div>
                 
                 {/* Glassdoor Rating */}
-                <div className="w-24 sm:w-28">
+                <div className="w-24 sm:w-28 self-center">
                   <a 
                     href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="flex items-center justify-center"
                   >
                     <img 
                       src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
@@ -354,7 +380,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Desktop Layout - Updated to swap 2023 and 2024 Baltimore Sun logos */}
+          {/* Desktop Layout - includes BBJ 2025 and sorted years */}
           <motion.div initial={{
             opacity: 0
           }} whileInView={{
@@ -362,22 +388,31 @@ const Index = () => {
           }} viewport={{
             once: true
           }} transition={{
-            duration: 0.6
-          }} className="hidden md:grid grid-cols-6 gap-4 lg:gap-6 justify-items-center items-center">
-            {/* First row: Circle awards */}
+            duration: 0.6,
+            ease: EASE_STANDARD as any
+          }} className="hidden md:grid grid-cols-7 gap-4 lg:gap-6 justify-items-center items-center">
+            {/* First row: Circle awards - 2023, 2024, 2025 */}
             <div className="col-span-1 flex items-center h-full">
               <AwardImage 
-                imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
-                alt="BBJ Best Places to Work 2024"
-                delay={0.2}
+                imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
+                alt="BBJ Best Places to Work 2023"
+                delay={0.15}
                 width="120px" 
               />
             </div>
             <div className="col-span-1 flex items-center h-full">
               <AwardImage 
-                imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
-                alt="BBJ Best Places to Work 2023"
-                delay={0.3}
+                imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
+                alt="BBJ Best Places to Work 2024"
+                delay={0.25}
+                width="120px" 
+              />
+            </div>
+            <div className="col-span-1 flex items-center h-full">
+              <AwardImage 
+                imgSrc="/lovable-uploads/erias-bbptw-2025.png" 
+                alt="BBJ Best Places to Work 2025"
+                delay={0.35}
                 width="120px" 
               />
             </div>
@@ -416,12 +451,17 @@ const Index = () => {
                 href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.12 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.7, duration: 0.4 }}
+                transition={{ 
+                  delay: 0.7, 
+                  duration: 0.4, 
+                  ease: EASE_STANDARD as any,
+                  scale: { duration: 0.1 }
+                }}
               >
                 <img 
                   src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
@@ -728,7 +768,14 @@ const ValueCardWithPattern = ({
   icon,
   title,
   description,
-  delay
+  delay,
+  iconPosition = 'left'
+}: {
+  icon: React.ReactNode,
+  title: React.ReactNode,
+  description: React.ReactNode,
+  delay: number,
+  iconPosition?: 'left' | 'right'
 }) => {
   return <motion.div initial={{
     opacity: 0,
@@ -744,11 +791,23 @@ const ValueCardWithPattern = ({
   }}>
       <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02]">
         <PatternCardBody className="p-6">
-          <div className="flex items-start gap-4 mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-              {icon}
-            </div>
-            <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+          <div className={iconPosition === 'right' ? "flex items-start justify-between gap-4 mb-4" : "flex items-start gap-4 mb-4"}>
+            {iconPosition === 'right' ? (
+              <>
+                <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+
+                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
+                  {icon}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
+                  {icon}
+                </div>
+                <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+              </>
+            )}
           </div>
           <p className="text-muted-foreground">{description}</p>
         </PatternCardBody>
@@ -758,12 +817,21 @@ const ValueCardWithPattern = ({
 
 const AwardImage = ({ imgSrc, alt, delay, width }) => {
   return (
-    <div 
-      className="bg-transparent flex items-center justify-center"
+    <motion.div 
+      className="bg-transparent flex items-center justify-center opacity-90 hover:opacity-100 transition-all duration-300"
       style={{ maxWidth: width || '150px', height: 'auto' }}
+      initial={INITIAL_FADE_DOWN}
+      whileInView={ENTER_SOFT}
+      viewport={{ once: true }}
+      transition={{
+        opacity: { duration: FADE_SOFT.duration, ease: EASE_STANDARD as any, delay },
+        y: { duration: FADE_SOFT.duration, ease: EASE_STANDARD as any, delay },
+        scale: { duration: 0.1 }
+      }}
+      whileHover={{ scale: 1.12 }}
     >
       <img src={imgSrc} alt={alt} className="max-w-full h-auto object-contain" />
-    </div>
+    </motion.div>
   );
 };
 

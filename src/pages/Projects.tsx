@@ -14,6 +14,25 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 
+// Normalize benefit bullets to sentence case while preserving acronyms and numbers.
+function formatBenefitText(benefit: string): string {
+  const trimmed = (benefit || "").trim();
+  if (!trimmed) return trimmed;
+  const startsWithLetter = /^[A-Za-z]/.test(trimmed);
+
+  const words = trimmed.split(/\s+/).map((word) => {
+    // Preserve obvious acronyms or tokens with symbols commonly uppercased (e.g., AD&D)
+    if (/^[A-Z0-9&+/.-]+$/.test(word) && /[A-Z]/.test(word)) {
+      return word; // keep as-is
+    }
+    return word.toLowerCase();
+  });
+
+  const sentence = words.join(" ");
+  if (!startsWithLetter) return sentence; // e.g., "100% company paid ..."
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+}
+
 const teamImages = [
   {
     src: "/lovable-uploads/62ca1c37-324b-4c81-b8a9-5bd90eb839e8.png",
@@ -37,10 +56,10 @@ const benefitCategories = [
   {
     id: 1,
     title: "Wealth Benefits",
-    description: "We provide an industry-leading compensation package so that team members can both be compensated now while investing in their future.",
+    description: "We provide an industry-leading compensation package so that team members can invest in their future.",
     icon: <Wallet className="h-8 w-8 text-primary" />,
     benefits: [
-      "Above Market Salary",
+      "Above Market Pay",
       "Annual Profit Sharing Bonuses",
       "11% Roth or Traditional 401k with Immediate Vesting and Contributions",
       "Spot Bonuses for Awesome Customer Support, Business Development, and Operational Support",
@@ -54,14 +73,13 @@ const benefitCategories = [
     description: "We provide a complete set of insurance benefits to keep our team healthy and protected.",
     icon: <HeartPulse className="h-8 w-8 text-primary" />,
     benefits: [
-      "100% Company Paid Medical Coverage",
+      "Company Subsidized Medical Coverage",
       "100% Company Paid Vision Coverage",
       "100% Company Paid Dental Coverage",
       "100% Company Paid Long Term Disability",
       "100% Company Paid Short Term Disability Insurance",
       "100% Company Paid Life Insurance",
       "100% Company Paid AD&D Insurance",
-      "Company HSA Contribution",
       "Monthly Wellness Reimbursement"
     ]
   },
@@ -82,6 +100,8 @@ const benefitCategories = [
     ]
   }
 ];
+
+// Removed bullet lowercasing to preserve provided capitalization
 
 const Careers = () => {
   return (
@@ -105,7 +125,7 @@ const Careers = () => {
             transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
           >
-            Careers
+            Our Benefits
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -113,22 +133,14 @@ const Careers = () => {
             transition={{ ...FADE_SOFT, delay: 0.5 }}
             className="max-w-3xl mx-auto text-lg text-muted-foreground"
           >
-            We are looking for engineers seeking to grow their careers, who want to become part of a strong, technical-minded, mission-focused company seeking to change how the government does business. Our team members are provided a complete package of wealth, health, and happiness benefits. Take the next step and join the team!
+            We are looking for engineers seeking to grow their careers, who want to become part of a <span className="font-bold text-primary">strong</span>, <span className="font-bold text-primary">technical-minded</span>, <span className="font-bold text-primary">mission-focused</span> company seeking to change how the government does business. Our team members are provided a complete package of <span className="font-bold text-primary">wealth</span>, <span className="font-bold text-primary">health</span>, and <span className="font-bold text-primary">happiness</span> benefits. Take the next step and join the team!
           </motion.p>
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: EASE_STANDARD as any }}
-            className="mt-8"
-          >
-            <a href="https://careers.eriasventures.com/" className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-              View Current Openings
-            </a>
-          </motion.div>
+          
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {benefitCategories.map((category, index) => (
             <motion.div
               key={category.id}
@@ -136,28 +148,28 @@ const Careers = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + (index * 0.1), duration: 0.5, ease: EASE_STANDARD as any }}
             >
-              <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10">
-                <PatternCardBody>
-                  <div className="flex items-center gap-4 mb-2">
+              <PatternCard className="group h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border hover:border-primary/20 transform hover:scale-[1.01] supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl border-white/10">
+                <PatternCardBody className="p-6">
+                  <div className="flex items-center mb-4 justify-between gap-3">
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors duration-300">{category.title}</h3>
                     <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 group-hover:from-primary/25 group-hover:to-primary/15 transition-all duration-300">
                       {category.icon}
                     </div>
-                    <h3 className="text-xl font-semibold">{category.title}</h3>
                   </div>
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {category.description}
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5">
                     {category.benefits.map((benefit, i) => (
                       <motion.li 
                         key={i}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ ...FADE_SOFT, delay: 0.8 + (i * 0.05) }}
-                        className="flex items-start gap-2 group-hover:translate-x-[2px] transition-transform duration-200"
+                        className="flex items-start gap-2.5 group-hover:translate-x-[2px] transition-transform duration-200"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                        <span className="text-sm">{benefit.replace(/ - /g, ", ")}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:bg-primary/80 transition-colors duration-300"></div>
+                        <span className="text-sm leading-relaxed text-foreground/90">{formatBenefitText(benefit)}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -165,6 +177,7 @@ const Careers = () => {
               </PatternCard>
             </motion.div>
           ))}
+          </div>
         </div>
       </motion.section>
 
