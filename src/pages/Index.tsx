@@ -122,8 +122,8 @@ const Index = () => {
             once: true
           }} transition={{
             duration: 0.6
-          }} className="text-center mb-10">
-            <h2 className="text-4xl font-bold mb-3 tracking-tight">Our Values</h2>
+          }} className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">Our Values</h2>
             <motion.p 
               initial={{
                 opacity: 0,
@@ -140,7 +140,7 @@ const Index = () => {
                 delay: 0.3,
                 duration: 0.6
               }} 
-              className="text-muted-foreground max-w-6xl mx-auto mt-5 mb-6"
+              className="text-muted-foreground max-w-3xl mx-auto"
             >
               Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary">innovative ideas</span>.
             </motion.p>
@@ -199,7 +199,7 @@ const Index = () => {
 
       {/* Approach Section */}
       <section className="py-14">
-        <div className="max-w-12xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div initial={{
             opacity: 0
           }} whileInView={{
@@ -220,7 +220,7 @@ const Index = () => {
             }} transition={{
               delay: 0.1,
               duration: 0.6
-            }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
+            }} className="text-4xl font-bold mb-4 flex items-center justify-center tracking-tight">
               Our Approach
             </motion.h2>
             
@@ -235,7 +235,7 @@ const Index = () => {
             }} transition={{
               delay: 0.2,
               duration: 0.6
-            }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
+            }} className="text-muted-foreground max-w-3xl mx-auto">
               We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">AI/ML</span>, <span className="text-lg font-bold text-primary">data science</span>, and <span className="text-lg font-bold text-primary">cybersecurity</span>. We pride ourselves on a lean business structure offering a diverse mission experience across multiple organizations, products and focus areas.
             </motion.p>
             <motion.p initial={{
@@ -249,8 +249,8 @@ const Index = () => {
             }} transition={{
               delay: 0.3,
               duration: 0.6
-            }} className="text-muted-foreground mb-6 max-w-6xl mx-auto">
-              With proven technical, task, and product leadership, our approach has led to constant growth. We believe that <span className="text-lg font-bold text-primary">innovation</span> is needed to satisfy the unique problems that our customers face as they work to secure the nation. That's why we're committed to providing <span className="text-lg font-bold text-primary">innovative, scalable, and adaptive solutions</span>.
+            }} className="text-muted-foreground max-w-3xl mx-auto">
+              With proven technical, task, and product leadership, our approach has led to constant growth. We believe that <span className="text-lg font-bold text-primary">innovation</span> is needed to satisfy the unique problems that our customers face as they work to secure the nation.
             </motion.p>
             <motion.p initial={{
               opacity: 0,
@@ -263,7 +263,7 @@ const Index = () => {
             }} transition={{
               delay: 0.4,
               duration: 0.6
-            }} className="text-muted-foreground max-w-6xl mx-auto">
+            }} className="text-muted-foreground max-w-3xl mx-auto">
               We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while remaining lean and efficient.
             </motion.p>
           </motion.div>

@@ -7,6 +7,7 @@ import { EASE_STANDARD } from '@/lib/animation';
 import { Wallet, HeartPulse, Smile } from 'lucide-react';
 import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
 import {
+  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -104,6 +105,16 @@ const benefitCategories = [
 // Removed bullet lowercasing to preserve provided capitalization
 
 const Careers = () => {
+  const [emblaApi, setEmblaApi] = React.useState<CarouselApi | null>(null);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    const intervalId = window.setInterval(() => {
+      emblaApi.scrollNext();
+    }, 10000);
+    return () => window.clearInterval(intervalId);
+  }, [emblaApi]);
+
   return (
     <Layout>
       <motion.section 
@@ -189,11 +200,11 @@ const Careers = () => {
             Meet the dedicated professionals behind our mission-critical solutions.
           </p>
         </div>
-        <Carousel className="relative w-full max-w-3xl mx-auto">
+        <Carousel opts={{ loop: true }} setApi={setEmblaApi} className="relative w-full max-w-3xl mx-auto">
           <CarouselContent>
             {teamImages.map((img, idx) => (
               <CarouselItem key={img.src} className="flex justify-center items-center">
-                <div className="w-full h-72 sm:h-96 md:h-[420px] flex justify-center items-center overflow-hidden rounded-2xl border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-all duration-500">
+                <div className="w-full h-80 sm:h-[420px] md:h-[460px] flex justify-center items-center overflow-hidden rounded-2xl border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-all duration-500">
                   <img
                     src={img.src}
                     alt={img.alt.replace(/ - /g, ", ")}
