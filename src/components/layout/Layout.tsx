@@ -48,12 +48,12 @@ const Layout = ({ children }: LayoutProps) => {
       imageAlt: "Erias leaf",
     },
     {
-      name: "Benefits",
+      name: "Careers",
       url: "/benefits",
       icon: FileText,
     },
     {
-      name: "Careers",
+      name: "Openings",
       url: "https://careers.eriasventures.com/",
       icon: Briefcase,
     },
