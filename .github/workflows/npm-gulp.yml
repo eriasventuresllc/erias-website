@@ -39,6 +39,15 @@ jobs:
         run: npm run build
         # Make sure your build outputs to a folder below (e.g., dist, build, site)
 
+      - name: Add deep-link route pages + SPA fallback
+        run: |
+          # If your output folder is not "dist", update these paths to match.
+          mkdir -p dist/benefits
+          cp dist/index.html dist/benefits/index.html
+
+          # Optional but recommended: supports other deep links besides /benefits
+          cp dist/index.html dist/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

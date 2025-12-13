@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { EASE_STANDARD, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from "@/lib/animation";
@@ -6,18 +6,26 @@ import Layout from "@/components/layout/Layout";
 
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname
     );
-  }, [location.pathname]);
+
+    // Auto-redirect after 3 seconds
+    const timeout = setTimeout(() => {
+      navigate("/");
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, [location.pathname, navigate]);
 
   return (
     <Layout>
       <div className="min-h-[70vh] flex items-center justify-center">
-        <motion.div 
+        <motion.div
           initial={INITIAL_FADE_DOWN}
           animate={ENTER_SOFT}
           transition={FADE_SOFT}
@@ -33,25 +41,33 @@ const NotFound = () => {
               404
             </span>
           </motion.div>
-          <motion.p 
+          <motion.p
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
             transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
-            className="text-lg md:text-xl text-muted-foreground mb-8"
+            className="text-lg md:text-xl text-muted-foreground mb-4"
           >
             The page you're looking for doesn't exist.
+          </motion.p>
+          <motion.p
+            initial={INITIAL_FADE_DOWN}
+            animate={ENTER_SOFT}
+            transition={{ delay: 0.5, duration: 0.6, ease: EASE_STANDARD as any }}
+            className="text-sm text-muted-foreground/60 mb-8"
+          >
+            Redirecting to home in 3 seconds...
           </motion.p>
           <motion.div
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
             transition={{ delay: 0.6, duration: 0.6, ease: EASE_STANDARD as any }}
           >
-            <a 
-              href="/" 
+            <button
+              onClick={() => navigate("/")}
               className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
             >
               Return to Home
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </div>
