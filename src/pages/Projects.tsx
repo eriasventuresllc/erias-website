@@ -22,10 +22,7 @@ function formatBenefitText(benefit: string): string {
   const startsWithLetter = /^[A-Za-z]/.test(trimmed);
 
   const words = trimmed.split(/\s+/).map((word) => {
-    // Preserve obvious acronyms or tokens with symbols commonly uppercased (e.g., AD&D)
-    if (/^[A-Z0-9&+/.-]+$/.test(word) && /[A-Z]/.test(word)) {
-      return word; // keep as-is
-    }
+    // Preserve all tokens, do not make lowercase
     return word;
   });
 
@@ -62,7 +59,7 @@ const benefitCategories = [
     benefits: [
       "Above Market Pay",
       "Annual Profit Sharing Bonuses",
-      "11% Roth or Traditional 401k with Immediate Vesting and Contributions",
+      "11% Roth or Traditional 401 (k) with Immediate Vesting and Contributions",
       "Spot Bonuses for Awesome Customer Support, Business Development, and Operational Support",
       "Quarterly Bonuses for Employee Referrals",
       "Professional Development Bonuses for Certificates and Degrees"
