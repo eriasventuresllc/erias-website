@@ -26,7 +26,7 @@ function formatBenefitText(benefit: string): string {
     if (/^[A-Z0-9&+/.-]+$/.test(word) && /[A-Z]/.test(word)) {
       return word; // keep as-is
     }
-    return word.toLowerCase();
+    return word;
   });
 
   const sentence = words.join(" ");
@@ -95,7 +95,7 @@ const benefitCategories = [
       "Monthly Internet Reimbursement",
       "Company Paid Professional Development and Training",
       "Technology and Productivity Reimbursements for Equipment and Supplies",
-      "Amazon Prime Membership",
+      "Annual Amazon Prime Membership",
       "Swag and Gifts",
       "Morale Building and Company Events to Celebrate our Successes and Build our Community"
     ]
