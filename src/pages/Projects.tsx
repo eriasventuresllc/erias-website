@@ -87,7 +87,7 @@ const benefitCategories = [
     description: "We provide a collection of benefits for personal growth and happiness.",
     icon: <Smile className="h-8 w-8 text-primary" />,
     benefits: [
-      "Paid Time Off with Flexible Work Schedules - 6+ Weeks Off",
+      "Paid Time Off with Flexible Work Schedules - 6 Weeks Off",
       "Birthday Off to Celebrate",
       "Monthly Internet Reimbursement",
       "Company Paid Professional Development and Training",
