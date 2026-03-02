@@ -71,9 +71,9 @@ const benefitCategories = [
     description: "We provide a complete set of insurance benefits to keep our team healthy and protected.",
     icon: <HeartPulse className="h-8 w-8 text-primary" />,
     benefits: [
-      "Company Subsidized Medical Coverage",
-      "100% Company Paid Vision Coverage",
-      "100% Company Paid Dental Coverage",
+      "100% Company Paid Employee Medical Coverage with HSA Contribution",
+      "100% Company Paid Family Vision Coverage",
+      "100% Company Paid Family Dental Coverage",
       "100% Company Paid Long Term Disability",
       "100% Company Paid Short Term Disability Insurance",
       "100% Company Paid Life Insurance",
