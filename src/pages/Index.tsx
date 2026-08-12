@@ -1,44 +1,91 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Layout from '@/components/layout/Layout';
-import { motion, useAnimation } from 'framer-motion';
-import { BrainCircuit, Rocket, Lightbulb } from 'lucide-react';
-import { PatternCard, PatternCardBody } from "@/components/ui/card-with-ellipsis-pattern";
-import { useIsMobile } from '@/hooks/use-mobile';
-import { BarChart4, Target, Network, Shield } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { BrainCircuit, Rocket, Lightbulb, ArrowRight } from 'lucide-react';
+import { initializeApp } from "firebase/app";
 import { Hero } from '@/components/ui/animated-hero';
 import CanvasRevealEffect from '@/components/ui/canvas-reveal-effect';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-// Analytics is dynamically imported in production to avoid ad-blocker noise in dev
-import { initializeApp } from "firebase/app";
-import { EASE_STANDARD, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from '@/lib/animation';
- 
+import SpotlightCard from '@/components/ui/spotlight-card';
+import MagneticButton from '@/components/ui/magnetic-button';
+import {
+  EASE_OUT_EXPO,
+  EASE_STANDARD,
+  fadeUp,
+  staggerContainer,
+  FADE_SOFT,
+  INITIAL_FADE_DOWN,
+  ENTER_SOFT,
+} from '@/lib/animation';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAqqSwztIW-lkqf_Md4liG86UyNhr899Tc",
+  authDomain: "erias-website.firebaseapp.com",
+  projectId: "erias-website",
+  storageBucket: "erias-website.firebasestorage.app",
+  messagingSenderId: "427921251921",
+  appId: "1:427921251921:web:4cededa3003e2717116270",
+  measurementId: "G-R3GKGJ8QFZ",
+};
+
+const app = initializeApp(firebaseConfig);
+
+const customers = [
+  {
+    name: "Cybersecurity and Infrastructure Security Agency",
+    href: "https://www.cisa.gov",
+    src: "/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg",
+  },
+  {
+    name: "United States Cyber Command",
+    href: "https://www.cybercom.mil",
+    src: "/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg",
+  },
+  {
+    name: "National Security Agency",
+    href: "https://www.nsa.gov",
+    src: "/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png",
+  },
+  {
+    name: "United States Air Force",
+    href: "https://www.af.mil",
+    src: "/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg",
+  },
+  {
+    name: "United States Army",
+    href: "https://www.army.mil",
+    src: "/lovable-uploads/Logo_of_the_United_States_Army.svg",
+  },
+  {
+    name: "United States Marine Corps",
+    href: "https://www.marines.mil",
+    src: "/lovable-uploads/Seal_of_the_United_States_Marine_Corps.png",
+  },
+];
+
+const awards = [
+  { src: "/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png", alt: "BBJ Best Places to Work 2023" },
+  { src: "/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png", alt: "BBJ Best Places to Work 2024" },
+  { src: "/lovable-uploads/erias-bbptw-2025.png", alt: "BBJ Best Places to Work 2025" },
+  { src: "/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png", alt: "Baltimore Sun Top Workplaces 2023" },
+  { src: "/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png", alt: "Baltimore Sun Top Workplaces 2024" },
+  {
+    src: "/lovable-uploads/baltimore-sun-top-workplaces-2025.png",
+    alt: "Baltimore Sun Top Workplaces 2025",
+    className: "max-w-[68px] sm:max-w-[74px] md:max-w-[80px]",
+  },
+  { src: "/lovable-uploads/af613ec9-b5af-42cb-9d4d-721550972ab0.png", alt: "Washington Post Top Workplaces 2025" },
+];
 
 const Index = () => {
-  const controls = useAnimation();
-  const isMobile = useIsMobile();
-  // Import the functions you need from the SDKs you need
+  // Scroll-linked parallax: hero content drifts up and softly fades as you scroll.
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(heroProgress, [0, 1], [0, -110]);
+  const heroOpacity = useTransform(heroProgress, [0, 0.75], [1, 0]);
 
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAqqSwztIW-lkqf_Md4liG86UyNhr899Tc",
-    authDomain: "erias-website.firebaseapp.com",
-    projectId: "erias-website",
-    storageBucket: "erias-website.firebasestorage.app",
-    messagingSenderId: "427921251921",
-    appId: "1:427921251921:web:4cededa3003e2717116270",
-    measurementId: "G-R3GKGJ8QFZ"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-  // Initialize Analytics only in production; ignore blockers silently
   useEffect(() => {
     if (!import.meta.env.PROD) return;
     (async () => {
@@ -49,26 +96,21 @@ const Index = () => {
           try {
             getAnalytics(app);
           } catch (_) {
-            // no-op
+            /* noop */
           }
         }
       } catch (_) {
-        // no-op: dynamic import blocked or unavailable
+        /* noop */
       }
     })();
-  }, [app]);
+  }, []);
 
-  useEffect(() => {
-    controls.start({
-      opacity: 1,
-      scale: 1,
-      y: 0
-    });
-  }, [controls]);
-
-  return <Layout>
-      {/* Hero Section with particles background */}
-      <div className="relative min-h-[100svh] md:min-h-screen overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
+  return (
+    <Layout>
+      {/* =============================================================== */}
+      {/* HERO                                                            */}
+      {/* =============================================================== */}
+      <div ref={heroRef} className="relative min-h-[92svh] md:min-h-screen overflow-hidden mx-[calc(50%-50vw)] bg-black -mt-24 pt-24">
         {/* Particles background */}
         <div className="absolute inset-0">
           <CanvasRevealEffect
@@ -79,759 +121,423 @@ const Index = () => {
             reverse={false}
           />
         </div>
+
+        {/* Soft ambient orbs with a very slow drift */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute -top-40 left-1/4 h-[28rem] w-[28rem] rounded-full blur-[120px] animate-aurora-a"
+            style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 60%)" }}
+          />
+          <div
+            className="absolute -bottom-24 right-1/4 h-[24rem] w-[24rem] rounded-full blur-[110px] animate-aurora-b"
+            style={{ background: "radial-gradient(circle, hsl(280 70% 60% / 0.22), transparent 60%)" }}
+          />
+        </div>
+
         {/* Bottom fade to blend into the next section */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/70 to-transparent" />
         </div>
-        <div className="relative z-50">
-          {/* Home logo over the background, comfortably below the fixed nav */}
-          <div className="pt-24 md:pt-20 mb-8 md:mb-10 flex items-center justify-center">
-            <img 
-              src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
-              alt="Erias Ventures Logo"
-              className="h-24 md:h-28 lg:h-[7.7rem] w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
-            />
-          </div>
-          <div className="pt-2 md:pt-1">
+
+        <motion.div className="relative z-50 pb-10 md:pb-14" style={{ y: heroY, opacity: heroOpacity }}>
+          {/* Logo */}
+          <motion.div
+            className="pt-20 md:pt-44 mb-6 md:mb-8 flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.9, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE_OUT_EXPO }}
+          >
+            <div className="relative">
+              <motion.img
+                src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+                alt="Erias Ventures Logo"
+                className="h-20 sm:h-24 md:h-28 lg:h-[7.2rem] w-auto object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.55)]"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[600%] w-[420%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px] opacity-50"
+                style={{
+                  background:
+                    "radial-gradient(circle at center, hsl(351 75% 52% / 0.35), hsl(var(--primary) / 0.12) 40%, transparent 68%)",
+                }}
+              />
+            </div>
+          </motion.div>
+
+          <div className="pt-1">
             <Hero />
-            <motion.div 
-              className="-mt-16 md:-mt-20 flex items-center justify-center gap-4"
-              initial={{ opacity: 0, y: 10 }}
+            <motion.div
+              className="mt-6 md:mt-8 flex items-center justify-center gap-3 flex-wrap px-4"
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              transition={{ delay: 1.0, duration: 0.6, ease: EASE_OUT_EXPO }}
             >
-              {/* <Button asChild className="rounded-full px-6 h-11 text-base shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-                <Link to="/about">Explore Expertise</Link>
-              </Button>
-              <Button asChild variant="secondary" className="rounded-full px-6 h-11 text-base backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/15">
-                <Link to="/careers">Join Our Team</Link>
-              </Button> */}
+              <MagneticButton to="/about" className="group">
+                Explore Expertise
+              </MagneticButton>
+              <MagneticButton to="/benefits" variant="subtle">
+                Join Our Team
+              </MagneticButton>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Values Section */}
-      <section id="values" className="py-12 mt-4 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">Our Values</h2>
-            <motion.p 
-              initial={{
-                opacity: 0,
-                y: 20
-              }} 
-              whileInView={{
-                opacity: 1,
-                y: 0
-              }} 
-              viewport={{
-                once: true
-              }} 
-              transition={{
-                delay: 0.3,
-                duration: 0.6
-              }} 
-              className="text-muted-foreground max-w-3xl mx-auto"
+      {/* =============================================================== */}
+      {/* CUSTOMERS                                                        */}
+      {/* =============================================================== */}
+      <section aria-label="Our customers" className="relative mt-10 md:mt-14 py-10 md:py-14">
+        <div className="max-w-6xl mx-auto px-1">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={staggerContainer(0.08, 0)}
+            className="text-center mb-8 md:mb-10"
+          >
+            <motion.span variants={fadeUp(0.5)} className="kicker">
+              <b>//</b> Trusted Partners
+            </motion.span>
+            <motion.h2
+              variants={fadeUp(0.6, 0.05)}
+              className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             >
-              Erias Ventures was founded to serve its customers with an <span className="text-lg font-bold text-primary">entrepreneurial mindset</span>. We value open communication, <span className="text-lg font-bold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing <span className="text-lg font-bold text-primary">innovative ideas</span>.
+              Our <span className="text-primary">Customers</span>
+            </motion.h2>
+            <motion.div variants={fadeUp(0.5, 0.08)} aria-hidden="true" className="scan-rule mx-auto mt-5" />
+            <motion.p
+              variants={fadeUp(0.6, 0.1)}
+              className="mt-4 text-muted-foreground max-w-3xl mx-auto text-sm md:text-base px-2"
+            >
+              We're proud to partner with leading organizations across intelligence and defense
+              sectors to deliver mission-critical solutions.
             </motion.p>
           </motion.div>
-          
-          <motion.div initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group h-full"
-            >
-              <ValueCardWithPattern
-                iconPosition="right"
-                icon={<BrainCircuit size={24} className="rotate-90" />}
-                title="Entrepreneurial Mindset"
-                description="We cultivate an environment where every engineer thinks like an owner, taking initiative, identifying opportunities, and driving solutions forward. This proactive mindset is amplified by the fact that over a third of our team brings direct leadership experience, guiding projects with foresight and accountability."
-                delay={0.1}
-              />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-6 md:gap-8 justify-items-center items-center border-y border-white/[0.08] py-7 md:py-9">
+            {customers.map((c, idx) => (
+              <motion.a
+                key={c.name}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={c.name}
+                initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.06, duration: 0.55, ease: EASE_OUT_EXPO }}
+                whileHover={{ scale: 1.06, y: -4 }}
+                className="group relative p-4 flex items-center justify-center"
+              >
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-2 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.18), transparent 70%)" }}
+                />
+                <img
+                  src={c.src}
+                  alt={c.name}
+                  className="relative h-20 sm:h-24 md:h-28 w-auto object-contain transition-transform duration-300"
+                  loading="lazy"
+                />
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================================== */}
+      {/* VALUES                                                          */}
+      {/* =============================================================== */}
+      <section id="values" className="py-14 md:py-20 relative">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-10% 0px" }}
+          variants={staggerContainer(0.08, 0)}
+          className="text-center mb-10 md:mb-12"
+        >
+          <motion.span variants={fadeUp(0.5)} className="kicker">
+            <b>//</b> What Drives Us
+          </motion.span>
+          <motion.h2
+            variants={fadeUp(0.6, 0.05)}
+            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+          >
+            Our <span className="text-primary">Values</span>
+          </motion.h2>
+          <motion.div variants={fadeUp(0.5, 0.08)} aria-hidden="true" className="scan-rule mx-auto mt-5" />
+          <motion.p
+            variants={fadeUp(0.6, 0.1)}
+            className="mt-4 text-muted-foreground max-w-3xl mx-auto text-sm md:text-base leading-relaxed px-2"
+          >
+            Erias Ventures was founded to serve its customers with an{' '}
+            <span className="font-semibold text-primary">entrepreneurial mindset</span>. We value open communication,{' '}
+            <span className="font-semibold text-primary">taking action</span>, being committed, persevering through challenges and failures, and sharing{' '}
+            <span className="font-semibold text-primary">innovative ideas</span>.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-10% 0px" }}
+          variants={staggerContainer(0.12, 0.1)}
+          className="max-w-6xl mx-auto px-1 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
+        >
+          {[
+            {
+              icon: <BrainCircuit size={20} />,
+              title: "Entrepreneurial Mindset",
+              description:
+                "We cultivate an environment where every engineer thinks like an owner—taking initiative, identifying opportunities, and driving solutions forward. Over a third of our team brings direct leadership experience, guiding projects with foresight and accountability.",
+            },
+            {
+              icon: <Rocket size={20} />,
+              title: "Taking Action",
+              description:
+                "Ideas are valuable—execution is paramount. We translate strategy into tangible results through meticulous planning and decisive action. Complex problems are systematically broken down into manageable tasks for consistent delivery.",
+            },
+            {
+              icon: <Lightbulb size={20} />,
+              title: "Innovative Ideas",
+              description:
+                "We champion a culture of open innovation where diverse perspectives converge. By sharing insights and challenging conventions, we collectively build more robust, scalable, and adaptive solutions for our customers' toughest problems.",
+            },
+          ].map((item) => (
+            <motion.div key={item.title} variants={fadeUp(0.7)} className="group h-full">
+              <SpotlightCard className="p-6 md:p-7">
+                <div className="mb-5">
+                  <div className="inline-flex p-2.5 rounded-sm bg-primary/10 border border-primary/20 text-primary transition-colors duration-300 group-hover:bg-primary/15">
+                    {item.icon}
+                  </div>
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold leading-snug mb-3 group-hover:text-primary transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-[15px]">{item.description}</p>
+              </SpotlightCard>
             </motion.div>
-            
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group h-full"
+          ))}
+        </motion.div>
+      </section>
+
+      <div aria-hidden="true" className="section-divider" />
+
+      {/* =============================================================== */}
+      {/* APPROACH                                                        */}
+      {/* =============================================================== */}
+      <section className="py-12 md:py-16 relative">
+        <div className="max-w-6xl mx-auto px-1">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-10% 0px" }}
+            variants={staggerContainer(0.08, 0)}
+            className="mb-8 text-center"
+          >
+            <motion.span variants={fadeUp(0.5)} className="kicker">
+              <b>//</b> How We Work
+            </motion.span>
+            <motion.h2
+              variants={fadeUp(0.6, 0.05)}
+              className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             >
-              <ValueCardWithPattern
-                iconPosition="right"
-                icon={<Rocket size={24} />}
-                title="Taking Action"
-                description="Ideas are valuable, but execution is paramount. We translate strategy into tangible results by meticulously planning, then acting decisively. Complex problems are systematically broken down into manageable tasks, enabling focused effort and consistent delivery."
-                delay={0.2}
-              />
-            </motion.div>
-            
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group h-full"
-            >
-              <ValueCardWithPattern
-                iconPosition="right"
-                icon={<Lightbulb size={24} />}
-                title="Innovative Ideas"
-                description="We champion a culture of open innovation where diverse perspectives converge. By actively sharing insights and challenging conventions, we collectively build more robust, scalable, and adaptive solutions that directly address the unique and demanding challenges our customers face."
-                delay={0.3}
-              />
-            </motion.div>
+              Our <span className="text-primary">Approach</span>
+            </motion.h2>
+            <motion.div variants={fadeUp(0.5, 0.08)} aria-hidden="true" className="scan-rule mx-auto mt-5" />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-10% 0px" }}
+            variants={staggerContainer(0.12, 0.05)}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
+          >
+            {[
+              {
+                title: "Mission First",
+                text: (
+                  <>
+                    A <span className="font-semibold text-primary">mission-focused</span> company with an emphasis on{' '}
+                    <span className="font-semibold text-primary">software and system engineering</span>,{' '}
+                    <span className="font-semibold text-primary">AI/ML</span>,{' '}
+                    <span className="font-semibold text-primary">data science</span>, and{' '}
+                    <span className="font-semibold text-primary">cybersecurity</span>. Our lean structure delivers diverse
+                    mission experience across organizations, products, and focus areas.
+                  </>
+                ),
+              },
+              {
+                title: "Proven Leadership",
+                text: (
+                  <>
+                    Proven technical, task, and product leadership has driven consistent growth. We believe{' '}
+                    <span className="font-semibold text-primary">innovation</span> is essential to satisfy the unique
+                    problems our customers face as they work to secure the nation.
+                  </>
+                ),
+              },
+              {
+                title: "Tailored Solutions",
+                text: (
+                  <>
+                    We analyze <span className="font-semibold text-primary">complex mission requirements</span> and deploy
+                    specialized engineering teams to build{' '}
+                    <span className="font-semibold text-primary">tailored technical solutions</span> that enable critical
+                    national-security missions — lean, efficient, and continuously evolving.
+                  </>
+                ),
+              },
+            ].map((step) => (
+              <motion.div key={step.title} variants={fadeUp(0.7)} className="group relative h-full">
+                <div className="hud-ticks relative h-full rounded-sm border border-white/[0.08] bg-white/[0.015] p-6 md:p-7 overflow-hidden transition-all duration-700 ease-out hover:border-white/[0.18] hover:bg-white/[0.03]">
+                  <div className="relative">
+                    <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-3 group-hover:text-primary transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed">{step.text}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Approach Section */}
-      <section className="py-14">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="mb-12 text-center">
-            <motion.h2 initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.1,
-              duration: 0.6
-            }} className="text-4xl font-bold mb-4 flex items-center justify-center tracking-tight">
-              Our Approach
-            </motion.h2>
-            
-            <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.2,
-              duration: 0.6
-            }} className="text-muted-foreground max-w-3xl mx-auto">
-              We are a <span className="text-lg font-bold text-primary">mission-focused</span> company with an emphasis on <span className="text-lg font-bold text-primary">software and system engineering</span>, <span className="text-lg font-bold text-primary">AI/ML</span>, <span className="text-lg font-bold text-primary">data science</span>, and <span className="text-lg font-bold text-primary">cybersecurity</span>. We pride ourselves on a lean business structure offering a diverse mission experience across multiple organizations, products and focus areas.
-            </motion.p>
-            <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.3,
-              duration: 0.6
-            }} className="text-muted-foreground max-w-3xl mx-auto">
-              With proven technical, task, and product leadership, our approach has led to constant growth. We believe that <span className="text-lg font-bold text-primary">innovation</span> is needed to satisfy the unique problems that our customers face as they work to secure the nation.
-            </motion.p>
-            <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.4,
-              duration: 0.6
-            }} className="text-muted-foreground max-w-3xl mx-auto">
-              We analyze <span className="text-lg font-bold text-primary">complex mission requirements</span> and deploy specialized engineering teams to develop <span className="text-lg font-bold text-primary">tailored technical solutions</span> that enable critical national security missions. Our teams continuously assess and evolve capabilities while remaining lean and efficient.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Awards Section */}
-      <section className="py-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6,
-            ease: EASE_STANDARD as any
-          }} className="text-center mb-10">
-            <motion.h2 
-              initial={INITIAL_FADE_DOWN}
-              whileInView={ENTER_SOFT}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.6, ease: EASE_STANDARD as any }}
-              className="text-4xl font-bold mb-4 tracking-tight"
+      {/* =============================================================== */}
+      {/* AWARDS                                                          */}
+      {/* =============================================================== */}
+      <section className="py-12 md:py-16 relative border-y border-white/[0.08]">
+        <div className="max-w-6xl mx-auto px-4 relative">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={staggerContainer(0.08, 0)}
+            className="text-center mb-8 md:mb-10"
+          >
+            <motion.span variants={fadeUp(0.5)} className="kicker">
+              <b>//</b> Recognition
+            </motion.span>
+            <motion.h2
+              variants={fadeUp(0.6, 0.05)}
+              className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
             >
-              Awards & Recognition
+              Our <span className="text-primary">Awards</span>
             </motion.h2>
-            <motion.p 
-              initial={INITIAL_FADE_DOWN}
-              whileInView={ENTER_SOFT}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6, ease: EASE_STANDARD as any }}
-              className="text-muted-foreground max-w-2xl mx-auto"
+            <motion.div variants={fadeUp(0.5, 0.08)} aria-hidden="true" className="scan-rule mx-auto mt-5" />
+            <motion.p
+              variants={fadeUp(0.6, 0.1)}
+              className="mt-4 text-muted-foreground max-w-2xl mx-auto text-sm md:text-base px-2"
             >
               Our commitment to excellence has been recognized through these prestigious awards.
             </motion.p>
           </motion.div>
-          
-          {/* Mobile Layout - Circles Top, Banners Below */}
-          <div className="block md:hidden">
-            <div className="space-y-6">
-              {/* Circular Awards (BBJ) - 2023, 2024, 2025 */}
-              <div className="flex justify-center gap-4">
-                <div className="w-24 sm:w-28">
-                  <AwardImage 
-                    imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
-                    alt="BBJ Best Places to Work 2023"
-                    delay={0.15}
-                    width="100px" 
-                  />
-                </div>
-                <div className="w-24 sm:w-28">
-                  <AwardImage 
-                    imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
-                    alt="BBJ Best Places to Work 2024"
-                    delay={0.25}
-                    width="100px" 
-                  />
-                </div>
-                <div className="w-24 sm:w-28">
-                  <AwardImage 
-                    imgSrc="/lovable-uploads/erias-bbptw-2025.png" 
-                    alt="BBJ Best Places to Work 2025"
-                    delay={0.35}
-                    width="100px" 
-                  />
-                </div>
-              </div>
-              
-              {/* Banner Awards (Baltimore Sun + Washington Post) */}
-              <div className="grid grid-cols-2 gap-3 justify-items-center">
-                <div className="w-24 sm:w-28">
-                  <AwardImage 
-                    imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
-                    alt="Baltimore Sun Top Workplaces 2024"
-                    delay={0.4}
-                    width="100px" 
-                  />
-                </div>
-                <div className="w-24 sm:w-28">
-                  <AwardImage 
-                    imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
-                    alt="Baltimore Sun Top Workplaces 2023"
-                    delay={0.5}
-                    width="100px" 
-                  />
-                </div>
-                <div className="w-24 sm:w-28">
-                  <AwardImage 
-                    imgSrc="/lovable-uploads/af613ec9-b5af-42cb-9d4d-721550972ab0.png" 
-                    alt="Washington Post Top Workplaces 2025"
-                    delay={0.6}
-                    width="100px" 
-                  />
-                </div>
-                
-                {/* Glassdoor Rating */}
-                <div className="w-24 sm:w-28 self-center">
-                  <a 
-                    href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center"
-                  >
-                    <img 
-                      src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
-                      alt="Glassdoor 5.0 Rating" 
-                      className="w-full h-auto object-contain rounded-sm shadow-sm"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Desktop Layout - includes BBJ 2025 and sorted years */}
-          <motion.div initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6,
-            ease: EASE_STANDARD as any
-          }} className="hidden md:grid grid-cols-7 gap-4 lg:gap-6 justify-items-center items-center">
-            {/* First row: Circle awards - 2023, 2024, 2025 */}
-            <div className="col-span-1 flex items-center h-full">
-              <AwardImage 
-                imgSrc="/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png" 
-                alt="BBJ Best Places to Work 2023"
-                delay={0.15}
-                width="120px" 
+          {/* Unified responsive grid */}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-10% 0px" }}
+            variants={staggerContainer(0.06, 0.05)}
+            className="grid grid-cols-3 md:grid-cols-8 gap-3 md:gap-4 items-center justify-items-center"
+          >
+            {awards.map((award, i) => (
+              <motion.div
+                key={award.src}
+                variants={fadeUp(0.55)}
+                whileHover={{ scale: 1.06, y: -4 }}
+                transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                className="relative"
+              >
+                <img
+                  src={award.src}
+                  alt={award.alt}
+                  className={`${
+                    award.className ?? "max-w-[92px] sm:max-w-[100px] md:max-w-[110px]"
+                  } w-full h-auto object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-[filter] duration-500 hover:drop-shadow-[0_10px_28px_rgba(0,0,0,0.5)]`}
+                  loading={i > 2 ? "lazy" : "eager"}
+                />
+              </motion.div>
+            ))}
+
+            <motion.a
+              href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeUp(0.55)}
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className="relative col-span-3 md:col-span-1 justify-self-center"
+            >
+              <img
+                src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png"
+                alt="Glassdoor 5.0 Rating"
+                width={110}
+                height="auto"
+                className="relative rounded-sm shadow-sm max-w-[110px] w-full h-auto"
+                loading="lazy"
               />
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+
+      <div aria-hidden="true" className="section-divider mb-10 md:mb-14" />
+
+      {/* =============================================================== */}
+      {/* CTA BAND                                                         */}
+      {/* =============================================================== */}
+      <section className="relative mb-10 md:mb-14">
+        <motion.div
+          initial={INITIAL_FADE_DOWN}
+          whileInView={ENTER_SOFT}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ ...FADE_SOFT, ease: EASE_STANDARD }}
+          className="hud-ticks relative overflow-hidden rounded-sm border border-white/[0.08] bg-white/[0.015] p-10 md:p-16 text-center"
+        >
+          {/* Soft ambient glow with slow drift */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-20 -left-20 h-56 w-56 rounded-full blur-[90px] animate-aurora-a"
+            style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 60%)" }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full blur-[90px] animate-aurora-b"
+            style={{ background: "radial-gradient(circle, hsl(280 70% 60% / 0.18), transparent 60%)" }}
+          />
+
+          <div className="relative z-10">
+            <div className="kicker mb-4">
+              <b>//</b> Join Us
             </div>
-            <div className="col-span-1 flex items-center h-full">
-              <AwardImage 
-                imgSrc="/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png" 
-                alt="BBJ Best Places to Work 2024"
-                delay={0.25}
-                width="120px" 
-              />
-            </div>
-            <div className="col-span-1 flex items-center h-full">
-              <AwardImage 
-                imgSrc="/lovable-uploads/erias-bbptw-2025.png" 
-                alt="BBJ Best Places to Work 2025"
-                delay={0.35}
-                width="120px" 
-              />
-            </div>
-            
-            {/* Vertical awards - Swapped 2023 and 2024 */}
-            <div className="col-span-1">
-              <AwardImage 
-                imgSrc="/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png" 
-                alt="Baltimore Sun Top Workplaces 2023"
-                delay={0.4}
-                width="120px" 
-              />
-            </div>
-            <div className="col-span-1">
-              <AwardImage 
-                imgSrc="/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png" 
-                alt="Baltimore Sun Top Workplaces 2024"
-                delay={0.5}
-                width="120px" 
-              />
-            </div>
-            
-            {/* New Washington Post award */}
-            <div className="col-span-1">
-              <AwardImage 
-                imgSrc="/lovable-uploads/af613ec9-b5af-42cb-9d4d-721550972ab0.png" 
-                alt="Washington Post Top Workplaces 2025"
-                delay={0.6}
-                width="120px" 
-              />
-            </div>
-            
-            {/* Glassdoor Rating */}
-            <div className="col-span-1 flex items-center justify-center">
-              <motion.a 
-                href="https://www.glassdoor.com/Overview/Working-at-Erias-Ventures-EI_IE2280176.11,25.htm"
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
+              Ready to build what's <span className="text-primary">next</span>?
+            </h3>
+            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-sm md:text-base px-2">
+              Join a team of engineers delivering mission-critical solutions for the organizations that matter most.
+            </p>
+            <div className="mt-6 md:mt-7 flex flex-wrap items-center justify-center gap-3">
+              <MagneticButton
+                as="a"
+                href="https://careers.eriasventures.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.12 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  delay: 0.7, 
-                  duration: 0.4, 
-                  ease: EASE_STANDARD as any,
-                  scale: { duration: 0.1 }
-                }}
+                className="group"
               >
-                <img 
-                  src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png" 
-                  alt="Glassdoor 5.0 Rating" 
-                  width={120} 
-                  height="auto"
-                  className="rounded-sm shadow-sm"
-                />
-              </motion.a>
+                See Open Roles
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+              </MagneticButton>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Customers Section */}
-      <section className="py-14 mb-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="text-center mb-12">
-            <motion.h2 initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.1,
-              duration: 0.6
-            }} className="text-4xl font-bold mb-6 flex items-center justify-center tracking-tight">
-              Our Customers
-            </motion.h2>
-            <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.2,
-              duration: 0.6
-            }} className="text-muted-foreground mb-10 max-w-3xl mx-auto">
-              We're proud to partner with leading organizations across intelligence and defense sectors to deliver mission-critical solutions.
-            </motion.p>
-            
-            <div className="mb-8">
-              {/* Mobile layout (2-2-1) */}
-              <div className="grid grid-cols-2 gap-8 justify-items-center items-center md:hidden">
-                {/* First row - 2 logos */}
-                <motion.div 
-                  className="opacity-90 hover:opacity-100 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 0.9, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.4, scale: { duration: 0.1 } }}
-                  whileHover={{ scale: 1.12 }}
-                >
-                  <a 
-                    href="https://www.cisa.gov" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-4 flex items-center justify-center"
-                    title="Cybersecurity and Infrastructure Security Agency"
-                  >
-                    <img
-                      src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
-                      alt="Cybersecurity and Infrastructure Security Agency"
-                      className="h-24 sm:h-28 w-auto object-contain"
-                    />
-                  </a>
-                </motion.div>
-                <motion.div 
-                  className="opacity-90 hover:opacity-100 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 0.9, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.4, scale: { duration: 0.1 } }}
-                  whileHover={{ scale: 1.12 }}
-                >
-                  <a 
-                    href="https://www.cybercom.mil" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-4 flex items-center justify-center"
-                    title="United States Cyber Command"
-                  >
-                    <img
-                      src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
-                      alt="United States Cyber Command"
-                      className="h-24 sm:h-28 w-auto object-contain"
-                    />
-                  </a>
-                </motion.div>
-                
-                {/* Second row - 2 logos */}
-                <motion.div 
-                  className="opacity-90 hover:opacity-100 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 0.9, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.4, scale: { duration: 0.1 } }}
-                  whileHover={{ scale: 1.12 }}
-                >
-                  <a 
-                    href="https://www.nsa.gov" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-4 flex items-center justify-center"
-                    title="National Security Agency"
-                  >
-                    <img
-                      src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
-                      alt="National Security Agency"
-                      className="h-24 sm:h-28 w-auto object-contain"
-                    />
-                  </a>
-                </motion.div>
-                <motion.div 
-                  className="opacity-90 hover:opacity-100 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 0.9, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6, duration: 0.4, scale: { duration: 0.1 } }}
-                  whileHover={{ scale: 1.12 }}
-                >
-                  <a 
-                    href="https://www.af.mil" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-4 flex items-center justify-center"
-                    title="United States Air Force"
-                  >
-                    <img
-                      src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
-                      alt="US Air Force"
-                      className="h-24 sm:h-28 w-auto object-contain"
-                    />
-                  </a>
-                </motion.div>
-                
-                {/* Third row - 1 centered logo */}
-                <motion.div 
-                  className="opacity-90 hover:opacity-100 transition-all duration-300 col-span-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 0.9, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.7, duration: 0.4, scale: { duration: 0.1 } }}
-                  whileHover={{ scale: 1.12 }}
-                >
-                  <a 
-                    href="https://www.army.mil" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="p-4 flex items-center justify-center"
-                    title="United States Army"
-                  >
-                    <img
-                      src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
-                      alt="US Army"
-                      className="h-24 sm:h-28 w-auto object-contain"
-                    />
-                  </a>
-                </motion.div>
-              </div>
-              
-              {/* Desktop layout */}
-              <div className="hidden md:block">
-                {/* Top row - 3 logos */}
-                <div className="grid grid-cols-3 gap-12 justify-items-center items-center mb-12">
-                  <motion.div 
-                    className="opacity-90 hover:opacity-100 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 0.9, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3, duration: 0.4, scale: { duration: 0.1 } }}
-                    whileHover={{ scale: 1.12 }}
-                  >
-                    <a 
-                      href="https://www.cisa.gov" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 flex items-center justify-center"
-                      title="Cybersecurity and Infrastructure Security Agency"
-                    >
-                      <img
-                        src="/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg"
-                        alt="Cybersecurity and Infrastructure Security Agency"
-                        className="h-32 w-auto object-contain"
-                      />
-                    </a>
-                  </motion.div>
-                  <motion.div 
-                    className="opacity-90 hover:opacity-100 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 0.9, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.4, scale: { duration: 0.1 } }}
-                    whileHover={{ scale: 1.12 }}
-                  >
-                    <a 
-                      href="https://www.cybercom.mil" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 flex items-center justify-center"
-                      title="United States Cyber Command"
-                    >
-                      <img
-                        src="/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg"
-                        alt="United States Cyber Command"
-                        className="h-32 w-auto object-contain"
-                      />
-                    </a>
-                  </motion.div>
-                  <motion.div 
-                    className="opacity-90 hover:opacity-100 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 0.9, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5, duration: 0.4, scale: { duration: 0.1 } }}
-                    whileHover={{ scale: 1.12 }}
-                  >
-                    <a 
-                      href="https://www.nsa.gov" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 flex items-center justify-center"
-                      title="National Security Agency"
-                    >
-                      <img
-                        src="/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png"
-                        alt="National Security Agency"
-                        className="h-32 w-auto object-contain"
-                      />
-                    </a>
-                  </motion.div>
-                </div>
-                
-                {/* Bottom row - 2 logos with spacing */}
-                <div className="flex justify-center items-center gap-48">
-                  <motion.div 
-                    className="opacity-90 hover:opacity-100 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 0.9, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6, duration: 0.4, scale: { duration: 0.1 } }}
-                    whileHover={{ scale: 1.12 }}
-                  >
-                    <a 
-                      href="https://www.af.mil" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 flex items-center justify-center"
-                      title="United States Air Force"
-                    >
-                      <img
-                        src="/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg"
-                        alt="US Air Force"
-                        className="h-32 w-auto object-contain"
-                      />
-                    </a>
-                  </motion.div>
-                  <motion.div 
-                    className="opacity-90 hover:opacity-100 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 0.9, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.7, duration: 0.4, scale: { duration: 0.1 } }}
-                    whileHover={{ scale: 1.12 }}
-                  >
-                    <a 
-                      href="https://www.army.mil" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 flex items-center justify-center"
-                      title="United States Army"
-                    >
-                      <img
-                        src="/lovable-uploads/Logo_of_the_United_States_Army.svg"
-                        alt="US Army"
-                        className="h-32 w-auto object-contain"
-                      />
-                    </a>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </Layout>;
-};
-
-const ValueCardWithPattern = ({
-  icon,
-  title,
-  description,
-  delay,
-  iconPosition = 'left'
-}: {
-  icon: React.ReactNode,
-  title: React.ReactNode,
-  description: React.ReactNode,
-  delay: number,
-  iconPosition?: 'left' | 'right'
-}) => {
-  return <motion.div initial={{
-    opacity: 0,
-    y: 30
-  }} whileInView={{
-    opacity: 1,
-    y: 0
-  }} viewport={{
-    once: true
-  }} transition={{
-    delay,
-    duration: 0.6
-  }}>
-      <PatternCard className="h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 border-2 hover:border-primary/20 transform hover:scale-[1.02]">
-        <PatternCardBody className="p-6">
-          <div className={iconPosition === 'right' ? "flex items-start justify-between gap-4 mb-4" : "flex items-start gap-4 mb-4"}>
-            {iconPosition === 'right' ? (
-              <>
-                <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
-
-                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                  {icon}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                  {icon}
-                </div>
-                <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
-              </>
-            )}
           </div>
-          <p className="text-muted-foreground">{description}</p>
-        </PatternCardBody>
-      </PatternCard>
-    </motion.div>;
-};
-
-const AwardImage = ({ imgSrc, alt, delay, width }) => {
-  return (
-    <motion.div 
-      className="bg-transparent flex items-center justify-center opacity-90 hover:opacity-100 transition-all duration-300"
-      style={{ maxWidth: width || '150px', height: 'auto' }}
-      initial={INITIAL_FADE_DOWN}
-      whileInView={ENTER_SOFT}
-      viewport={{ once: true }}
-      transition={{
-        opacity: { duration: FADE_SOFT.duration, ease: EASE_STANDARD as any, delay },
-        y: { duration: FADE_SOFT.duration, ease: EASE_STANDARD as any, delay },
-        scale: { duration: 0.1 }
-      }}
-      whileHover={{ scale: 1.12 }}
-    >
-      <img src={imgSrc} alt={alt} className="max-w-full h-auto object-contain" />
-    </motion.div>
+        </motion.div>
+      </section>
+    </Layout>
   );
 };
 

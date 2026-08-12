@@ -27,7 +27,7 @@ const SPRING_TRANSITION = SPRING_SOFT;
 
 const HOVER_TRANSITION = {
   duration: 0.25,
-  ease: EASE_STANDARD as any,
+  ease: EASE_STANDARD,
 };
 
 export function NavBar({ items, className, align = "center" }: NavBarProps) {
@@ -99,8 +99,8 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
         indicatorWidth.set(width);
         if (!indicatorReady) setIndicatorReady(true);
       } else {
-        animate(indicatorLeft, left, SPRING_TRANSITION as any);
-        animate(indicatorWidth, width, SPRING_TRANSITION as any);
+        animate(indicatorLeft, left, SPRING_TRANSITION);
+        animate(indicatorWidth, width, SPRING_TRANSITION);
       }
       prevPathRef.current = location.pathname;
     };

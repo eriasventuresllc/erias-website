@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
@@ -13,18 +14,19 @@ export default defineConfig(({ mode }) => ({
     chunkSizeWarningLimit: 1600,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: [
-            "react",
-            "react-dom",
-            "framer-motion",
-          ],
+        manualChunks(id) {
+          if (
+            /[\\/]node_modules[\\/](react|react-dom|scheduler|framer-motion)[\\/]/.test(id)
+          ) {
+            return "vendor";
+          }
         },
       },
     },
   },
   plugins: [
     react(),
+    tailwindcss(),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),

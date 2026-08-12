@@ -233,7 +233,7 @@ export const NodesBackground: React.FC<NodesBackgroundProps> = ({
       const pts = pointsRef.current;
       if (!ctx || !grid || !pts) { rafRef.current = requestAnimationFrame(step); return; }
 
-      let dt = now - lastRef.current;
+      const dt = now - lastRef.current;
       if (fpsCap > 0) {
         const minDelta = 1000 / fpsCap;
         if (dt < minDelta) { rafRef.current = requestAnimationFrame(step); return; }
@@ -322,10 +322,10 @@ export const NodesBackground: React.FC<NodesBackgroundProps> = ({
     return () => {
       runningRef.current = false;
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      removeEventListener("resize", handleResize as any);
+      removeEventListener("resize", handleResize as EventListener);
       if (pointer) {
-        removeEventListener("mousemove", onMove as any);
-        removeEventListener("touchmove", onMove as any);
+        removeEventListener("mousemove", onMove as EventListener);
+        removeEventListener("touchmove", onMove as EventListener);
         removeEventListener("mouseleave", () => {});
       }
       ro.disconnect();

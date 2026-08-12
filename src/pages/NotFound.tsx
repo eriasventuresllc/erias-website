@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { EASE_STANDARD, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from "@/lib/animation";
+import { EASE_OUT_EXPO, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from "@/lib/animation";
 import Layout from "@/components/layout/Layout";
+import MagneticButton from "@/components/ui/magnetic-button";
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,10 +15,9 @@ const NotFound = () => {
       location.pathname
     );
 
-    // Auto-redirect after 3 seconds
     const timeout = setTimeout(() => {
       navigate("/");
-    }, 3000);
+    }, 4000);
 
     return () => clearTimeout(timeout);
   }, [location.pathname, navigate]);
@@ -29,45 +29,53 @@ const NotFound = () => {
           initial={INITIAL_FADE_DOWN}
           animate={ENTER_SOFT}
           transition={FADE_SOFT}
-          className="text-center"
+          className="text-center relative"
         >
+          {/* Decorative orb */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-20 -z-10 blur-[100px] opacity-60 rounded-full animate-aurora-a"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 60%)",
+            }}
+          />
+
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5, ease: EASE_STANDARD as any }}
-            className="inline-flex items-center justify-center rounded-2xl px-10 py-6 border border-white/10 supports-[backdrop-filter]:bg-white/5 bg-white/0 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)] mb-6"
+            transition={{ delay: 0.2, duration: 0.7, ease: EASE_OUT_EXPO }}
+            className="inline-flex items-center justify-center rounded-2xl px-10 py-6 glass-strong mb-6 relative overflow-hidden"
           >
-            <span className="text-7xl md:text-8xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+            <span className="font-mono text-7xl md:text-8xl font-semibold tracking-tight text-primary">
               404
             </span>
           </motion.div>
+
           <motion.p
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
-            transition={{ delay: 0.4, duration: 0.6, ease: EASE_STANDARD as any }}
-            className="text-lg md:text-xl text-muted-foreground mb-4"
+            transition={{ delay: 0.4, duration: 0.6, ease: EASE_OUT_EXPO }}
+            className="text-lg md:text-xl text-muted-foreground mb-3"
           >
             The page you're looking for doesn't exist.
           </motion.p>
           <motion.p
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
-            transition={{ delay: 0.5, duration: 0.6, ease: EASE_STANDARD as any }}
+            transition={{ delay: 0.55, duration: 0.6, ease: EASE_OUT_EXPO }}
             className="text-sm text-muted-foreground/60 mb-8"
           >
-            Redirecting to home in 3 seconds...
+            Redirecting to home in 4 seconds…
           </motion.p>
+
           <motion.div
             initial={INITIAL_FADE_DOWN}
             animate={ENTER_SOFT}
-            transition={{ delay: 0.6, duration: 0.6, ease: EASE_STANDARD as any }}
+            transition={{ delay: 0.7, duration: 0.6, ease: EASE_OUT_EXPO }}
+            className="flex items-center justify-center"
           >
-            <button
-              onClick={() => navigate("/")}
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
-            >
-              Return to Home
-            </button>
+            <MagneticButton to="/">Return to Home</MagneticButton>
           </motion.div>
         </motion.div>
       </div>

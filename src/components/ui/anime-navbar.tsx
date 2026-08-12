@@ -24,7 +24,7 @@ const SPRING_TRANSITION = SPRING_SOFT;
 
 const HOVER_TRANSITION = {
   duration: 0.25,
-  ease: EASE_STANDARD as any,
+  ease: EASE_STANDARD,
 };
 
 export function AnimeNavBar({ items, className }: NavBarProps) {
@@ -105,7 +105,7 @@ export function AnimeNavBar({ items, className }: NavBarProps) {
                     transition={{
                       duration: 2.2,
                       repeat: Infinity,
-                      ease: EASE_STANDARD as any,
+                      ease: EASE_STANDARD,
                     }}
                   >
                     <div className="absolute inset-0 bg-primary/25 rounded-full blur-md" />

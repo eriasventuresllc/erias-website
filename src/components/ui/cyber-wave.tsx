@@ -5,6 +5,14 @@ interface CyberWaveProps {
   className?: string;
 }
 
+interface Wave {
+  amplitude: number;
+  frequency: number;
+  speed: number;
+  offset: number;
+  color: string;
+}
+
 export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
@@ -47,7 +55,7 @@ export const CyberWave: React.FC<CyberWaveProps> = ({ className = "" }) => {
       return gradient;
     };
 
-    const drawWave = (wave: any, mouseInfluence: number) => {
+    const drawWave = (wave: Wave, mouseInfluence: number) => {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
       const centerY = height / 2;
