@@ -220,7 +220,7 @@ const Careers = () => {
                   {category.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 content-start flex-1">
+                <div className="flex flex-col flex-1 divide-y divide-white/[0.06] border-t border-white/[0.06]">
                   {category.benefits.map((benefit, i) => (
                     <motion.span
                       key={benefit}
@@ -232,9 +232,9 @@ const Careers = () => {
                         duration: 0.65,
                         ease: EASE_OUT_EXPO,
                       }}
-                      className="inline-flex items-center gap-2 self-start rounded-[3px] border border-white/[0.12] bg-white/[0.02] pl-2 pr-3 py-1.5 font-mono text-[11px] md:text-xs text-foreground/80 transition-colors duration-300 hover:border-primary/50 hover:bg-primary/[0.07] hover:text-primary cursor-default"
+                      className="flex items-start gap-2.5 py-2.5 font-mono text-[11px] md:text-xs leading-relaxed text-foreground/75 transition-colors duration-300 hover:text-primary cursor-default"
                     >
-                      <Check size={11} strokeWidth={2.5} className="text-primary shrink-0" />
+                      <Check size={11} strokeWidth={2.5} className="mt-[0.3rem] text-primary/70 shrink-0" />
                       {benefit}
                     </motion.span>
                   ))}

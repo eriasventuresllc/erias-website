@@ -150,7 +150,7 @@ const About = () => {
                         <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
                           <span className="text-primary/60">::</span> {group.label}
                         </div>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-x-5 gap-y-2.5">
                           {group.chips.map((chip, ci) => (
                             <motion.span
                               key={chip}
@@ -162,8 +162,11 @@ const About = () => {
                                 duration: 0.65,
                                 ease: EASE_OUT_EXPO,
                               }}
-                              className="inline-flex items-center rounded-[3px] border border-white/[0.12] bg-white/[0.02] px-3 py-1.5 font-mono text-[11px] md:text-xs text-foreground/80 transition-colors duration-300 hover:border-primary/50 hover:bg-primary/[0.07] hover:text-primary cursor-default"
+                              className="group/chip inline-flex items-baseline gap-1.5 font-mono text-[11px] md:text-xs text-foreground/75 transition-colors duration-300 hover:text-primary cursor-default"
                             >
+                              <span className="text-primary/40 transition-colors duration-300 group-hover/chip:text-primary">
+                                /
+                              </span>
                               {chip}
                             </motion.span>
                           ))}
