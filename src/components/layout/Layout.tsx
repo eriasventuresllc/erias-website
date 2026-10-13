@@ -1,10 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { Home, Info, FileText, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PAGE_TRANSITION, EASE_OUT_EXPO } from '@/lib/animation';
 import { useLocation, Link } from 'react-router-dom';
-import { useIsMobile } from '@/hooks/use-mobile';
 import AuroraBackground from '@/components/ui/aurora-background';
 
 interface LayoutProps {
@@ -19,28 +18,26 @@ const pageVariants = {
 
 const pageTransition = PAGE_TRANSITION;
 
+const navItems = [
+  { name: "Company", url: "/", icon: Home },
+  { name: "Expertise", url: "/about", icon: Info },
+  {
+    name: "Leaf",
+    url: "/",
+    imageSrc: "/images/brand/erias-leaf.png",
+    imageAlt: "Erias leaf",
+  },
+  { name: "Careers", url: "/benefits", icon: FileText },
+  { name: "Openings", url: "https://careers.eriasventures.com/", icon: Briefcase },
+];
+
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isMobile = useIsMobile();
   const [isHeaderHidden, setIsHeaderHidden] = useState(false);
-
-  const navItems = useMemo(() => [
-    { name: "Company", url: "/", icon: Home },
-    { name: "Expertise", url: "/about", icon: Info },
-    {
-      name: "Leaf",
-      url: "/",
-      imageSrc: isMobile ? "/lovable-uploads/erias-leaf-dark.png" : "/lovable-uploads/erias-leaf-dark.png",
-      imageAlt: "Erias leaf",
-    },
-    { name: "Careers", url: "/benefits", icon: FileText },
-    { name: "Openings", url: "https://careers.eriasventures.com/", icon: Briefcase },
-  ], [isMobile]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setIsHeaderHidden(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -77,11 +74,7 @@ const Layout = ({ children }: LayoutProps) => {
         transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 md:pt-5 pb-2">
-          <div className="hidden md:flex justify-center pointer-events-auto">
-            <NavBar items={navItems} align="center" />
-          </div>
-
-          <div className="md:hidden flex justify-center pointer-events-auto">
+          <div className="flex justify-center pointer-events-auto">
             <NavBar items={navItems} align="center" />
           </div>
         </div>
@@ -97,7 +90,7 @@ const Layout = ({ children }: LayoutProps) => {
           >
             <Link to="/" aria-label="Go to home" className="group relative inline-block">
               <motion.img
-                src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+                src="/images/brand/erias-logo.png"
                 alt="Erias Ventures Logo"
                 className="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] cursor-pointer"
                 whileHover={{ scale: 1.03 }}
@@ -137,7 +130,7 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center group">
               <img
-                src="/lovable-uploads/ace573a3-b047-4906-b283-30d3e76f574f.png"
+                src="/images/brand/erias-icon.png"
                 alt="Erias Ventures Icon"
                 className="h-5 w-5 mr-2 object-contain transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
               />
@@ -156,7 +149,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="flex items-center hover:text-foreground transition-transform hover:scale-110"
                 aria-label="LinkedIn"
               >
-                <img src="/lovable-uploads/9688ac47-3186-432a-bc18-8964834c849f.png" alt="LinkedIn" className="w-5 h-5" />
+                <img src="/images/social/linkedin.png" alt="LinkedIn" className="w-5 h-5" />
               </a>
               <a
                 href="https://www.instagram.com/eriasventures/#"
@@ -165,7 +158,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="flex items-center hover:text-foreground transition-transform hover:scale-110 ml-1"
                 aria-label="Instagram"
               >
-                <img src="/lovable-uploads/13a66669-c032-43a3-b3f9-e404085aaeb3.png" alt="Instagram" className="w-4 h-4" />
+                <img src="/images/social/instagram.png" alt="Instagram" className="w-4 h-4" />
               </a>
             </div>
           </div>

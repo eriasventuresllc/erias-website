@@ -18,12 +18,9 @@ interface PillButtonProps
 
 /**
  * Soft pill-shaped button with a clean border, subtle hover brightening, and a
- * gentle press down on active. No magnetic movement, no shine sweep.
- *
- * The component name stays `MagneticButton` so callers don't need to change
- * their imports; the behavior is intentionally simpler per design feedback.
+ * gentle press down on active.
  */
-export const MagneticButton: React.FC<PillButtonProps> = ({
+export const PillButton: React.FC<PillButtonProps> = ({
   children,
   variant = "primary",
   className,
@@ -91,4 +88,4 @@ export const MagneticButton: React.FC<PillButtonProps> = ({
   return <Tag {...elProps}>{children}</Tag>;
 };
 
-export default MagneticButton;
+export default PillButton;

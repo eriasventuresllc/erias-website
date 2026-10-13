@@ -1,12 +1,10 @@
-
-"use client"
-
-import React, { useEffect, useLayoutEffect, useState, useRef } from "react"
+import React, { useCallback, useEffect, useLayoutEffect, useState, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, animate } from "framer-motion"
 import { EASE_STANDARD, SPRING_SOFT } from "@/lib/animation"
 import { useLocation, useNavigate } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 interface NavItem {
   name: string
@@ -33,7 +31,7 @@ const HOVER_TRANSITION = {
 export function NavBar({ items, className, align = "center" }: NavBarProps) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const navRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -45,18 +43,10 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
   const indicatorWidth = useMotionValue(0);
 
   // Function to determine if a URL is active
-  const isActive = (url?: string) => !!url && location.pathname === url;
-
-  // Handle responsive behavior
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, []);
+  const isActive = useCallback(
+    (url?: string) => !!url && location.pathname === url,
+    [location.pathname],
+  );
 
   // Record first render completion
   useEffect(() => {
@@ -109,7 +99,7 @@ export function NavBar({ items, className, align = "center" }: NavBarProps) {
     const onResize = () => recomputeIndicator();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [location.pathname, items, hoveredItem]);
+  }, [location.pathname, items, hoveredItem, isActive, indicatorReady, indicatorLeft, indicatorWidth]);
 
   const alignmentClass = align === "start" ? "justify-start" : align === "end" ? "justify-end" : "justify-center";
 

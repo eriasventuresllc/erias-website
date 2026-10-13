@@ -228,7 +228,7 @@ const ShaderMaterialComponent = ({
 }) => {
   const { size } = useThree();
   const ref = useRef<THREE.Mesh>(null);
-  let lastFrameTime = 0;
+  const lastFrameTime = useRef(0);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
@@ -237,8 +237,8 @@ const ShaderMaterialComponent = ({
     // FPS cap (optional)
     if (maxFps > 0) {
       const minInterval = 1 / maxFps;
-      if (timestamp - lastFrameTime < minInterval) return;
-      lastFrameTime = timestamp;
+      if (timestamp - lastFrameTime.current < minInterval) return;
+      lastFrameTime.current = timestamp;
     }
 
     const material = ref.current.material as THREE.ShaderMaterial;
@@ -247,7 +247,7 @@ const ShaderMaterialComponent = ({
     }
   });
 
-  const getUniforms = () => {
+  const material = useMemo(() => {
     const preparedUniforms: Record<string, { value: unknown }> = {};
 
     for (const uniformName in uniforms) {
@@ -290,10 +290,7 @@ const ShaderMaterialComponent = ({
     preparedUniforms["u_resolution"] = {
       value: new THREE.Vector2(size.width * 2, size.height * 2),
     };
-    return preparedUniforms;
-  };
 
-  const material = useMemo(() => {
     const materialObject = new THREE.ShaderMaterial({
       vertexShader: `
       precision mediump float;
@@ -309,7 +306,7 @@ const ShaderMaterialComponent = ({
       }
       `,
       fragmentShader: source,
-      uniforms: getUniforms(),
+      uniforms: preparedUniforms,
       glslVersion: THREE.GLSL3,
       blending: THREE.CustomBlending,
       blendSrc: THREE.SrcAlphaFactor,
@@ -317,7 +314,7 @@ const ShaderMaterialComponent = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [size.width, size.height, source, uniforms]);
 
   return (
     <mesh ref={ref}>

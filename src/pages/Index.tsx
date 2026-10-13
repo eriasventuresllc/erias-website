@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { BrainCircuit, Rocket, Lightbulb, ArrowRight } from 'lucide-react';
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "@firebase/app";
 import { Hero } from '@/components/ui/animated-hero';
 import CanvasRevealEffect from '@/components/ui/canvas-reveal-effect';
 import SpotlightCard from '@/components/ui/spotlight-card';
-import MagneticButton from '@/components/ui/magnetic-button';
+import PillButton from '@/components/ui/pill-button';
 import {
   EASE_OUT_EXPO,
   EASE_STANDARD,
@@ -33,47 +33,47 @@ const customers = [
   {
     name: "Cybersecurity and Infrastructure Security Agency",
     href: "https://www.cisa.gov",
-    src: "/lovable-uploads/Seal_of_Cybersecurity_and_Infrastructure_Security_Agency.svg",
+    src: "/images/customers/cisa.svg",
   },
   {
     name: "United States Cyber Command",
     href: "https://www.cybercom.mil",
-    src: "/lovable-uploads/Seal_of_the_United_States_Cyber_Command.svg",
+    src: "/images/customers/cybercom.svg",
   },
   {
     name: "National Security Agency",
     href: "https://www.nsa.gov",
-    src: "/lovable-uploads/Seal_of_the_U.S._National_Security_Agency.svg.png",
+    src: "/images/customers/nsa.png",
   },
   {
     name: "United States Air Force",
     href: "https://www.af.mil",
-    src: "/lovable-uploads/US_Air_Force_Logo_Solid_Colour.svg",
+    src: "/images/customers/air-force.svg",
   },
   {
     name: "United States Army",
     href: "https://www.army.mil",
-    src: "/lovable-uploads/Logo_of_the_United_States_Army.svg",
+    src: "/images/customers/army.svg",
   },
   {
     name: "United States Marine Corps",
     href: "https://www.marines.mil",
-    src: "/lovable-uploads/Seal_of_the_United_States_Marine_Corps.png",
+    src: "/images/customers/marine-corps.png",
   },
 ];
 
 const awards = [
-  { src: "/lovable-uploads/4ce0f0cc-66af-4516-9b1a-e72c2d606f06.png", alt: "BBJ Best Places to Work 2023" },
-  { src: "/lovable-uploads/ecafa5aa-5cf2-48a8-bd33-e209a12ee5a8.png", alt: "BBJ Best Places to Work 2024" },
-  { src: "/lovable-uploads/erias-bbptw-2025.png", alt: "BBJ Best Places to Work 2025" },
-  { src: "/lovable-uploads/80498104-2126-40da-928c-517f9170e021.png", alt: "Baltimore Sun Top Workplaces 2023" },
-  { src: "/lovable-uploads/949786dc-8dae-4b47-a5b6-53c5b6882715.png", alt: "Baltimore Sun Top Workplaces 2024" },
+  { src: "/images/awards/bbj-best-places-2023.png", alt: "BBJ Best Places to Work 2023" },
+  { src: "/images/awards/bbj-best-places-2024.png", alt: "BBJ Best Places to Work 2024" },
+  { src: "/images/awards/bbj-best-places-2025.png", alt: "BBJ Best Places to Work 2025" },
+  { src: "/images/awards/baltimore-sun-top-workplaces-2023.png", alt: "Baltimore Sun Top Workplaces 2023" },
+  { src: "/images/awards/baltimore-sun-top-workplaces-2024.png", alt: "Baltimore Sun Top Workplaces 2024" },
   {
-    src: "/lovable-uploads/baltimore-sun-top-workplaces-2025.png",
+    src: "/images/awards/baltimore-sun-top-workplaces-2025.png",
     alt: "Baltimore Sun Top Workplaces 2025",
     className: "max-w-[68px] sm:max-w-[74px] md:max-w-[80px]",
   },
-  { src: "/lovable-uploads/af613ec9-b5af-42cb-9d4d-721550972ab0.png", alt: "Washington Post Top Workplaces 2025" },
+  { src: "/images/awards/washington-post-top-workplaces-2025.png", alt: "Washington Post Top Workplaces 2025" },
 ];
 
 const Index = () => {
@@ -90,7 +90,7 @@ const Index = () => {
     if (!import.meta.env.PROD) return;
     (async () => {
       try {
-        const { isSupported, getAnalytics } = await import("firebase/analytics");
+        const { isSupported, getAnalytics } = await import("@firebase/analytics");
         const supported = await isSupported();
         if (supported) {
           try {
@@ -149,7 +149,7 @@ const Index = () => {
           >
             <div className="relative">
               <motion.img
-                src="/lovable-uploads/4ec1c21d-b6c5-4305-9f4b-6b7658a5a06d.png"
+                src="/images/brand/erias-logo.png"
                 alt="Erias Ventures Logo"
                 className="h-20 sm:h-24 md:h-28 lg:h-[7.2rem] w-auto object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.55)]"
                 animate={{ y: [0, -4, 0] }}
@@ -174,12 +174,12 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0, duration: 0.6, ease: EASE_OUT_EXPO }}
             >
-              <MagneticButton to="/about" className="group">
+              <PillButton to="/about" className="group">
                 Explore Expertise
-              </MagneticButton>
-              <MagneticButton to="/benefits" variant="subtle">
+              </PillButton>
+              <PillButton to="/benefits" variant="subtle">
                 Join Our Team
-              </MagneticButton>
+              </PillButton>
             </motion.div>
           </div>
         </motion.div>
@@ -475,7 +475,7 @@ const Index = () => {
               className="relative col-span-3 md:col-span-1 justify-self-center"
             >
               <img
-                src="/lovable-uploads/f29c2c4d-e886-446c-8c03-fca4024a8b87.png"
+                src="/images/awards/glassdoor-rating.png"
                 alt="Glassdoor 5.0 Rating"
                 width={110}
                 height="auto"
@@ -523,7 +523,7 @@ const Index = () => {
               Join a team of engineers delivering mission-critical solutions for the organizations that matter most.
             </p>
             <div className="mt-6 md:mt-7 flex flex-wrap items-center justify-center gap-3">
-              <MagneticButton
+              <PillButton
                 as="a"
                 href="https://careers.eriasventures.com/"
                 target="_blank"
@@ -532,7 +532,7 @@ const Index = () => {
               >
                 See Open Roles
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-              </MagneticButton>
+              </PillButton>
             </div>
           </div>
         </motion.div>

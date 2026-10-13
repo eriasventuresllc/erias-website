@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { EASE_OUT_EXPO, FADE_SOFT, INITIAL_FADE_DOWN, ENTER_SOFT } from "@/lib/animation";
 import Layout from "@/components/layout/Layout";
-import MagneticButton from "@/components/ui/magnetic-button";
+import PillButton from "@/components/ui/pill-button";
 
 const NotFound = () => {
   const location = useLocation();
@@ -75,7 +75,7 @@ const NotFound = () => {
             transition={{ delay: 0.7, duration: 0.6, ease: EASE_OUT_EXPO }}
             className="flex items-center justify-center"
           >
-            <MagneticButton to="/">Return to Home</MagneticButton>
+            <PillButton to="/">Return to Home</PillButton>
           </motion.div>
         </motion.div>
       </div>

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
+import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -11,7 +11,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
-        <Route path="/benefits" element={<Projects />} />
+        <Route path="/benefits" element={<Careers />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

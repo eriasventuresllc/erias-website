@@ -3,7 +3,7 @@ import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { Wallet, HeartPulse, Smile, Check, ArrowRight } from 'lucide-react';
 import SpotlightCard from '@/components/ui/spotlight-card';
-import MagneticButton from '@/components/ui/magnetic-button';
+import PillButton from '@/components/ui/pill-button';
 import AnimatedCounter from '@/components/ui/animated-counter';
 import {
   type CarouselApi,
@@ -23,10 +23,10 @@ import {
 } from '@/lib/animation';
 
 const teamImages = [
-  { src: "/lovable-uploads/62ca1c37-324b-4c81-b8a9-5bd90eb839e8.png", alt: "Erias Ventures Team Event - Outdoor Group" },
-  { src: "/lovable-uploads/a04fc258-052d-433c-93fe-5698ed2e43fd.png", alt: "Erias Ventures Team Dinner" },
-  { src: "/lovable-uploads/22ac3038-7685-4cf9-b20d-d4c2c0cb8d6b.png", alt: "Erias Ventures Orioles Event" },
-  { src: "/lovable-uploads/5938ba44-3970-44c2-bced-8160200c5995.png", alt: "Erias Ventures Holiday Dinner" },
+  { src: "/images/team/outdoor-event.png", alt: "Erias Ventures Team Event - Outdoor Group" },
+  { src: "/images/team/team-dinner.png", alt: "Erias Ventures Team Dinner" },
+  { src: "/images/team/orioles-event.png", alt: "Erias Ventures Orioles Event" },
+  { src: "/images/team/holiday-dinner.png", alt: "Erias Ventures Holiday Dinner" },
 ];
 
 const highlights = [
@@ -153,7 +153,7 @@ const Careers = () => {
             variants={fadeUp(0.8, 0.2)}
             className="mt-7 flex items-center justify-center gap-3 flex-wrap"
           >
-            <MagneticButton
+            <PillButton
               as="a"
               href="https://careers.eriasventures.com/"
               target="_blank"
@@ -162,7 +162,7 @@ const Careers = () => {
             >
               See Open Roles
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-            </MagneticButton>
+            </PillButton>
           </motion.div>
         </motion.div>
 
